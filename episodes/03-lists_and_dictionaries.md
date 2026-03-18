@@ -1,5 +1,5 @@
 ---
-title: Storing Multiple Values in Lists
+title: Lists and dictionaries
 teaching: 30
 exercises: 15
 ---

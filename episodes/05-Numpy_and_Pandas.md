@@ -1,5 +1,5 @@
 ---
-title: Defensive Programming
+title: Numpy and Pandas
 teaching: 30
 exercises: 10
 ---

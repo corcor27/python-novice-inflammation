@@ -1,5 +1,5 @@
 ---
-title: Repeating Actions with Loops
+title: Flow control
 teaching: 30
 exercises: 0
 ---

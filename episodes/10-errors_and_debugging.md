@@ -1,5 +1,5 @@
 ---
-title: Errors and Exceptions
+title: Errors, Exceptions and Debugging
 teaching: 30
 exercises: 0
 ---

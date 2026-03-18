@@ -1,5 +1,5 @@
 ---
-title: Analyzing Patient Data
+title: Variables and basic data types
 teaching: 40
 exercises: 20
 ---
