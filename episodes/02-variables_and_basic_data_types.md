@@ -1,577 +1,330 @@
 ---
 title: Variables and basic data types
-teaching: 40
-exercises: 20
+teaching: 5
+exercises: 5
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
-
-- Explain what a library is and what libraries are used for.
-- Import a Python library and use the functions it contains.
-- Read tabular data from a file into a program.
-- Select individual values and subsections from data.
-- Perform operations on arrays of data.
-
+- Become familiar with mathematical operators and in-built functions.
+- Become confident using the console to run mathematical operations.
+- Understand the order of operations.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How can I process tabular data files in Python?
-
+- How do we process mathematical operations in Spyder?
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Words are useful, but what's more useful are the sentences and stories we build with them.
-Similarly, while a lot of powerful, general tools are built into Python,
-specialized tools built up from these basic units live in
-[libraries](../learners/reference.md#library)
-that can be called upon when needed.
+## Variables
 
-## Loading data into Python
 
-To begin processing the clinical trial inflammation data, we need to load it into Python.
-We can do that using a library called
-[NumPy](https://numpy.org/doc/stable "NumPy Documentation"), which stands for Numerical Python.
-In general, you should use this library when you want to do fancy things with lots of numbers,
-especially if you have matrices or arrays. To tell Python that we'd like to start using NumPy,
-we need to [import](../learners/reference.md#import) it:
+
+
+To do anything useful with data, we need to assign its value to a *variable*.
+In Python, we can [assign](../learners/reference.md#assign) a value to a
+[variable](../learners/reference.md#variable), using the equals sign `=`.
+For example, we can track the weight of a patient who weighs 60 kilograms by
+assigning the value `60` to a variable `weight_kg`:
 
 ```python
-import numpy
+weight_kg = 60
 ```
 
-Importing a library is like getting a piece of lab equipment out of a storage locker and setting it
-up on the bench. Libraries provide additional functionality to the basic Python package, much like
-a new piece of equipment adds functionality to a lab space. Just like in the lab, importing too
-many libraries can sometimes complicate and slow down your programs - so we only import what we
-need for each program.
+From now on, whenever we use `weight_kg`, Python will substitute the value we assigned to
+it. In layperson's terms, **a variable is a name for a value**.
 
-Once we've imported the library, we can ask the library to read our data file for us:
+In Python, variable names can be:
+
+- can include letters, digits, and underscores
+- cannot start with a digit
+- are [case sensitive](../learners/reference.md#case-sensitive).
+
+This means that, for example:
+
+- `weight0` is a valid variable name, whereas `0weight` is not
+- `weight` and `Weight` are different variables
+
+## Types of data
+
+Python knows various types of data. Three common ones are:
+
+- integer numbers
+- floating point numbers, and
+- strings.
+
+In the example above, variable `weight_kg` has an integer value of `60`.
+If we want to more precisely track the weight of our patient,
+we can use a floating point value by executing:
 
 ```python
-numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+weight_kg = 60.3
+```
+
+To create a string, we add single or double quotes around some text.
+To identify and track a patient throughout our study,
+we can assign each person a unique identifier by storing it in a string:
+
+```python
+patient_id = '001'
+```
+
+## Using Variables in Python
+
+Once we have data stored with variable names, we can make use of it in calculations.
+We may want to store our patient's weight in pounds as well as kilograms:
+
+```python
+weight_lb = 2.2 * weight_kg
+```
+
+We might decide to add a prefix to our patient identifier:
+
+```python
+patient_id = 'inflam_' + patient_id
+```
+
+## Built-in Python functions
+
+To carry out common tasks with data and variables in Python,
+the language provides us with several built-in [functions](../learners/reference.md#function).
+To display information to the screen, we use the `print` function:
+
+```python
+print(weight_lb)
+print(patient_id)
 ```
 
 ```output
-array([[ 0.,  0.,  1., ...,  3.,  0.,  0.],
-       [ 0.,  1.,  2., ...,  1.,  0.,  1.],
-       [ 0.,  1.,  1., ...,  2.,  1.,  1.],
-       ...,
-       [ 0.,  1.,  1., ...,  1.,  1.,  1.],
-       [ 0.,  0.,  0., ...,  0.,  2.,  0.],
-       [ 0.,  0.,  1., ...,  1.,  1.,  0.]])
+132.66
+inflam_001
 ```
 
-The expression `numpy.loadtxt(...)` is a
-[function call](../learners/reference.md#function-call)
-that asks Python to run the [function](../learners/reference.md#function) `loadtxt` which
-belongs to the `numpy` library.
-The dot notation in Python is used most of all as an object attribute/property specifier or for invoking its method. `object.property` will give you the object.property value,
-`object_name.method()` will invoke on object\_name method.
+When we want to make use of a function, referred to as calling the function,
+we follow its name by parentheses. The parentheses are important:
+if you leave them off, the function doesn't actually run!
+Sometimes you will include values or variables inside the parentheses for the function to use.
+In the case of `print`,
+we use the parentheses to tell the function what value we want to display.
+We will learn more about how functions work and how to create our own in later episodes.
 
-As an example, John Smith is the John that belongs to the Smith family.
-We could use the dot notation to write his name `smith.john`,
-just as `loadtxt` is a function that belongs to the `numpy` library.
-
-`numpy.loadtxt` has two [parameters](../learners/reference.md#parameter): the name of the file
-we want to read and the [delimiter](../learners/reference.md#delimiter) that separates values
-on a line. These both need to be character strings
-(or [strings](../learners/reference.md#string) for short), so we put them in quotes.
-
-Since we haven't told it to do anything else with the function's output,
-the [notebook](../learners/reference.md#notebook) displays it.
-In this case,
-that output is the data we just loaded.
-By default,
-only a few rows and columns are shown
-(with `...` to omit elements when displaying big arrays).
-Note that, to save space when displaying NumPy arrays, Python does not show us trailing zeros,
-so `1.0` becomes `1.`.
-
-Our call to `numpy.loadtxt` read our file
-but didn't save the data in memory.
-To do that,
-we need to assign the array to a variable. In a similar manner to how we assign a single
-value to a variable, we can also assign an array of values to a variable using the same syntax.
-Let's re-run `numpy.loadtxt` and save the returned data:
+We can display multiple things at once using only one `print` call:
 
 ```python
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
-```
-
-This statement doesn't produce any output because we've assigned the output to the variable `data`.
-If we want to check that the data have been loaded,
-we can print the variable's value:
-
-```python
-print(data)
+print(patient_id, 'weight in kilograms:', weight_kg)
 ```
 
 ```output
-[[ 0.  0.  1. ...,  3.  0.  0.]
- [ 0.  1.  2. ...,  1.  0.  1.]
- [ 0.  1.  1. ...,  2.  1.  1.]
- ...,
- [ 0.  1.  1. ...,  1.  1.  1.]
- [ 0.  0.  0. ...,  0.  2.  0.]
- [ 0.  0.  1. ...,  1.  1.  0.]]
+inflam_001 weight in kilograms: 60.3
 ```
 
-Now that the data are in memory,
-we can manipulate them.
-First,
-let's ask what [type](../learners/reference.md#type) of thing `data` refers to:
+We can also call a function inside of another
+[function call](../learners/reference.md#function-call).
+For example, Python has a built-in function called `type` that tells you a value's data type:
 
 ```python
-print(type(data))
+print(type(60.3))
+print(type(patient_id))
 ```
 
 ```output
-<class 'numpy.ndarray'>
+<class 'float'>
+<class 'str'>
 ```
 
-The output tells us that `data` currently refers to
-an N-dimensional array, the functionality for which is provided by the NumPy library.
-These data correspond to arthritis patients' inflammation.
-The rows are the individual patients, and the columns
-are their daily inflammation measurements.
+Moreover, we can do arithmetic with variables right inside the `print` function:
+
+```python
+print('weight in pounds:', 2.2 * weight_kg)
+```
+
+```output
+weight in pounds: 132.66
+```
+
+The above command, however, did not change the value of `weight_kg`:
+
+```python
+print(weight_kg)
+```
+
+```output
+60.3
+```
+
+To change the value of the `weight_kg` variable, we have to
+**assign** `weight_kg` a new value using the equals `=` sign:
+
+```python
+weight_kg = 65.0
+print('weight in kilograms is now:', weight_kg)
+```
+
+```output
+weight in kilograms is now: 65.0
+```
+
+## Getting Help
+Use the built-in function `help` to get help for a function.
+Every built-in function has extensive [documentation that can also be found online](https://docs.python.org/3/library/index.html).
+
+```python
+help(print)
+```
+
+```output
+Help on built-in function print in module builtins:
+
+print(*args, sep=' ', end='\n', file=None, flush=False)
+    Prints the values to a stream, or to sys.stdout by default.
+
+    sep
+      string inserted between values, default a space.
+    end
+      string appended after the last value, default a newline.
+    file
+      a file-like object (stream); defaults to the current sys.stdout.
+    flush
+      whether to forcibly flush the stream.
+```
+
+This help message (the function's "docstring") includes a usage statement, a list of parameters accepted by the function, and their default values if they have them.
+
+It is normal to encounter error messages while programming, whether you are learning for the first time or have been programming for many years.
+[We will discuss error messages in more detail later](./09-errors.md). 
+For now, let's explore how people use them to get more help when they are stuck with their Python code.
+
+* Search the internet: 
+  paste the last line of your error message or the word "python" and a short description of what you want to do into your favourite search engine 
+  and you will usually find several examples where other people have encountered the same problem and came looking for help.
+    * [StackOverflow](https://stackoverflow.com/questions) can be particularly helpful for this: answers to questions are presented as a ranked thread ordered according to how useful other users found them to be.
+    * **Take care:** copying and pasting code written by somebody else is risky unless you understand exactly what it is doing!
+* Ask somebody "in the real world". 
+  If you have a colleague or friend with more expertise in Python than you have, show them the problem you are having and ask them for help.
+
+[We will discuss more debugging strategies in greater depth later in the lesson](./11-debugging.md).
+
+### Generative AI
+
+::::::::::::::::::::::::::::: instructor
+
+### Choose how to teach this section
+The section on generative AI is intended to be concise but Instructors may choose to devote more time to the topic in a workshop.
+Depending on your own level of experience and comfort with talking about and using these tools, you could choose to do any of the following:
+
+* Explain how large language models work and are trained, and/or the difference between generative AI, other forms of AI that currently exist, and the limits of what LLMs can do (e.g., they can't "reason").
+* Demonstrate how you recommend that learners use generative AI.
+* Discuss the ethical concerns listed below, as well as others that you are aware of, to help learners make an informed choice about whether or not to use generative AI tools.
+
+This is a fast-moving technology. 
+If you are preparing to teach this section and you feel it has become outdated, please open an issue on the lesson repository to let the Maintainers know and/or a pull request to suggest updates and improvements.
+
+::::::::::::::::::::::::::::::::::::::::
+
+It is increasingly common for people to use _generative AI_ chatbots such as ChatGPT to get help while coding. 
+You will probably receive some useful guidance by presenting your error message to the chatbot and asking it what went wrong. 
+However, the way this help is provided by the chatbot is different. 
+Answers on StackOverflow have (probably) been given by a human as a direct response to the question asked. 
+But generative AI chatbots, which are based on an advanced statistical model, respond by generating the _most likely_ sequence of text that would follow the prompt they are given.
+
+While responses from generative AI tools can often be helpful, they are not always reliable. 
+These tools sometimes generate plausible but incorrect or misleading information, so (just as with an answer found on the internet) it is essential to verify their accuracy.
+You need the knowledge and skills to be able to understand these responses, to judge whether or not they are accurate, and to fix any errors in the code it offers you.
+
+In addition to asking for help, programmers can use generative AI tools to generate code from scratch; extend, improve and reorganise existing code; translate code between programming languages; figure out what terms to use in a search of the internet; and more.
+However, there are drawbacks that you should be aware of.
+
+The models used by these tools have been "trained" on very large volumes of data, much of it taken from the internet, and the responses they produce reflect that training data, and may recapitulate its inaccuracies or biases.
+The environmental costs (energy and water use) of LLMs are a lot higher than other technologies, both during development (known as training) and when an individual user uses one (also called inference). For more information see the [AI Environmental Impact Primer](https://huggingface.co/blog/sasha/ai-environment-primer) developed by researchers at HuggingFace, an AI hosting platform. 
+Concerns also exist about the way the data for this training was obtained, with questions raised about whether the people developing the LLMs had permission to use it.
+Other ethical concerns have also been raised, such as reports that workers were exploited during the training process.
+
+**We recommend that you avoid getting help from generative AI during the workshop** for several reasons:
+
+1. For most problems you will encounter at this stage, help and answers can be found among the first results returned by searching the internet.
+2. The foundational knowledge and skills you will learn in this lesson by writing and fixing your own programs  are essential to be able to evaluate the correctness and safety of any code you receive from online help or a generative AI chatbot. 
+   If you choose to use these tools in the future, the expertise you gain from learning and practising these fundamentals on your own will help you use them more effectively.
+3. As you start out with programming, the mistakes you make will be the kinds that have also been made -- and overcome! -- by everybody else who learned to program before you. 
+  Since these mistakes and the questions you are likely to have at this stage are common, they are also better represented than other, more specialised problems and tasks in the data that was used to train generative AI tools.
+  This means that a generative AI chatbot is _more likely to produce accurate responses_ to questions that novices ask, which could give you a false impression of how reliable they will be when you are ready to do things that are more advanced.
+
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Data Type
+## Variables as Sticky Notes
 
-A Numpy array contains one or more elements
-of the same type. The `type` function will only tell you that
-a variable is a NumPy array but won't tell you the type of
-thing inside the array.
-We can find out the type
-of the data contained in the NumPy array.
+A variable in Python is analogous to a sticky note with a name written on it:
+assigning a value to a variable is like putting that sticky note on a particular value.
+
+![](fig/python-sticky-note-variables-01.svg){alt='Value of 65.0 with weight\_kg label stuck on it'}
+
+Using this analogy, we can investigate how assigning a value to one variable
+does **not** change values of other, seemingly related, variables.  For
+example, let's store the subject's weight in pounds in its own variable:
 
 ```python
-print(data.dtype)
+# There are 2.2 pounds per kilogram
+weight_lb = 2.2 * weight_kg
+print('weight in kilograms:', weight_kg, 'and in pounds:', weight_lb)
 ```
 
 ```output
-float64
+weight in kilograms: 65.0 and in pounds: 143.0
 ```
 
-This tells us that the NumPy array's elements are
-[floating-point numbers](../learners/reference.md#floating-point-number).
+Everything in a line of code following the '#' symbol is a
+[comment](../learners/reference.md#comment) that is ignored by Python.
+Comments allow programmers to leave explanatory notes for other
+programmers or their future selves.
+
+![](fig/python-sticky-note-variables-02.svg){alt='Value of 65.0 with weight\_kg label stuck on it, and value of 143.0 with weight\_lb label stuck on it'}
+
+Similar to above, the expression `2.2 * weight_kg` is evaluated to `143.0`,
+and then this value is assigned to the variable `weight_lb` (i.e. the sticky
+note `weight_lb` is placed on `143.0`). At this point, each variable is
+"stuck" to completely distinct and unrelated values.
+
+Let's now change `weight_kg`:
+
+```python
+weight_kg = 100.0
+print('weight in kilograms is now:', weight_kg, 'and weight in pounds is still:', weight_lb)
+```
+
+```output
+weight in kilograms is now: 100.0 and weight in pounds is still: 143.0
+```
+
+![](fig/python-sticky-note-variables-03.svg){alt='Value of 100.0 with label weight\_kg stuck on it, and value of 143.0 with label weight\_lbstuck on it'}
+
+Since `weight_lb` doesn't "remember" where its value comes from,
+it is not updated when we change `weight_kg`.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-With the following command, we can see the array's [shape](../learners/reference.md#shape):
-
-```python
-print(data.shape)
-```
-
-```output
-(60, 40)
-```
-
-The output tells us that the `data` array variable contains 60 rows and 40 columns. When we
-created the variable `data` to store our arthritis data, we did not only create the array; we also
-created information about the array, called [members](../learners/reference.md#member) or
-attributes. This extra information describes `data` in the same way an adjective describes a noun.
-`data.shape` is an attribute of `data` which describes the dimensions of `data`. We use the same
-dotted notation for the attributes of variables that we use for the functions in libraries because
-they have the same part-and-whole relationship.
-
-If we want to get a single number from the array, we must provide an
-[index](../learners/reference.md#index) in square brackets after the variable name, just as we
-do in math when referring to an element of a matrix.  Our inflammation data has two dimensions, so
-we will need to use two indices to refer to one specific value:
-
-```python
-print('first value in data:', data[0, 0])
-```
-
-```output
-first value in data: 0.0
-```
-
-```python
-print('middle value in data:', data[29, 19])
-```
-
-```output
-middle value in data: 16.0
-```
-
-The expression `data[29, 19]` accesses the element at row 30, column 20. While this expression may
-not surprise you,
-`data[0, 0]` might.
-Programming languages like Fortran, MATLAB and R start counting at 1
-because that's what human beings have done for thousands of years.
-Languages in the C family (including C++, Java, Perl, and Python) count from 0
-because it represents an offset from the first value in the array (the second
-value is offset by one index from the first value). This is closer to the way
-that computers represent arrays (if you are interested in the historical
-reasons behind counting indices from zero, you can read
-[Mike Hoye's blog post](https://exple.tive.org/blarg/2013/10/22/citation-needed/)).
-As a result,
-if we have an M×N array in Python,
-its indices go from 0 to M-1 on the first axis
-and 0 to N-1 on the second.
-It takes a bit of getting used to,
-but one way to remember the rule is that
-the index is how many steps we have to take from the start to get the item we want.
-
-![](fig/python-zero-index.svg){alt="'data' is a 3 by 3 numpy array containing row 0: \['A', 'B', 'C'\], row 1: \['D', 'E', 'F'\], androw 2: \['G', 'H', 'I'\]. Starting in the upper left hand corner, data\[0, 0\] = 'A', data\[0, 1\] = 'B',data\[0, 2\] = 'C', data\[1, 0\] = 'D', data\[1, 1\] = 'E', data\[1, 2\] = 'F', data\[2, 0\] = 'G',data\[2, 1\] = 'H', and data\[2, 2\] = 'I', in the bottom right hand corner."}
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## In the Corner
-
-What may also surprise you is that when Python displays an array,
-it shows the element with index `[0, 0]` in the upper left corner
-rather than the lower left.
-This is consistent with the way mathematicians draw matrices
-but different from the Cartesian coordinates.
-The indices are (row, column) instead of (column, row) for the same reason,
-which can be confusing when plotting data.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Slicing data
-
-An index like `[30, 20]` selects a single element of an array,
-but we can select whole sections as well.
-For example,
-we can select the first ten days (columns) of values
-for the first four patients (rows) like this:
-
-```python
-print(data[0:4, 0:10])
-```
-
-```output
-[[ 0.  0.  1.  3.  1.  2.  4.  7.  8.  3.]
- [ 0.  1.  2.  1.  2.  1.  3.  2.  2.  6.]
- [ 0.  1.  1.  3.  3.  2.  6.  2.  5.  9.]
- [ 0.  0.  2.  0.  4.  2.  2.  1.  6.  7.]]
-```
-
-The [slice](../learners/reference.md#slice) `0:4` means, "Start at index 0 and go up to,
-but not including, index 4". Again, the up-to-but-not-including takes a bit of getting used to,
-but the rule is that the difference between the upper and lower bounds is the number of values in
-the slice.
-
-We don't have to start slices at 0:
-
-```python
-print(data[5:10, 0:10])
-```
-
-```output
-[[ 0.  0.  1.  2.  2.  4.  2.  1.  6.  4.]
- [ 0.  0.  2.  2.  4.  2.  2.  5.  5.  8.]
- [ 0.  0.  1.  2.  3.  1.  2.  3.  5.  3.]
- [ 0.  0.  0.  3.  1.  5.  6.  5.  5.  8.]
- [ 0.  1.  1.  2.  1.  3.  5.  3.  5.  8.]]
-```
-
-We also don't have to include the upper and lower bound on the slice.  If we don't include the lower
-bound, Python uses 0 by default; if we don't include the upper, the slice runs to the end of the
-axis, and if we don't include either (i.e., if we use ':' on its own), the slice includes
-everything:
-
-```python
-small = data[:3, 36:]
-print('small is:')
-print(small)
-```
-
-The above example selects rows 0 through 2 and columns 36 through to the end of the array.
-
-```output
-small is:
-[[ 2.  3.  0.  0.]
- [ 1.  1.  0.  1.]
- [ 2.  2.  1.  1.]]
-```
-
-## Analyzing data
-
-NumPy has several useful functions that take an array as input to perform operations on its values.
-If we want to find the average inflammation for all patients on
-all days, for example, we can ask NumPy to compute `data`'s mean value:
-
-```python
-print(numpy.mean(data))
-```
-
-```output
-6.14875
-```
-
-`mean` is a [function](../learners/reference.md#function) that takes
-an array as an [argument](../learners/reference.md#argument).
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Not All Functions Have Input
-
-Generally, a function uses inputs to produce outputs.
-However, some functions produce outputs without
-needing any input. For example, checking the current time
-doesn't require any input.
-
-```python
-import time
-print(time.ctime())
-```
-
-```output
-Sat Mar 26 13:07:33 2016
-```
-
-For functions that don't take in any arguments,
-we still need parentheses (`()`)
-to tell Python to go and do something for us.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-Let's use three other NumPy functions to get some descriptive values about the dataset.
-We'll also use multiple assignment,
-a convenient Python feature that will enable us to do this all in one line.
-
-```python
-maxval, minval, stdval = numpy.amax(data), numpy.amin(data), numpy.std(data)
-
-print('maximum inflammation:', maxval)
-print('minimum inflammation:', minval)
-print('standard deviation:', stdval)
-```
-
-Here we've assigned the return value from `numpy.amax(data)` to the variable `maxval`, the value
-from `numpy.amin(data)` to `minval`, and so on.
-
-```output
-maximum inflammation: 20.0
-minimum inflammation: 0.0
-standard deviation: 4.61383319712
-```
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Mystery Functions in IPython
-
-How did we know what functions NumPy has and how to use them?
-If you are working in IPython or in a Jupyter Notebook, there is an easy way to find out.
-If you type the name of something followed by a dot, then you can use
-[tab completion](../learners/reference.md#tab-completion)
-(e.g. type `numpy.` and then press <kbd>Tab</kbd>)
-to see a list of all functions and attributes that you can use. After selecting one, you
-can also add a question mark (e.g. `numpy.cumprod?`), and IPython will return an
-explanation of the method! This is the same as doing `help(numpy.cumprod)`.
-Similarly, if you are using the "plain vanilla" Python interpreter, you can type `numpy.`
-and press the <kbd>Tab</kbd> key twice for a listing of what is available. You can then use the
-`help()` function to see an explanation of the function you're interested in,
-for example: `help(numpy.cumprod)`.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Confusing Function Names
-
-One might wonder why the functions are called `amax` and `amin` and not `max` and `min` or why the other is called `mean` and not `amean`.
-The package `numpy` does provide functions `max` and `min` that are fully equivalent to `amax` and `amin`, but they share a name with standard library functions `max` and `min` that come with Python itself.
-Referring to the functions like we did above, that is `numpy.max` for example, does not cause problems, but there are other ways to refer to them that could.
-In addition, text editors might highlight (color) these functions like standard library function, even though they belong to NumPy, which can be confusing and lead to errors.
-Since there is no function called `mean` in the standard library, there is no function called `amean`.
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-When analyzing data, though,
-we often want to look at variations in statistical values,
-such as the maximum inflammation per patient
-or the average inflammation per day.
-One way to do this is to create a new temporary array of the data we want,
-then ask it to do the calculation:
-
-```python
-patient_0 = data[0, :] # 0 on the first axis (rows), everything on the second (columns)
-print('maximum inflammation for patient 0:', numpy.amax(patient_0))
-```
-
-```output
-maximum inflammation for patient 0: 18.0
-```
-
-We don't actually need to store the row in a variable of its own.
-Instead, we can combine the selection and the function call:
-
-```python
-print('maximum inflammation for patient 2:', numpy.amax(data[2, :]))
-```
-
-```output
-maximum inflammation for patient 2: 19.0
-```
-
-What if we need the maximum inflammation for each patient over all days (as in the
-next diagram on the left) or the average for each day (as in the
-diagram on the right)? As the diagram below shows, we want to perform the
-operation across an axis:
-
-![](fig/python-operations-across-axes.png){alt="Per-patient maximum inflammation is computed row-wise across all columns usingnumpy.amax(data, axis=1). Per-day average inflammation is computed column-wise across all rows usingnumpy.mean(data, axis=0)."}
-
-To find the **maximum inflammation reported for each patient**, you would apply the `max` function moving across the columns (axis 1). To find the **daily average inflammation reported across patients**, you would apply the `mean` function moving down the rows (axis 0). 
-
-To support this functionality, most array functions allow us to specify the axis we want to work on. If we ask for the max across axis 1 (columns in our 2D example), we get:
-
-```python
-print(numpy.max(data, axis=1))
-```
-
-```output
-[18. 18. 19. 17. 17. 18. 17. 20. 17. 18. 18. 18. 17. 16. 17. 18. 19. 19.
- 17. 19. 19. 16. 17. 15. 17. 17. 18. 17. 20. 17. 16. 19. 15. 15. 19. 17.
- 16. 17. 19. 16. 18. 19. 16. 19. 18. 16. 19. 15. 16. 18. 14. 20. 17. 15.
- 17. 16. 17. 19. 18. 18.]
-```
-
-As a quick check, we can ask this array what its shape is. We expect 60 patient maximums:
-
-```python
-print(numpy.max(data, axis=1).shape)
-```
-
-```output
-(60,)
-```
-
-The expression `(60,)` tells us we have an N×1 vector, so this is the maximum inflammation per day for each patients. 
-
-If we ask for the average across/down axis 0 (rows in our 2D example), we get:
-
-```python
-print(numpy.mean(data, axis=0))
-```
-
-```output
-[ 0.          0.45        1.11666667  1.75        2.43333333  3.15
-  3.8         3.88333333  5.23333333  5.51666667  5.95        5.9
-  8.35        7.73333333  8.36666667  9.5         9.58333333 10.63333333
- 11.56666667 12.35       13.25       11.96666667 11.03333333 10.16666667
- 10.          8.66666667  9.15        7.25        7.33333333  6.58333333
-  6.06666667  5.95        5.11666667  3.6         3.3         3.56666667
-  2.48333333  1.5         1.13333333  0.56666667]
-```
-
-Check the array shape. We expect 40 averages, one for each day of the study:
-
-```python
-print(numpy.mean(data, axis=0).shape)
-```
-
-```output
-(40,)
-```
-Similarly, we can apply the `mean` function to axis 1 to get the patient's average inflammation over the duration of the study (60 values). 
-
-```python
-print(numpy.mean(data, axis=1))
-```
-```output
-[5.45  5.425 6.1   5.9   5.55  6.225 5.975 6.65  6.625 6.525 6.775 5.8
- 6.225 5.75  5.225 6.3   6.55  5.7   5.85  6.55  5.775 5.825 6.175 6.1
- 5.8   6.425 6.05  6.025 6.175 6.55  6.175 6.35  6.725 6.125 7.075 5.725
- 5.925 6.15  6.075 5.75  5.975 5.725 6.3   5.9   6.75  5.925 7.225 6.15
- 5.95  6.275 5.7   6.1   6.825 5.975 6.725 5.7   6.25  6.4   7.05  5.9  ]
-```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Slicing Strings
+## Check Your Understanding
 
-A section of an array is called a [slice](../learners/reference.md#slice).
-We can take slices of character strings as well:
-
-```python
-element = 'oxygen'
-print('first three characters:', element[0:3])
-print('last three characters:', element[3:6])
-```
-
-```output
-first three characters: oxy
-last three characters: gen
-```
-
-What is the value of `element[:4]`?
-What about `element[4:]`?
-Or `element[:]`?
-
-:::::::::::::::  solution
-
-## Solution
-
-```output
-oxyg
-en
-oxygen
-```
-
-:::::::::::::::::::::::::
-
-What is `element[-1]`?
-What is `element[-2]`?
-
-:::::::::::::::  solution
-
-## Solution
-
-```output
-n
-e
-```
-
-:::::::::::::::::::::::::
-
-Given those answers,
-explain what `element[1:-1]` does.
-
-:::::::::::::::  solution
-
-## Solution
-
-Creates a substring from index 1 up to (not including) the final index,
-effectively removing the first and last letters from 'oxygen'
-
-
-:::::::::::::::::::::::::
-
-How can we rewrite the slice for getting the last three characters of `element`,
-so that it works even if we assign a different string to `element`?
-Test your solution with the following strings: `carpentry`, `clone`, `hi`.
-
-:::::::::::::::  solution
-
-## Solution
+What values do the variables `mass` and `age` have after each of the following statements?
+Test your answer by executing the lines.
 
 ```python
-element = 'oxygen'
-print('last three characters:', element[-3:])
-element = 'carpentry'
-print('last three characters:', element[-3:])
-element = 'clone'
-print('last three characters:', element[-3:])
-element = 'hi'
-print('last three characters:', element[-3:])
+mass = 47.5
+age = 122
+mass = mass * 2.0
+age = age - 20
 ```
 
+:::::::::::::::  solution
+
+## Solution
+
 ```output
-last three characters: gen
-last three characters: try
-last three characters: one
-last three characters: hi
+`mass` holds a value of 47.5, `age` does not exist
+`mass` still holds a value of 47.5, `age` holds a value of 122
+`mass` now has a value of 95.0, `age`'s value is still 122
+`mass` still has a value of 95.0, `age` now holds 102
 ```
 
 :::::::::::::::::::::::::
@@ -580,22 +333,23 @@ last three characters: hi
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Thin Slices
+## Sorting Out References
 
-The expression `element[3:3]` produces an
-[empty string](../learners/reference.md#empty-string),
-i.e., a string that contains no characters.
-If `data` holds our array of patient data,
-what does `data[3:3, 4:4]` produce?
-What about `data[3:3, :]`?
+Python allows you to assign multiple values to multiple variables in one line by separating
+the variables and values with commas. What does the following program print out?
+
+```python
+first, second = 'Grace', 'Hopper'
+third, fourth = second, first
+print(third, fourth)
+```
 
 :::::::::::::::  solution
 
 ## Solution
 
 ```output
-array([], shape=(0, 0), dtype=float64)
-array([], shape=(0, 40), dtype=float64)
+Hopper Grace
 ```
 
 :::::::::::::::::::::::::
@@ -604,216 +358,30 @@ array([], shape=(0, 40), dtype=float64)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Stacking Arrays
+## Seeing Data Types
 
-Arrays can be concatenated and stacked on top of one another,
-using NumPy's `vstack` and `hstack` functions for vertical and horizontal stacking, respectively.
+What are the data types of the following variables?
 
 ```python
-import numpy
-
-A = numpy.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-print('A = ')
-print(A)
-
-B = numpy.hstack([A, A])
-print('B = ')
-print(B)
-
-C = numpy.vstack([A, A])
-print('C = ')
-print(C)
+planet = 'Earth'
+apples = 5
+distance = 10.5
 ```
-
-```output
-A =
-[[1 2 3]
- [4 5 6]
- [7 8 9]]
-B =
-[[1 2 3 1 2 3]
- [4 5 6 4 5 6]
- [7 8 9 7 8 9]]
-C =
-[[1 2 3]
- [4 5 6]
- [7 8 9]
- [1 2 3]
- [4 5 6]
- [7 8 9]]
-```
-
-Write some additional code that slices the first and last columns of `A`,
-and stacks them into a 3x2 array.
-Make sure to `print` the results to verify your solution.
 
 :::::::::::::::  solution
 
 ## Solution
 
-A 'gotcha' with array indexing is that singleton dimensions
-are dropped by default. That means `A[:, 0]` is a one dimensional
-array, which won't stack as desired. To preserve singleton dimensions,
-the index itself can be a slice or array. For example, `A[:, :1]` returns
-a two dimensional array with one singleton dimension (i.e. a column
-vector).
-
 ```python
-D = numpy.hstack((A[:, :1], A[:, -1:]))
-print('D = ')
-print(D)
+print(type(planet))
+print(type(apples))
+print(type(distance))
 ```
 
 ```output
-D =
-[[1 3]
- [4 6]
- [7 9]]
-```
-
-:::::::::::::::::::::::::
-
-:::::::::::::::  solution
-
-## Solution
-
-An alternative way to achieve the same result is to use Numpy's
-delete function to remove the second column of A. If you're not
-sure what the parameters of numpy.delete mean, use the help files.
-
-```python
-D = numpy.delete(arr=A, obj=1, axis=1)
-print('D = ')
-print(D)
-```
-
-```output
-D =
-[[1 3]
- [4 6]
- [7 9]]
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Change In Inflammation
-
-The patient data is *longitudinal* in the sense that each row represents a
-series of observations relating to one individual.  This means that
-the change in inflammation over time is a meaningful concept.
-Let's find out how to calculate changes in the data contained in an array
-with NumPy.
-
-The `numpy.diff()` function takes an array and returns the differences
-between two successive values. Let's use it to examine the changes
-each day across the first week of patient 3 from our inflammation dataset.
-
-```python
-patient3_week1 = data[3, :7]
-print(patient3_week1)
-```
-
-```output
- [0. 0. 2. 0. 4. 2. 2.]
-```
-
-Calling `numpy.diff(patient3_week1)` would do the following calculations
-
-```python
-[ 0 - 0, 2 - 0, 0 - 2, 4 - 0, 2 - 4, 2 - 2 ]
-```
-
-and return the 6 difference values in a new array.
-
-```python
-numpy.diff(patient3_week1)
-```
-
-```output
-array([ 0.,  2., -2.,  4., -2.,  0.])
-```
-
-Note that the array of differences is shorter by one element (length 6).
-
-When calling `numpy.diff` with a multi-dimensional array, an `axis` argument may
-be passed to the function to specify which axis to process. When applying
-`numpy.diff` to our 2D inflammation array `data`, which axis would we specify?
-
-:::::::::::::::  solution
-
-## Solution
-
-Since the row axis (0) is patients, it does not make sense to get the
-difference between two arbitrary patients. The column axis (1) is in
-days, so the difference is the change in inflammation -- a meaningful
-concept.
-
-```python
-numpy.diff(data, axis=1)
-```
-
-:::::::::::::::::::::::::
-
-If the shape of an individual data file is `(60, 40)` (60 rows and 40
-columns), what would the shape of the array be after you run the `diff()`
-function and why?
-
-:::::::::::::::  solution
-
-## Solution
-
-The shape will be `(60, 39)` because there is one fewer difference between
-columns than there are columns in the data.
-
-
-:::::::::::::::::::::::::
-
-How would you find the largest change in inflammation for each patient? Does
-it matter if the change in inflammation is an increase or a decrease?
-
-:::::::::::::::  solution
-
-## Solution
-
-By using the `numpy.amax()` function after you apply the `numpy.diff()`
-function, you will get the largest difference between days.
-
-```python
-numpy.amax(numpy.diff(data, axis=1), axis=1)
-```
-
-```python
-array([  7.,  12.,  11.,  10.,  11.,  13.,  10.,   8.,  10.,  10.,   7.,
-         7.,  13.,   7.,  10.,  10.,   8.,  10.,   9.,  10.,  13.,   7.,
-        12.,   9.,  12.,  11.,  10.,  10.,   7.,  10.,  11.,  10.,   8.,
-        11.,  12.,  10.,   9.,  10.,  13.,  10.,   7.,   7.,  10.,  13.,
-        12.,   8.,   8.,  10.,  10.,   9.,   8.,  13.,  10.,   7.,  10.,
-         8.,  12.,  10.,   7.,  12.])
-```
-
-If inflammation values *decrease* along an axis, then the difference from
-one element to the next will be negative. If
-you are interested in the **magnitude** of the change and not the
-direction, the `numpy.absolute()` function will provide that.
-
-Notice the difference if you get the largest *absolute* difference
-between readings.
-
-```python
-numpy.amax(numpy.absolute(numpy.diff(data, axis=1)), axis=1)
-```
-
-```python
-array([ 12.,  14.,  11.,  13.,  11.,  13.,  10.,  12.,  10.,  10.,  10.,
-        12.,  13.,  10.,  11.,  10.,  12.,  13.,   9.,  10.,  13.,   9.,
-        12.,   9.,  12.,  11.,  10.,  13.,   9.,  13.,  11.,  11.,   8.,
-        11.,  12.,  13.,   9.,  10.,  13.,  11.,  11.,  13.,  11.,  13.,
-        13.,  10.,   9.,  10.,  10.,   9.,   9.,  13.,  10.,   9.,  10.,
-        11.,  13.,  10.,  10.,  12.])
+<class 'str'>
+<class 'int'>
+<class 'float'>
 ```
 
 :::::::::::::::::::::::::
@@ -824,15 +392,14 @@ array([ 12.,  14.,  11.,  13.,  11.,  13.,  10.,  12.,  10.,  10.,  10.,
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Import a library into a program using `import libraryname`.
-- Use the `numpy` library to work with arrays in Python.
-- The expression `array.shape` gives the shape of an array.
-- Use `array[x, y]` to select a single element from a 2D array.
-- Array indices start at 0, not 1.
-- Use `low:high` to specify a `slice` that includes the indices from `low` to `high-1`.
+- Basic data types in Python include integers, strings, and floating-point numbers.
+- Use `variable = value` to assign a value to a variable in order to record it in memory.
+- Variables are created on demand whenever a value is assigned to them.
+- Use `print(something)` to display the value of `something`.
 - Use `# some kind of explanation` to add comments to programs.
-- Use `numpy.mean(array)`, `numpy.amax(array)`, and `numpy.amin(array)` to calculate simple statistics.
-- Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis.
+- Built-in functions are always available to use.
+- Use `help(thing)` to view help for something.
+- Error messages provide information about what has gone wrong with your program and where.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
