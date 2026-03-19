@@ -1,5 +1,5 @@
 ---
-title: Analyzing Data from Multiple Files
+title: Plotting essentials 
 teaching: 20
 exercises: 0
 ---

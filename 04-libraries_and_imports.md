@@ -1,5 +1,5 @@
 ---
-title: Visualizing Tabular Data
+title: Libraries and imports
 teaching: 30
 exercises: 20
 ---

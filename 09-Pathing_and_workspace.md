@@ -1,5 +1,5 @@
 ---
-title: Making Choices
+title: Pathing and work spaces
 teaching: 30
 exercises: 0
 ---
