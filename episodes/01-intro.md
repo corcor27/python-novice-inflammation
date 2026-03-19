@@ -114,7 +114,7 @@ If the answer was **not** what you were expecting you will need to become clear 
 
 * **A**ddition/**S**ubtraction\*  
 
-\* Operators with same precedent are calculated left to right. 
+ Operators with same precedent are calculated left to right. 
 
  
 This tells you what order mathematical operations will be performed and ensures consistency during evaluation.  
@@ -133,8 +133,6 @@ To make this concept clearer, try:
 
 Using brackets we have manipulated the order of operations to perform the addition before the division. Be conscious of how you structure your mathematical operations to ensure the desired results but also readability of your code. 
 
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
