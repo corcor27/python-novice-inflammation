@@ -61,13 +61,9 @@ Any Python interpreter can be used as a calculator:
 10 / 5 #(division) 
 ```
 
-
 ```output
 2
 ```
-
-
-
 
 ```python
 5 ** 2 #(exponentiation) 
