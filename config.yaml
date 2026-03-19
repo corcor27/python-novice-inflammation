@@ -60,17 +60,16 @@ contact: 'team@carpentries.org'
 # Order of episodes in your lesson
 episodes: 
 - 01-intro.md
-- 02-numpy.md
-- 03-matplotlib.md
-- 04-lists.md
-- 05-loop.md
-- 06-files.md
-- 07-cond.md
-- 08-func.md
-- 09-errors.md
-- 10-defensive.md
-- 11-debugging.md
-- 12-cmdline.md
+- 02-variables_and_basic_data_types.md
+- 03-lists_and_dictionaries.md
+- 04-libraries_and_imports.md
+- 05-Numpy_and_Pandas.md
+- 06-plotting.md
+- 07-flow_control.md
+- 08-simple_functions.md
+- 09-Pathing_and_workspace.md
+- 10-errors_and_debugging.md
+- 11-Exercises.md
 
 # Information for Learners
 learners: 
