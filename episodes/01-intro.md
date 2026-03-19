@@ -46,7 +46,7 @@ weight_kg = 60
 From now on, whenever we use `weight_kg`, Python will substitute the value we assigned to
 it. In layperson's terms, **a variable is a name for a value**.
 
-In Python, variable names:
+In Python, variable names can be:
 
 - can include letters, digits, and underscores
 - cannot start with a digit
