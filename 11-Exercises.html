@@ -287,24 +287,12 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         11. Exercises
         </span>
-      </button>
+      
     </div><!--/div.accordion-header-->
-
-    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
-      <div class="accordion-body">
-        <ul><li><a href="#know-what-its-supposed-to-do">Know What It’s Supposed to Do</a></li>
-<li><a href="#make-it-fail-every-time">Make It Fail Every Time</a></li>
-<li><a href="#make-it-fail-fast">Make It Fail Fast</a></li>
-<li><a href="#change-one-thing-at-a-time-for-a-reason">Change One Thing at a Time, For a Reason</a></li>
-<li><a href="#keep-track-of-what-youve-done">Keep Track of What You’ve Done</a></li>
-<li><a href="#be-humble">Be Humble</a></li>
-        </ul></div><!--/div.accordion-body-->
-    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -367,7 +355,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Exercises</h1>
-        <p>Last updated on 2026-03-19 |
+        <p>Last updated on 2026-03-24 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/11-Exercises.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -402,252 +390,6 @@ tested.</li>
 </div>
 </div>
 </div>
-<p>Once testing has uncovered problems, the next step is to fix them.
-Many novices do this by making more-or-less random changes to their code
-until it seems to produce the right answer, but that’s very inefficient
-(and the result is usually only correct for the one case they’re
-testing). The more experienced a programmer is, the more systematically
-they debug, and most follow some variation on the rules explained
-below.</p>
-<section><h2 class="section-heading" id="know-what-its-supposed-to-do">Know What It’s Supposed to Do<a class="anchor" aria-label="anchor" href="#know-what-its-supposed-to-do"></a></h2>
-<hr class="half-width"><p>The first step in debugging something is to <em>know what it’s
-supposed to do</em>. “My program doesn’t work” isn’t good enough: in
-order to diagnose and fix problems, we need to be able to tell correct
-output from incorrect. If we can write a test case for the failing case
-— i.e., if we can assert that with <em>these</em> inputs, the function
-should produce <em>that</em> result — then we’re ready to start
-debugging. If we can’t, then we need to figure out how we’re going to
-know when we’ve fixed things.</p>
-<p>But writing test cases for scientific software is frequently harder
-than writing test cases for commercial applications, because if we knew
-what the output of the scientific code was supposed to be, we wouldn’t
-be running the software: we’d be writing up our results and moving on to
-the next program. In practice, scientists tend to do the following:</p>
-<ol style="list-style-type: decimal"><li><p><em>Test with simplified data.</em> Before doing statistics on a
-real data set, we should try calculating statistics for a single record,
-for two identical records, for two records whose values are one step
-apart, or for some other case where we can calculate the right answer by
-hand.</p></li>
-<li><p><em>Test a simplified case.</em> If our program is supposed to
-simulate magnetic eddies in rapidly-rotating blobs of supercooled
-helium, our first test should be a blob of helium that isn’t rotating,
-and isn’t being subjected to any external electromagnetic fields.
-Similarly, if we’re looking at the effects of climate change on
-speciation, our first test should hold temperature, precipitation, and
-other factors constant.</p></li>
-<li><p><em>Compare to an oracle.</em> A <a href="reference.html#test-oracle">test oracle</a> is something whose
-results are trusted, such as experimental data, an older program, or a
-human expert. We use test oracles to determine if our new program
-produces the correct results. If we have a test oracle, we should store
-its output for particular cases so that we can compare it with our new
-results as often as we like without re-running that program.</p></li>
-<li><p><em>Check conservation laws.</em> Mass, energy, and other
-quantities are conserved in physical systems, so they should be in
-programs as well. Similarly, if we are analyzing patient data, the
-number of records should either stay the same or decrease as we move
-from one analysis to the next (since we might throw away outliers or
-records with missing values). If “new” patients start appearing out of
-nowhere as we move through our pipeline, it’s probably a sign that
-something is wrong.</p></li>
-<li><p><em>Visualize.</em> Data analysts frequently use simple
-visualizations to check both the science they’re doing and the
-correctness of their code (just as we did in the <a href="02-numpy.html">opening lesson</a> of this tutorial). This should
-only be used for debugging as a last resort, though, since it’s very
-hard to compare two visualizations automatically.</p></li>
-</ol></section><section><h2 class="section-heading" id="make-it-fail-every-time">Make It Fail Every Time<a class="anchor" aria-label="anchor" href="#make-it-fail-every-time"></a></h2>
-<hr class="half-width"><p>We can only debug something when it fails, so the second step is
-always to find a test case that <em>makes it fail every time</em>. The
-“every time” part is important because few things are more frustrating
-than debugging an intermittent problem: if we have to call a function a
-dozen times to get a single failure, the odds are good that we’ll scroll
-past the failure when it actually occurs.</p>
-<p>As part of this, it’s always important to check that our code is
-“plugged in”, i.e., that we’re actually exercising the problem that we
-think we are. Every programmer has spent hours chasing a bug, only to
-realize that they were actually calling their code on the wrong data set
-or with the wrong configuration parameters, or are using the wrong
-version of the software entirely. Mistakes like these are particularly
-likely to happen when we’re tired, frustrated, and up against a
-deadline, which is one of the reasons late-night (or overnight) coding
-sessions are almost never worthwhile.</p>
-</section><section><h2 class="section-heading" id="make-it-fail-fast">Make It Fail Fast<a class="anchor" aria-label="anchor" href="#make-it-fail-fast"></a></h2>
-<hr class="half-width"><p>If it takes 20 minutes for the bug to surface, we can only do three
-experiments an hour. This means that we’ll get less data in more time
-and that we’re more likely to be distracted by other things as we wait
-for our program to fail, which means the time we <em>are</em> spending
-on the problem is less focused. It’s therefore critical to <em>make it
-fail fast</em>.</p>
-<p>As well as making the program fail fast in time, we want to make it
-fail fast in space, i.e., we want to localize the failure to the
-smallest possible region of code:</p>
-<ol style="list-style-type: decimal"><li><p>The smaller the gap between cause and effect, the easier the
-connection is to find. Many programmers therefore use a divide and
-conquer strategy to find bugs, i.e., if the output of a function is
-wrong, they check whether things are OK in the middle, then concentrate
-on either the first or second half, and so on.</p></li>
-<li><p>N things can interact in N! different ways, so every line of code
-that <em>isn’t</em> run as part of a test means more than one thing we
-don’t need to worry about.</p></li>
-</ol></section><section><h2 class="section-heading" id="change-one-thing-at-a-time-for-a-reason">Change One Thing at a Time, For a Reason<a class="anchor" aria-label="anchor" href="#change-one-thing-at-a-time-for-a-reason"></a></h2>
-<hr class="half-width"><p>Replacing random chunks of code is unlikely to do much good. (After
-all, if you got it wrong the first time, you’ll probably get it wrong
-the second and third as well.) Good programmers therefore <em>change one
-thing at a time, for a reason</em>. They are either trying to gather
-more information (“is the bug still there if we change the order of the
-loops?”) or test a fix (“can we make the bug go away by sorting our data
-before processing it?”).</p>
-<p>Every time we make a change, however small, we should re-run our
-tests immediately, because the more things we change at once, the harder
-it is to know what’s responsible for what (those N! interactions again).
-And we should re-run <em>all</em> of our tests: more than half of fixes
-made to code introduce (or re-introduce) bugs, so re-running all of our
-tests tells us whether we have regressed.</p>
-</section><section><h2 class="section-heading" id="keep-track-of-what-youve-done">Keep Track of What You’ve Done<a class="anchor" aria-label="anchor" href="#keep-track-of-what-youve-done"></a></h2>
-<hr class="half-width"><p>Good scientists keep track of what they’ve done so that they can
-reproduce their work, and so that they don’t waste time repeating the
-same experiments or running ones whose results won’t be interesting.
-Similarly, debugging works best when we <em>keep track of what we’ve
-done</em> and how well it worked. If we find ourselves asking, “Did left
-followed by right with an odd number of lines cause the crash? Or was it
-right followed by left? Or was I using an even number of lines?” then
-it’s time to step away from the computer, take a deep breath, and start
-working more systematically.</p>
-<p>Records are particularly useful when the time comes to ask for help.
-People are more likely to listen to us when we can explain clearly what
-we did, and we’re better able to give them the information they need to
-be useful.</p>
-<div id="version-control-revisited" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="version-control-revisited" class="callout-inner">
-<h3 class="callout-title">Version Control Revisited</h3>
-<div class="callout-content">
-<p>Version control is often used to reset software to a known state
-during debugging, and to explore recent changes to code that might be
-responsible for bugs. In particular, most version control systems
-(e.g. git, Mercurial) have:</p>
-<ol style="list-style-type: decimal"><li>a <code>blame</code> command that shows who last changed each line
-of a file;</li>
-<li>a <code>bisect</code> command that helps with finding the commit
-that introduced an issue.</li>
-</ol></div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="be-humble">Be Humble<a class="anchor" aria-label="anchor" href="#be-humble"></a></h2>
-<hr class="half-width"><p>And speaking of help: if we can’t find a bug in 10 minutes, we should
-<em>be humble</em> and <a href="./01-intro.html#getting-help">ask for
-help</a>. Explaining the problem to someone else is often useful, since
-hearing what we’re thinking helps us spot inconsistencies and hidden
-assumptions. If you don’t have someone nearby to share your problem
-description with, get a <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging" class="external-link">rubber
-duck</a>!</p>
-<p>Asking for help also helps alleviate confirmation bias. If we have
-just spent an hour writing a complicated program, we want it to work, so
-we’re likely to keep telling ourselves why it should, rather than
-searching for the reason it doesn’t. People who aren’t emotionally
-invested in the code can be more objective, which is why they’re often
-able to spot the simple mistakes we have overlooked.</p>
-<p>Part of being humble is learning from our mistakes. Programmers tend
-to get the same things wrong over and over: either they don’t understand
-the language and libraries they’re working with, or their model of how
-things work is wrong. In either case, taking note of why the error
-occurred and checking for it next time quickly turns into not making the
-mistake at all.</p>
-<p>And that is what makes us most productive in the long run. As the
-saying goes, <em>A week of hard work can sometimes save you an hour of
-thought</em>. If we train ourselves to avoid making some kinds of
-mistakes, to break our code into modular, testable chunks, and to turn
-every assumption (or mistake) into an assertion, it will actually take
-us <em>less</em> time to produce working programs, not more.</p>
-<div id="debug-with-a-neighbor" class="callout discussion">
-<div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
-</div>
-<span class="callout-header">Discussion</span>
-<div id="debug-with-a-neighbor" class="callout-inner">
-<h3 class="callout-title">Debug With a Neighbor</h3>
-<div class="callout-content">
-<p>Take a function that you have written today, and introduce a tricky
-bug. Your function should still run, but will give the wrong output.
-Switch seats with your neighbor and attempt to debug the bug that they
-introduced into their function. Which of the principles discussed above
-did you find helpful?</p>
-</div>
-</div>
-</div>
-<div id="not-supposed-to-be-the-same" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="not-supposed-to-be-the-same" class="callout-inner">
-<h3 class="callout-title">Not Supposed to be the Same</h3>
-<div class="callout-content">
-<p>You are assisting a researcher with Python code that computes the
-Body Mass Index (BMI) of patients. The researcher is concerned because
-all patients seemingly have unusual and identical BMIs, despite having
-different physiques. BMI is calculated as <strong>weight in
-kilograms</strong> divided by the square of <strong>height in
-metres</strong>.</p>
-<p>Use the debugging principles in this exercise and locate problems
-with the code. What suggestions would you give the researcher for
-ensuring any later changes they make work correctly? What bugs do you
-spot?</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>patients <span class="op">=</span> [[<span class="dv">70</span>, <span class="fl">1.8</span>], [<span class="dv">80</span>, <span class="fl">1.9</span>], [<span class="dv">150</span>, <span class="fl">1.7</span>]]</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="kw">def</span> calculate_bmi(weight, height):</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>    <span class="cf">return</span> weight <span class="op">/</span> (height <span class="op">**</span> <span class="dv">2</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="cf">for</span> patient <span class="kw">in</span> patients:</span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>    weight, height <span class="op">=</span> patients[<span class="dv">0</span>]</span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>    bmi <span class="op">=</span> calculate_bmi(height, weight)</span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Patient's BMI is:"</span>, bmi)</span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>Patient's BMI is: 0.000367
-Patient's BMI is: 0.000367
-Patient's BMI is: 0.000367</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
-<div class="accordion-body">
-<div class="section level3">
-<h3 id="suggestions-for-debugging">Suggestions for debugging<a class="anchor" aria-label="anchor" href="#suggestions-for-debugging"></a></h3>
-<ul><li>Add printing statement in the <code>calculate_bmi</code> function,
-like <code>print('weight:', weight, 'height:', height)</code>, to make
-clear that what the BMI is based on.</li>
-<li>Change <code>print("Patient's BMI is: %f" % bmi)</code> to
-<code>print("Patient's BMI (weight: %f, height: %f) is: %f" % (weight, height, bmi))</code>,
-in order to be able to distinguish bugs in the function from bugs in the
-loop.</li>
-</ul></div>
-<div class="section level3">
-<h3 id="bugs-found">Bugs found<a class="anchor" aria-label="anchor" href="#bugs-found"></a></h3>
-<ul><li><p>The loop is not being utilised correctly. <code>height</code> and
-<code>weight</code> are always set as the first patient’s data during
-each iteration of the loop.</p></li>
-<li><p>The height/weight variables are reversed in the function call to
-<code>calculate_bmi(...)</code>, the correct BMIs are 21.604938,
-22.160665 and 51.903114.</p></li>
-</ul></div>
-</div>
-</div>
-</div>
-</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -665,7 +407,10 @@ it.</li>
 </ul></div>
 </div>
 </div>
-</section></div> <!-- / div.lesson-content -->
+
+
+
+      </div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="10-errors_and_debugging.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -725,7 +470,7 @@ it.</li>
   "url": "https://swcarpentry.github.io/python-novice-inflammation/11-Exercises.html",
   "identifier": "https://swcarpentry.github.io/python-novice-inflammation/11-Exercises.html",
   "dateCreated": "2014-11-25",
-  "dateModified": "2026-03-19",
+  "dateModified": "2026-03-24",
   "datePublished": "2026-03-24"
 }
 
