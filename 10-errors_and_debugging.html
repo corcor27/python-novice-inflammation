@@ -109,11 +109,11 @@
   Programming with Python
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 80%" class="percentage">
-    80%
+<aside class="col-md-12 lesson-progress"><div style="width: 82%" class="percentage">
+    82%
   </div>
   <div class="progress software">
-    <div class="progress-bar software" role="progressbar" style="width: 80%" aria-valuenow="80" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar software" role="progressbar" style="width: 82%" aria-valuenow="82" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -233,7 +233,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-Numpy_and_Pandas.html">5. Numpy and Pandas</a>
+        <a href="05-Numpy_and_Pandas.html">5. Analyzing Patient Data</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -242,7 +242,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="06-plotting.html">6. Plotting essentials</a>
+        <a href="06-plotting.html">6. Visualizing Tabular Data</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -365,7 +365,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Errors, Exceptions and Debugging</h1>
-        <p>Last updated on 2026-03-19 |
+        <p>Last updated on 2026-03-24 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/10-errors_and_debugging.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -939,20 +939,410 @@ third lines. A fixed version is:</p>
 the errors are.</li>
 <li>Run the code, and read the error message. What type of
 <code>NameError</code> do you think this is? In other words, is it a
-string with no quotes, a misspelled variable, or a variable that should
-have been defined but was not?</li>
-<li>Fix the error.</li>
-<li>Repeat steps 2 and 3, until you have fixed all the errors.</li>
-</ol><div class="codewrapper sourceCode" id="cb28">
+string Our previous lessons have introduced the basic tools of
+programming: variables and lists, file I/O, loops, conditionals, and
+functions. What they <em>haven’t</em> done is show us how to tell
+whether a program is getting the right answer, and how to tell if it’s
+<em>still</em> getting the right answer as we make changes to it.</li>
+</ol><p>To achieve that, we need to:</p>
+<ul><li>Write programs that check their own operation.</li>
+<li>Write and run tests for widely-used functions.</li>
+<li>Make sure we know what “correct” actually means.</li>
+</ul><p>The good news is, doing these things will speed up our programming,
+not slow it down. As in real carpentry — the kind done with lumber — the
+time saved by measuring carefully before cutting a piece of wood is much
+greater than the time that measuring takes.</p>
+<div class="section level2">
+<h2 id="assertions">Assertions<a class="anchor" aria-label="anchor" href="#assertions"></a></h2>
+<p>The first step toward getting the right answers from our programs is
+to assume that mistakes <em>will</em> happen and to guard against them.
+This is called <a href="reference.html#defensive-programming">defensive
+programming</a>, and the most common way to do it is to add <a href="reference.html#assertion">assertions</a> to our code so that it
+checks itself as it runs. An assertion is simply a statement that
+something must be true at a certain point in a program. When Python sees
+one, it evaluates the assertion’s condition. If it’s true, Python does
+nothing, but if it’s false, Python halts the program immediately and
+prints the error message if one is provided. For example, this piece of
+code halts as soon as the loop encounters a value that isn’t
+positive:</p>
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>    <span class="co"># use a if the number is a multiple of 3, otherwise use b</span></span>
-<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>    <span class="cf">if</span> (Number <span class="op">%</span> <span class="dv">3</span>) <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>        message <span class="op">=</span> message <span class="op">+</span> a</span>
-<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a>        message <span class="op">=</span> message <span class="op">+</span> <span class="st">'b'</span></span>
-<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a><span class="bu">print</span>(message)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>numbers <span class="op">=</span> [<span class="fl">1.5</span>, <span class="fl">2.3</span>, <span class="fl">0.7</span>, <span class="op">-</span><span class="fl">0.001</span>, <span class="fl">4.4</span>]</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>total <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>    <span class="cf">assert</span> num <span class="op">&gt;</span> <span class="fl">0.0</span>, <span class="st">'Data should only contain positive values'</span></span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a>    total <span class="op">+=</span> num</span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'total is:'</span>, total)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>---------------------------------------------------------------------------
+AssertionError                            Traceback (most recent call last)
+&lt;ipython-input-19-33d87ea29ae4&gt; in &lt;module&gt;()
+      2 total = 0.0
+      3 for num in numbers:
+----&gt; 4     assert num &gt; 0.0, 'Data should only contain positive values'
+      5     total += num
+      6 print('total is:', total)
+
+AssertionError: Data should only contain positive values</code></pre>
+</div>
+<p>Programs like the Firefox browser are full of assertions: 10-20% of
+the code they contain are there to check that the other 80–90% are
+working correctly. Broadly speaking, assertions fall into three
+categories:</p>
+<ul><li><p>A <a href="reference.html#precondition">precondition</a> is
+something that must be true at the start of a function in order for it
+to work correctly.</p></li>
+<li><p>A <a href="reference.html#postcondition">postcondition</a> is
+something that the function guarantees is true when it
+finishes.</p></li>
+<li><p>An <a href="reference.html#invariant">invariant</a> is something
+that is always true at a particular point inside a piece of
+code.</p></li>
+</ul><p>For example, suppose we are representing rectangles using a <a href="reference.html#tuple">tuple</a> of four coordinates
+<code>(x0, y0, x1, y1)</code>, representing the lower left and upper
+right corners of the rectangle. In order to do some calculations, we
+need to normalize the rectangle so that the lower left corner is at the
+origin and the longest side is 1.0 units long. This function does that,
+but checks that its input is correctly formatted and that its result
+makes sense:</p>
+<div class="codewrapper sourceCode" id="cb30">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="kw">def</span> normalize_rectangle(rect):</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>    <span class="co">"""Normalizes a rectangle so that it is at the origin and 1.0 units long on its longest axis.</span></span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a><span class="co">    Input should be of the format (x0, y0, x1, y1).</span></span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a><span class="co">    (x0, y0) and (x1, y1) define the lower left and upper right corners</span></span>
+<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a><span class="co">    of the rectangle, respectively."""</span></span>
+<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">len</span>(rect) <span class="op">==</span> <span class="dv">4</span>, <span class="st">'Rectangles must contain 4 coordinates'</span></span>
+<span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a>    x0, y0, x1, y1 <span class="op">=</span> rect</span>
+<span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a>    <span class="cf">assert</span> x0 <span class="op">&lt;</span> x1, <span class="st">'Invalid X coordinates'</span></span>
+<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a>    <span class="cf">assert</span> y0 <span class="op">&lt;</span> y1, <span class="st">'Invalid Y coordinates'</span></span>
+<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="#cb30-11" tabindex="-1"></a>    dx <span class="op">=</span> x1 <span class="op">-</span> x0</span>
+<span id="cb30-12"><a href="#cb30-12" tabindex="-1"></a>    dy <span class="op">=</span> y1 <span class="op">-</span> y0</span>
+<span id="cb30-13"><a href="#cb30-13" tabindex="-1"></a>    <span class="cf">if</span> dx <span class="op">&gt;</span> dy:</span>
+<span id="cb30-14"><a href="#cb30-14" tabindex="-1"></a>        scaled <span class="op">=</span> dx <span class="op">/</span> dy</span>
+<span id="cb30-15"><a href="#cb30-15" tabindex="-1"></a>        upper_x, upper_y <span class="op">=</span> <span class="fl">1.0</span>, scaled</span>
+<span id="cb30-16"><a href="#cb30-16" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb30-17"><a href="#cb30-17" tabindex="-1"></a>        scaled <span class="op">=</span> dx <span class="op">/</span> dy</span>
+<span id="cb30-18"><a href="#cb30-18" tabindex="-1"></a>        upper_x, upper_y <span class="op">=</span> scaled, <span class="fl">1.0</span></span>
+<span id="cb30-19"><a href="#cb30-19" tabindex="-1"></a></span>
+<span id="cb30-20"><a href="#cb30-20" tabindex="-1"></a>    <span class="cf">assert</span> <span class="dv">0</span> <span class="op">&lt;</span> upper_x <span class="op">&lt;=</span> <span class="fl">1.0</span>, <span class="st">'Calculated upper X coordinate invalid'</span></span>
+<span id="cb30-21"><a href="#cb30-21" tabindex="-1"></a>    <span class="cf">assert</span> <span class="dv">0</span> <span class="op">&lt;</span> upper_y <span class="op">&lt;=</span> <span class="fl">1.0</span>, <span class="st">'Calculated upper Y coordinate invalid'</span></span>
+<span id="cb30-22"><a href="#cb30-22" tabindex="-1"></a></span>
+<span id="cb30-23"><a href="#cb30-23" tabindex="-1"></a>    <span class="cf">return</span> (<span class="dv">0</span>, <span class="dv">0</span>, upper_x, upper_y)</span></code></pre>
+</div>
+<p>The preconditions on lines 6, 8, and 9 catch invalid inputs:</p>
+<div class="codewrapper sourceCode" id="cb31">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="bu">print</span>(normalize_rectangle( (<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">2.0</span>) )) <span class="co"># missing the fourth coordinate</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>---------------------------------------------------------------------------
+AssertionError                            Traceback (most recent call last)
+&lt;ipython-input-2-1b9cd8e18a1f&gt; in &lt;module&gt;
+----&gt; 1 print(normalize_rectangle( (0.0, 1.0, 2.0) )) # missing the fourth coordinate
+
+&lt;ipython-input-1-c94cf5b065b9&gt; in normalize_rectangle(rect)
+      4     (x0, y0) and (x1, y1) define the lower left and upper right corners
+      5     of the rectangle, respectively."""
+----&gt; 6     assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
+      7     x0, y0, x1, y1 = rect
+      8     assert x0 &lt; x1, 'Invalid X coordinates'
+
+AssertionError: Rectangles must contain 4 coordinates</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb33">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="bu">print</span>(normalize_rectangle( (<span class="fl">4.0</span>, <span class="fl">2.0</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>) )) <span class="co"># X axis inverted</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>---------------------------------------------------------------------------
+AssertionError                            Traceback (most recent call last)
+&lt;ipython-input-3-325036405532&gt; in &lt;module&gt;
+----&gt; 1 print(normalize_rectangle( (4.0, 2.0, 1.0, 5.0) )) # X axis inverted
+
+&lt;ipython-input-1-c94cf5b065b9&gt; in normalize_rectangle(rect)
+      6     assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
+      7     x0, y0, x1, y1 = rect
+----&gt; 8     assert x0 &lt; x1, 'Invalid X coordinates'
+      9     assert y0 &lt; y1, 'Invalid Y coordinates'
+     10
+
+AssertionError: Invalid X coordinates</code></pre>
+</div>
+<p>The post-conditions on lines 20 and 21 help us catch bugs by telling
+us when our calculations might have been incorrect. For example, if we
+normalize a rectangle that is taller than it is wide everything seems
+OK:</p>
+<div class="codewrapper sourceCode" id="cb35">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="bu">print</span>(normalize_rectangle( (<span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">5.0</span>) ))</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>(0, 0, 0.2, 1.0)</code></pre>
+</div>
+<p>but if we normalize one that’s wider than it is tall, the assertion
+is triggered:</p>
+<div class="codewrapper sourceCode" id="cb37">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="bu">print</span>(normalize_rectangle( (<span class="fl">0.0</span>, <span class="fl">0.0</span>, <span class="fl">5.0</span>, <span class="fl">1.0</span>) ))</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>---------------------------------------------------------------------------
+AssertionError                            Traceback (most recent call last)
+&lt;ipython-input-5-8d4a48f1d068&gt; in &lt;module&gt;
+----&gt; 1 print(normalize_rectangle( (0.0, 0.0, 5.0, 1.0) ))
+
+&lt;ipython-input-1-c94cf5b065b9&gt; in normalize_rectangle(rect)
+     19
+     20     assert 0 &lt; upper_x &lt;= 1.0, 'Calculated upper X coordinate invalid'
+---&gt; 21     assert 0 &lt; upper_y &lt;= 1.0, 'Calculated upper Y coordinate invalid'
+     22
+     23     return (0, 0, upper_x, upper_y)
+
+AssertionError: Calculated upper Y coordinate invalid</code></pre>
+</div>
+<p>Re-reading our function, we realize that line 14 should divide
+<code>dy</code> by <code>dx</code> rather than <code>dx</code> by
+<code>dy</code>. In a Jupyter notebook, you can display line numbers by
+typing <kbd>Ctrl</kbd>+<kbd>M</kbd> followed by <kbd>L</kbd>. If we had
+left out the assertion at the end of the function, we would have created
+and returned something that had the right shape as a valid answer, but
+wasn’t. Detecting and debugging that would almost certainly have taken
+more time in the long run than writing the assertion.</p>
+<p>But assertions aren’t just about catching errors: they also help
+people understand programs. Each assertion gives the person reading the
+program a chance to check (consciously or otherwise) that their
+understanding matches what the code is doing.</p>
+<p>Most good programmers follow two rules when adding assertions to
+their code. The first is, <em>fail early, fail often</em>. The greater
+the distance between when and where an error occurs and when it’s
+noticed, the harder the error will be to debug, so good code catches
+mistakes as early as possible.</p>
+<p>The second rule is, <em>turn bugs into assertions or tests</em>.
+Whenever you fix a bug, write an assertion that catches the mistake
+should you make it again. If you made a mistake in a piece of code, the
+odds are good that you have made other mistakes nearby, or will make the
+same mistake (or a related one) the next time you change it. Writing
+assertions to check that you haven’t <a href="reference.html#regression">regressed</a> (i.e., haven’t
+re-introduced an old problem) can save a lot of time in the long run,
+and helps to warn people who are reading the code (including your future
+self) that this bit is tricky.</p>
+</div>
+<div class="section level2">
+<h2 id="test-driven-development">Test-Driven Development<a class="anchor" aria-label="anchor" href="#test-driven-development"></a></h2>
+<p>An assertion checks that something is true at a particular point in
+the program. The next step is to check the overall behavior of a piece
+of code, i.e., to make sure that it produces the right output when it’s
+given a particular input. For example, suppose we need to find where two
+or more time series overlap. The range of each time series is
+represented as a pair of numbers, which are the time the interval
+started and ended. The output is the largest range that they all
+include:</p>
+<figure><img src="fig/python-overlapping-ranges.svg" alt="Graph showing three number lines and, at the bottom, the interval that they overlap." class="figure mx-auto d-block"></figure><p>Most novice programmers would solve this problem like this:</p>
+<ol style="list-style-type: decimal"><li>Write a function <code>range_overlap</code>.</li>
+<li>Call it interactively on two or three different inputs.</li>
+<li>If it produces the wrong answer, fix the function and re-run that
+test.</li>
+</ol><p>This clearly works — after all, thousands of scientists are doing it
+right now — but there’s a better way:</p>
+<ol style="list-style-type: decimal"><li>Write a short function for each test.</li>
+<li>Write a <code>range_overlap</code> function that should pass those
+tests.</li>
+<li>If <code>range_overlap</code> produces any wrong answers, fix it and
+re-run the test functions.</li>
+</ol><p>Writing the tests <em>before</em> writing the function they exercise
+is called <a href="reference.html#test-driven-development">test-driven
+development</a> (TDD). Its advocates believe it produces better code
+faster because:</p>
+<ol style="list-style-type: decimal"><li>If people write tests after writing the thing to be tested, they are
+subject to confirmation bias, i.e., they subconsciously write tests to
+show that their code is correct, rather than to find errors.</li>
+<li>Writing tests helps programmers figure out what the function is
+actually supposed to do.</li>
+</ol><p>We start by defining an empty function
+<code>range_overlap</code>:</p>
+<div class="codewrapper sourceCode" id="cb39">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="kw">def</span> range_overlap(ranges):</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>    <span class="cf">pass</span></span></code></pre>
+</div>
+<p>Here are three test statements for <code>range_overlap</code>:</p>
+<div class="codewrapper sourceCode" id="cb40">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="cf">assert</span> range_overlap([ (<span class="fl">0.0</span>, <span class="fl">1.0</span>) ]) <span class="op">==</span> (<span class="fl">0.0</span>, <span class="fl">1.0</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a><span class="cf">assert</span> range_overlap([ (<span class="fl">2.0</span>, <span class="fl">3.0</span>), (<span class="fl">2.0</span>, <span class="fl">4.0</span>) ]) <span class="op">==</span> (<span class="fl">2.0</span>, <span class="fl">3.0</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a><span class="cf">assert</span> range_overlap([ (<span class="fl">0.0</span>, <span class="fl">1.0</span>), (<span class="fl">0.0</span>, <span class="fl">2.0</span>), (<span class="op">-</span><span class="fl">1.0</span>, <span class="fl">1.0</span>) ]) <span class="op">==</span> (<span class="fl">0.0</span>, <span class="fl">1.0</span>)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>---------------------------------------------------------------------------
+AssertionError                            Traceback (most recent call last)
+&lt;ipython-input-25-d8be150fbef6&gt; in &lt;module&gt;()
+----&gt; 1 assert range_overlap([ (0.0, 1.0) ]) == (0.0, 1.0)
+      2 assert range_overlap([ (2.0, 3.0), (2.0, 4.0) ]) == (2.0, 3.0)
+      3 assert range_overlap([ (0.0, 1.0), (0.0, 2.0), (-1.0, 1.0) ]) == (0.0, 1.0)
+
+AssertionError:</code></pre>
+</div>
+<p>The error is actually reassuring: we haven’t implemented any logic
+into <code>range_overlap</code> yet, so if the tests passed, it would
+indicate that we’ve written an entirely ineffective test.</p>
+<p>And as a bonus of writing these tests, we’ve implicitly defined what
+our input and output look like: we expect a list of pairs as input, and
+produce a single pair as output.</p>
+<p>Something important is missing, though. We don’t have any tests for
+the case where the ranges don’t overlap at all:</p>
+<div class="codewrapper sourceCode" id="cb42">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="cf">assert</span> range_overlap([ (<span class="fl">0.0</span>, <span class="fl">1.0</span>), (<span class="fl">5.0</span>, <span class="fl">6.0</span>) ]) <span class="op">==</span> ???</span></code></pre>
+</div>
+<p>What should <code>range_overlap</code> do in this case: fail with an
+error message, produce a special value like <code>(0.0, 0.0)</code> to
+signal that there’s no overlap, or something else? Any actual
+implementation of the function will do one of these things; writing the
+tests first helps us figure out which is best <em>before</em> we’re
+emotionally invested in whatever we happened to write before we realized
+there was an issue.</p>
+<p>And what about this case?</p>
+<div class="codewrapper sourceCode" id="cb43">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="cf">assert</span> range_overlap([ (<span class="fl">0.0</span>, <span class="fl">1.0</span>), (<span class="fl">1.0</span>, <span class="fl">2.0</span>) ]) <span class="op">==</span> ???</span></code></pre>
+</div>
+<p>Do two segments that touch at their endpoints overlap or not?
+Mathematicians usually say “yes”, but engineers usually say “no”. The
+best answer is “whatever is most useful in the rest of our program”, but
+again, any actual implementation of <code>range_overlap</code> is going
+to do <em>something</em>, and whatever it is ought to be consistent with
+what it does when there’s no overlap at all.</p>
+<p>Since we’re planning to use the range this function returns as the X
+axis in a time series chart, we decide that:</p>
+<ol style="list-style-type: decimal"><li>every overlap has to have non-zero width, and</li>
+<li>we will return the special value <code>None</code> when there’s no
+overlap.</li>
+</ol><p><code>None</code> is built into Python, and means “nothing here”.
+(Other languages often call the equivalent value <code>null</code> or
+<code>nil</code>). With that decision made, we can finish writing our
+last two tests:</p>
+<div class="codewrapper sourceCode" id="cb44">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="cf">assert</span> range_overlap([ (<span class="fl">0.0</span>, <span class="fl">1.0</span>), (<span class="fl">5.0</span>, <span class="fl">6.0</span>) ]) <span class="op">==</span> <span class="va">None</span></span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a><span class="cf">assert</span> range_overlap([ (<span class="fl">0.0</span>, <span class="fl">1.0</span>), (<span class="fl">1.0</span>, <span class="fl">2.0</span>) ]) <span class="op">==</span> <span class="va">None</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>---------------------------------------------------------------------------
+AssertionError                            Traceback (most recent call last)
+&lt;ipython-input-26-d877ef460ba2&gt; in &lt;module&gt;()
+----&gt; 1 assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
+      2 assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == None
+
+AssertionError:</code></pre>
+</div>
+<p>Again, we get an error because we haven’t written our function, but
+we’re now ready to do so:</p>
+<div class="codewrapper sourceCode" id="cb46">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="kw">def</span> range_overlap(ranges):</span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>    <span class="co">"""Return common overlap among a set of [left, right] ranges."""</span></span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a>    max_left <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a>    min_right <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb46-5"><a href="#cb46-5" tabindex="-1"></a>    <span class="cf">for</span> (left, right) <span class="kw">in</span> ranges:</span>
+<span id="cb46-6"><a href="#cb46-6" tabindex="-1"></a>        max_left <span class="op">=</span> <span class="bu">max</span>(max_left, left)</span>
+<span id="cb46-7"><a href="#cb46-7" tabindex="-1"></a>        min_right <span class="op">=</span> <span class="bu">min</span>(min_right, right)</span>
+<span id="cb46-8"><a href="#cb46-8" tabindex="-1"></a>    <span class="cf">return</span> (max_left, min_right)</span></code></pre>
+</div>
+<p>Take a moment to think about why we calculate the left endpoint of
+the overlap as the maximum of the input left endpoints, and the overlap
+right endpoint as the minimum of the input right endpoints. We’d now
+like to re-run our tests, but they’re scattered across three different
+cells. To make running them easier, let’s put them all in a
+function:</p>
+<div class="codewrapper sourceCode" id="cb47">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="kw">def</span> test_range_overlap():</span>
+<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>    <span class="cf">assert</span> range_overlap([ (<span class="fl">0.0</span>, <span class="fl">1.0</span>), (<span class="fl">5.0</span>, <span class="fl">6.0</span>) ]) <span class="op">==</span> <span class="va">None</span></span>
+<span id="cb47-3"><a href="#cb47-3" tabindex="-1"></a>    <span class="cf">assert</span> range_overlap([ (<span class="fl">0.0</span>, <span class="fl">1.0</span>), (<span class="fl">1.0</span>, <span class="fl">2.0</span>) ]) <span class="op">==</span> <span class="va">None</span></span>
+<span id="cb47-4"><a href="#cb47-4" tabindex="-1"></a>    <span class="cf">assert</span> range_overlap([ (<span class="fl">0.0</span>, <span class="fl">1.0</span>) ]) <span class="op">==</span> (<span class="fl">0.0</span>, <span class="fl">1.0</span>)</span>
+<span id="cb47-5"><a href="#cb47-5" tabindex="-1"></a>    <span class="cf">assert</span> range_overlap([ (<span class="fl">2.0</span>, <span class="fl">3.0</span>), (<span class="fl">2.0</span>, <span class="fl">4.0</span>) ]) <span class="op">==</span> (<span class="fl">2.0</span>, <span class="fl">3.0</span>)</span>
+<span id="cb47-6"><a href="#cb47-6" tabindex="-1"></a>    <span class="cf">assert</span> range_overlap([ (<span class="fl">0.0</span>, <span class="fl">1.0</span>), (<span class="fl">0.0</span>, <span class="fl">2.0</span>), (<span class="op">-</span><span class="fl">1.0</span>, <span class="fl">1.0</span>) ]) <span class="op">==</span> (<span class="fl">0.0</span>, <span class="fl">1.0</span>)</span>
+<span id="cb47-7"><a href="#cb47-7" tabindex="-1"></a>    <span class="cf">assert</span> range_overlap([]) <span class="op">==</span> <span class="va">None</span></span></code></pre>
+</div>
+<p>We can now test <code>range_overlap</code> with a single function
+call:</p>
+<div class="codewrapper sourceCode" id="cb48">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a>test_range_overlap()</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>---------------------------------------------------------------------------
+AssertionError                            Traceback (most recent call last)
+&lt;ipython-input-29-cf9215c96457&gt; in &lt;module&gt;()
+----&gt; 1 test_range_overlap()
+
+&lt;ipython-input-28-5d4cd6fd41d9&gt; in test_range_overlap()
+      1 def test_range_overlap():
+----&gt; 2     assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
+      3     assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == None
+      4     assert range_overlap([ (0.0, 1.0) ]) == (0.0, 1.0)
+      5     assert range_overlap([ (2.0, 3.0), (2.0, 4.0) ]) == (2.0, 3.0)
+
+AssertionError:</code></pre>
+</div>
+<p>The first test that was supposed to produce <code>None</code> fails,
+so we know something is wrong with our function. We <em>don’t</em> know
+whether the other tests passed or failed because Python halted the
+program as soon as it spotted the first error. Still, some information
+is better than none, and if we trace the behavior of the function with
+that input, we realize that we’re initializing <code>max_left</code> and
+<code>min_right</code> to 0.0 and 1.0 respectively, regardless of the
+input values. This violates another important rule of programming:
+<em>always initialize from data</em>.</p>
+<div id="pre--and-post-conditions" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="pre--and-post-conditions" class="callout-inner">
+<h3 class="callout-title">Pre- and Post-Conditions</h3>
+<div class="callout-content">
+<p>Suppose you are writing a function called <code>average</code> that
+calculates the average of the numbers in a NumPy array. What
+pre-conditions and post-conditions would you write for it? Compare your
+answer to your neighbor’s: can you think of a function that will pass
+your tests but not his/hers or vice versa?</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -964,21 +1354,148 @@ have been defined but was not?</li>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb50">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="co"># a possible pre-condition:</span></span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a><span class="cf">assert</span> <span class="bu">len</span>(input_array) <span class="op">&gt;</span> <span class="dv">0</span>, <span class="st">'Array length must be non-zero'</span></span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a><span class="co"># a possible post-condition:</span></span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a><span class="cf">assert</span> numpy.amin(input_array) <span class="op">&lt;=</span> average <span class="op">&lt;=</span> numpy.amax(input_array),</span>
+<span id="cb50-5"><a href="#cb50-5" tabindex="-1"></a><span class="co">'Average should be between min and max of input values (inclusive)'</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="identifying-variable-name-errors" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="identifying-variable-name-errors" class="callout-inner">
+<h3 class="callout-title">Identifying Variable Name Errors<em>
+(continued)</em>
+</h3>
+<div class="callout-content">
+<div id="testing-assertions" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="testing-assertions" class="callout-inner">
+<h3 class="callout-title">Testing Assertions</h3>
+<div class="callout-content">
+<p>Given a sequence of a number of cars, the function
+<code>get_total_cars</code> returns the total number of cars.</p>
+<div class="codewrapper sourceCode" id="cb51">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a>get_total_cars([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code><span><span class="fl">10</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb53">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>get_total_cars([<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>ValueError: invalid literal for int() with base 10: 'a'</code></pre>
+</div>
+<p>Explain in words what the assertions in this function check, and for
+each one, give an example of input that will make that assertion
+fail.</p>
+<div class="codewrapper sourceCode" id="cb55">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a><span class="kw">def</span> get_total_cars(values):</span>
+<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>    <span class="cf">assert</span> <span class="bu">len</span>(values) <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb55-3"><a href="#cb55-3" tabindex="-1"></a>    <span class="cf">for</span> element <span class="kw">in</span> values:</span>
+<span id="cb55-4"><a href="#cb55-4" tabindex="-1"></a>        <span class="cf">assert</span> <span class="bu">int</span>(element)</span>
+<span id="cb55-5"><a href="#cb55-5" tabindex="-1"></a>    values <span class="op">=</span> [<span class="bu">int</span>(element) <span class="cf">for</span> element <span class="kw">in</span> values]</span>
+<span id="cb55-6"><a href="#cb55-6" tabindex="-1"></a>    total <span class="op">=</span> <span class="bu">sum</span>(values)</span>
+<span id="cb55-7"><a href="#cb55-7" tabindex="-1"></a>    <span class="cf">assert</span> total <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb55-8"><a href="#cb55-8" tabindex="-1"></a>    <span class="cf">return</span> total</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
+</button>
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div class="accordion-body">
+<ul><li>The first assertion checks that the input sequence
+<code>values</code> is not empty. An empty sequence such as
+<code>[]</code> will make it fail.</li>
+<li>The second assertion checks that each value in the list can be
+turned into an integer. Input such as <code>[1, 2, 'c', 3]</code> will
+make it fail.</li>
+<li>The third assertion checks that the total of the list is greater
+than 0. Input such as <code>[-10, 2, 3]</code> will make it fail.</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div id="identifying-variable-name-errors" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="identifying-variable-name-errors" class="callout-inner">
+<h3 class="callout-title">Identifying Variable Name Errors<em>
+(continued)</em>
+</h3>
+<div class="callout-content">
+<p>with no quotes, a misspelled variable, or a variable that should have
+been defined but was not? 3. Fix the error. 4. Repeat steps 2 and 3,
+until you have fixed all the errors.</p>
+<div class="codewrapper sourceCode" id="cb56">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a><span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a>    <span class="co"># use a if the number is a multiple of 3, otherwise use b</span></span>
+<span id="cb56-3"><a href="#cb56-3" tabindex="-1"></a>    <span class="cf">if</span> (Number <span class="op">%</span> <span class="dv">3</span>) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb56-4"><a href="#cb56-4" tabindex="-1"></a>        message <span class="op">=</span> message <span class="op">+</span> a</span>
+<span id="cb56-5"><a href="#cb56-5" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb56-6"><a href="#cb56-6" tabindex="-1"></a>        message <span class="op">=</span> message <span class="op">+</span> <span class="st">'b'</span></span>
+<span id="cb56-7"><a href="#cb56-7" tabindex="-1"></a><span class="bu">print</span>(message)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
+</button>
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div class="accordion-body">
 <p>3 <code>NameError</code>s for <code>number</code> being misspelled,
 for <code>message</code> not defined, and for <code>a</code> not being
 in quotes.</p>
 <p>Fixed version:</p>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb57">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a>message <span class="op">=</span> <span class="st">''</span></span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>    <span class="co"># use a if the number is a multiple of 3, otherwise use b</span></span>
-<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>    <span class="cf">if</span> (number <span class="op">%</span> <span class="dv">3</span>) <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>        message <span class="op">=</span> message <span class="op">+</span> <span class="st">'a'</span></span>
-<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a>        message <span class="op">=</span> message <span class="op">+</span> <span class="st">'b'</span></span>
-<span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a><span class="bu">print</span>(message)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a>message <span class="op">=</span> <span class="st">''</span></span>
+<span id="cb57-2"><a href="#cb57-2" tabindex="-1"></a><span class="cf">for</span> number <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb57-3"><a href="#cb57-3" tabindex="-1"></a>    <span class="co"># use a if the number is a multiple of 3, otherwise use b</span></span>
+<span id="cb57-4"><a href="#cb57-4" tabindex="-1"></a>    <span class="cf">if</span> (number <span class="op">%</span> <span class="dv">3</span>) <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb57-5"><a href="#cb57-5" tabindex="-1"></a>        message <span class="op">=</span> message <span class="op">+</span> <span class="st">'a'</span></span>
+<span id="cb57-6"><a href="#cb57-6" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb57-7"><a href="#cb57-7" tabindex="-1"></a>        message <span class="op">=</span> message <span class="op">+</span> <span class="st">'b'</span></span>
+<span id="cb57-8"><a href="#cb57-8" tabindex="-1"></a><span class="bu">print</span>(message)</span></code></pre>
 </div>
 </div>
 </div>
@@ -997,29 +1514,29 @@ the errors are.</li>
 <li>Run the code, and read the error message. What type of error is
 it?</li>
 <li>Fix the error.</li>
-</ol><div class="codewrapper sourceCode" id="cb30">
+</ol><div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>seasons <span class="op">=</span> [<span class="st">'Spring'</span>, <span class="st">'Summer'</span>, <span class="st">'Fall'</span>, <span class="st">'Winter'</span>]</span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'My favorite season is '</span>, seasons[<span class="dv">4</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a>seasons <span class="op">=</span> [<span class="st">'Spring'</span>, <span class="st">'Summer'</span>, <span class="st">'Fall'</span>, <span class="st">'Winter'</span>]</span>
+<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'My favorite season is '</span>, seasons[<span class="dv">4</span>])</span></code></pre>
 </div>
 </div>
 </div>
 </div>
-<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
+  <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p><code>IndexError</code>; the last entry is <code>seasons[3]</code>,
 so <code>seasons[4]</code> doesn’t make sense. A fixed version is:</p>
-<div class="codewrapper sourceCode" id="cb31">
+<div class="codewrapper sourceCode" id="cb59">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>seasons <span class="op">=</span> [<span class="st">'Spring'</span>, <span class="st">'Summer'</span>, <span class="st">'Fall'</span>, <span class="st">'Winter'</span>]</span>
-<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'My favorite season is '</span>, seasons[<span class="op">-</span><span class="dv">1</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a>seasons <span class="op">=</span> [<span class="st">'Spring'</span>, <span class="st">'Summer'</span>, <span class="st">'Fall'</span>, <span class="st">'Winter'</span>]</span>
+<span id="cb59-2"><a href="#cb59-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'My favorite season is '</span>, seasons[<span class="op">-</span><span class="dv">1</span>])</span></code></pre>
 </div>
 </div>
 </div>
@@ -1114,7 +1631,7 @@ writing, or writing to a file that is open for reading, will give you an
   "url": "https://swcarpentry.github.io/python-novice-inflammation/10-errors_and_debugging.html",
   "identifier": "https://swcarpentry.github.io/python-novice-inflammation/10-errors_and_debugging.html",
   "dateCreated": "2014-11-25",
-  "dateModified": "2026-03-19",
+  "dateModified": "2026-03-24",
   "datePublished": "2026-03-24"
 }
 

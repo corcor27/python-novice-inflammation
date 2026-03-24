@@ -284,7 +284,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-Numpy_and_Pandas.html">5. Numpy and Pandas</a>
+        <a href="05-Numpy_and_Pandas.html">5. Analyzing Patient Data</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -296,7 +296,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="06-plotting.html">6. Plotting essentials</a>
+        <a href="06-plotting.html">6. Visualizing Tabular Data</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -445,42 +445,33 @@
 indexes. The first index represents the row (from top to bottom) and the
 second index represents the specific basket (from left to right). <img src="fig/04_groceries_veg00.png" alt="veg is now shown as a two-dimensional grid, with each basket labeled according to its index in the nested list. The first index is the row number and the second index is the basket number, so veg[1][3] represents the basket on the far right side of the second row (basket 4 on row 2): zucchini" class="figure"></p>
 <hr></section><section id="04-libraries_and_imports"><h2 class="section-heading"><a href="04-libraries_and_imports.html">Libraries and imports</a></h2>
-<hr class="half-width">
-<h3 id="04-libraries_and_imports-figure-1">Figure 1</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Heat map representing the data variable. Each cell is colored by value along a color gradient from blue to yellow.’</p>
-<figure><img src="fig/inflammation-01-imshow.svg" alt="Heat map representing the data variable. Each cell is colored by value along a color gradient from blue to yellow." class="figure mx-auto d-block"></figure><hr>
-<h3 id="04-libraries_and_imports-figure-2">Figure 2</h3>
-<p aria-hidden="true">Image 1 of 1: ‘A line graph showing the average inflammation across all patients over a 40-day period.’</p>
-<figure><img src="fig/inflammation-01-average.svg" alt="A line graph showing the average inflammation across all patients over a 40-day period." class="figure mx-auto d-block"></figure><hr>
-<h3 id="04-libraries_and_imports-figure-3">Figure 3</h3>
-<p aria-hidden="true">Image 1 of 1: ‘A line graph showing the maximum inflammation across all patients over a 40-day period.’</p>
-<figure><img src="fig/inflammation-01-maximum.svg" alt="A line graph showing the maximum inflammation across all patients over a 40-day period." class="figure mx-auto d-block"></figure><hr>
-<h3 id="04-libraries_and_imports-figure-4">Figure 4</h3>
-<p aria-hidden="true">Image 1 of 1: ‘A line graph showing the minimum inflammation across all patients over a 40-day period.’</p>
-<figure><img src="fig/inflammation-01-minimum.svg" alt="A line graph showing the minimum inflammation across all patients over a 40-day period." class="figure mx-auto d-block"></figure><hr>
-<h3 id="04-libraries_and_imports-figure-5">Figure 5</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period.’</p>
-<figure><img src="fig/inflammation-01-group-plot.svg" alt="Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period." class="figure mx-auto d-block"></figure><hr>
-<h3 id="04-libraries_and_imports-figure-6">Figure 6</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Three line graphs, with step lines connecting the points, showing the daily average, maximumand minimum inflammation over a 40-day period.’</p>
-<figure><img src="fig/inflammation-01-line-styles.svg" alt="Three line graphs, with step lines connecting the points, showing the daily average, maximumand minimum inflammation over a 40-day period." class="figure mx-auto d-block"></figure><hr></section><section id="05-Numpy_and_Pandas"><h2 class="section-heading"><a href="05-Numpy_and_Pandas.html">Numpy and Pandas</a></h2>
+<hr class="half-width"></section><section id="05-Numpy_and_Pandas"><h2 class="section-heading"><a href="05-Numpy_and_Pandas.html">Analyzing Patient Data</a></h2>
 <hr class="half-width">
 <h3 id="05-Numpy_and_Pandas-figure-1">Figure 1</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Graph showing three number lines and, at the bottom, the interval that they overlap.’</p>
-<figure><img src="fig/python-overlapping-ranges.svg" alt="Graph showing three number lines and, at the bottom, the interval that they overlap." class="figure mx-auto d-block"></figure><hr></section><section id="06-plotting"><h2 class="section-heading"><a href="06-plotting.html">Plotting essentials</a></h2>
+<p aria-hidden="true">Image 1 of 1: ‘'data' is a 3 by 3 numpy array containing row 0: ['A', 'B', 'C'], row 1: ['D', 'E', 'F'], androw 2: ['G', 'H', 'I']. Starting in the upper left hand corner, data[0, 0] = 'A', data[0, 1] = 'B',data[0, 2] = 'C', data[1, 0] = 'D', data[1, 1] = 'E', data[1, 2] = 'F', data[2, 0] = 'G',data[2, 1] = 'H', and data[2, 2] = 'I', in the bottom right hand corner.’</p>
+<figure><img src="fig/python-zero-index.svg" alt="'data' is a 3 by 3 numpy array containing row 0: ['A', 'B', 'C'], row 1: ['D', 'E', 'F'], androw 2: ['G', 'H', 'I']. Starting in the upper left hand corner, data[0, 0] = 'A', data[0, 1] = 'B',data[0, 2] = 'C', data[1, 0] = 'D', data[1, 1] = 'E', data[1, 2] = 'F', data[2, 0] = 'G',data[2, 1] = 'H', and data[2, 2] = 'I', in the bottom right hand corner." class="figure mx-auto d-block"></figure><hr>
+<h3 id="05-Numpy_and_Pandas-figure-2">Figure 2</h3>
+<p aria-hidden="true">Image 1 of 1: ‘Per-patient maximum inflammation is computed row-wise across all columns usingnumpy.amax(data, axis=1). Per-day average inflammation is computed column-wise across all rows usingnumpy.mean(data, axis=0).’</p>
+<figure><img src="fig/python-operations-across-axes.png" alt="Per-patient maximum inflammation is computed row-wise across all columns usingnumpy.amax(data, axis=1). Per-day average inflammation is computed column-wise across all rows usingnumpy.mean(data, axis=0)." class="figure mx-auto d-block"></figure><hr></section><section id="06-plotting"><h2 class="section-heading"><a href="06-plotting.html">Visualizing Tabular Data</a></h2>
 <hr class="half-width">
 <h3 id="06-plotting-figure-1">Figure 1</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Output from the first iteration of the for loop. Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period for all patients in the first dataset.’</p>
-<figure><img src="fig/03-loop_49_1.png" alt="Output from the first iteration of the for loop. Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period for all patients in the first dataset." class="figure mx-auto d-block"></figure><hr>
+<p aria-hidden="true">Image 1 of 1: ‘Heat map representing the data variable. Each cell is colored by value along a color gradient from blue to yellow.’</p>
+<figure><img src="fig/inflammation-01-imshow.svg" alt="Heat map representing the data variable. Each cell is colored by value along a color gradient from blue to yellow." class="figure mx-auto d-block"></figure><hr>
 <h3 id="06-plotting-figure-2">Figure 2</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Output from the second iteration of the for loop. Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period for all patients in the second dataset.’</p>
-<figure><img src="fig/03-loop_49_3.png" alt="Output from the second iteration of the for loop. Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period for all patients in the second dataset." class="figure mx-auto d-block"></figure><hr>
+<p aria-hidden="true">Image 1 of 1: ‘A line graph showing the average inflammation across all patients over a 40-day period.’</p>
+<figure><img src="fig/inflammation-01-average.svg" alt="A line graph showing the average inflammation across all patients over a 40-day period." class="figure mx-auto d-block"></figure><hr>
 <h3 id="06-plotting-figure-3">Figure 3</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Output from the third iteration of the for loop. Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period for all patients in the third dataset.’</p>
-<figure><img src="fig/03-loop_49_5.png" alt="Output from the third iteration of the for loop. Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period for all patients in the third dataset." class="figure mx-auto d-block"></figure><hr>
+<p aria-hidden="true">Image 1 of 1: ‘A line graph showing the maximum inflammation across all patients over a 40-day period.’</p>
+<figure><img src="fig/inflammation-01-maximum.svg" alt="A line graph showing the maximum inflammation across all patients over a 40-day period." class="figure mx-auto d-block"></figure><hr>
 <h3 id="06-plotting-figure-4">Figure 4</h3>
-<p aria-hidden="true">Image 1 of 1: ‘Heat map of the third inflammation dataset. Note that there are sporadic zero values throughout the entire dataset, and the last patient only has zero values over the 40 day study.’</p>
-<figure><img src="fig/inflammation-03-imshow.svg" alt="Heat map of the third inflammation dataset. Note that there are sporadic zero values throughout the entire dataset, and the last patient only has zero values over the 40 day study." class="figure mx-auto d-block"></figure><hr></section><section id="07-flow_control"><h2 class="section-heading"><a href="07-flow_control.html">Flow control</a></h2>
+<p aria-hidden="true">Image 1 of 1: ‘A line graph showing the minimum inflammation across all patients over a 40-day period.’</p>
+<figure><img src="fig/inflammation-01-minimum.svg" alt="A line graph showing the minimum inflammation across all patients over a 40-day period." class="figure mx-auto d-block"></figure><hr>
+<h3 id="06-plotting-figure-5">Figure 5</h3>
+<p aria-hidden="true">Image 1 of 1: ‘Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period.’</p>
+<figure><img src="fig/inflammation-01-group-plot.svg" alt="Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period." class="figure mx-auto d-block"></figure><hr>
+<h3 id="06-plotting-figure-6">Figure 6</h3>
+<p aria-hidden="true">Image 1 of 1: ‘Three line graphs, with step lines connecting the points, showing the daily average, maximumand minimum inflammation over a 40-day period.’</p>
+<figure><img src="fig/inflammation-01-line-styles.svg" alt="Three line graphs, with step lines connecting the points, showing the daily average, maximumand minimum inflammation over a 40-day period." class="figure mx-auto d-block"></figure><hr></section><section id="07-flow_control"><h2 class="section-heading"><a href="07-flow_control.html">Flow control</a></h2>
 <hr class="half-width">
 <h3 id="07-flow_control-figure-1">Figure 1</h3>
 <p aria-hidden="true">Image 1 of 1: ‘Line graphs showing average, maximum and minimum inflammation across all patients over a 40-day period.’</p>
@@ -509,7 +500,10 @@ occur, starting from the top of the conditional section. <img src="fig/python-el
 This contrasts with the case of multiple <code>if</code> statements,
 where every action can occur as long as their condition is met. <img src="fig/python-multi-if.png" alt="A flowchart diagram of a conditional section with multiple if statements and some possible outcomes." class="figure"></p>
 <hr></section><section id="10-errors_and_debugging"><h2 class="section-heading"><a href="10-errors_and_debugging.html">Errors, Exceptions and Debugging</a></h2>
-<hr class="half-width"></section><section id="11-Exercises"><h2 class="section-heading"><a href="11-Exercises.html">Exercises</a></h2>
+<hr class="half-width">
+<h3 id="10-errors_and_debugging-figure-1">Figure 1</h3>
+<p aria-hidden="true">Image 1 of 1: ‘Graph showing three number lines and, at the bottom, the interval that they overlap.’</p>
+<figure><img src="fig/python-overlapping-ranges.svg" alt="Graph showing three number lines and, at the bottom, the interval that they overlap." class="figure mx-auto d-block"></figure><hr></section><section id="11-Exercises"><h2 class="section-heading"><a href="11-Exercises.html">Exercises</a></h2>
 <hr class="half-width"></section>
 </div>
     </main>

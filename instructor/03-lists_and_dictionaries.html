@@ -109,11 +109,11 @@
   Programming with Python
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 18%" class="percentage">
-    18%
+<aside class="col-md-12 lesson-progress"><div style="width: 16%" class="percentage">
+    16%
   </div>
   <div class="progress software">
-    <div class="progress-bar software" role="progressbar" style="width: 18%" aria-valuenow="18" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar software" role="progressbar" style="width: 16%" aria-valuenow="16" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -226,6 +226,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#python-lists">Python lists</a></li>
+<li><a href="#dictionaries">Dictionaries</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -244,7 +245,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-Numpy_and_Pandas.html">5. Numpy and Pandas</a>
+        <a href="05-Numpy_and_Pandas.html">5. Analyzing Patient Data</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -253,7 +254,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="06-plotting.html">6. Plotting essentials</a>
+        <a href="06-plotting.html">6. Visualizing Tabular Data</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -362,7 +363,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Lists and dictionaries</h1>
-        <p>Last updated on 2026-03-19 |
+        <p>Last updated on 2026-03-24 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/03-lists_and_dictionaries.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -976,6 +977,40 @@ elements of the list and concatenates them together:</p>
 </div>
 </div>
 </div>
+</section><section><h2 class="section-heading" id="dictionaries">Dictionaries<a class="anchor" aria-label="anchor" href="#dictionaries"></a></h2>
+<hr class="half-width"><ul><li>Dictionaries are unordered collections of key-value pairs.</li>
+<li>They are mutable and can contain keys of any immutable data
+type.</li>
+<li>Dictionaries are created using curly braces {}.</li>
+</ul><p>Example of dictionary creation:</p>
+<div class="codewrapper sourceCode" id="cb53">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>my_dict <span class="op">=</span> {<span class="st">'name'</span>: <span class="st">'John'</span>, <span class="st">'age'</span>: <span class="dv">30</span>, <span class="st">'city'</span>: <span class="st">'New York'</span>}</span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="accessing-elements">Accessing elements:<a class="anchor" aria-label="anchor" href="#accessing-elements"></a></h3>
+<ul><li>Elements in a dictionary are accessed using square brackets [] and
+keys.</li>
+</ul><p>Example of accessing elements:</p>
+<div class="codewrapper sourceCode" id="cb54">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a>person_name <span class="op">=</span> my_dict[<span class="st">'name'</span>]   <span class="co"># Accessing value corresponding to 'name' key</span></span></code></pre>
+</div>
+</div>
+<div class="section level3">
+<h3 id="manipulating-dictionaries">Manipulating dictionaries:<a class="anchor" aria-label="anchor" href="#manipulating-dictionaries"></a></h3>
+<ul><li>Dictionaries support various operations like adding, removing, and
+updating key-value pairs.</li>
+</ul><p>Examples of manipulation:</p>
+<div class="codewrapper sourceCode" id="cb55">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>my_dict[<span class="st">'gender'</span>] <span class="op">=</span> <span class="st">'Male'</span>     <span class="co"># Adds 'gender': 'Male' to the dictionary</span></span>
+<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a><span class="kw">del</span> my_dict[<span class="st">'age'</span>]             <span class="co"># Removes the key 'age' and its value</span></span>
+<span id="cb55-3"><a href="#cb55-3" tabindex="-1"></a>my_dict[<span class="st">'city'</span>] <span class="op">=</span> <span class="st">'Los Angeles'</span> <span class="co"># Updates the value of 'city' key to 'Los Angeles'</span></span></code></pre>
+</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -994,6 +1029,7 @@ strings and arrays.</li>
 <li>Strings are immutable (i.e., the characters in them cannot be
 changed).</li>
 </ul></div>
+</div>
 </div>
 </div>
 </section></div> <!-- / div.lesson-content -->
@@ -1056,7 +1092,7 @@ changed).</li>
   "url": "https://swcarpentry.github.io/python-novice-inflammation/instructor/03-lists_and_dictionaries.html",
   "identifier": "https://swcarpentry.github.io/python-novice-inflammation/instructor/03-lists_and_dictionaries.html",
   "dateCreated": "2014-11-25",
-  "dateModified": "2026-03-19",
+  "dateModified": "2026-03-24",
   "datePublished": "2026-03-24"
 }
 

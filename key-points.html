@@ -284,7 +284,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-Numpy_and_Pandas.html">5. Numpy and Pandas</a>
+        <a href="05-Numpy_and_Pandas.html">5. Analyzing Patient Data</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -296,7 +296,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="06-plotting.html">6. Plotting essentials</a>
+        <a href="06-plotting.html">6. Visualizing Tabular Data</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -462,26 +462,32 @@ changed).</li>
 <ul>
 <li>Use the <code>pyplot</code> module from the <code>matplotlib</code>
 library for creating simple visualizations.</li>
-</ul></section><section id="05-Numpy_and_Pandas"><h2 class="section-heading"><a href="05-Numpy_and_Pandas.html">Numpy and Pandas</a></h2>
+</ul></section><section id="05-Numpy_and_Pandas"><h2 class="section-heading"><a href="05-Numpy_and_Pandas.html">Analyzing Patient Data</a></h2>
 <hr class="half-width">
 <ul>
-<li>Program defensively, i.e., assume that errors are going to arise,
-and write code to detect them when they do.</li>
-<li>Put assertions in programs to check their state as they run, and to
-help readers understand how those programs are supposed to work.</li>
-<li>Use preconditions to check that the inputs to a function are safe to
-use.</li>
-<li>Use postconditions to check that the output from a function is safe
-to use.</li>
-<li>Write tests before writing code in order to help determine exactly
-what that code is supposed to do.</li>
-</ul></section><section id="06-plotting"><h2 class="section-heading"><a href="06-plotting.html">Plotting essentials</a></h2>
+<li>Import a library into a program using
+<code>import libraryname</code>.</li>
+<li>Use the <code>numpy</code> library to work with arrays in
+Python.</li>
+<li>The expression <code>array.shape</code> gives the shape of an
+array.</li>
+<li>Use <code>array[x, y]</code> to select a single element from a 2D
+array.</li>
+<li>Array indices start at 0, not 1.</li>
+<li>Use <code>low:high</code> to specify a <code>slice</code> that
+includes the indices from <code>low</code> to <code>high-1</code>.</li>
+<li>Use <code># some kind of explanation</code> to add comments to
+programs.</li>
+<li>Use <code>numpy.mean(array)</code>, <code>numpy.amax(array)</code>,
+and <code>numpy.amin(array)</code> to calculate simple statistics.</li>
+<li>Use <code>numpy.mean(array, axis=0)</code> or
+<code>numpy.mean(array, axis=1)</code> to calculate statistics across
+the specified axis.</li>
+</ul></section><section id="06-plotting"><h2 class="section-heading"><a href="06-plotting.html">Visualizing Tabular Data</a></h2>
 <hr class="half-width">
 <ul>
-<li>Use <code>glob.glob(pattern)</code> to create a list of files whose
-names match a pattern.</li>
-<li>Use <code>*</code> in a pattern to match zero or more characters,
-and <code>?</code> to match any single character.</li>
+<li>Use the <code>pyplot</code> module from the <code>matplotlib</code>
+library for creating simple visualizations.</li>
 </ul></section><section id="07-flow_control"><h2 class="section-heading"><a href="07-flow_control.html">Flow control</a></h2>
 <hr class="half-width">
 <ul>
