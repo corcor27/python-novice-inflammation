@@ -131,18 +131,66 @@ Using brackets we have manipulated the order of operations to perform the additi
 
 
 
+## Getting Help
+Use the built-in function `help` to get help for a function.
+Every built-in function has extensive [documentation that can also be found online](https://docs.python.org/3/library/index.html).
+
+```python
+help(print)
+```
+
+```output
+Help on built-in function print in module builtins:
+
+print(*args, sep=' ', end='\n', file=None, flush=False)
+    Prints the values to a stream, or to sys.stdout by default.
+
+    sep
+      string inserted between values, default a space.
+    end
+      string appended after the last value, default a newline.
+    file
+      a file-like object (stream); defaults to the current sys.stdout.
+    flush
+      whether to forcibly flush the stream.
+```
+
+If you skip around and run cells randomly, you may not even know whether x is 10 or 25. That is where notebooks get chaotic fast.
+
+### Problems caused by running out of order
+* Name errors: variables or functions are missing
+* Old values: variables keep outdated data from earlier runs
+* Confusing bugs: results change for no obvious reason
+* Poor reproducibility: others cannot get the same output
+* Hidden dependencies: a cell works only because of some earlier unseen action
+
+
+### Best practice
+
+A good notebook should be able to run from top to bottom without errors.
+That is the gold standard.
+
+This help message (the function's "docstring") includes a usage statement, a list of parameters accepted by the function, and their default values if they have them.
+
+It is normal to encounter error messages while programming, whether you are learning for the first time or have been programming for many years.
+[We will discuss error messages in more detail later](./09-errors.md). 
+For now, let's explore how people use them to get more help when they are stuck with their Python code.
+
+* Search the internet: 
+  paste the last line of your error message or the word "python" and a short description of what you want to do into your favourite search engine 
+  and you will usually find several examples where other people have encountered the same problem and came looking for help.
+    * [StackOverflow](https://stackoverflow.com/questions) can be particularly helpful for this: answers to questions are presented as a ranked thread ordered according to how useful other users found them to be.
+    * **Take care:** copying and pasting code written by somebody else is risky unless you understand exactly what it is doing!
+* Ask somebody "in the real world". 
+  If you have a colleague or friend with more expertise in Python than you have, show them the problem you are having and ask them for help.
+
+[We will discuss more debugging strategies in greater depth later in the lesson](./11-debugging.md).
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Import a library into a program using `import libraryname`.
-- Use the `numpy` library to work with arrays in Python.
-- The expression `array.shape` gives the shape of an array.
-- Use `array[x, y]` to select a single element from a 2D array.
-- Array indices start at 0, not 1.
-- Use `low:high` to specify a `slice` that includes the indices from `low` to `high-1`.
-- Use `# some kind of explanation` to add comments to programs.
-- Use `numpy.mean(array)`, `numpy.amax(array)`, and `numpy.amin(array)` to calculate simple statistics.
-- Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis.
+- Built-in functions are always available to use.
+- Use `help(thing)` to view help for something.
+- Error messages provide information about what has gone wrong with your program and where.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
