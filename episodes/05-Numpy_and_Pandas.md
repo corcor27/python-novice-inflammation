@@ -1,476 +1,577 @@
 ---
-title: Numpy and Pandas
-teaching: 30
-exercises: 10
+title: Analyzing Patient Data
+teaching: 40
+exercises: 20
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain what an assertion is.
-- Add assertions that check the program's state is correct.
-- Correctly add precondition and postcondition assertions to functions.
-- Explain what test-driven development is, and use it when creating new functions.
-- Explain why variables should be initialized using actual data values rather than arbitrary constants.
+- Explain what a library is and what libraries are used for.
+- Import a Python library and use the functions it contains.
+- Read tabular data from a file into a program.
+- Select individual values and subsections from data.
+- Perform operations on arrays of data.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How can I make my programs more reliable?
+- How can I process tabular data files in Python?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Our previous lessons have introduced the basic tools of programming:
-variables and lists,
-file I/O,
-loops,
-conditionals,
-and functions.
-What they *haven't* done is show us how to tell
-whether a program is getting the right answer,
-and how to tell if it's *still* getting the right answer
-as we make changes to it.
+Words are useful, but what's more useful are the sentences and stories we build with them.
+Similarly, while a lot of powerful, general tools are built into Python,
+specialized tools built up from these basic units live in
+[libraries](../learners/reference.md#library)
+that can be called upon when needed.
 
-To achieve that,
-we need to:
+## Loading data into Python
 
-- Write programs that check their own operation.
-- Write and run tests for widely-used functions.
-- Make sure we know what "correct" actually means.
-
-The good news is,
-doing these things will speed up our programming,
-not slow it down.
-As in real carpentry --- the kind done with lumber --- the time saved
-by measuring carefully before cutting a piece of wood
-is much greater than the time that measuring takes.
-
-## Assertions
-
-The first step toward getting the right answers from our programs
-is to assume that mistakes *will* happen
-and to guard against them.
-This is called [defensive programming](../learners/reference.md#defensive-programming),
-and the most common way to do it is to add
-[assertions](../learners/reference.md#assertion) to our code
-so that it checks itself as it runs.
-An assertion is simply a statement that something must be true at a certain point in a program.
-When Python sees one,
-it evaluates the assertion's condition.
-If it's true,
-Python does nothing,
-but if it's false,
-Python halts the program immediately
-and prints the error message if one is provided.
-For example,
-this piece of code halts as soon as the loop encounters a value that isn't positive:
+To begin processing the clinical trial inflammation data, we need to load it into Python.
+We can do that using a library called
+[NumPy](https://numpy.org/doc/stable "NumPy Documentation"), which stands for Numerical Python.
+In general, you should use this library when you want to do fancy things with lots of numbers,
+especially if you have matrices or arrays. To tell Python that we'd like to start using NumPy,
+we need to [import](../learners/reference.md#import) it:
 
 ```python
-numbers = [1.5, 2.3, 0.7, -0.001, 4.4]
-total = 0.0
-for num in numbers:
-    assert num > 0.0, 'Data should only contain positive values'
-    total += num
-print('total is:', total)
+import numpy
 ```
 
-```error
----------------------------------------------------------------------------
-AssertionError                            Traceback (most recent call last)
-<ipython-input-19-33d87ea29ae4> in <module>()
-      2 total = 0.0
-      3 for num in numbers:
-----> 4     assert num > 0.0, 'Data should only contain positive values'
-      5     total += num
-      6 print('total is:', total)
+Importing a library is like getting a piece of lab equipment out of a storage locker and setting it
+up on the bench. Libraries provide additional functionality to the basic Python package, much like
+a new piece of equipment adds functionality to a lab space. Just like in the lab, importing too
+many libraries can sometimes complicate and slow down your programs - so we only import what we
+need for each program.
 
-AssertionError: Data should only contain positive values
-```
-
-Programs like the Firefox browser are full of assertions:
-10-20% of the code they contain
-are there to check that the other 80–90% are working correctly.
-Broadly speaking,
-assertions fall into three categories:
-
-- A [precondition](../learners/reference.md#precondition)
-  is something that must be true at the start of a function in order for it to work correctly.
-
-- A [postcondition](../learners/reference.md#postcondition)
-  is something that the function guarantees is true when it finishes.
-
-- An [invariant](../learners/reference.md#invariant)
-  is something that is always true at a particular point inside a piece of code.
-
-For example,
-suppose we are representing rectangles using a [tuple](../learners/reference.md#tuple)
-of four coordinates `(x0, y0, x1, y1)`,
-representing the lower left and upper right corners of the rectangle.
-In order to do some calculations,
-we need to normalize the rectangle so that the lower left corner is at the origin
-and the longest side is 1.0 units long.
-This function does that,
-but checks that its input is correctly formatted and that its result makes sense:
+Once we've imported the library, we can ask the library to read our data file for us:
 
 ```python
-def normalize_rectangle(rect):
-    """Normalizes a rectangle so that it is at the origin and 1.0 units long on its longest axis.
-    Input should be of the format (x0, y0, x1, y1).
-    (x0, y0) and (x1, y1) define the lower left and upper right corners
-    of the rectangle, respectively."""
-    assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
-    x0, y0, x1, y1 = rect
-    assert x0 < x1, 'Invalid X coordinates'
-    assert y0 < y1, 'Invalid Y coordinates'
-
-    dx = x1 - x0
-    dy = y1 - y0
-    if dx > dy:
-        scaled = dx / dy
-        upper_x, upper_y = 1.0, scaled
-    else:
-        scaled = dx / dy
-        upper_x, upper_y = scaled, 1.0
-
-    assert 0 < upper_x <= 1.0, 'Calculated upper X coordinate invalid'
-    assert 0 < upper_y <= 1.0, 'Calculated upper Y coordinate invalid'
-
-    return (0, 0, upper_x, upper_y)
-```
-
-The preconditions on lines 6, 8, and 9 catch invalid inputs:
-
-```python
-print(normalize_rectangle( (0.0, 1.0, 2.0) )) # missing the fourth coordinate
-```
-
-```error
----------------------------------------------------------------------------
-AssertionError                            Traceback (most recent call last)
-<ipython-input-2-1b9cd8e18a1f> in <module>
-----> 1 print(normalize_rectangle( (0.0, 1.0, 2.0) )) # missing the fourth coordinate
-
-<ipython-input-1-c94cf5b065b9> in normalize_rectangle(rect)
-      4     (x0, y0) and (x1, y1) define the lower left and upper right corners
-      5     of the rectangle, respectively."""
-----> 6     assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
-      7     x0, y0, x1, y1 = rect
-      8     assert x0 < x1, 'Invalid X coordinates'
-
-AssertionError: Rectangles must contain 4 coordinates
-```
-
-```python
-print(normalize_rectangle( (4.0, 2.0, 1.0, 5.0) )) # X axis inverted
-```
-
-```error
----------------------------------------------------------------------------
-AssertionError                            Traceback (most recent call last)
-<ipython-input-3-325036405532> in <module>
-----> 1 print(normalize_rectangle( (4.0, 2.0, 1.0, 5.0) )) # X axis inverted
-
-<ipython-input-1-c94cf5b065b9> in normalize_rectangle(rect)
-      6     assert len(rect) == 4, 'Rectangles must contain 4 coordinates'
-      7     x0, y0, x1, y1 = rect
-----> 8     assert x0 < x1, 'Invalid X coordinates'
-      9     assert y0 < y1, 'Invalid Y coordinates'
-     10
-
-AssertionError: Invalid X coordinates
-```
-
-The post-conditions on lines 20 and 21 help us catch bugs by telling us when our
-calculations might have been incorrect.
-For example,
-if we normalize a rectangle that is taller than it is wide everything seems OK:
-
-```python
-print(normalize_rectangle( (0.0, 0.0, 1.0, 5.0) ))
+numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
 ```
 
 ```output
-(0, 0, 0.2, 1.0)
+array([[ 0.,  0.,  1., ...,  3.,  0.,  0.],
+       [ 0.,  1.,  2., ...,  1.,  0.,  1.],
+       [ 0.,  1.,  1., ...,  2.,  1.,  1.],
+       ...,
+       [ 0.,  1.,  1., ...,  1.,  1.,  1.],
+       [ 0.,  0.,  0., ...,  0.,  2.,  0.],
+       [ 0.,  0.,  1., ...,  1.,  1.,  0.]])
 ```
 
-but if we normalize one that's wider than it is tall,
-the assertion is triggered:
+The expression `numpy.loadtxt(...)` is a
+[function call](../learners/reference.md#function-call)
+that asks Python to run the [function](../learners/reference.md#function) `loadtxt` which
+belongs to the `numpy` library.
+The dot notation in Python is used most of all as an object attribute/property specifier or for invoking its method. `object.property` will give you the object.property value,
+`object_name.method()` will invoke on object\_name method.
+
+As an example, John Smith is the John that belongs to the Smith family.
+We could use the dot notation to write his name `smith.john`,
+just as `loadtxt` is a function that belongs to the `numpy` library.
+
+`numpy.loadtxt` has two [parameters](../learners/reference.md#parameter): the name of the file
+we want to read and the [delimiter](../learners/reference.md#delimiter) that separates values
+on a line. These both need to be character strings
+(or [strings](../learners/reference.md#string) for short), so we put them in quotes.
+
+Since we haven't told it to do anything else with the function's output,
+the [notebook](../learners/reference.md#notebook) displays it.
+In this case,
+that output is the data we just loaded.
+By default,
+only a few rows and columns are shown
+(with `...` to omit elements when displaying big arrays).
+Note that, to save space when displaying NumPy arrays, Python does not show us trailing zeros,
+so `1.0` becomes `1.`.
+
+Our call to `numpy.loadtxt` read our file
+but didn't save the data in memory.
+To do that,
+we need to assign the array to a variable. In a similar manner to how we assign a single
+value to a variable, we can also assign an array of values to a variable using the same syntax.
+Let's re-run `numpy.loadtxt` and save the returned data:
 
 ```python
-print(normalize_rectangle( (0.0, 0.0, 5.0, 1.0) ))
+data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
 ```
 
-```error
----------------------------------------------------------------------------
-AssertionError                            Traceback (most recent call last)
-<ipython-input-5-8d4a48f1d068> in <module>
-----> 1 print(normalize_rectangle( (0.0, 0.0, 5.0, 1.0) ))
+This statement doesn't produce any output because we've assigned the output to the variable `data`.
+If we want to check that the data have been loaded,
+we can print the variable's value:
 
-<ipython-input-1-c94cf5b065b9> in normalize_rectangle(rect)
-     19
-     20     assert 0 < upper_x <= 1.0, 'Calculated upper X coordinate invalid'
----> 21     assert 0 < upper_y <= 1.0, 'Calculated upper Y coordinate invalid'
-     22
-     23     return (0, 0, upper_x, upper_y)
-
-AssertionError: Calculated upper Y coordinate invalid
+```python
+print(data)
 ```
 
-Re-reading our function,
-we realize that line 14 should divide `dy` by `dx` rather than `dx` by `dy`.
-In a Jupyter notebook, you can display line numbers by typing <kbd>Ctrl</kbd>\+<kbd>M</kbd>
-followed by <kbd>L</kbd>.
-If we had left out the assertion at the end of the function,
-we would have created and returned something that had the right shape as a valid answer,
-but wasn't.
-Detecting and debugging that would almost certainly have taken more time in the long run
-than writing the assertion.
+```output
+[[ 0.  0.  1. ...,  3.  0.  0.]
+ [ 0.  1.  2. ...,  1.  0.  1.]
+ [ 0.  1.  1. ...,  2.  1.  1.]
+ ...,
+ [ 0.  1.  1. ...,  1.  1.  1.]
+ [ 0.  0.  0. ...,  0.  2.  0.]
+ [ 0.  0.  1. ...,  1.  1.  0.]]
+```
 
-But assertions aren't just about catching errors:
-they also help people understand programs.
-Each assertion gives the person reading the program
-a chance to check (consciously or otherwise)
-that their understanding matches what the code is doing.
+Now that the data are in memory,
+we can manipulate them.
+First,
+let's ask what [type](../learners/reference.md#type) of thing `data` refers to:
 
-Most good programmers follow two rules when adding assertions to their code.
-The first is, *fail early, fail often*.
-The greater the distance between when and where an error occurs and when it's noticed,
-the harder the error will be to debug,
-so good code catches mistakes as early as possible.
+```python
+print(type(data))
+```
 
-The second rule is, *turn bugs into assertions or tests*.
-Whenever you fix a bug, write an assertion that catches the mistake
-should you make it again.
-If you made a mistake in a piece of code,
-the odds are good that you have made other mistakes nearby,
-or will make the same mistake (or a related one)
-the next time you change it.
-Writing assertions to check that you haven't [regressed](../learners/reference.md#regression)
-(i.e., haven't re-introduced an old problem)
-can save a lot of time in the long run,
-and helps to warn people who are reading the code
-(including your future self)
-that this bit is tricky.
+```output
+<class 'numpy.ndarray'>
+```
 
-## Test-Driven Development
+The output tells us that `data` currently refers to
+an N-dimensional array, the functionality for which is provided by the NumPy library.
+These data correspond to arthritis patients' inflammation.
+The rows are the individual patients, and the columns
+are their daily inflammation measurements.
 
-An assertion checks that something is true at a particular point in the program.
-The next step is to check the overall behavior of a piece of code,
-i.e.,
-to make sure that it produces the right output when it's given a particular input.
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Data Type
+
+A Numpy array contains one or more elements
+of the same type. The `type` function will only tell you that
+a variable is a NumPy array but won't tell you the type of
+thing inside the array.
+We can find out the type
+of the data contained in the NumPy array.
+
+```python
+print(data.dtype)
+```
+
+```output
+float64
+```
+
+This tells us that the NumPy array's elements are
+[floating-point numbers](../learners/reference.md#floating-point-number).
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+With the following command, we can see the array's [shape](../learners/reference.md#shape):
+
+```python
+print(data.shape)
+```
+
+```output
+(60, 40)
+```
+
+The output tells us that the `data` array variable contains 60 rows and 40 columns. When we
+created the variable `data` to store our arthritis data, we did not only create the array; we also
+created information about the array, called [members](../learners/reference.md#member) or
+attributes. This extra information describes `data` in the same way an adjective describes a noun.
+`data.shape` is an attribute of `data` which describes the dimensions of `data`. We use the same
+dotted notation for the attributes of variables that we use for the functions in libraries because
+they have the same part-and-whole relationship.
+
+If we want to get a single number from the array, we must provide an
+[index](../learners/reference.md#index) in square brackets after the variable name, just as we
+do in math when referring to an element of a matrix.  Our inflammation data has two dimensions, so
+we will need to use two indices to refer to one specific value:
+
+```python
+print('first value in data:', data[0, 0])
+```
+
+```output
+first value in data: 0.0
+```
+
+```python
+print('middle value in data:', data[29, 19])
+```
+
+```output
+middle value in data: 16.0
+```
+
+The expression `data[29, 19]` accesses the element at row 30, column 20. While this expression may
+not surprise you,
+`data[0, 0]` might.
+Programming languages like Fortran, MATLAB and R start counting at 1
+because that's what human beings have done for thousands of years.
+Languages in the C family (including C++, Java, Perl, and Python) count from 0
+because it represents an offset from the first value in the array (the second
+value is offset by one index from the first value). This is closer to the way
+that computers represent arrays (if you are interested in the historical
+reasons behind counting indices from zero, you can read
+[Mike Hoye's blog post](https://exple.tive.org/blarg/2013/10/22/citation-needed/)).
+As a result,
+if we have an M×N array in Python,
+its indices go from 0 to M-1 on the first axis
+and 0 to N-1 on the second.
+It takes a bit of getting used to,
+but one way to remember the rule is that
+the index is how many steps we have to take from the start to get the item we want.
+
+![](fig/python-zero-index.svg){alt="'data' is a 3 by 3 numpy array containing row 0: \['A', 'B', 'C'\], row 1: \['D', 'E', 'F'\], androw 2: \['G', 'H', 'I'\]. Starting in the upper left hand corner, data\[0, 0\] = 'A', data\[0, 1\] = 'B',data\[0, 2\] = 'C', data\[1, 0\] = 'D', data\[1, 1\] = 'E', data\[1, 2\] = 'F', data\[2, 0\] = 'G',data\[2, 1\] = 'H', and data\[2, 2\] = 'I', in the bottom right hand corner."}
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## In the Corner
+
+What may also surprise you is that when Python displays an array,
+it shows the element with index `[0, 0]` in the upper left corner
+rather than the lower left.
+This is consistent with the way mathematicians draw matrices
+but different from the Cartesian coordinates.
+The indices are (row, column) instead of (column, row) for the same reason,
+which can be confusing when plotting data.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Slicing data
+
+An index like `[30, 20]` selects a single element of an array,
+but we can select whole sections as well.
 For example,
-suppose we need to find where two or more time series overlap.
-The range of each time series is represented as a pair of numbers,
-which are the time the interval started and ended.
-The output is the largest range that they all include:
-
-![](fig/python-overlapping-ranges.svg){alt='Graph showing three number lines and, at the bottom, the interval that they overlap.'}
-
-Most novice programmers would solve this problem like this:
-
-1. Write a function `range_overlap`.
-2. Call it interactively on two or three different inputs.
-3. If it produces the wrong answer, fix the function and re-run that test.
-
-This clearly works --- after all, thousands of scientists are doing it right now --- but
-there's a better way:
-
-1. Write a short function for each test.
-2. Write a `range_overlap` function that should pass those tests.
-3. If `range_overlap` produces any wrong answers, fix it and re-run the test functions.
-
-Writing the tests *before* writing the function they exercise
-is called [test-driven development](../learners/reference.md#test-driven-development) (TDD).
-Its advocates believe it produces better code faster because:
-
-1. If people write tests after writing the thing to be tested,
-  they are subject to confirmation bias,
-  i.e.,
-  they subconsciously write tests to show that their code is correct,
-  rather than to find errors.
-2. Writing tests helps programmers figure out what the function is actually supposed to do.
-
-We start by defining an empty function `range_overlap`:
+we can select the first ten days (columns) of values
+for the first four patients (rows) like this:
 
 ```python
-def range_overlap(ranges):
-    pass
+print(data[0:4, 0:10])
 ```
 
-Here are three test statements for `range_overlap`:
+```output
+[[ 0.  0.  1.  3.  1.  2.  4.  7.  8.  3.]
+ [ 0.  1.  2.  1.  2.  1.  3.  2.  2.  6.]
+ [ 0.  1.  1.  3.  3.  2.  6.  2.  5.  9.]
+ [ 0.  0.  2.  0.  4.  2.  2.  1.  6.  7.]]
+```
+
+The [slice](../learners/reference.md#slice) `0:4` means, "Start at index 0 and go up to,
+but not including, index 4". Again, the up-to-but-not-including takes a bit of getting used to,
+but the rule is that the difference between the upper and lower bounds is the number of values in
+the slice.
+
+We don't have to start slices at 0:
 
 ```python
-assert range_overlap([ (0.0, 1.0) ]) == (0.0, 1.0)
-assert range_overlap([ (2.0, 3.0), (2.0, 4.0) ]) == (2.0, 3.0)
-assert range_overlap([ (0.0, 1.0), (0.0, 2.0), (-1.0, 1.0) ]) == (0.0, 1.0)
+print(data[5:10, 0:10])
 ```
 
-```error
----------------------------------------------------------------------------
-AssertionError                            Traceback (most recent call last)
-<ipython-input-25-d8be150fbef6> in <module>()
-----> 1 assert range_overlap([ (0.0, 1.0) ]) == (0.0, 1.0)
-      2 assert range_overlap([ (2.0, 3.0), (2.0, 4.0) ]) == (2.0, 3.0)
-      3 assert range_overlap([ (0.0, 1.0), (0.0, 2.0), (-1.0, 1.0) ]) == (0.0, 1.0)
-
-AssertionError:
+```output
+[[ 0.  0.  1.  2.  2.  4.  2.  1.  6.  4.]
+ [ 0.  0.  2.  2.  4.  2.  2.  5.  5.  8.]
+ [ 0.  0.  1.  2.  3.  1.  2.  3.  5.  3.]
+ [ 0.  0.  0.  3.  1.  5.  6.  5.  5.  8.]
+ [ 0.  1.  1.  2.  1.  3.  5.  3.  5.  8.]]
 ```
 
-The error is actually reassuring:
-we haven't implemented any logic into `range_overlap` yet,
-so if the tests passed, it would indicate that we've written
-an entirely ineffective test.
-
-And as a bonus of writing these tests,
-we've implicitly defined what our input and output look like:
-we expect a list of pairs as input,
-and produce a single pair as output.
-
-Something important is missing, though.
-We don't have any tests for the case where the ranges don't overlap at all:
+We also don't have to include the upper and lower bound on the slice.  If we don't include the lower
+bound, Python uses 0 by default; if we don't include the upper, the slice runs to the end of the
+axis, and if we don't include either (i.e., if we use ':' on its own), the slice includes
+everything:
 
 ```python
-assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == ???
+small = data[:3, 36:]
+print('small is:')
+print(small)
 ```
 
-What should `range_overlap` do in this case:
-fail with an error message,
-produce a special value like `(0.0, 0.0)` to signal that there's no overlap,
-or something else?
-Any actual implementation of the function will do one of these things;
-writing the tests first helps us figure out which is best
-*before* we're emotionally invested in whatever we happened to write
-before we realized there was an issue.
+The above example selects rows 0 through 2 and columns 36 through to the end of the array.
 
-And what about this case?
+```output
+small is:
+[[ 2.  3.  0.  0.]
+ [ 1.  1.  0.  1.]
+ [ 2.  2.  1.  1.]]
+```
+
+## Analyzing data
+
+NumPy has several useful functions that take an array as input to perform operations on its values.
+If we want to find the average inflammation for all patients on
+all days, for example, we can ask NumPy to compute `data`'s mean value:
 
 ```python
-assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == ???
+print(numpy.mean(data))
 ```
 
-Do two segments that touch at their endpoints overlap or not?
-Mathematicians usually say "yes",
-but engineers usually say "no".
-The best answer is "whatever is most useful in the rest of our program",
-but again,
-any actual implementation of `range_overlap` is going to do *something*,
-and whatever it is ought to be consistent with what it does when there's no overlap at all.
+```output
+6.14875
+```
 
-Since we're planning to use the range this function returns
-as the X axis in a time series chart,
-we decide that:
+`mean` is a [function](../learners/reference.md#function) that takes
+an array as an [argument](../learners/reference.md#argument).
 
-1. every overlap has to have non-zero width, and
-2. we will return the special value `None` when there's no overlap.
+:::::::::::::::::::::::::::::::::::::::::  callout
 
-`None` is built into Python,
-and means "nothing here".
-(Other languages often call the equivalent value `null` or `nil`).
-With that decision made,
-we can finish writing our last two tests:
+## Not All Functions Have Input
+
+Generally, a function uses inputs to produce outputs.
+However, some functions produce outputs without
+needing any input. For example, checking the current time
+doesn't require any input.
 
 ```python
-assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
-assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == None
+import time
+print(time.ctime())
 ```
 
-```error
----------------------------------------------------------------------------
-AssertionError                            Traceback (most recent call last)
-<ipython-input-26-d877ef460ba2> in <module>()
-----> 1 assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
-      2 assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == None
-
-AssertionError:
+```output
+Sat Mar 26 13:07:33 2016
 ```
 
-Again,
-we get an error because we haven't written our function,
-but we're now ready to do so:
+For functions that don't take in any arguments,
+we still need parentheses (`()`)
+to tell Python to go and do something for us.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Let's use three other NumPy functions to get some descriptive values about the dataset.
+We'll also use multiple assignment,
+a convenient Python feature that will enable us to do this all in one line.
 
 ```python
-def range_overlap(ranges):
-    """Return common overlap among a set of [left, right] ranges."""
-    max_left = 0.0
-    min_right = 1.0
-    for (left, right) in ranges:
-        max_left = max(max_left, left)
-        min_right = min(min_right, right)
-    return (max_left, min_right)
+maxval, minval, stdval = numpy.amax(data), numpy.amin(data), numpy.std(data)
+
+print('maximum inflammation:', maxval)
+print('minimum inflammation:', minval)
+print('standard deviation:', stdval)
 ```
 
-Take a moment to think about why we calculate the left endpoint of the overlap as
-the maximum of the input left endpoints, and the overlap right endpoint as the minimum
-of the input right endpoints.
-We'd now like to re-run our tests,
-but they're scattered across three different cells.
-To make running them easier,
-let's put them all in a function:
+Here we've assigned the return value from `numpy.amax(data)` to the variable `maxval`, the value
+from `numpy.amin(data)` to `minval`, and so on.
+
+```output
+maximum inflammation: 20.0
+minimum inflammation: 0.0
+standard deviation: 4.61383319712
+```
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Mystery Functions in IPython
+
+How did we know what functions NumPy has and how to use them?
+If you are working in IPython or in a Jupyter Notebook, there is an easy way to find out.
+If you type the name of something followed by a dot, then you can use
+[tab completion](../learners/reference.md#tab-completion)
+(e.g. type `numpy.` and then press <kbd>Tab</kbd>)
+to see a list of all functions and attributes that you can use. After selecting one, you
+can also add a question mark (e.g. `numpy.cumprod?`), and IPython will return an
+explanation of the method! This is the same as doing `help(numpy.cumprod)`.
+Similarly, if you are using the "plain vanilla" Python interpreter, you can type `numpy.`
+and press the <kbd>Tab</kbd> key twice for a listing of what is available. You can then use the
+`help()` function to see an explanation of the function you're interested in,
+for example: `help(numpy.cumprod)`.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Confusing Function Names
+
+One might wonder why the functions are called `amax` and `amin` and not `max` and `min` or why the other is called `mean` and not `amean`.
+The package `numpy` does provide functions `max` and `min` that are fully equivalent to `amax` and `amin`, but they share a name with standard library functions `max` and `min` that come with Python itself.
+Referring to the functions like we did above, that is `numpy.max` for example, does not cause problems, but there are other ways to refer to them that could.
+In addition, text editors might highlight (color) these functions like standard library function, even though they belong to NumPy, which can be confusing and lead to errors.
+Since there is no function called `mean` in the standard library, there is no function called `amean`.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+When analyzing data, though,
+we often want to look at variations in statistical values,
+such as the maximum inflammation per patient
+or the average inflammation per day.
+One way to do this is to create a new temporary array of the data we want,
+then ask it to do the calculation:
 
 ```python
-def test_range_overlap():
-    assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
-    assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == None
-    assert range_overlap([ (0.0, 1.0) ]) == (0.0, 1.0)
-    assert range_overlap([ (2.0, 3.0), (2.0, 4.0) ]) == (2.0, 3.0)
-    assert range_overlap([ (0.0, 1.0), (0.0, 2.0), (-1.0, 1.0) ]) == (0.0, 1.0)
-    assert range_overlap([]) == None
+patient_0 = data[0, :] # 0 on the first axis (rows), everything on the second (columns)
+print('maximum inflammation for patient 0:', numpy.amax(patient_0))
 ```
 
-We can now test `range_overlap` with a single function call:
+```output
+maximum inflammation for patient 0: 18.0
+```
+
+We don't actually need to store the row in a variable of its own.
+Instead, we can combine the selection and the function call:
 
 ```python
-test_range_overlap()
+print('maximum inflammation for patient 2:', numpy.amax(data[2, :]))
 ```
 
-```error
----------------------------------------------------------------------------
-AssertionError                            Traceback (most recent call last)
-<ipython-input-29-cf9215c96457> in <module>()
-----> 1 test_range_overlap()
-
-<ipython-input-28-5d4cd6fd41d9> in test_range_overlap()
-      1 def test_range_overlap():
-----> 2     assert range_overlap([ (0.0, 1.0), (5.0, 6.0) ]) == None
-      3     assert range_overlap([ (0.0, 1.0), (1.0, 2.0) ]) == None
-      4     assert range_overlap([ (0.0, 1.0) ]) == (0.0, 1.0)
-      5     assert range_overlap([ (2.0, 3.0), (2.0, 4.0) ]) == (2.0, 3.0)
-
-AssertionError:
+```output
+maximum inflammation for patient 2: 19.0
 ```
 
-The first test that was supposed to produce `None` fails,
-so we know something is wrong with our function.
-We *don't* know whether the other tests passed or failed
-because Python halted the program as soon as it spotted the first error.
-Still,
-some information is better than none,
-and if we trace the behavior of the function with that input,
-we realize that we're initializing `max_left` and `min_right` to 0.0 and 1.0 respectively,
-regardless of the input values.
-This violates another important rule of programming:
-*always initialize from data*.
+What if we need the maximum inflammation for each patient over all days (as in the
+next diagram on the left) or the average for each day (as in the
+diagram on the right)? As the diagram below shows, we want to perform the
+operation across an axis:
+
+![](fig/python-operations-across-axes.png){alt="Per-patient maximum inflammation is computed row-wise across all columns usingnumpy.amax(data, axis=1). Per-day average inflammation is computed column-wise across all rows usingnumpy.mean(data, axis=0)."}
+
+To find the **maximum inflammation reported for each patient**, you would apply the `max` function moving across the columns (axis 1). To find the **daily average inflammation reported across patients**, you would apply the `mean` function moving down the rows (axis 0). 
+
+To support this functionality, most array functions allow us to specify the axis we want to work on. If we ask for the max across axis 1 (columns in our 2D example), we get:
+
+```python
+print(numpy.max(data, axis=1))
+```
+
+```output
+[18. 18. 19. 17. 17. 18. 17. 20. 17. 18. 18. 18. 17. 16. 17. 18. 19. 19.
+ 17. 19. 19. 16. 17. 15. 17. 17. 18. 17. 20. 17. 16. 19. 15. 15. 19. 17.
+ 16. 17. 19. 16. 18. 19. 16. 19. 18. 16. 19. 15. 16. 18. 14. 20. 17. 15.
+ 17. 16. 17. 19. 18. 18.]
+```
+
+As a quick check, we can ask this array what its shape is. We expect 60 patient maximums:
+
+```python
+print(numpy.max(data, axis=1).shape)
+```
+
+```output
+(60,)
+```
+
+The expression `(60,)` tells us we have an N×1 vector, so this is the maximum inflammation per day for each patients. 
+
+If we ask for the average across/down axis 0 (rows in our 2D example), we get:
+
+```python
+print(numpy.mean(data, axis=0))
+```
+
+```output
+[ 0.          0.45        1.11666667  1.75        2.43333333  3.15
+  3.8         3.88333333  5.23333333  5.51666667  5.95        5.9
+  8.35        7.73333333  8.36666667  9.5         9.58333333 10.63333333
+ 11.56666667 12.35       13.25       11.96666667 11.03333333 10.16666667
+ 10.          8.66666667  9.15        7.25        7.33333333  6.58333333
+  6.06666667  5.95        5.11666667  3.6         3.3         3.56666667
+  2.48333333  1.5         1.13333333  0.56666667]
+```
+
+Check the array shape. We expect 40 averages, one for each day of the study:
+
+```python
+print(numpy.mean(data, axis=0).shape)
+```
+
+```output
+(40,)
+```
+Similarly, we can apply the `mean` function to axis 1 to get the patient's average inflammation over the duration of the study (60 values). 
+
+```python
+print(numpy.mean(data, axis=1))
+```
+```output
+[5.45  5.425 6.1   5.9   5.55  6.225 5.975 6.65  6.625 6.525 6.775 5.8
+ 6.225 5.75  5.225 6.3   6.55  5.7   5.85  6.55  5.775 5.825 6.175 6.1
+ 5.8   6.425 6.05  6.025 6.175 6.55  6.175 6.35  6.725 6.125 7.075 5.725
+ 5.925 6.15  6.075 5.75  5.975 5.725 6.3   5.9   6.75  5.925 7.225 6.15
+ 5.95  6.275 5.7   6.1   6.825 5.975 6.725 5.7   6.25  6.4   7.05  5.9  ]
+```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Pre- and Post-Conditions
+## Slicing Strings
 
-Suppose you are writing a function called `average` that calculates
-the average of the numbers in a NumPy array.
-What pre-conditions and post-conditions would you write for it?
-Compare your answer to your neighbor's:
-can you think of a function that will pass your tests but not his/hers or vice versa?
+A section of an array is called a [slice](../learners/reference.md#slice).
+We can take slices of character strings as well:
+
+```python
+element = 'oxygen'
+print('first three characters:', element[0:3])
+print('last three characters:', element[3:6])
+```
+
+```output
+first three characters: oxy
+last three characters: gen
+```
+
+What is the value of `element[:4]`?
+What about `element[4:]`?
+Or `element[:]`?
+
+:::::::::::::::  solution
+
+## Solution
+
+```output
+oxyg
+en
+oxygen
+```
+
+:::::::::::::::::::::::::
+
+What is `element[-1]`?
+What is `element[-2]`?
+
+:::::::::::::::  solution
+
+## Solution
+
+```output
+n
+e
+```
+
+:::::::::::::::::::::::::
+
+Given those answers,
+explain what `element[1:-1]` does.
+
+:::::::::::::::  solution
+
+## Solution
+
+Creates a substring from index 1 up to (not including) the final index,
+effectively removing the first and last letters from 'oxygen'
+
+
+:::::::::::::::::::::::::
+
+How can we rewrite the slice for getting the last three characters of `element`,
+so that it works even if we assign a different string to `element`?
+Test your solution with the following strings: `carpentry`, `clone`, `hi`.
 
 :::::::::::::::  solution
 
 ## Solution
 
 ```python
-# a possible pre-condition:
-assert len(input_array) > 0, 'Array length must be non-zero'
-# a possible post-condition:
-assert numpy.amin(input_array) <= average <= numpy.amax(input_array),
-'Average should be between min and max of input values (inclusive)'
+element = 'oxygen'
+print('last three characters:', element[-3:])
+element = 'carpentry'
+print('last three characters:', element[-3:])
+element = 'clone'
+print('last three characters:', element[-3:])
+element = 'hi'
+print('last three characters:', element[-3:])
+```
+
+```output
+last three characters: gen
+last three characters: try
+last three characters: one
+last three characters: hi
 ```
 
 :::::::::::::::::::::::::
@@ -479,68 +580,358 @@ assert numpy.amin(input_array) <= average <= numpy.amax(input_array),
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Testing Assertions
+## Thin Slices
 
-Given a sequence of a number of cars, the function `get_total_cars` returns
-the total number of cars.
-
-```python
-get_total_cars([1, 2, 3, 4])
-```
-
-```output
-10
-```
-
-```python
-get_total_cars(['a', 'b', 'c'])
-```
-
-```output
-ValueError: invalid literal for int() with base 10: 'a'
-```
-
-Explain in words what the assertions in this function check,
-and for each one,
-give an example of input that will make that assertion fail.
-
-```python
-def get_total_cars(values):
-    assert len(values) > 0
-    for element in values:
-        assert int(element)
-    values = [int(element) for element in values]
-    total = sum(values)
-    assert total > 0
-    return total
-```
+The expression `element[3:3]` produces an
+[empty string](../learners/reference.md#empty-string),
+i.e., a string that contains no characters.
+If `data` holds our array of patient data,
+what does `data[3:3, 4:4]` produce?
+What about `data[3:3, :]`?
 
 :::::::::::::::  solution
 
 ## Solution
 
-- The first assertion checks that the input sequence `values` is not empty.
-  An empty sequence such as `[]` will make it fail.
-- The second assertion checks that each value in the list can be turned into an integer.
-  Input such as `[1, 2, 'c', 3]` will make it fail.
-- The third assertion checks that the total of the list is greater than 0.
-  Input such as `[-10, 2, 3]` will make it fail.
-  
-  
+```output
+array([], shape=(0, 0), dtype=float64)
+array([], shape=(0, 40), dtype=float64)
+```
 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::  challenge
 
+## Stacking Arrays
+
+Arrays can be concatenated and stacked on top of one another,
+using NumPy's `vstack` and `hstack` functions for vertical and horizontal stacking, respectively.
+
+```python
+import numpy
+
+A = numpy.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print('A = ')
+print(A)
+
+B = numpy.hstack([A, A])
+print('B = ')
+print(B)
+
+C = numpy.vstack([A, A])
+print('C = ')
+print(C)
+```
+
+```output
+A =
+[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+B =
+[[1 2 3 1 2 3]
+ [4 5 6 4 5 6]
+ [7 8 9 7 8 9]]
+C =
+[[1 2 3]
+ [4 5 6]
+ [7 8 9]
+ [1 2 3]
+ [4 5 6]
+ [7 8 9]]
+```
+
+Write some additional code that slices the first and last columns of `A`,
+and stacks them into a 3x2 array.
+Make sure to `print` the results to verify your solution.
+
+:::::::::::::::  solution
+
+## Solution
+
+A 'gotcha' with array indexing is that singleton dimensions
+are dropped by default. That means `A[:, 0]` is a one dimensional
+array, which won't stack as desired. To preserve singleton dimensions,
+the index itself can be a slice or array. For example, `A[:, :1]` returns
+a two dimensional array with one singleton dimension (i.e. a column
+vector).
+
+```python
+D = numpy.hstack((A[:, :1], A[:, -1:]))
+print('D = ')
+print(D)
+```
+
+```output
+D =
+[[1 3]
+ [4 6]
+ [7 9]]
+```
+
+:::::::::::::::::::::::::
+
+:::::::::::::::  solution
+
+## Solution
+
+An alternative way to achieve the same result is to use Numpy's
+delete function to remove the second column of A. If you're not
+sure what the parameters of numpy.delete mean, use the help files.
+
+```python
+D = numpy.delete(arr=A, obj=1, axis=1)
+print('D = ')
+print(D)
+```
+
+```output
+D =
+[[1 3]
+ [4 6]
+ [7 9]]
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Change In Inflammation
+
+The patient data is *longitudinal* in the sense that each row represents a
+series of observations relating to one individual.  This means that
+the change in inflammation over time is a meaningful concept.
+Let's find out how to calculate changes in the data contained in an array
+with NumPy.
+
+The `numpy.diff()` function takes an array and returns the differences
+between two successive values. Let's use it to examine the changes
+each day across the first week of patient 3 from our inflammation dataset.
+
+```python
+patient3_week1 = data[3, :7]
+print(patient3_week1)
+```
+
+```output
+ [0. 0. 2. 0. 4. 2. 2.]
+```
+
+Calling `numpy.diff(patient3_week1)` would do the following calculations
+
+```python
+[ 0 - 0, 2 - 0, 0 - 2, 4 - 0, 2 - 4, 2 - 2 ]
+```
+
+and return the 6 difference values in a new array.
+
+```python
+numpy.diff(patient3_week1)
+```
+
+```output
+array([ 0.,  2., -2.,  4., -2.,  0.])
+```
+
+Note that the array of differences is shorter by one element (length 6).
+
+When calling `numpy.diff` with a multi-dimensional array, an `axis` argument may
+be passed to the function to specify which axis to process. When applying
+`numpy.diff` to our 2D inflammation array `data`, which axis would we specify?
+
+:::::::::::::::  solution
+
+## Solution
+
+Since the row axis (0) is patients, it does not make sense to get the
+difference between two arbitrary patients. The column axis (1) is in
+days, so the difference is the change in inflammation -- a meaningful
+concept.
+
+```python
+numpy.diff(data, axis=1)
+```
+
+:::::::::::::::::::::::::
+
+If the shape of an individual data file is `(60, 40)` (60 rows and 40
+columns), what would the shape of the array be after you run the `diff()`
+function and why?
+
+:::::::::::::::  solution
+
+## Solution
+
+The shape will be `(60, 39)` because there is one fewer difference between
+columns than there are columns in the data.
+
+
+:::::::::::::::::::::::::
+
+How would you find the largest change in inflammation for each patient? Does
+it matter if the change in inflammation is an increase or a decrease?
+
+:::::::::::::::  solution
+
+## Solution
+
+By using the `numpy.amax()` function after you apply the `numpy.diff()`
+function, you will get the largest difference between days.
+
+```python
+numpy.amax(numpy.diff(data, axis=1), axis=1)
+```
+
+```python
+array([  7.,  12.,  11.,  10.,  11.,  13.,  10.,   8.,  10.,  10.,   7.,
+         7.,  13.,   7.,  10.,  10.,   8.,  10.,   9.,  10.,  13.,   7.,
+        12.,   9.,  12.,  11.,  10.,  10.,   7.,  10.,  11.,  10.,   8.,
+        11.,  12.,  10.,   9.,  10.,  13.,  10.,   7.,   7.,  10.,  13.,
+        12.,   8.,   8.,  10.,  10.,   9.,   8.,  13.,  10.,   7.,  10.,
+         8.,  12.,  10.,   7.,  12.])
+```
+
+If inflammation values *decrease* along an axis, then the difference from
+one element to the next will be negative. If
+you are interested in the **magnitude** of the change and not the
+direction, the `numpy.absolute()` function will provide that.
+
+Notice the difference if you get the largest *absolute* difference
+between readings.
+
+```python
+numpy.amax(numpy.absolute(numpy.diff(data, axis=1)), axis=1)
+```
+
+```python
+array([ 12.,  14.,  11.,  13.,  11.,  13.,  10.,  12.,  10.,  10.,  10.,
+        12.,  13.,  10.,  11.,  10.,  12.,  13.,   9.,  10.,  13.,   9.,
+        12.,   9.,  12.,  11.,  10.,  13.,   9.,  13.,  11.,  11.,   8.,
+        11.,  12.,  13.,   9.,  10.,  13.,  11.,  11.,  13.,  11.,  13.,
+        13.,  10.,   9.,  10.,  10.,   9.,   9.,  13.,  10.,   9.,  10.,
+        11.,  13.,  10.,  10.,  12.])
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Inspecting Datasets
+Pandas is a Python library for data manipulation and analysis, providing powerful data structures like DataFrame and Series along with a wide range of functions for tasks such as data cleaning, preparation, and exploration. It is widely used in data science and machine learning workflows for its ease of use and flexibility.
+
+We can now explore the Iris dataset to gain insights into its structure and contents.
+
+### Inspecting a Dataset
+To understand the structure of the Iris dataset, we can use various methods provided by Pandas:
+
+```python
+print(iris_df.head())
+```
+
+```python
+print(iris_df.info())
+```
+
+```python
+print(iris_df.describe())
+```
+
+
+Understanding the contents and data types of a data set is important for accurate analysis.
+
+### Manipulating DataFrames
+Pandas provides powerful functionalities to manipulate DataFrames. Here are some examples:
+
+Adding and Removing Columns
+
+Adding:
+```python
+iris_df['sepal.ratio'] = iris_df['sepal.length'] / iris_df['sepal.width']
+```
+
+
+Removing:
+```python
+iris_df.drop('variety', axis=1, inplace=True)
+```
+
+
+Adding and removing rows
+
+Adding:
+```python
+new_row = {'sepal.length': 5.1, 'sepal.width': 3.5, 'petal.length': 1.4, 'petal.width': 0.2,}
+iris_df.loc[len(iris_df)] = new_row
+```
+
+
+Removing:
+```python
+iris_df.drop(0, inplace=True)
+iris_df.reset_index(drop=True, inplace=True)
+```
+
+
+
+### Sub-setting Data
+
+Sub-setting allows us to select specific rows or columns based on conditions:
+
+```python
+iris_df = pd.read_csv("data/iris.csv") #reset the dataset
+# Select rows where petal_length is greater than 5
+subset_df = iris_df[iris_df['petal.length'] > 5]
+```
+
+
+```python
+# Select rows where species is 'setosa' and petal_length is less than 1.5
+subset_df = iris_df[(iris_df['variety'] == 'Setosa') & (iris_df['petal.length'] < 1.5)]
+```
+
+```python
+# Select rows where sepal_length is greater than 5 and species is either 'setosa' or 'versicolor'
+subset_df = iris_df[(iris_df['sepal.length'] > 5) & (iris_df['variety'].isin(['Setosa', 'Versicolor']))]
+```
+
+```python
+# Select rows where species is 'setosa' or 'versicolor' and petal_length is not equal to 1.5
+subset_df = iris_df[(iris_df['variety'].isin(['Setosa', 'Versicolor'])) & (iris_df['petal.length'] != 1.5)]
+```
+
+### Applying a function
+
+To apply a function to a DataFrame column in Pandas, you can use the .apply() method.
+
+```python
+# Define a custom function
+def square_value(x):
+    return x ** 2
+```
+
+
+```python
+iris_df['petal.length.squared'] = iris_df['petal.length'].apply(square_value)
+```
+
+
+Pandas is highly efficient for DataFrame manipulation due to its intuitive syntax and powerful functionalities. It offers a wide range of built-in functions for data selection, filtering, and transformation, making tasks like data cleaning and preprocessing streamlined. 
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Program defensively, i.e., assume that errors are going to arise, and write code to detect them when they do.
-- Put assertions in programs to check their state as they run, and to help readers understand how those programs are supposed to work.
-- Use preconditions to check that the inputs to a function are safe to use.
-- Use postconditions to check that the output from a function is safe to use.
-- Write tests before writing code in order to help determine exactly what that code is supposed to do.
+- Import a library into a program using `import libraryname`.
+- Use the `numpy` library to work with arrays in Python.
+- The expression `array.shape` gives the shape of an array.
+- Use `array[x, y]` to select a single element from a 2D array.
+- Array indices start at 0, not 1.
+- Use `low:high` to specify a `slice` that includes the indices from `low` to `high-1`.
+- Use `# some kind of explanation` to add comments to programs.
+- Use `numpy.mean(array)`, `numpy.amax(array)`, and `numpy.amin(array)` to calculate simple statistics.
+- Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

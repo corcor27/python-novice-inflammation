@@ -534,6 +534,37 @@ counts + counts
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+## Dictionaries
+
+* Dictionaries are unordered collections of key-value pairs.
+* They are mutable and can contain keys of any immutable data type.
+* Dictionaries are created using curly braces \{\}.
+
+Example of dictionary creation:
+
+```python
+my_dict = {'name': 'John', 'age': 30, 'city': 'New York'}
+```
+
+### Accessing elements:
+* Elements in a dictionary are accessed using square brackets \[\] and keys.
+
+Example of accessing elements:
+```python
+person_name = my_dict['name']   # Accessing value corresponding to 'name' key
+```
+
+
+### Manipulating dictionaries:
+* Dictionaries support various operations like adding, removing, and updating key-value pairs.
+
+Examples of manipulation:
+```python
+my_dict['gender'] = 'Male'     # Adds 'gender': 'Male' to the dictionary
+del my_dict['age']             # Removes the key 'age' and its value
+my_dict['city'] = 'Los Angeles' # Updates the value of 'city' key to 'Los Angeles'
+```
+
 
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
