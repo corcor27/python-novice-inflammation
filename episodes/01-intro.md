@@ -31,6 +31,8 @@ Any Python interpreter can be used as a calculator:
 23
 ```
 
+### Subtraction
+ 
 ```python
 10 – 5 #(subtraction) 
 ```
@@ -39,7 +41,7 @@ Any Python interpreter can be used as a calculator:
 ```output
 5
 ```
-
+### Addition
 ```python
 10 + 5 #(addition) 
 ```
@@ -47,7 +49,7 @@ Any Python interpreter can be used as a calculator:
 ```output
 15
 ```
-
+### Multiplication
 
 ```python
 10 * 5 #(multiplication) 
@@ -57,6 +59,8 @@ Any Python interpreter can be used as a calculator:
 50
 ```
 
+### Division
+
 ```python
 10 / 5 #(division) 
 ```
@@ -65,6 +69,8 @@ Any Python interpreter can be used as a calculator:
 2
 ```
 
+### Exponentiation
+
 ```python
 5 ** 2 #(exponentiation) 
 ```
@@ -72,6 +78,8 @@ Any Python interpreter can be used as a calculator:
 ```output
 25
 ```
+
+### Modulus
 
 ```python
 10 % 3 #(modulus)  
