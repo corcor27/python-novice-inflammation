@@ -94,7 +94,8 @@ Note: anything following a '#' is considered a comment. Comments are not read by
 
 ### Order of operations
 
-> ## Question: Before you enter the next calculation, take a second and consider what answer would you be expecting?
+Question: Before you enter the next calculation, take a second and consider what answer would you be expecting?
+
 ```python
 6 + 9 / 3 
 ```
@@ -102,8 +103,6 @@ Note: anything following a '#' is considered a comment. Comments are not read by
 ```output
 9
 ```
-
-
 
 If the answer was **not** what you were expecting you will need to become clear on order of operations in Python. 
 
@@ -118,7 +117,7 @@ If the answer was **not** what you were expecting you will need to become clear 
 
 * **A**ddition/**S**ubtraction\*  
 
- Operators with same precedent are calculated left to right. 
+Operators with same precedent are calculated left to right. 
 
  
 This tells you what order mathematical operations will be performed and ensures consistency during evaluation.  
