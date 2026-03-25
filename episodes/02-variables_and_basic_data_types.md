@@ -48,23 +48,19 @@ This means that, for example:
  
 It may seem fussy but there are actually not that many enforced restrictions compared to the number of variable naming combinations. However, just because you can, doesn’t mean you should. There exist several naming conventions in the Python community to help provide structure and guidance to variable naming. 
 
- 
 
 1. my_variable (underscore or snake case) 
 
 2. myVariable (camel case) 
 
- 
 
 Although some may disagree with us, we believe for most users it does not matter which convention you pick. There are two key principles for variable naming, that we recommend, that should make your life easier: 
 
- 
 
 1. ***Consistency*** – pick a convention and stick with it. 
 
 2. ***Succinctness*** - Keep variable names short, readable, and descriptive. 
 
- 
 
 For ***example***, if you wanted a variable name for a temperature reading taken in Aberystwyth: 
 
@@ -114,6 +110,44 @@ we can assign each person a unique identifier by storing it in a string:
 
 ```python
 patient_id = '001'
+```
+
+##How Python Assigns Data Types
+
+### Dynamic Typing
+
+In Python, you don’t declare a variable’s type explicitly. Instead, the type is determined automatically when you assign a value.
+
+```python
+x = 10        # x is an int
+x = "hello"   # now x is a string
+```
+As for example depending on how you have assign the value, python automatic assumes the type it is:
+
+```python
+a = 5
+b = 5.0
+c = "5"
+
+print(type(a))  # int
+print(type(b))  # float
+print(type(c))  # str
+```
+
+The issue with this is that some data types can be combined—for example, adding an integer to a float works as expected. However, this is not always the case. Strings cannot be combined with integers or floats, as this would be like trying to add a sentence to a number, which doesn’t make sense.
+
+Another problem is that with dynamic typing, there are situations where values that should be numbers (such as integers or floats) are instead stored as strings. This can lead to unexpected behaviour, as shown below:
+
+```python
+x = "10"        
+
+```
+
+To be able to use this value as a number (int/float), then we need to change its type (from string -> int):
+
+```python
+x = "10"        
+x = int(x)
 ```
 
 ## Using Variables in Python
@@ -212,60 +246,6 @@ weight in kilograms is now: 65.0
 ```
 
 
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Variables as Sticky Notes
-
-A variable in Python is analogous to a sticky note with a name written on it:
-assigning a value to a variable is like putting that sticky note on a particular value.
-
-![](fig/python-sticky-note-variables-01.svg){alt='Value of 65.0 with weight\_kg label stuck on it'}
-
-Using this analogy, we can investigate how assigning a value to one variable
-does **not** change values of other, seemingly related, variables.  For
-example, let's store the subject's weight in pounds in its own variable:
-
-```python
-# There are 2.2 pounds per kilogram
-weight_lb = 2.2 * weight_kg
-print('weight in kilograms:', weight_kg, 'and in pounds:', weight_lb)
-```
-
-```output
-weight in kilograms: 65.0 and in pounds: 143.0
-```
-
-Everything in a line of code following the '#' symbol is a
-[comment](../learners/reference.md#comment) that is ignored by Python.
-Comments allow programmers to leave explanatory notes for other
-programmers or their future selves.
-
-![](fig/python-sticky-note-variables-02.svg){alt='Value of 65.0 with weight\_kg label stuck on it, and value of 143.0 with weight\_lb label stuck on it'}
-
-Similar to above, the expression `2.2 * weight_kg` is evaluated to `143.0`,
-and then this value is assigned to the variable `weight_lb` (i.e. the sticky
-note `weight_lb` is placed on `143.0`). At this point, each variable is
-"stuck" to completely distinct and unrelated values.
-
-Let's now change `weight_kg`:
-
-```python
-weight_kg = 100.0
-print('weight in kilograms is now:', weight_kg, 'and weight in pounds is still:', weight_lb)
-```
-
-```output
-weight in kilograms is now: 100.0 and weight in pounds is still: 143.0
-```
-
-![](fig/python-sticky-note-variables-03.svg){alt='Value of 100.0 with label weight\_kg stuck on it, and value of 143.0 with label weight\_lbstuck on it'}
-
-Since `weight_lb` doesn't "remember" where its value comes from,
-it is not updated when we change `weight_kg`.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
