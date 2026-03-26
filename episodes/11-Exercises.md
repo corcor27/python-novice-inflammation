@@ -522,6 +522,174 @@ for idx, coef in enumerate(coefs):
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Plot Scaling
+
+Why do all of our plots stop just short of the upper end of our graph?
+
+:::::::::::::::  solution
+
+## Solution
+
+Because matplotlib normally sets x and y axes limits to the min and max of our data
+(depending on data range)
+
+
+:::::::::::::::::::::::::
+
+If we want to change this, we can use the `set_ylim(min, max)` method of each 'axes',
+for example:
+
+```python
+axes3.set_ylim(0, 6)
+```
+
+Update your plotting code to automatically set a more appropriate scale.
+(Hint: you can make use of the `max` and `min` methods to help.)
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+# One method
+axes3.set_ylabel('min')
+axes3.plot(numpy.amin(data, axis=0))
+axes3.set_ylim(0, 6)
+```
+
+:::::::::::::::::::::::::
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+# A more automated approach
+min_data = numpy.amin(data, axis=0)
+axes3.set_ylabel('min')
+axes3.plot(min_data)
+axes3.set_ylim(numpy.amin(min_data), numpy.amax(min_data) * 1.1)
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Drawing Straight Lines
+
+In the center and right subplots above, we expect all lines to look like step functions because
+non-integer values are not realistic for the minimum and maximum values. However, you can see
+that the lines are not always vertical or horizontal, and in particular the step function
+in the subplot on the right looks slanted. Why is this?
+
+:::::::::::::::  solution
+
+## Solution
+
+Because matplotlib interpolates (draws a straight line) between the points.
+One way to do avoid this is to use the Matplotlib `drawstyle` option:
+
+```python
+import numpy
+import matplotlib.pyplot
+
+data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+
+fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+
+axes1 = fig.add_subplot(1, 3, 1)
+axes2 = fig.add_subplot(1, 3, 2)
+axes3 = fig.add_subplot(1, 3, 3)
+
+axes1.set_ylabel('average')
+axes1.plot(numpy.mean(data, axis=0), drawstyle='steps-mid')
+
+axes2.set_ylabel('max')
+axes2.plot(numpy.amax(data, axis=0), drawstyle='steps-mid')
+
+axes3.set_ylabel('min')
+axes3.plot(numpy.amin(data, axis=0), drawstyle='steps-mid')
+
+fig.tight_layout()
+
+matplotlib.pyplot.show()
+```
+
+![](fig/inflammation-01-line-styles.svg){alt='Three line graphs, with step lines connecting the points, showing the daily average, maximumand minimum inflammation over a 40-day period.'}
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Make Your Own Plot
+
+Create a plot showing the standard deviation (`numpy.std`)
+of the inflammation data for each day across all patients.
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+std_plot = matplotlib.pyplot.plot(numpy.std(data, axis=0))
+matplotlib.pyplot.show()
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Moving Plots Around
+
+Modify the program to display the three plots on top of one another
+instead of side by side.
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+import numpy
+import matplotlib.pyplot
+
+data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+
+# change figsize (swap width and height)
+fig = matplotlib.pyplot.figure(figsize=(3.0, 10.0))
+
+# change add_subplot (swap first two parameters)
+axes1 = fig.add_subplot(3, 1, 1)
+axes2 = fig.add_subplot(3, 1, 2)
+axes3 = fig.add_subplot(3, 1, 3)
+
+axes1.set_ylabel('average')
+axes1.plot(numpy.mean(data, axis=0))
+
+axes2.set_ylabel('max')
+axes2.plot(numpy.amax(data, axis=0))
+
+axes3.set_ylabel('min')
+axes3.plot(numpy.amin(data, axis=0))
+
+fig.tight_layout()
+
+matplotlib.pyplot.show()
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Know what code is supposed to do *before* trying to debug it.
