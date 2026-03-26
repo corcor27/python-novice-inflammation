@@ -391,10 +391,10 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Become familiar with mathematical operators and in-built
+<ul><li>Become familiar with mathematical operators and built-in
 functions.</li>
-<li>Become more confident using Juypter notebooks (e.g., writing &amp;
-submitting cells).</li>
+<li>Become more confident using Jupyter notebooks (e.g., writing and
+running cells).</li>
 <li>Understand the order of operations.</li>
 </ul></div>
 </div>
@@ -418,7 +418,7 @@ submitting cells).</li>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="dv">10</span> – <span class="dv">5</span> <span class="co">#(subtraction) </span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="dv">10</span> <span class="op">-</span> <span class="dv">5</span> <span class="co">#(subtraction) </span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -462,7 +462,7 @@ submitting cells).</li>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code><span><span class="fl">2</span></span></code></pre>
+<pre class="output" tabindex="0"><code><span><span class="fl">2.0</span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -491,12 +491,13 @@ submitting cells).</li>
 <pre class="output" tabindex="0"><code><span><span class="fl">1</span></span></code></pre>
 </div>
 <p>Note: anything following a ‘#’ is considered a comment. Comments are
-not read by Python they are just used to inform users.</p>
+not read by Python, they are used to help explain the code to other
+users (and your future self).</p>
 </div>
 <div class="section level3">
 <h3 id="order-of-operations">Order of operations<a class="anchor" aria-label="anchor" href="#order-of-operations"></a></h3>
-<p>Question: Before you enter the next calculation, take a second and
-consider what answer would you be expecting?</p>
+<p>Question: Before you enter the next calculation, take a second to
+consider what answer you would expect.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -511,15 +512,14 @@ consider what answer would you be expecting?</p>
 will need to become clear on order of operations in Python.</p>
 </div>
 <div class="section level3">
-<h3 id="remember-pedmas">Remember <strong>PE(DM)(AS)</strong>
-<a class="anchor" aria-label="anchor" href="#remember-pedmas"></a></h3>
-<ul><li><p><strong>P</strong>arentheses</p></li>
-<li><p><strong>E</strong>xponentiation</p></li>
+<h3 id="remember-bodmas-bidmas-or-pemdas">Remember <strong>BO(DM)(AS)</strong> (BIDMAS or PEMDAS)<a class="anchor" aria-label="anchor" href="#remember-bodmas-bidmas-or-pemdas"></a></h3>
+<ul><li><p><strong>B</strong>rackets</p></li>
+<li><p><strong>O</strong>rders</p></li>
 <li><p><strong>D</strong>ivision/<strong>M</strong>ultiplication*</p></li>
 <li><p><strong>A</strong>ddition/<strong>S</strong>ubtraction*</p></li>
-</ul><p>Operators with same precedent are calculated left to right.</p>
-<p>This tells you what order mathematical operations will be performed
-and ensures consistency during evaluation.</p>
+</ul><p>Operators with the same precedence are calculated left to right.</p>
+<p>This tells you the order in which mathematical operations will be
+performed and ensures consistency during evaluation.</p>
 <p>To make this concept clearer, try:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -537,8 +537,23 @@ mathematical operations to ensure the desired results but also
 readability of your code.</p>
 </div>
 </section><section><h2 class="section-heading" id="getting-help">Getting Help<a class="anchor" aria-label="anchor" href="#getting-help"></a></h2>
-<hr class="half-width"><p>Use the built-in function <code>help</code> to get help for a
-function. Every built-in function has extensive <a href="https://docs.python.org/3/library/index.html" class="external-link">documentation that
+<hr class="half-width"><p>Use the built-in function <code>help()</code> to get help for a
+function.</p>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>A function is a named piece of code that performs a task. We will
+look at functions in more detail later in the module. For now, we will
+use built-in functions (functions included in base Python) to understand
+how to use them.</p>
+</div>
+</div>
+</div>
+<p>Every built-in function has extensive <a href="https://docs.python.org/3/library/index.html" class="external-link">documentation that
 can also be found online</a>.</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -562,21 +577,6 @@ print(*args, sep=' ', end='\n', file=None, flush=False)
     flush
       whether to forcibly flush the stream.</code></pre>
 </div>
-<p>If you skip around and run cells randomly, you may not even know
-whether x is 10 or 25. That is where notebooks get chaotic fast.</p>
-<div class="section level3">
-<h3 id="problems-caused-by-running-out-of-order">Problems caused by running out of order<a class="anchor" aria-label="anchor" href="#problems-caused-by-running-out-of-order"></a></h3>
-<ul><li>Name errors: variables or functions are missing</li>
-<li>Old values: variables keep outdated data from earlier runs</li>
-<li>Confusing bugs: results change for no obvious reason</li>
-<li>Poor reproducibility: others cannot get the same output</li>
-<li>Hidden dependencies: a cell works only because of some earlier
-unseen action</li>
-</ul></div>
-<div class="section level3">
-<h3 id="best-practice">Best practice<a class="anchor" aria-label="anchor" href="#best-practice"></a></h3>
-<p>A good notebook should be able to run from top to bottom without
-errors. That is the gold standard.</p>
 <p>This help message (the function’s “docstring”) includes a usage
 statement, a list of parameters accepted by the function, and their
 default values if they have them.</p>
@@ -591,7 +591,7 @@ your favourite search engine and you will usually find several examples
 where other people have encountered the same problem and came looking
 for help.
 <ul><li>
-<a href="https://stackoverflow.com/questions" class="external-link">StackOverflow</a> can
+<a href="https://stackoverflow.com/questions" class="external-link">Stack Overflow</a> can
 be particularly helpful for this: answers to questions are presented as
 a ranked thread ordered according to how useful other users found them
 to be.</li>
@@ -616,10 +616,8 @@ strategies in greater depth later in the lesson</a>.</p>
 libraries).</li>
 <li>Use <code>help(thing)</code> to view help for something.</li>
 <li>You may have seen some error messages already, they provide
-information about what has gone wrong with your code and where, we will
-look at error message in more detail later in the course.</li>
+information about what has gone wrong with your code and where.</li>
 </ul></div>
-</div>
 </div>
 </div>
 </section></div> <!-- / div.lesson-content -->
