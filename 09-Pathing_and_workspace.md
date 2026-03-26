@@ -132,29 +132,7 @@ Relative paths are better for classwork and projects because:
 * they are easier to read
 * they work better when a project folder is moved to another computer
 
-### Loading a CSV
-
-A CSV file stores table data.
-
-Example:
-
-```python
-import pandas as pd
-
-df = pd.read_csv("data/marks.csv")
-df.head()
-```
-
-What this does
-imports the pandas library as pd
-loads the file marks.csv from the data folder
-stores it in a variable called df
-
-If the file is in the same folder as the notebook, you may only need:
-
-```python
-df = pd.read_csv("marks.csv")
-```
+## Some additional file types
 
 ### Loading an image
 
@@ -168,6 +146,15 @@ img
 ```
 
 This opens the image file from the data folder.
+
+Or you can even use a library called opencv
+
+```python
+import cv2
+
+img = cv2.imread("imagepath.png")
+img
+```
 
 Another common option in notebooks is matplotlib:
 

@@ -350,7 +350,177 @@ array([ 12.,  14.,  11.,  13.,  11.,  13.,  10.,  12.,  10.,  10.,  10.,
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::  challenge
 
+## From 1 to N
+
+Python has a built-in function called `range` that generates a sequence of numbers. `range` can
+accept 1, 2, or 3 parameters.
+
+- If one parameter is given, `range` generates a sequence of that length,
+  starting at zero and incrementing by 1.
+  For example, `range(3)` produces the numbers `0, 1, 2`.
+- If two parameters are given, `range` starts at
+  the first and ends just before the second, incrementing by one.
+  For example, `range(2, 5)` produces `2, 3, 4`.
+- If `range` is given 3 parameters,
+  it starts at the first one, ends just before the second one, and increments by the third one.
+  For example, `range(3, 10, 2)` produces `3, 5, 7, 9`.
+
+Using `range`,
+write a loop that prints the first 3 natural numbers:
+
+```python
+1
+2
+3
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+for number in range(1, 4):
+    print(number)
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Understanding the loops
+
+Given the following loop:
+
+```python
+word = 'oxygen'
+for letter in word:
+    print(letter)
+```
+
+How many times is the body of the loop executed?
+
+- 3 times
+- 4 times
+- 5 times
+- 6 times
+
+:::::::::::::::  solution
+
+## Solution
+
+The body of the loop is executed 6 times.
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Computing Powers With Loops
+
+Exponentiation is built into Python:
+
+```python
+print(5 ** 3)
+```
+
+```output
+125
+```
+
+Write a loop that calculates the same result as `5 ** 3` using
+multiplication (and without exponentiation).
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+result = 1
+for number in range(0, 3):
+    result = result * 5
+print(result)
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Summing a list
+
+Write a loop that calculates the sum of elements in a list
+by adding each element and printing the final value,
+so `[124, 402, 36]` prints 562
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+numbers = [124, 402, 36]
+summed = 0
+for num in numbers:
+    summed = summed + num
+print(summed)
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Computing the Value of a Polynomial
+
+The built-in function `enumerate` takes a sequence (e.g. a [list](04-lists.md)) and
+generates a new sequence of the same length. Each element of the new sequence is a pair composed
+of the index (0, 1, 2,...) and the value from the original sequence:
+
+```python
+for idx, val in enumerate(a_list):
+    # Do something using idx and val
+```
+
+The code above loops through `a_list`, assigning the index to `idx` and the value to `val`.
+
+Suppose you have encoded a polynomial as a list of coefficients in
+the following way: the first element is the constant term, the
+second element is the coefficient of the linear term, the third is the
+coefficient of the quadratic term, where the polynomial is of the form $ax^0 + bx^1 + cx^2$.
+
+```python
+x = 5
+coefs = [2, 4, 3]
+y = coefs[0] * x**0 + coefs[1] * x**1 + coefs[2] * x**2
+print(y)
+```
+
+```output
+97
+```
+
+Write a loop using `enumerate(coefs)` which computes the value `y` of any
+polynomial, given `x` and `coefs`.
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+y = 0
+for idx, coef in enumerate(coefs):
+    y = y + coef * x**idx
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
