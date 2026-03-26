@@ -19,7 +19,9 @@ exercises: 0
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How can my programs do different things based on data values?
+- How do I know what Python can "see"?
+- Where am I working?
+- Where are my outputs going?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -212,8 +214,8 @@ That can quickly reveal what Python can actually see.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Use `if condition` to start a conditional statement, `elif condition` to provide additional tests, and `else` to provide a default.
-
+- Be aware of your current working directory
+- One of the biggest struggle for importing your data into Python is getting paths correct.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

@@ -5,7 +5,7 @@ exercises: 5
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
-- Understand the syntax bbehind assigning values to variables in Python.
+- Understand the syntax behind assigning values to variables in Python.
 - Recognise common Python data types and understand why they matter.
 - Understand that Jupyter notebooks run cells in the order you execute them, not the order they appear.
  
@@ -408,10 +408,6 @@ That is the gold standard.
 - Variables are created on demand whenever a value is assigned to them.
 - Use `print(something)` to display the value of `something`.
 - Use `# some kind of explanation` to add comments to programs.
-- Built-in functions are always available to use.
-- Use `help(thing)` to view help for something.
-- Error messages provide information about what has gone wrong with your program and where.
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 

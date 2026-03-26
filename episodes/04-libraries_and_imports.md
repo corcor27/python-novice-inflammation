@@ -6,15 +6,15 @@ exercises: 20
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Plot simple graphs from data.
-- Plot multiple graphs in a single figure.
+- Install and import libraries.
+- Understand how libraries relate to environments.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How can I visualize tabular data in Python?
-- How can I group several plots together?
+- Why do we need libraries?
+- What is aliasing?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -146,13 +146,13 @@ math is imported with its full name
 numpy is imported with the shorter name np
 Key idea
 
-Libraries give us access to code that other people have already written.
-We import libraries so we can use their tools.
-We sometimes rename them with as to make our code shorter and easier to work with.
+
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Use the `pyplot` module from the `matplotlib` library for creating simple visualizations.
+- Libraries give us access to code that other people have already written.
+- We import libraries so we can use their tools.
+- We sometimes rename them with as to make our code shorter and easier to work with.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

@@ -8,8 +8,6 @@ exercises: 0
 
 - Explain what a `for` loop does.
 - Correctly write `for` loops to repeat simple calculations.
-- Trace changes to a loop variable as the loop runs.
-- Trace changes to other variables as they are updated by a `for` loop.
 - Write conditional statements including `if`, `elif`, and `else` branches.
 - Correctly evaluate expressions containing `and` and `or`.
 
@@ -185,16 +183,13 @@ We've covered a very basic introduction to flow control in Python, but there are
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Use `for variable in sequence` to process the elements of a sequence one at a time.
-- The body of a `for` loop must be indented.
-- Use `len(thing)` to determine the length of something that contains other values.
+- Don't forget to indent, IDE's are helpful for this reason.
+- You can use `len(thing)` to determine the length of something that contains other values.
 - Use `if condition` to start a conditional statement, `elif condition` to provide additional tests, and `else` to provide a default.
-- The bodies of the branches of conditional statements must be indented.
-- Use `==` to test for equality.
+- Use `==` to test for equality and `=` for assignment.
 - `X and Y` is only true if both `X` and `Y` are true.
 - `X or Y` is true if either `X` or `Y`, or both, are true.
 - Zero, the empty string, and the empty list are considered false; all other numbers, strings, and lists are considered true.
-- `True` and `False` represent truth values.
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 

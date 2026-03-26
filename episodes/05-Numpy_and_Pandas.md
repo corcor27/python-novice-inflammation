@@ -6,9 +6,7 @@ exercises: 20
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain what a library is and what libraries are used for.
-- Import a Python library and use the functions it contains.
-- Read tabular data from a file into a program.
+- Read tabular data from a file.
 - Select individual values and subsections from data.
 - Perform operations on arrays of data.
 
@@ -16,7 +14,9 @@ exercises: 20
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How can I process tabular data files in Python?
+- How do I get data into Python?
+- How can I work on the data?
+- What if my data is not numbers?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -375,7 +375,7 @@ print(numpy.mean(data, axis=1))
  5.925 6.15  6.075 5.75  5.975 5.725 6.3   5.9   6.75  5.925 7.225 6.15
  5.95  6.275 5.7   6.1   6.825 5.975 6.725 5.7   6.25  6.4   7.05  5.9  ]
 ```
-##Pandas
+## Pandas
 
 ## Inspecting Datasets
 Pandas is a Python library for data manipulation and analysis, providing powerful data structures like DataFrame and Series along with a wide range of functions for tasks such as data cleaning, preparation, and exploration. It is widely used in data science and machine learning workflows for its ease of use and flexibility.
@@ -464,15 +464,10 @@ Finally, don’t underestimate the value of experimentation. Try small projects,
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Import a library into a program using `import libraryname`.
-- Use the `numpy` library to work with arrays in Python.
-- The expression `array.shape` gives the shape of an array.
-- Use `array[x, y]` to select a single element from a 2D array.
-- Array indices start at 0, not 1.
-- Use `low:high` to specify a `slice` that includes the indices from `low` to `high-1`.
-- Use `# some kind of explanation` to add comments to programs.
-- Use `numpy.mean(array)`, `numpy.amax(array)`, and `numpy.amin(array)` to calculate simple statistics.
-- Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis.
+- Remeber array indices start at 0, not 1.
+- Rembmer `low:high` to specify a `slice` that includes the indices from `low` to `high-1`.
+- Its good practice when you first start to use `# some kind of explanation` to explain what you are doing.
+- We have shown some simple examples but you could slice your data in much more complicated ways depending on your requirements.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

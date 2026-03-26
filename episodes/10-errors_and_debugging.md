@@ -7,8 +7,8 @@ exercises: 0
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - To be able to read a traceback, and determine where the error took place and what type it is.
-- To be able to describe the types of situations in which syntax errors, indentation errors, name errors, index errors, and missing file errors occur.
-- Debug code containing an error systematically.
+- To be aware of the different types of errors (e.g., indentation errors, name errors, etc.)
+- Underwstand the process of debuging code containing an error systematically.
 - Identify ways of making code less error-prone and more easily tested.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -909,15 +909,16 @@ Patient's BMI is: 0.000367
 
 - Tracebacks can look intimidating, but they give us a lot of useful information about what went wrong in our program, including where the error occurred and what type of error it was.
 - An error having to do with the 'grammar' or syntax of the program is called a `SyntaxError`. If the issue has to do with how the code is indented, then it will be called an `IndentationError`.
-- A `NameError` will occur when trying to use a variable that does not exist. Possible causes are that a variable definition is missing, a variable reference differs from its definition in spelling or capitalization, or the code contains a string that is missing quotes around it.
+- A `NameError` will occur when trying to use a variable that does not exist. P
 - Containers like lists and strings will generate errors if you try to access items in them that do not exist. This type of error is called an `IndexError`.
 - Trying to read a file that does not exist will give you an `FileNotFoundError`. Trying to read a file that is open for writing, or writing to a file that is open for reading, will give you an `IOError`.
 - Know what code is supposed to do *before* trying to debug it.
 - Make it fail every time.
 - Make it fail fast.
-- Change one thing at a time, and for a reason.
+- Change ONLY one thing at a time, and for a reason.
 - Keep track of what you've done.
-- Be humble.
+- Be humble and patient.
+- Use help.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

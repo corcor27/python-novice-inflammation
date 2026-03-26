@@ -6,18 +6,21 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain what a list is.
-- Create and index lists of simple values.
-- Change the values of individual elements
-- Append values to an existing list
-- Reorder and slice list elements
-- Create and manipulate nested lists
+- Understand why data structures are useful for storing multiple values.
+- Create, inspect, index, and modify data structures in Python.
+- Understand the difference between mutable and immutable objects.
+- Understand that data structures can be nested to suit our storage needs.
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How can I store many values together?
+- What is the difference between a list and a dictionary?
+- Why do we use a list or dictionary instead of lots of separate variables?
+- When is one data structure a better choice than another?
+- How do I get a value out of a data structure?
+- Can I get multiple values out of a data structure?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -459,11 +462,12 @@ my_dict['city'] = 'Los Angeles' # Updates the value of 'city' key to 'Los Angele
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- `[value1, value2, value3, ...]` creates a list.
+- `[value1, value2, value3, ...]` creates a list, (this process does not have to be manual).
 - Lists can contain any Python object, including lists (i.e., list of lists).
 - Lists are indexed and sliced with square brackets (e.g., `list[0]` and `list[2:9]`), in the same way as strings and arrays.
-- Lists are mutable (i.e., their values can be changed in place).
-- Strings are immutable (i.e., the characters in them cannot be changed).
+- Dictionaries are indexed with the key (e.g., dictionary['first_entry'])
+- Some objects are mutable (e.g., lists).
+- Some objects are immutable (e.g., strings).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

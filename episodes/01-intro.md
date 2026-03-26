@@ -7,7 +7,7 @@ exercises: 20
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Become familiar with mathematical operators and in-built functions.
-- Become more confident using Jypter notebooks (e.g., writing & submitting cells).
+- Become more confident using Juypter notebooks (e.g., writing & submitting cells).
 - Understand the order of operations.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
