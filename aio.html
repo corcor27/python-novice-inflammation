@@ -422,7 +422,7 @@
         
 <section id="aio-01-intro"><p>Content from <a href="01-intro.html">Python Fundamentals</a></p>
 <hr>
-<p>Last updated on 2026-03-25 |
+<p>Last updated on 2026-03-26 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/01-intro.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -436,7 +436,8 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>How do we process mathematical operations in Python</li>
+<li>How do we process mathematical operations in Python?</li>
+<li>What happens if we make a mistake?</li>
 </ul>
 </div>
 </div>
@@ -448,8 +449,8 @@
 <ul>
 <li>Become familiar with mathematical operators and in-built
 functions.</li>
-<li>Become confident using the console to run mathematical
-operations.</li>
+<li>Become more confident using Jypter notebooks (e.g., writing &amp;
+submitting cells).</li>
 <li>Understand the order of operations.</li>
 </ul>
 </div>
@@ -691,10 +692,12 @@ strategies in greater depth later in the lesson</a>.</p>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li>Built-in functions are always available to use.</li>
+<li>Built-in functions are always available to use (without additional
+libraries).</li>
 <li>Use <code>help(thing)</code> to view help for something.</li>
-<li>Error messages provide information about what has gone wrong with
-your program and where.</li>
+<li>You may have seen some error messages already, they provide
+information about what has gone wrong with your code and where, we will
+look at error message in more detail later in the course.</li>
 </ul>
 </div>
 </div>
@@ -716,7 +719,10 @@ your program and where.</li>
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>How do we process mathematical operations in Spyder?</li>
+<li>What is a Variable?</li>
+<li>What is a Type?</li>
+<li>Why are Types important?</li>
+<li>What happens when notebook cells are run out of order?</li>
 </ul>
 </div>
 </div>
@@ -726,11 +732,12 @@ your program and where.</li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Become familiar with mathematical operators and in-built
-functions.</li>
-<li>Become confident using the console to run mathematical
-operations.</li>
-<li>Understand the order of operations.</li>
+<li>Understand the syntax bbehind assigning values to variables in
+Python.</li>
+<li>Recognise common Python data types and understand why they
+matter.</li>
+<li>Understand that Jupyter notebooks run cells in the order you execute
+them, not the order they appear.</li>
 </ul>
 </div>
 </div>
@@ -1576,7 +1583,7 @@ your approach to make it more robust.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Use negative indices to count elements from the end of a container
 (such as list or string):</p>
@@ -1657,7 +1664,7 @@ through the end of the string)?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>To obtain every other character you need to provide a slice with the
 step size of 2:</p>
@@ -1751,7 +1758,7 @@ things depending on what it’s applied to.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The multiplication operator <code>*</code> used on a list replicates
 elements of the list and concatenates them together:</p>
@@ -2794,234 +2801,6 @@ then <code>matplotlib.pyplot.plot(...)</code> will not work, and you
 must use <code>plt.plot(...)</code> instead. Because of this, when
 working with other people it is important you agree on how libraries are
 imported.</p>
-</div>
-</div>
-</div>
-<div id="plot-scaling" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="plot-scaling" class="callout-inner">
-<h3 class="callout-title">Plot Scaling</h3>
-<div class="callout-content">
-<p>Why do all of our plots stop just short of the upper end of our
-graph?</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
-<div class="accordion-body">
-<p>Because matplotlib normally sets x and y axes limits to the min and
-max of our data (depending on data range)</p>
-</div>
-</div>
-</div>
-</div>
-<div id="plot-scaling" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="plot-scaling" class="callout-inner">
-<h3 class="callout-title">Plot Scaling<em> (continued)</em>
-</h3>
-<div class="callout-content">
-<p>If we want to change this, we can use the
-<code>set_ylim(min, max)</code> method of each ‘axes’, for example:</p>
-<div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>axes3.set_ylim(<span class="dv">0</span>, <span class="dv">6</span>)</span></code></pre>
-</div>
-<p>Update your plotting code to automatically set a more appropriate
-scale. (Hint: you can make use of the <code>max</code> and
-<code>min</code> methods to help.)</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
-</button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
-<div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb8">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># One method</span></span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>axes3.set_ylabel(<span class="st">'min'</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>axes3.plot(numpy.amin(data, axis<span class="op">=</span><span class="dv">0</span>))</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>axes3.set_ylim(<span class="dv">0</span>, <span class="dv">6</span>)</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
-</button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
-<div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># A more automated approach</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>min_data <span class="op">=</span> numpy.amin(data, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>axes3.set_ylabel(<span class="st">'min'</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>axes3.plot(min_data)</span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>axes3.set_ylim(numpy.amin(min_data), numpy.amax(min_data) <span class="op">*</span> <span class="fl">1.1</span>)</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="drawing-straight-lines" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="drawing-straight-lines" class="callout-inner">
-<h3 class="callout-title">Drawing Straight Lines</h3>
-<div class="callout-content">
-<p>In the center and right subplots above, we expect all lines to look
-like step functions because non-integer values are not realistic for the
-minimum and maximum values. However, you can see that the lines are not
-always vertical or horizontal, and in particular the step function in
-the subplot on the right looks slanted. Why is this?</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
-</button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
-<div class="accordion-body">
-<p>Because matplotlib interpolates (draws a straight line) between the
-points. One way to do avoid this is to use the Matplotlib
-<code>drawstyle</code> option:</p>
-<div class="codewrapper sourceCode" id="cb10">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">import</span> numpy</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>data <span class="op">=</span> numpy.loadtxt(fname<span class="op">=</span><span class="st">'inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>fig <span class="op">=</span> matplotlib.pyplot.figure(figsize<span class="op">=</span>(<span class="fl">10.0</span>, <span class="fl">3.0</span>))</span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>axes1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>axes2 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>axes3 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>axes1.set_ylabel(<span class="st">'average'</span>)</span>
-<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>axes1.plot(numpy.mean(data, axis<span class="op">=</span><span class="dv">0</span>), drawstyle<span class="op">=</span><span class="st">'steps-mid'</span>)</span>
-<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>axes2.set_ylabel(<span class="st">'max'</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>axes2.plot(numpy.amax(data, axis<span class="op">=</span><span class="dv">0</span>), drawstyle<span class="op">=</span><span class="st">'steps-mid'</span>)</span>
-<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a>axes3.set_ylabel(<span class="st">'min'</span>)</span>
-<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a>axes3.plot(numpy.amin(data, axis<span class="op">=</span><span class="dv">0</span>), drawstyle<span class="op">=</span><span class="st">'steps-mid'</span>)</span>
-<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a></span>
-<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a></span>
-<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a>matplotlib.pyplot.show()</span></code></pre>
-</div>
-<figure><img src="fig/inflammation-01-line-styles.svg" alt="Three line graphs, with step lines connecting the points, showing the daily average, maximumand minimum inflammation over a 40-day period." class="figure mx-auto d-block"></figure>
-</div>
-</div>
-</div>
-</div>
-<div id="make-your-own-plot" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="make-your-own-plot" class="callout-inner">
-<h3 class="callout-title">Make Your Own Plot</h3>
-<div class="callout-content">
-<p>Create a plot showing the standard deviation (<code>numpy.std</code>)
-of the inflammation data for each day across all patients.</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
-  <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
-</button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
-<div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb11">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>std_plot <span class="op">=</span> matplotlib.pyplot.plot(numpy.std(data, axis<span class="op">=</span><span class="dv">0</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>matplotlib.pyplot.show()</span></code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="moving-plots-around" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="moving-plots-around" class="callout-inner">
-<h3 class="callout-title">Moving Plots Around</h3>
-<div class="callout-content">
-<p>Modify the program to display the three plots on top of one another
-instead of side by side.</p>
-</div>
-</div>
-</div>
-<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
-  <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
-</button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
-<div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb12">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="im">import</span> numpy</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>data <span class="op">=</span> numpy.loadtxt(fname<span class="op">=</span><span class="st">'inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="co"># change figsize (swap width and height)</span></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>fig <span class="op">=</span> matplotlib.pyplot.figure(figsize<span class="op">=</span>(<span class="fl">3.0</span>, <span class="fl">10.0</span>))</span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co"># change add_subplot (swap first two parameters)</span></span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>axes1 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>axes2 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>axes3 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>)</span>
-<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a></span>
-<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>axes1.set_ylabel(<span class="st">'average'</span>)</span>
-<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a>axes1.plot(numpy.mean(data, axis<span class="op">=</span><span class="dv">0</span>))</span>
-<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a></span>
-<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>axes2.set_ylabel(<span class="st">'max'</span>)</span>
-<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a>axes2.plot(numpy.amax(data, axis<span class="op">=</span><span class="dv">0</span>))</span>
-<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a></span>
-<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a>axes3.set_ylabel(<span class="st">'min'</span>)</span>
-<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a>axes3.plot(numpy.amin(data, axis<span class="op">=</span><span class="dv">0</span>))</span>
-<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a></span>
-<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a></span>
-<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a>matplotlib.pyplot.show()</span></code></pre>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -4872,7 +4651,7 @@ IndexError: list index out of range</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>3 levels</li>
@@ -5230,7 +5009,7 @@ the errors are.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><code>SyntaxError</code> for missing <code>():</code> at end of first
 line, <code>IndentationError</code> for mismatch between second and
@@ -5284,7 +5063,7 @@ have been defined but was not?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>3 <code>NameError</code>s for <code>number</code> being misspelled,
 for <code>message</code> not defined, and for <code>a</code> not being
@@ -5335,7 +5114,7 @@ it?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p><code>IndexError</code>; the last entry is <code>seasons[3]</code>,
 so <code>seasons[4]</code> doesn’t make sense. A fixed version is:</p>
@@ -5586,7 +5365,7 @@ Patient's BMI is: 0.000367</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="suggestions-for-debugging">Suggestions for debugging<a class="anchor" aria-label="anchor" href="#suggestions-for-debugging"></a>
@@ -6383,6 +6162,234 @@ value <code>y</code> of any polynomial, given <code>x</code> and
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="cf">for</span> idx, coef <span class="kw">in</span> <span class="bu">enumerate</span>(coefs):</span>
 <span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a>    y <span class="op">=</span> y <span class="op">+</span> coef <span class="op">*</span> x<span class="op">**</span>idx</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="plot-scaling" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="plot-scaling" class="callout-inner">
+<h3 class="callout-title">Plot Scaling</h3>
+<div class="callout-content">
+<p>Why do all of our plots stop just short of the upper end of our
+graph?</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution16" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution16" aria-expanded="false" aria-controls="collapseSolution16">
+  <h4 class="accordion-header" id="headingSolution16"> Show me the solution </h4>
+</button>
+<div id="collapseSolution16" class="accordion-collapse collapse" aria-labelledby="headingSolution16" data-bs-parent="#accordionSolution16">
+<div class="accordion-body">
+<p>Because matplotlib normally sets x and y axes limits to the min and
+max of our data (depending on data range)</p>
+</div>
+</div>
+</div>
+</div>
+<div id="plot-scaling" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="plot-scaling" class="callout-inner">
+<h3 class="callout-title">Plot Scaling<em> (continued)</em>
+</h3>
+<div class="callout-content">
+<p>If we want to change this, we can use the
+<code>set_ylim(min, max)</code> method of each ‘axes’, for example:</p>
+<div class="codewrapper sourceCode" id="cb35">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>axes3.set_ylim(<span class="dv">0</span>, <span class="dv">6</span>)</span></code></pre>
+</div>
+<p>Update your plotting code to automatically set a more appropriate
+scale. (Hint: you can make use of the <code>max</code> and
+<code>min</code> methods to help.)</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution17" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution17" aria-expanded="false" aria-controls="collapseSolution17">
+  <h4 class="accordion-header" id="headingSolution17"> Show me the solution </h4>
+</button>
+<div id="collapseSolution17" class="accordion-collapse collapse" aria-labelledby="headingSolution17" data-bs-parent="#accordionSolution17">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb36">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="co"># One method</span></span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a>axes3.set_ylabel(<span class="st">'min'</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a>axes3.plot(numpy.amin(data, axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a>axes3.set_ylim(<span class="dv">0</span>, <span class="dv">6</span>)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution18" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution18" aria-expanded="false" aria-controls="collapseSolution18">
+  <h4 class="accordion-header" id="headingSolution18"> Show me the solution </h4>
+</button>
+<div id="collapseSolution18" class="accordion-collapse collapse" aria-labelledby="headingSolution18" data-bs-parent="#accordionSolution18">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb37">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="co"># A more automated approach</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>min_data <span class="op">=</span> numpy.amin(data, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>axes3.set_ylabel(<span class="st">'min'</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>axes3.plot(min_data)</span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a>axes3.set_ylim(numpy.amin(min_data), numpy.amax(min_data) <span class="op">*</span> <span class="fl">1.1</span>)</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="drawing-straight-lines" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="drawing-straight-lines" class="callout-inner">
+<h3 class="callout-title">Drawing Straight Lines</h3>
+<div class="callout-content">
+<p>In the center and right subplots above, we expect all lines to look
+like step functions because non-integer values are not realistic for the
+minimum and maximum values. However, you can see that the lines are not
+always vertical or horizontal, and in particular the step function in
+the subplot on the right looks slanted. Why is this?</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution19" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution19" aria-expanded="false" aria-controls="collapseSolution19">
+  <h4 class="accordion-header" id="headingSolution19"> Show me the solution </h4>
+</button>
+<div id="collapseSolution19" class="accordion-collapse collapse" aria-labelledby="headingSolution19" data-bs-parent="#accordionSolution19">
+<div class="accordion-body">
+<p>Because matplotlib interpolates (draws a straight line) between the
+points. One way to do avoid this is to use the Matplotlib
+<code>drawstyle</code> option:</p>
+<div class="codewrapper sourceCode" id="cb38">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="im">import</span> numpy</span>
+<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot</span>
+<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>data <span class="op">=</span> numpy.loadtxt(fname<span class="op">=</span><span class="st">'inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span>
+<span id="cb38-5"><a href="#cb38-5" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" tabindex="-1"></a>fig <span class="op">=</span> matplotlib.pyplot.figure(figsize<span class="op">=</span>(<span class="fl">10.0</span>, <span class="fl">3.0</span>))</span>
+<span id="cb38-7"><a href="#cb38-7" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="#cb38-8" tabindex="-1"></a>axes1 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" tabindex="-1"></a>axes2 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>)</span>
+<span id="cb38-10"><a href="#cb38-10" tabindex="-1"></a>axes3 <span class="op">=</span> fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb38-11"><a href="#cb38-11" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" tabindex="-1"></a>axes1.set_ylabel(<span class="st">'average'</span>)</span>
+<span id="cb38-13"><a href="#cb38-13" tabindex="-1"></a>axes1.plot(numpy.mean(data, axis<span class="op">=</span><span class="dv">0</span>), drawstyle<span class="op">=</span><span class="st">'steps-mid'</span>)</span>
+<span id="cb38-14"><a href="#cb38-14" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="#cb38-15" tabindex="-1"></a>axes2.set_ylabel(<span class="st">'max'</span>)</span>
+<span id="cb38-16"><a href="#cb38-16" tabindex="-1"></a>axes2.plot(numpy.amax(data, axis<span class="op">=</span><span class="dv">0</span>), drawstyle<span class="op">=</span><span class="st">'steps-mid'</span>)</span>
+<span id="cb38-17"><a href="#cb38-17" tabindex="-1"></a></span>
+<span id="cb38-18"><a href="#cb38-18" tabindex="-1"></a>axes3.set_ylabel(<span class="st">'min'</span>)</span>
+<span id="cb38-19"><a href="#cb38-19" tabindex="-1"></a>axes3.plot(numpy.amin(data, axis<span class="op">=</span><span class="dv">0</span>), drawstyle<span class="op">=</span><span class="st">'steps-mid'</span>)</span>
+<span id="cb38-20"><a href="#cb38-20" tabindex="-1"></a></span>
+<span id="cb38-21"><a href="#cb38-21" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb38-22"><a href="#cb38-22" tabindex="-1"></a></span>
+<span id="cb38-23"><a href="#cb38-23" tabindex="-1"></a>matplotlib.pyplot.show()</span></code></pre>
+</div>
+<figure><img src="fig/inflammation-01-line-styles.svg" alt="Three line graphs, with step lines connecting the points, showing the daily average, maximumand minimum inflammation over a 40-day period." class="figure mx-auto d-block"></figure>
+</div>
+</div>
+</div>
+</div>
+<div id="make-your-own-plot" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="make-your-own-plot" class="callout-inner">
+<h3 class="callout-title">Make Your Own Plot</h3>
+<div class="callout-content">
+<p>Create a plot showing the standard deviation (<code>numpy.std</code>)
+of the inflammation data for each day across all patients.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution20" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution20" aria-expanded="false" aria-controls="collapseSolution20">
+  <h4 class="accordion-header" id="headingSolution20"> Show me the solution </h4>
+</button>
+<div id="collapseSolution20" class="accordion-collapse collapse" aria-labelledby="headingSolution20" data-bs-parent="#accordionSolution20">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb39">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a>std_plot <span class="op">=</span> matplotlib.pyplot.plot(numpy.std(data, axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a>matplotlib.pyplot.show()</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="moving-plots-around" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="moving-plots-around" class="callout-inner">
+<h3 class="callout-title">Moving Plots Around</h3>
+<div class="callout-content">
+<p>Modify the program to display the three plots on top of one another
+instead of side by side.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution21" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution21" aria-expanded="false" aria-controls="collapseSolution21">
+  <h4 class="accordion-header" id="headingSolution21"> Show me the solution </h4>
+</button>
+<div id="collapseSolution21" class="accordion-collapse collapse" aria-labelledby="headingSolution21" data-bs-parent="#accordionSolution21">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb40">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="im">import</span> numpy</span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot</span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a>data <span class="op">=</span> numpy.loadtxt(fname<span class="op">=</span><span class="st">'inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a><span class="co"># change figsize (swap width and height)</span></span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a>fig <span class="op">=</span> matplotlib.pyplot.figure(figsize<span class="op">=</span>(<span class="fl">3.0</span>, <span class="fl">10.0</span>))</span>
+<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a><span class="co"># change add_subplot (swap first two parameters)</span></span>
+<span id="cb40-10"><a href="#cb40-10" tabindex="-1"></a>axes1 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb40-11"><a href="#cb40-11" tabindex="-1"></a>axes2 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb40-12"><a href="#cb40-12" tabindex="-1"></a>axes3 <span class="op">=</span> fig.add_subplot(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">3</span>)</span>
+<span id="cb40-13"><a href="#cb40-13" tabindex="-1"></a></span>
+<span id="cb40-14"><a href="#cb40-14" tabindex="-1"></a>axes1.set_ylabel(<span class="st">'average'</span>)</span>
+<span id="cb40-15"><a href="#cb40-15" tabindex="-1"></a>axes1.plot(numpy.mean(data, axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb40-16"><a href="#cb40-16" tabindex="-1"></a></span>
+<span id="cb40-17"><a href="#cb40-17" tabindex="-1"></a>axes2.set_ylabel(<span class="st">'max'</span>)</span>
+<span id="cb40-18"><a href="#cb40-18" tabindex="-1"></a>axes2.plot(numpy.amax(data, axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb40-19"><a href="#cb40-19" tabindex="-1"></a></span>
+<span id="cb40-20"><a href="#cb40-20" tabindex="-1"></a>axes3.set_ylabel(<span class="st">'min'</span>)</span>
+<span id="cb40-21"><a href="#cb40-21" tabindex="-1"></a>axes3.plot(numpy.amin(data, axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb40-22"><a href="#cb40-22" tabindex="-1"></a></span>
+<span id="cb40-23"><a href="#cb40-23" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb40-24"><a href="#cb40-24" tabindex="-1"></a></span>
+<span id="cb40-25"><a href="#cb40-25" tabindex="-1"></a>matplotlib.pyplot.show()</span></code></pre>
 </div>
 </div>
 </div>
