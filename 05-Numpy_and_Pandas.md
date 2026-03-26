@@ -48,6 +48,7 @@ need for each program.
 Once we've imported the library, we can ask the library to read our data file for us:
 
 ```python
+import numpy
 numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
 ```
 
@@ -276,10 +277,7 @@ maximum inflammation: 20.0
 minimum inflammation: 0.0
 standard deviation: 4.61383319712
 ```
-
-
-
-When analyzing data, though,
+When analysing data, though,
 we often want to look at variations in statistical values,
 such as the maximum inflammation per patient
 or the average inflammation per day.
@@ -382,7 +380,12 @@ print(numpy.mean(data, axis=1))
 ## Inspecting Datasets
 Pandas is a Python library for data manipulation and analysis, providing powerful data structures like DataFrame and Series along with a wide range of functions for tasks such as data cleaning, preparation, and exploration. It is widely used in data science and machine learning workflows for its ease of use and flexibility.
 
-We can now explore the Iris dataset to gain insights into its structure and contents.
+We can now explore the Iris dataset to gain insights into its structure and contents. To read in the dataset:
+
+```python
+iris_df = pd.read_csv("data/iris.csv")
+```
+
 
 ### Inspecting a Dataset
 To understand the structure of the Iris dataset, we can use various methods provided by Pandas:
@@ -405,21 +408,19 @@ Understanding the contents and data types of a data set is important for accurat
 ### Manipulating DataFrames
 Pandas provides powerful functionalities to manipulate DataFrames. Here are some examples:
 
-Adding and Removing Columns
+### Adding and Removing Columns
 
 Adding:
 ```python
 iris_df['sepal.ratio'] = iris_df['sepal.length'] / iris_df['sepal.width']
 ```
 
-
 Removing:
 ```python
 iris_df.drop('variety', axis=1, inplace=True)
 ```
 
-
-Adding and removing rows
+### Adding and removing rows
 
 Adding:
 ```python
@@ -427,14 +428,11 @@ new_row = {'sepal.length': 5.1, 'sepal.width': 3.5, 'petal.length': 1.4, 'petal.
 iris_df.loc[len(iris_df)] = new_row
 ```
 
-
 Removing:
 ```python
 iris_df.drop(0, inplace=True)
 iris_df.reset_index(drop=True, inplace=True)
 ```
-
-
 
 ### Sub-setting Data
 
@@ -446,39 +444,10 @@ iris_df = pd.read_csv("data/iris.csv") #reset the dataset
 subset_df = iris_df[iris_df['petal.length'] > 5]
 ```
 
-
 ```python
 # Select rows where species is 'setosa' and petal_length is less than 1.5
 subset_df = iris_df[(iris_df['variety'] == 'Setosa') & (iris_df['petal.length'] < 1.5)]
 ```
-
-```python
-# Select rows where sepal_length is greater than 5 and species is either 'setosa' or 'versicolor'
-subset_df = iris_df[(iris_df['sepal.length'] > 5) & (iris_df['variety'].isin(['Setosa', 'Versicolor']))]
-```
-
-```python
-# Select rows where species is 'setosa' or 'versicolor' and petal_length is not equal to 1.5
-subset_df = iris_df[(iris_df['variety'].isin(['Setosa', 'Versicolor'])) & (iris_df['petal.length'] != 1.5)]
-```
-
-### Applying a function
-
-To apply a function to a DataFrame column in Pandas, you can use the .apply() method.
-
-```python
-# Define a custom function
-def square_value(x):
-    return x ** 2
-```
-
-
-```python
-iris_df['petal.length.squared'] = iris_df['petal.length'].apply(square_value)
-```
-
-
-Pandas is highly efficient for DataFrame manipulation due to its intuitive syntax and powerful functionalities. It offers a wide range of built-in functions for data selection, filtering, and transformation, making tasks like data cleaning and preprocessing streamlined. 
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
