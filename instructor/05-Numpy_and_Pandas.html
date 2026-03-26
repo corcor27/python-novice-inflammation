@@ -246,6 +246,7 @@
         <ul><li><a href="#loading-data-into-python">Loading data into Python</a></li>
 <li><a href="#slicing-data">Slicing data</a></li>
 <li><a href="#analyzing-data">Analyzing data</a></li>
+<li><a href="#pandas">Pandas</a></li>
 <li><a href="#inspecting-datasets">Inspecting Datasets</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -386,7 +387,9 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How can I process tabular data files in Python?</li>
+<ul><li>How do I get data into Python?</li>
+<li>How can I work on the data?</li>
+<li>What if my data is not numbers?</li>
 </ul></div>
 </div>
 </div>
@@ -394,9 +397,7 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Explain what a library is and what libraries are used for.</li>
-<li>Import a Python library and use the functions it contains.</li>
-<li>Read tabular data from a file into a program.</li>
+<ul><li>Read tabular data from a file.</li>
 <li>Select individual values and subsections from data.</li>
 <li>Perform operations on arrays of data.</li>
 </ul></div>
@@ -774,8 +775,8 @@ get the patient’s average inflammation over the duration of the study
  5.925 6.15  6.075 5.75  5.975 5.725 6.3   5.9   6.75  5.925 7.225 6.15
  5.95  6.275 5.7   6.1   6.825 5.975 6.725 5.7   6.25  6.4   7.05  5.9  ]</code></pre>
 </div>
-<p>##Pandas</p>
-</section><section><h2 class="section-heading" id="inspecting-datasets">Inspecting Datasets<a class="anchor" aria-label="anchor" href="#inspecting-datasets"></a></h2>
+</section><section><h2 class="section-heading" id="pandas">Pandas<a class="anchor" aria-label="anchor" href="#pandas"></a></h2>
+<hr class="half-width"></section><section><h2 class="section-heading" id="inspecting-datasets">Inspecting Datasets<a class="anchor" aria-label="anchor" href="#inspecting-datasets"></a></h2>
 <hr class="half-width"><p>Pandas is a Python library for data manipulation and analysis,
 providing powerful data structures like DataFrame and Series along with
 a wide range of functions for tasks such as data cleaning, preparation,
@@ -894,24 +895,14 @@ becomes much more manageable.</p>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>Import a library into a program using
-<code>import libraryname</code>.</li>
-<li>Use the <code>numpy</code> library to work with arrays in
-Python.</li>
-<li>The expression <code>array.shape</code> gives the shape of an
-array.</li>
-<li>Use <code>array[x, y]</code> to select a single element from a 2D
-array.</li>
-<li>Array indices start at 0, not 1.</li>
-<li>Use <code>low:high</code> to specify a <code>slice</code> that
+<ul><li>Remeber array indices start at 0, not 1.</li>
+<li>Rembmer <code>low:high</code> to specify a <code>slice</code> that
 includes the indices from <code>low</code> to <code>high-1</code>.</li>
-<li>Use <code># some kind of explanation</code> to add comments to
-programs.</li>
-<li>Use <code>numpy.mean(array)</code>, <code>numpy.amax(array)</code>,
-and <code>numpy.amin(array)</code> to calculate simple statistics.</li>
-<li>Use <code>numpy.mean(array, axis=0)</code> or
-<code>numpy.mean(array, axis=1)</code> to calculate statistics across
-the specified axis.</li>
+<li>Its good practice when you first start to use
+<code># some kind of explanation</code> to explain what you are
+doing.</li>
+<li>We have shown some simple examples but you could slice your data in
+much more complicated ways depending on your requirements.</li>
 </ul></div>
 </div>
 </div>
