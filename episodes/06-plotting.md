@@ -27,7 +27,7 @@ there is no official plotting library, `matplotlib` is the *de facto* standard. 
 import the `pyplot` module from `matplotlib` and use two of its functions to create and display a
 [heat map](../learners/reference.md#heat-map) of our data:
 
-::::::::::::::::::::::::::::::::::::::::::  prereq
+::::::::::::::::::::::::::::::::::::::::::
 
 ## Episode Prerequisites
 

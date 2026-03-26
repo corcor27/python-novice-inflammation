@@ -22,407 +22,163 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-we wrote Python code that plots values of interest from our first
-inflammation dataset (`inflammation-01.csv`), which revealed some suspicious features in it.
+Often, we want to perform different operations in our code based upon dynamic conditions. To explore this idea, we are going to pretend we have two sensors. The first representing a temperature, and the second representing if there is rainfall. Our temperature is a numeric value, and our rainfall is a boolean. To declare those variables, type into the script:
 
-![](fig/03-loop_2_0.png){alt="Line graphs showing average, maximum and minimum inflammation across all patients over a 40-day period."}
-
-We have a dozen data sets right now and potentially more on the way if Dr. Maverick
-can keep up their surprisingly fast clinical trial rate. We want to create plots for all of
-our data sets with a single statement. To do that, we'll have to teach the computer how to
-repeat things.
-
-An example task that we might want to repeat is accessing numbers in a list,
-which we
-will do by printing each number on a line of its own.
-
-```python
-odds = [1, 3, 5, 7]
 ```
+temp_reading = 16 
 
-In Python, a list is basically an ordered collection of elements, and every
-element has a unique number associated with it --- its index. This means that
-we can access elements in a list using their indices.
-For example, we can get the first number in the list `odds`,
-by using `odds[0]`. One way to print each number is to use four `print` statements:
-
-```python
-print(odds[0])
-print(odds[1])
-print(odds[2])
-print(odds[3])
+rainfall = True 
 ```
+{: .languge.python}
+Then place the following code into your script:
 
-```output
-1
-3
-5
-7
 ```
-
-This is a bad approach for three reasons:
-
-1. **Not scalable**. Imagine you need to print a list that has hundreds
-  of elements. It might be easier to type them in manually.
-
-2. **Difficult to maintain**. If we want to decorate each printed element with an
-  asterisk or any other character, we would have to change four lines of code. While
-  this might not be a problem for small lists, it would definitely be a problem for
-  longer ones.
-
-3. **Fragile**. If we use it with a list that has more elements than what we initially
-  envisioned, it will only display part of the list's elements. A shorter list, on
-  the other hand, will cause an error because it will be trying to display elements of the
-  list that do not exist.
-
-```python
-odds = [1, 3, 5]
-print(odds[0])
-print(odds[1])
-print(odds[2])
-print(odds[3])
+if rainfall == True: 
+  print("Advise user to take an umbrella") 
 ```
+{: .languge.python}
 
-```output
-1
-3
-5
+Run the script using the run button (little green play button) above the script pane.
+
 ```
-
-```error
----------------------------------------------------------------------------
-IndexError                                Traceback (most recent call last)
-<ipython-input-3-7974b6cdaf14> in <module>()
-      3 print(odds[1])
-      4 print(odds[2])
-----> 5 print(odds[3])
-
-IndexError: list index out of range
+"Advise user to take an umbrella"
 ```
+{: .output}
 
-Here's a better approach: a [for loop](../learners/reference.md#for-loop)
+From observing the output in the console and from a brief inspection of the code, it should be evident that we are evaluating the variable rainfall. Specifically, we are checking if it is True. If the outcome is of the check is valid, then we perform any code within the indented block.
 
-```python
-odds = [1, 3, 5, 7]
-for num in odds:
-    print(num)
+{% include figure.html max-width="100%" file="/fig/ifflow1.png" 
+alt="Flow diagrame for if condition" caption="Figure 1: Flow diagram for an *if* condition" %}
+
+
+### if, else
+
+Now modify your code to look like this:
+
 ```
-
-```output
-1
-3
-5
-7
+if rainfall: 
+  print("Advise user to take an umbrella") 
+else: 
+  print("Leave your umbrella at home") 
 ```
+{: .languge.python}
 
-This is shorter --- certainly shorter than something that prints every number in a
-hundred-number list --- and more robust as well:
+Note: With boolean variables, we don't actually have to check for equivalence.
 
-```python
-odds = [1, 3, 5, 7, 9, 11]
-for num in odds:
-    print(num)
+{% include figure.html max-width="100%" file="/fig/ifflow2.png" 
+alt="Flow diagrame for if condition" caption="Figure 2: Flow diagram for an if, else condition" %}
+
+### Change the condition
+Now change the rainfall variable to False and run the script again.
+
 ```
-
-```output
-1
-3
-5
-7
-9
-11
+rainfall = False
 ```
+{: .languge.python}
 
-The improved version uses a [for loop](../learners/reference.md#for-loop)
-to repeat an operation --- in this case, printing --- once for each thing in a sequence.
-The general form of a loop is:
-
-```python
-for variable in collection:
-    # do things using variable, such as print
 ```
-
-Using the odds example above, the loop might look like this:
-
-![](fig/05-loops_image_num.png){alt="Loop variable 'num' being assigned the value of each element in the list odds in turn and then being printed"}
-
-where each number (`num`) in the variable `odds` is looped through and printed one number after
-another. The other numbers in the diagram denote which loop cycle the number was printed in (1
-being the first loop cycle, and 6 being the final loop cycle).
-
-We can call the [loop variable](../learners/reference.md#loop-variable) anything we like, but
-there must be a colon at the end of the line starting the loop, and we must indent anything we
-want to run inside the loop. Unlike many other languages, there is no command to signify the end
-of the loop body (e.g. `end for`); everything indented after the `for` statement belongs to the loop.
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## What's in a name?
-
-In the example above, the loop variable was given the name `num` as a mnemonic;
-it is short for 'number'.
-We can choose any name we want for variables. We might just as easily have chosen the name
-`banana` for the loop variable, as long as we use the same name when we invoke the variable inside
-the loop:
-
-```python
-odds = [1, 3, 5, 7, 9, 11]
-for banana in odds:
-    print(banana)
+"Leave your umbrella at home"
 ```
+{: .output}
 
-```output
-1
-3
-5
-7
-9
-11
+Our code now reacts differently to different input values. You can combine if, elif (else if), and else statements to control the flow of your code.
+
+### Conditional statements
+- 'if' – Used to execute a block of code if a condition is true.
+- 'elif' – Extends an 'if' statement to check a condition only if the previous 'if' or 'elif' condition was resolved as false.
+- 'else' – Extends an 'if' statement, will execute if none of the preceding 'if' conditions are true.
+
+### Comparison operators
+We have encountered '==', which is used to check for equivalence. There are other comparison operators available to us.
+- \> Greater than
+- \>= Greater than or equal to
+- < Less than
+- <= Less than or equal to
+- == Equal to
+- != Not equal to
+
+### Boolean operators
+
+* **and**: The and operator returns True if both operands are True, otherwise it returns False.
+* **or**: The or operator returns True if at least one of the operands is True, otherwise it returns False. 
+* **not**: The not operator returns True if the operand is False, and False if the operand is True. 
+
+Replace the code in your script with this (keeping the variables):
+
 ```
-
-It is a good idea to choose variable names that are meaningful, otherwise it would be more
-difficult to understand what the loop is doing.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-Here's another loop that repeatedly updates a variable:
-
-```python
-length = 0
-names = ['Curie', 'Darwin', 'Turing']
-for value in names:
-    length = length + 1
-print('There are', length, 'names in the list.')
+if rainfall or temp_reading < 10:
+    print("Stay at home") 
+else:
+    print("Go outside")
 ```
+{: .languge.python}
 
-```output
-There are 3 names in the list.
+By combining these operators, you can create sophisticated flow control mechanisms.
+
+### For loops
+
+In Python, a for loop is used to iterate over a sequence and perform a set of statements for each item in the sequence. Here's how a for loop works in Python:
+
+1. **Syntax:** The syntax of a for loop in Python is as follows:
+   
+   ```python
+   for item in sequence:
+       # Statements to execute for each item
+   ```
+
+2. **Explanation:** 
+   - The `for` keyword is used to start the loop.
+   - `item` is a variable that takes each value from the `sequence` in each iteration of the loop.
+   - `sequence` is the collection of items over which the loop iterates.
+   - Indentation is used to define the block of statements to be executed for each iteration of the loop.   
+
+
+3. **Examples:** Here's an examples of a for loop that iterates over a range of numbers and prints each number:
+   
 ```
-
-It's worth tracing the execution of this little program step by step.
-Since there are three names in `names`,
-the statement on line 4 will be executed three times.
-The first time around,
-`length` is zero (the value assigned to it on line 1)
-and `value` is `Curie`.
-The statement adds 1 to the old value of `length`,
-producing 1,
-and updates `length` to refer to that new value.
-The next time around,
-`value` is `Darwin` and `length` is 1,
-so `length` is updated to be 2.
-After one more update,
-`length` is 3;
-since there is nothing left in `names` for Python to process,
-the loop finishes
-and the `print` function on line 5 tells us our final answer.
-
-Note that a loop variable is a variable that is being used to record progress in a loop.
-It still exists after the loop is over,
-and we can re-use variables previously defined as loop variables as well:
-
-```python
-name = 'Rosalind'
-for name in ['Curie', 'Darwin', 'Turing']:
-    print(name)
-print('after the loop, name is', name)
+   for i in range(5):
+       print(i)
 ```
+{: .languge.python}
 
-```output
-Curie
-Darwin
-Turing
-after the loop, name is Turing
 ```
-
-Note also that finding the length of an object is such a common operation
-that Python actually has a built-in function to do it called `len`:
-
-```python
-print(len([0, 1, 2, 3]))
-```
-
-```output
-4
-```
-
-`len` is much faster than any function we could write ourselves,
-and much easier to read than a two-line loop;
-it will also give us the length of many other things that we haven't met yet,
-so we should always use it when we can.
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## From 1 to N
-
-Python has a built-in function called `range` that generates a sequence of numbers. `range` can
-accept 1, 2, or 3 parameters.
-
-- If one parameter is given, `range` generates a sequence of that length,
-  starting at zero and incrementing by 1.
-  For example, `range(3)` produces the numbers `0, 1, 2`.
-- If two parameters are given, `range` starts at
-  the first and ends just before the second, incrementing by one.
-  For example, `range(2, 5)` produces `2, 3, 4`.
-- If `range` is given 3 parameters,
-  it starts at the first one, ends just before the second one, and increments by the third one.
-  For example, `range(3, 10, 2)` produces `3, 5, 7, 9`.
-
-Using `range`,
-write a loop that prints the first 3 natural numbers:
-
-```python
+0
 1
 2
 3
+4
 ```
+{: .output}
 
-:::::::::::::::  solution
+ Here's an examples of a for loop that iterates over a list of strings and prints each string:
 
-## Solution
-
-```python
-for number in range(1, 4):
-    print(number)
 ```
+days = ['monday','tuesday','wednesday','thursday','friday']
 
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Understanding the loops
-
-Given the following loop:
-
-```python
-word = 'oxygen'
-for letter in word:
-    print(letter)
+for day in days:
+    print(day)
 ```
-
-How many times is the body of the loop executed?
-
-- 3 times
-- 4 times
-- 5 times
-- 6 times
-
-:::::::::::::::  solution
-
-## Solution
-
-The body of the loop is executed 6 times.
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Computing Powers With Loops
-
-Exponentiation is built into Python:
-
-```python
-print(5 ** 3)
+{: .languge.python}
+  
 ```
-
-```output
-125
+monday
+tuesday
+wednesday
+thursday
+friday
 ```
+{: .output}
 
-Write a loop that calculates the same result as `5 ** 3` using
-multiplication (and without exponentiation).
+For loops are commonly used in Python for iterating over sequences, performing repetitive tasks, and processing collections of data.
 
-:::::::::::::::  solution
+### Keeping things clear
+It is possible to put conditional statements inside conditional statements these are then referred to as 'nested'. If your code becomes overly nested it can impact readability and maintainability. It is good practice to keep your workflow as simple as possible, this can be made easier by spending time on design and regular refactoring.
 
-## Solution
+Note: Refactoring is the process of restructuring code, not to change the functionality but to improve factors like readability, maintainability, efficiency.
 
-```python
-result = 1
-for number in range(0, 3):
-    result = result * 5
-print(result)
-```
+We've covered a very basic introduction to flow control in Python, but there are many more facets to explore in order to fully understand all possibilities. Please feel free to check out the link below for more information on flow control.
 
-:::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Summing a list
-
-Write a loop that calculates the sum of elements in a list
-by adding each element and printing the final value,
-so `[124, 402, 36]` prints 562
-
-:::::::::::::::  solution
-
-## Solution
-
-```python
-numbers = [124, 402, 36]
-summed = 0
-for num in numbers:
-    summed = summed + num
-print(summed)
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Computing the Value of a Polynomial
-
-The built-in function `enumerate` takes a sequence (e.g. a [list](04-lists.md)) and
-generates a new sequence of the same length. Each element of the new sequence is a pair composed
-of the index (0, 1, 2,...) and the value from the original sequence:
-
-```python
-for idx, val in enumerate(a_list):
-    # Do something using idx and val
-```
-
-The code above loops through `a_list`, assigning the index to `idx` and the value to `val`.
-
-Suppose you have encoded a polynomial as a list of coefficients in
-the following way: the first element is the constant term, the
-second element is the coefficient of the linear term, the third is the
-coefficient of the quadratic term, where the polynomial is of the form $ax^0 + bx^1 + cx^2$.
-
-```python
-x = 5
-coefs = [2, 4, 3]
-y = coefs[0] * x**0 + coefs[1] * x**1 + coefs[2] * x**2
-print(y)
-```
-
-```output
-97
-```
-
-Write a loop using `enumerate(coefs)` which computes the value `y` of any
-polynomial, given `x` and `coefs`.
-
-:::::::::::::::  solution
-
-## Solution
-
-```python
-y = 0
-for idx, coef in enumerate(coefs):
-    y = y + coef * x**idx
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
