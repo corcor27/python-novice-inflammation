@@ -14,7 +14,7 @@ exercises: 20
 :::::::::::::::::::::::::::::::::::::::: questions
 
 - How can I visualize tabular data in Python?
-- How can I group several plots together?
+- How can I generate several plots together?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -188,7 +188,9 @@ is important you agree on how libraries are imported.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Use the `pyplot` module from the `matplotlib` library for creating simple visualizations.
+- We can easily visualise data using matplotlib.
+- There are other libraries that are popular (e.g., seaborn).
+- Getting figures just right can take a bit of time and effort.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

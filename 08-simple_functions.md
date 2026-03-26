@@ -19,6 +19,7 @@ exercises: 0
 - How can I define new functions?
 - What's the difference between defining and calling a function?
 - What happens when I call a function?
+- Why do I need functions?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -967,11 +968,9 @@ could be further improved to make them more readable.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Define a function using `def function_name(parameter)`.
 - The body of a function must be indented.
 - Call a function using `function_name(value)`.
-- Numbers are stored as integers or floating-point numbers.
-- Variables defined within a function can only be seen and used within the body of the function.
+- The `Scope` of variables defined within a function can only be seen and used within the body of the function.
 - Variables created outside of any function are called global variables.
 - Within a function, we can access global variables.
 - Variables created within a function override global variables if their names match.
