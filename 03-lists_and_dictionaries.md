@@ -21,7 +21,7 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-In the previous episode, we analyzed a single file of clinical trial inflammation data. However,
+In the previous episode, we analysed a single file of clinical trial inflammation data. However,
 after finding some peculiar and potentially suspicious trends in the trial data we ask
 Dr. Maverick if they have performed any other clinical trials. Surprisingly, they say that they
 have and provide us with 11 more CSV files for a further 11 clinical trials they have undertaken
@@ -36,8 +36,6 @@ multiple values in a list as well as how to work with lists.
 
 ## Python lists
 
-Unlike NumPy arrays, lists are built into the language so we do not have to load a library
-to use them.
 We create a list by putting values inside square brackets and separating the values with commas:
 
 ```python
@@ -85,78 +83,43 @@ names is originally: ['Curie', 'Darwing', 'Turing']
 final value of names: ['Curie', 'Darwin', 'Turing']
 ```
 
-works, but:
-
-```python
-name = 'Darwin'
-name[0] = 'd'
-```
-
-```error
----------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
-<ipython-input-8-220df48aeb2e> in <module>()
-      1 name = 'Darwin'
-----> 2 name[0] = 'd'
-
-TypeError: 'str' object does not support item assignment
-```
-
-does not.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Ch-Ch-Ch-Ch-Changes
 
-Data which can be modified in place is called [mutable](../learners/reference.md#mutable),
-while data which cannot be modified is called
-[immutable](../learners/reference.md#immutable).
-Strings and numbers are immutable. This does not mean that variables with string or number values
-are constants, but when we want to change the value of a string or number variable, we can only
-replace the old value with a completely new value.
-
-Lists and arrays, on the other hand, are mutable: we can modify them after they have been
-created. We can change individual elements, append new elements, or reorder the whole list. For
-some operations, like sorting, we can choose whether to use a function that modifies the data
-in-place or a function that returns a modified copy and leaves the original unchanged.
-
-Be careful when modifying data in-place. If two variables refer to the same list, and you modify
-the list value, it will change for both variables!
+Mutable data (like lists and arrays) can be changed after creation, while immutable data (like strings and numbers) cannot be modified—only replaced.
+Modifying mutable objects in place can lead to unexpected behaviour if multiple variables reference the same data.
+To avoid this, you can create a copy so changes do not affect the original.
+In-place changes are more efficient but can make code harder to understand, so there is a trade-off between clarity and performance.
 
 ```python
-mild_salsa = ['peppers', 'onions', 'cilantro', 'tomatoes']
+mild_salsa = ['peppers', 'onions', 'cilantro']
 hot_salsa = mild_salsa        # <-- mild_salsa and hot_salsa point to the *same* list data in memory
 hot_salsa[0] = 'hot peppers'
 print('Ingredients in mild salsa:', mild_salsa)
 print('Ingredients in hot salsa:', hot_salsa)
 ```
-
 ```output
-Ingredients in mild salsa: ['hot peppers', 'onions', 'cilantro', 'tomatoes']
-Ingredients in hot salsa: ['hot peppers', 'onions', 'cilantro', 'tomatoes']
+Ingredients in mild salsa: ['hot peppers', 'onions', 'cilantro']
+Ingredients in hot salsa: ['hot peppers', 'onions', 'cilantro']
 ```
 
 If you want variables with mutable values to be independent, you
 must make a copy of the value when you assign it.
 
 ```python
-mild_salsa = ['peppers', 'onions', 'cilantro', 'tomatoes']
-hot_salsa = list(mild_salsa)        # <-- makes a *copy* of the list
+mild_salsa = ['peppers', 'onions', 'cilantro']
+hot_salsa = mild_salsa.copy()        # <-- mild_salsa and hot_salsa point to the *same* list data in memory
 hot_salsa[0] = 'hot peppers'
 print('Ingredients in mild salsa:', mild_salsa)
 print('Ingredients in hot salsa:', hot_salsa)
 ```
 
 ```output
-Ingredients in mild salsa: ['peppers', 'onions', 'cilantro', 'tomatoes']
-Ingredients in hot salsa: ['hot peppers', 'onions', 'cilantro', 'tomatoes']
+Ingredients in mild salsa: ['peppers', 'onions', 'cilantro']
+Ingredients in hot salsa: ['hot peppers','onions', 'cilantro']
 ```
-
-Because of pitfalls like this, code which modifies data in place can be more difficult to
-understand. However, it is often far more efficient to modify a large data structure in place
-than to create a modified copy for every small change. You should consider both of these aspects
-when writing your code.
-
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -241,98 +204,25 @@ sample_ages = [10, 12.5, 'Unknown']
 There are many ways to change the contents of lists besides assigning new values to
 individual elements:
 
+### Adding to list
+
+To append an item to a list 
+
 ```python
 odds.append(11)
 print('odds after adding a value:', odds)
 ```
 
-```output
-odds after adding a value: [1, 3, 5, 7, 11]
-```
+### Removing elements
 
 ```python
 removed_element = odds.pop(0)
 print('odds after removing the first element:', odds)
 print('removed_element:', removed_element)
 ```
+### List slicing
 
-```output
-odds after removing the first element: [3, 5, 7, 11]
-removed_element: 1
-```
 
-```python
-odds.reverse()
-print('odds after reversing:', odds)
-```
-
-```output
-odds after reversing: [11, 7, 5, 3]
-```
-
-While modifying in place, it is useful to remember that Python treats lists in a slightly
-counter-intuitive way.
-
-As we saw earlier, when we modified the `mild_salsa` list item in-place, if we make a list, (attempt to)
-copy it and then modify this list, we can cause all sorts of trouble. This also applies to modifying
-the list using the above functions:
-
-```python
-odds = [3, 5, 7]
-primes = odds
-primes.append(2)
-print('primes:', primes)
-print('odds:', odds)
-```
-
-```output
-primes: [3, 5, 7, 2]
-odds: [3, 5, 7, 2]
-```
-
-This is because Python stores a list in memory, and then can use multiple names to refer to the
-same list. If all we want to do is copy a (simple) list, we can again use the `list` function, so we
-do not modify a list we did not mean to:
-
-```python
-odds = [3, 5, 7]
-primes = list(odds)
-primes.append(2)
-print('primes:', primes)
-print('odds:', odds)
-```
-
-```output
-primes: [3, 5, 7, 2]
-odds: [3, 5, 7]
-```
-
-Subsets of lists and strings can be accessed by specifying ranges of values in brackets,
-similar to how we accessed ranges of positions in a NumPy array.
-This is commonly referred to as "slicing" the list/string.
-
-```python
-binomial_name = 'Drosophila melanogaster'
-group = binomial_name[0:10]
-print('group:', group)
-
-species = binomial_name[11:23]
-print('species:', species)
-
-chromosomes = ['X', 'Y', '2', '3', '4']
-autosomes = chromosomes[2:5]
-print('autosomes:', autosomes)
-
-last = chromosomes[-1]
-print('last:', last)
-```
-
-```output
-group: Drosophila
-species: melanogaster
-autosomes: ['2', '3', '4']
-last: 4
-```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
