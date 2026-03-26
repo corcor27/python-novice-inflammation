@@ -280,6 +280,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#files-folders-and-paths">Files, Folders, and Paths</a></li>
+<li><a href="#some-additional-file-types">Some additional file types</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -362,7 +363,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Pathing and work spaces</h1>
-        <p>Last updated on 2026-03-24 |
+        <p>Last updated on 2026-03-26 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/09-Pathing_and_workspace.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -505,68 +506,56 @@ relative path is:</p>
 <li>they work better when a project folder is moved to another
 computer</li>
 </ul></div>
-<div class="section level3">
-<h3 id="loading-a-csv">Loading a CSV<a class="anchor" aria-label="anchor" href="#loading-a-csv"></a></h3>
-<p>A CSV file stores table data.</p>
-<p>Example:</p>
+</section><section><h2 class="section-heading" id="some-additional-file-types">Some additional file types<a class="anchor" aria-label="anchor" href="#some-additional-file-types"></a></h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="loading-an-image">Loading an image<a class="anchor" aria-label="anchor" href="#loading-an-image"></a></h3>
+<p>One common way to load an image is with PIL:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"data/marks.csv"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>df.head()</span></code></pre>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>img <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"data/cat.jpg"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>img</span></code></pre>
 </div>
-<p>What this does imports the pandas library as pd loads the file
-marks.csv from the data folder stores it in a variable called df</p>
-<p>If the file is in the same folder as the notebook, you may only
-need:</p>
+<p>This opens the image file from the data folder.</p>
+<p>Or you can even use a library called opencv</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"marks.csv"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>img <span class="op">=</span> cv2.imread(<span class="st">"imagepath.png"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>img</span></code></pre>
 </div>
-</div>
-<div class="section level3">
-<h3 id="loading-an-image">Loading an image<a class="anchor" aria-label="anchor" href="#loading-an-image"></a></h3>
-<p>One common way to load an image is with PIL:</p>
+<p>Another common option in notebooks is matplotlib:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>img <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"data/cat.jpg"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>img</span></code></pre>
-</div>
-<p>This opens the image file from the data folder.</p>
-<p>Another common option in notebooks is matplotlib:</p>
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>img <span class="op">=</span> mpimg.imread(<span class="st">"data/cat.jpg"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>plt.imshow(img)</span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>img <span class="op">=</span> mpimg.imread(<span class="st">"data/cat.jpg"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>plt.imshow(img)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span></code></pre>
 </div>
 </div>
 <div class="section level3">
 <h3 id="loading-an-audio-file">Loading an audio file<a class="anchor" aria-label="anchor" href="#loading-an-audio-file"></a></h3>
 <p>A simple notebook-friendly way is to use IPython display tools:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Audio</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>Audio(<span class="st">"data/song.wav"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Audio</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>Audio(<span class="st">"data/song.wav"</span>)</span></code></pre>
 </div>
 <p>This loads the audio file and gives you a player in the notebook.</p>
 <p>If the audio file is an .mp3, you can often load it the same way:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>Audio(<span class="st">"data/song.mp3"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>Audio(<span class="st">"data/song.mp3"</span>)</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -576,12 +565,12 @@ need:</p>
 Is the filename spelled correctly? Is the extension correct? Am I using
 the right folder names?</p>
 <p>A helpful debugging command is:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="bu">print</span>(os.getcwd())</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="bu">print</span>(os.listdir())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="bu">print</span>(os.getcwd())</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="bu">print</span>(os.listdir())</span></code></pre>
 </div>
 <p>This shows:</p>
 <ul><li>the current folder</li>
@@ -661,7 +650,7 @@ the right folder names?</p>
   "url": "https://swcarpentry.github.io/python-novice-inflammation/instructor/09-Pathing_and_workspace.html",
   "identifier": "https://swcarpentry.github.io/python-novice-inflammation/instructor/09-Pathing_and_workspace.html",
   "dateCreated": "2014-11-25",
-  "dateModified": "2026-03-24",
+  "dateModified": "2026-03-26",
   "datePublished": "2026-03-26"
 }
 
