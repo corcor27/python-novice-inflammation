@@ -7,14 +7,16 @@ exercises: 20
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Become familiar with mathematical operators and in-built functions.
-- Become confident using the console to run mathematical operations.
+- Become more confident using Jypter notebooks (e.g., writing & submitting cells).
 - Understand the order of operations.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How do we process mathematical operations in Python
+- How do we process mathematical operations in Python?
+- What happens if we make a mistake?
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -195,9 +197,9 @@ For now, let's explore how people use them to get more help when they are stuck 
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Built-in functions are always available to use.
+- Built-in functions are always available to use (without additional libraries).
 - Use `help(thing)` to view help for something.
-- Error messages provide information about what has gone wrong with your program and where.
+- You may have seen some error messages already, they provide information about what has gone wrong with your code and where, we will look at error message in more detail later in the course.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

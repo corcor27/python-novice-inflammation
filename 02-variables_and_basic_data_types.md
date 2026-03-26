@@ -5,14 +5,19 @@ exercises: 5
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
-- Become familiar with mathematical operators and in-built functions.
-- Become confident using the console to run mathematical operations.
-- Understand the order of operations.
+- Understand the syntax bbehind assigning values to variables in Python.
+- Recognise common Python data types and understand why they matter.
+- Understand that Jupyter notebooks run cells in the order you execute them, not the order they appear.
+ 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How do we process mathematical operations in Spyder?
+- What is a Variable?
+- What is a Type?
+- Why are Types important?
+- What happens when notebook cells are run out of order?
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Variables
