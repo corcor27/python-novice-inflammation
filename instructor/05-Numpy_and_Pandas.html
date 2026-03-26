@@ -432,7 +432,8 @@ data file for us:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>numpy.loadtxt(fname<span class="op">=</span><span class="st">'inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">import</span> numpy</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>numpy.loadtxt(fname<span class="op">=</span><span class="st">'inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -659,7 +660,7 @@ on.</p>
 minimum inflammation: 0.0
 standard deviation: 4.61383319712</code></pre>
 </div>
-<p>When analyzing data, though, we often want to look at variations in
+<p>When analysing data, though, we often want to look at variations in
 statistical values, such as the maximum inflammation per patient or the
 average inflammation per day. One way to do this is to create a new
 temporary array of the data we want, then ask it to do the
@@ -781,25 +782,30 @@ a wide range of functions for tasks such as data cleaning, preparation,
 and exploration. It is widely used in data science and machine learning
 workflows for its ease of use and flexibility.</p>
 <p>We can now explore the Iris dataset to gain insights into its
-structure and contents.</p>
+structure and contents. To read in the dataset:</p>
+<div class="codewrapper sourceCode" id="cb37">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>iris_df <span class="op">=</span> pd.read_csv(<span class="st">"data/iris.csv"</span>)</span></code></pre>
+</div>
 <div class="section level3">
 <h3 id="inspecting-a-dataset">Inspecting a Dataset<a class="anchor" aria-label="anchor" href="#inspecting-a-dataset"></a></h3>
 <p>To understand the structure of the Iris dataset, we can use various
 methods provided by Pandas:</p>
-<div class="codewrapper sourceCode" id="cb37">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="bu">print</span>(iris_df.head())</span></code></pre>
-</div>
 <div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="bu">print</span>(iris_df.info())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="bu">print</span>(iris_df.head())</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="bu">print</span>(iris_df.describe())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="bu">print</span>(iris_df.info())</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb40">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="bu">print</span>(iris_df.describe())</span></code></pre>
 </div>
 <p>Understanding the contents and data types of a data set is important
 for accurate analysis.</p>
@@ -808,85 +814,56 @@ for accurate analysis.</p>
 <h3 id="manipulating-dataframes">Manipulating DataFrames<a class="anchor" aria-label="anchor" href="#manipulating-dataframes"></a></h3>
 <p>Pandas provides powerful functionalities to manipulate DataFrames.
 Here are some examples:</p>
-<p>Adding and Removing Columns</p>
-<p>Adding:</p>
-<div class="codewrapper sourceCode" id="cb40">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a>iris_df[<span class="st">'sepal.ratio'</span>] <span class="op">=</span> iris_df[<span class="st">'sepal.length'</span>] <span class="op">/</span> iris_df[<span class="st">'sepal.width'</span>]</span></code></pre>
 </div>
-<p>Removing:</p>
+<div class="section level3">
+<h3 id="adding-and-removing-columns">Adding and Removing Columns<a class="anchor" aria-label="anchor" href="#adding-and-removing-columns"></a></h3>
+<p>Adding:</p>
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>iris_df.drop(<span class="st">'variety'</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>iris_df[<span class="st">'sepal.ratio'</span>] <span class="op">=</span> iris_df[<span class="st">'sepal.length'</span>] <span class="op">/</span> iris_df[<span class="st">'sepal.width'</span>]</span></code></pre>
 </div>
-<p>Adding and removing rows</p>
-<p>Adding:</p>
+<p>Removing:</p>
 <div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>new_row <span class="op">=</span> {<span class="st">'sepal.length'</span>: <span class="fl">5.1</span>, <span class="st">'sepal.width'</span>: <span class="fl">3.5</span>, <span class="st">'petal.length'</span>: <span class="fl">1.4</span>, <span class="st">'petal.width'</span>: <span class="fl">0.2</span>,}</span>
-<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a>iris_df.loc[<span class="bu">len</span>(iris_df)] <span class="op">=</span> new_row</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a>iris_df.drop(<span class="st">'variety'</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
-<p>Removing:</p>
+</div>
+<div class="section level3">
+<h3 id="adding-and-removing-rows">Adding and removing rows<a class="anchor" aria-label="anchor" href="#adding-and-removing-rows"></a></h3>
+<p>Adding:</p>
 <div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>iris_df.drop(<span class="dv">0</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>iris_df.reset_index(drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a>new_row <span class="op">=</span> {<span class="st">'sepal.length'</span>: <span class="fl">5.1</span>, <span class="st">'sepal.width'</span>: <span class="fl">3.5</span>, <span class="st">'petal.length'</span>: <span class="fl">1.4</span>, <span class="st">'petal.width'</span>: <span class="fl">0.2</span>,}</span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>iris_df.loc[<span class="bu">len</span>(iris_df)] <span class="op">=</span> new_row</span></code></pre>
+</div>
+<p>Removing:</p>
+<div class="codewrapper sourceCode" id="cb44">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>iris_df.drop(<span class="dv">0</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>iris_df.reset_index(drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
 </div>
 <div class="section level3">
 <h3 id="sub-setting-data">Sub-setting Data<a class="anchor" aria-label="anchor" href="#sub-setting-data"></a></h3>
 <p>Sub-setting allows us to select specific rows or columns based on
 conditions:</p>
-<div class="codewrapper sourceCode" id="cb44">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>iris_df <span class="op">=</span> pd.read_csv(<span class="st">"data/iris.csv"</span>) <span class="co">#reset the dataset</span></span>
-<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a><span class="co"># Select rows where petal_length is greater than 5</span></span>
-<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a>subset_df <span class="op">=</span> iris_df[iris_df[<span class="st">'petal.length'</span>] <span class="op">&gt;</span> <span class="dv">5</span>]</span></code></pre>
-</div>
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="co"># Select rows where species is 'setosa' and petal_length is less than 1.5</span></span>
-<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>subset_df <span class="op">=</span> iris_df[(iris_df[<span class="st">'variety'</span>] <span class="op">==</span> <span class="st">'Setosa'</span>) <span class="op">&amp;</span> (iris_df[<span class="st">'petal.length'</span>] <span class="op">&lt;</span> <span class="fl">1.5</span>)]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>iris_df <span class="op">=</span> pd.read_csv(<span class="st">"data/iris.csv"</span>) <span class="co">#reset the dataset</span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a><span class="co"># Select rows where petal_length is greater than 5</span></span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>subset_df <span class="op">=</span> iris_df[iris_df[<span class="st">'petal.length'</span>] <span class="op">&gt;</span> <span class="dv">5</span>]</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="co"># Select rows where sepal_length is greater than 5 and species is either 'setosa' or 'versicolor'</span></span>
-<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>subset_df <span class="op">=</span> iris_df[(iris_df[<span class="st">'sepal.length'</span>] <span class="op">&gt;</span> <span class="dv">5</span>) <span class="op">&amp;</span> (iris_df[<span class="st">'variety'</span>].isin([<span class="st">'Setosa'</span>, <span class="st">'Versicolor'</span>]))]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="co"># Select rows where species is 'setosa' and petal_length is less than 1.5</span></span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>subset_df <span class="op">=</span> iris_df[(iris_df[<span class="st">'variety'</span>] <span class="op">==</span> <span class="st">'Setosa'</span>) <span class="op">&amp;</span> (iris_df[<span class="st">'petal.length'</span>] <span class="op">&lt;</span> <span class="fl">1.5</span>)]</span></code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb47">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="co"># Select rows where species is 'setosa' or 'versicolor' and petal_length is not equal to 1.5</span></span>
-<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>subset_df <span class="op">=</span> iris_df[(iris_df[<span class="st">'variety'</span>].isin([<span class="st">'Setosa'</span>, <span class="st">'Versicolor'</span>])) <span class="op">&amp;</span> (iris_df[<span class="st">'petal.length'</span>] <span class="op">!=</span> <span class="fl">1.5</span>)]</span></code></pre>
-</div>
-</div>
-<div class="section level3">
-<h3 id="applying-a-function">Applying a function<a class="anchor" aria-label="anchor" href="#applying-a-function"></a></h3>
-<p>To apply a function to a DataFrame column in Pandas, you can use the
-.apply() method.</p>
-<div class="codewrapper sourceCode" id="cb48">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a><span class="co"># Define a custom function</span></span>
-<span id="cb48-2"><a href="#cb48-2" tabindex="-1"></a><span class="kw">def</span> square_value(x):</span>
-<span id="cb48-3"><a href="#cb48-3" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">**</span> <span class="dv">2</span></span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb49">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a>iris_df[<span class="st">'petal.length.squared'</span>] <span class="op">=</span> iris_df[<span class="st">'petal.length'</span>].<span class="bu">apply</span>(square_value)</span></code></pre>
-</div>
-<p>Pandas is highly efficient for DataFrame manipulation due to its
-intuitive syntax and powerful functionalities. It offers a wide range of
-built-in functions for data selection, filtering, and transformation,
-making tasks like data cleaning and preprocessing streamlined.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
