@@ -14,7 +14,7 @@ exercises: 15
 :::::::::::::::::::::::::::::::::::::::: questions
 
 - Why do we need libraries?
-- What does \import ... as ...` do?`
+- What does `import ... as ...` do?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -32,10 +32,10 @@ Instead of building every tool yourself, you can borrow tools that already exist
 * handling dates and times
 
 You can think of a library like a toolbox.
-If you need a hammer, you do not make one from metal and wood first — you take one from the toolbox and use it.
+If you need a hammer, you do not make one from metal and wood first, you take one from the toolbox and use it.
 In programming, a library is that toolbox.
 
-### Why do programmers use libraries?
+## Why do programmers use libraries?
 
 Programmers use libraries because they save time and effort.
 
@@ -48,7 +48,7 @@ If somebody has already written code that works well, it makes sense to use it r
 
 This is one reason programming is powerful: we build on work that already exists.
 
-### Why do we not write everything from scratch?
+## Why do we not write everything from scratch?
 
 Writing everything from scratch would take far too long and would often lead to more mistakes.
 
@@ -63,7 +63,7 @@ Instead, we use libraries because:
 
 So rather than spending hours rebuilding common tools, we use libraries and spend our time on the parts that are unique to our project.
 
-What does import mean?
+## What does import mean?
 
 To use a library in Python, we usually import it.
 
@@ -97,7 +97,7 @@ print(math.sqrt(16))
 
 This prints the square root of 16.
 
-What does import ... as ... mean?
+## What does import ... as ... mean?
 
 Sometimes library names are long, or programmers want a shorter name to type.
 Python lets us rename a library when we import it.
@@ -169,7 +169,7 @@ To manage this, programmers often use an **environment**. An environment is a se
 
 This helps us make sure we have the right setup for our code and avoids conflicts between different projects.
 
-### Getting help with libraries
+## Getting help with libraries
 
 If you’re getting started with NumPy and pandas, there are plenty of accessible ways to find help and build confidence. Official documentation is often the best first stop—both libraries provide clear guides, tutorials, and examples that cover everything from basic usage to advanced features.
 
