@@ -140,24 +140,6 @@ For example:
 
 These short versions are commonly used, so using them can make code easier for others to recognise.
 
-Example
-
-```python
-import math
-import numpy as np
-
-print(math.pi)
-
-numbers = np.array([1, 2, 3, 4])
-print(numbers)
-```
-
-In this example:
-
-math is imported with its full name
-numpy is imported with the shorter name np
-Key idea
-
 
 ## Packages, versions, and environments
 
@@ -188,6 +170,7 @@ Finally, don’t underestimate the value of experimentation. Try small projects,
 - Libraries give us access to code that other people have already written.
 - We import libraries so we can use their tools.
 - We sometimes rename them with as to make our code shorter and easier to work with.
+- We use environments to manage package versions as our projects get more complicated. 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
