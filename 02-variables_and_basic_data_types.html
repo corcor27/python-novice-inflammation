@@ -218,6 +218,7 @@
       <div class="accordion-body">
         <ul><li><a href="#variables">Variables</a></li>
 <li><a href="#types-of-data">Types of data</a></li>
+<li><a href="#how-python-assigns-data-types">How Python Assigns Data Types</a></li>
 <li><a href="#using-variables-in-python">Using Variables in Python</a></li>
 <li><a href="#built-in-python-functions">Built-in Python functions</a></li>
 <li><a href="#running-code-in-order">Running code in order</a></li>
@@ -366,7 +367,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Variables and basic data types</h1>
-        <p>Last updated on 2026-03-26 |
+        <p>Last updated on 2026-03-27 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/02-variables_and_basic_data_types.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -385,9 +386,9 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>What is a Variable?</li>
-<li>What is a Type?</li>
-<li>Why are Types important?</li>
+<ul><li>What is a variable?</li>
+<li>What is a type?</li>
+<li>Why are types important?</li>
 <li>What happens when notebook cells are run out of order?</li>
 </ul></div>
 </div>
@@ -413,23 +414,37 @@ them, not the order they appear.</li>
 <code>=</code>. For example, we can track the weight of a patient who
 weighs 60 kilograms by assigning the value <code>60</code> to a variable
 <code>weight_kg</code>:</p>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>In Python, <code>=</code> means assignment. It tells Python to store
+a value in a variable, it does not ask whether two things are equal.
+Later we will encounter <code>==</code> this is a check for
+equivalence.</p>
+</div>
+</div>
+</div>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>weight_kg <span class="op">=</span> <span class="dv">60</span></span></code></pre>
 </div>
 <p>From now on, whenever we use <code>weight_kg</code>, Python will
-substitute the value we assigned to it. In layperson’s terms, <strong>a
-variable is a name for a value</strong>.</p>
-<p>In Python, variable names can be:</p>
-<ul><li><p>Variable names are cases sensitive (My_name is different to
+substitute the value we assigned to it. In simple terms, a variable is a
+<strong>name for a value</strong>.</p>
+<p>In Python, variable naming has rules:</p>
+<ul><li><p>Variable names are case-sensitive (My_name is different from
 my_name).</p></li>
-<li><p>They must start with a letter or a underscore.</p></li>
-<li><p>They can consist of letters, numbers, periods, and
-underscores.</p></li>
-<li><p>There are reserved words (e.g., ‘else’, ‘for’) that cannot be
-used for naming variables as they are already used by Python for
-specific purposes.</p></li>
+<li><p>They can not contain spaces (e.g. my name = ‘bob’)</p></li>
+<li><p>They must start with a letter or an underscore.</p></li>
+<li><p>They can consist of letters, numbers, and underscores.</p></li>
+<li><p>Some reserved words (e.g., ‘else’, ‘for’) cannot be used as
+variable names because they already have a specific meaning in
+Python.</p></li>
 </ul><p>This means that, for example:</p>
 <ul><li>
 <code>weight0</code> is a valid variable name, whereas
@@ -437,18 +452,18 @@ specific purposes.</p></li>
 <li>
 <code>weight</code> and <code>Weight</code> are different
 variables</li>
-</ul><p>It may seem fussy but there are actually not that many enforced
-restrictions compared to the number of variable naming combinations.
-However, just because you can, doesn’t mean you should. There exist
-several naming conventions in the Python community to help provide
-structure and guidance to variable naming.</p>
+</ul><p>It may seem there are many restrictions but there are actually a huge
+number of variable naming combinations. However, just because you can,
+doesn’t mean you should. There are several naming conventions in the
+Python community that help provide structure and consistency.</p>
 <ol style="list-style-type: decimal"><li><p>my_variable (underscore or snake case)</p></li>
 <li><p>myVariable (camel case)</p></li>
-</ol><p>Although some may disagree with us, we believe for most users it does
-not matter which convention you pick. There are two key principles for
-variable naming, that we recommend, that should make your life
-easier:</p>
-<ol style="list-style-type: decimal"><li><p><strong><em>Consistency</em></strong> – pick a convention and
+</ol><p>Although some may violently disagree with us, we believe for most
+coders it does not matter which convention you pick. In Python,
+snake_case is the most common naming convention for variables, so it is
+a good default choice for beginners but most importantly there are two
+key principles for variable naming that will make your life easier:</p>
+<ol style="list-style-type: decimal"><li><p><strong><em>Consistency</em></strong> - pick a convention and
 stick with it.</p></li>
 <li><p><strong><em>Succinctness</em></strong> - Keep variable names
 short, readable, and descriptive.</p></li>
@@ -464,20 +479,19 @@ for a temperature reading taken in Aberystwyth:</p>
 </blockquote>
 <p>Or this:</p>
 <blockquote>
-<p>themininimumtemperaturerecordedfromaberystwythindegreescelcius</p>
+<p>themininimumtemperaturerecordedfromaberystwythindegreescelsius</p>
 </blockquote>
 <p>Being consistent, aware of context, and conscious of your variable
 naming will make reading your code easier and decrease the risk of
 errors.</p>
 </section><section><h2 class="section-heading" id="types-of-data">Types of data<a class="anchor" aria-label="anchor" href="#types-of-data"></a></h2>
-<hr class="half-width"><div class="section level3">
-<h3 id="data-types">Data types<a class="anchor" aria-label="anchor" href="#data-types"></a></h3>
-<p>Python utilises different data types to efficiently store and
-manipulate different kinds of data. Python is dynamical typed; this
-means that you do not need to specify a data type when you declare a
-variable. You can give the variable name and the data you want to store
-and let Python worry about how it deals with that. We will look at the
-most common data types in Python.</p>
+<hr class="half-width"><p>Python utilises different data types to efficiently store and
+manipulate different kinds of data. A type tells Python what kind of
+value something is, such as a whole number, a decimal number, or text.
+Python is dynamically typed, this means that you do not need to specify
+a data type when you declare a variable. You provide the variable name
+and the value you want to store, and Python handles the data type
+automatically. We will look at the most common data types in Python.</p>
 <table class="table"><colgroup><col width="17%"><col width="51%"><col width="30%"></colgroup><thead><tr><th>Data Type</th>
 <th>Description</th>
 <th>Example</th>
@@ -512,9 +526,8 @@ person a unique identifier by storing it in a string:</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>patient_id <span class="op">=</span> <span class="st">'001'</span></span></code></pre>
 </div>
-<p>##How Python Assigns Data Types</p>
-</div>
-<div class="section level3">
+</section><section><h2 class="section-heading" id="how-python-assigns-data-types">How Python Assigns Data Types<a class="anchor" aria-label="anchor" href="#how-python-assigns-data-types"></a></h2>
+<hr class="half-width"><div class="section level3">
 <h3 id="dynamic-typing">Dynamic Typing<a class="anchor" aria-label="anchor" href="#dynamic-typing"></a></h3>
 <p>In Python, you don’t declare a variable’s type explicitly. Instead,
 the type is determined automatically when you assign a value.</p>
@@ -524,8 +537,8 @@ the type is determined automatically when you assign a value.</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span>        <span class="co"># x is an int</span></span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"hello"</span>   <span class="co"># now x is a string</span></span></code></pre>
 </div>
-<p>As for example depending on how you have assign the value, python
-automatic assumes the type it is:</p>
+<p>For example, depending on how you assign a value, Python
+automatically determines its type:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -537,15 +550,13 @@ automatic assumes the type it is:</p>
 <span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(b))  <span class="co"># float</span></span>
 <span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(c))  <span class="co"># str</span></span></code></pre>
 </div>
-<p>The issue with this is that some data types can be combined—for
-example, adding an integer to a float works as expected. However, this
-is not always the case. Strings cannot be combined with integers or
-floats, as this would be like trying to add a sentence to a number,
-which doesn’t make sense.</p>
-<p>Another problem is that with dynamic typing, there are situations
-where values that should be numbers (such as integers or floats) are
-instead stored as strings. This can lead to unexpected behaviour, as
-shown below:</p>
+<p>Different data types behave differently. Some can be combined
+directly, such as integers and floats, but others cannot. For example,
+strings cannot be added to numbers in a meaningful way without
+conversion.</p>
+<p>Another challenge with dynamic typing, are that sometimes values that
+look like numbers are actually stored as strings. This can lead to
+unexpected behaviour, as shown below:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -578,7 +589,7 @@ well as kilograms:</p>
 </section><section><h2 class="section-heading" id="built-in-python-functions">Built-in Python functions<a class="anchor" aria-label="anchor" href="#built-in-python-functions"></a></h2>
 <hr class="half-width"><p>To carry out common tasks with data and variables in Python, the
 language provides us with several built-in <a href="reference.html#function">functions</a>. To display information to
-the screen, we use the <code>print</code> function:</p>
+the screen, we use the <code>print()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -595,12 +606,12 @@ the screen, we use the <code>print</code> function:</p>
 function, we follow its name by parentheses. The parentheses are
 important: if you leave them off, the function doesn’t actually run!
 Sometimes you will include values or variables inside the parentheses
-for the function to use. In the case of <code>print</code>, we use the
+for the function to use. In the case of <code>print()</code>, we use the
 parentheses to tell the function what value we want to display. We will
 learn more about how functions work and how to create our own in later
 episodes.</p>
 <p>We can display multiple things at once using only one
-<code>print</code> call:</p>
+<code>print()</code> call:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -627,7 +638,7 @@ value’s data type:</p>
 &lt;class 'str'&gt;</code></pre>
 </div>
 <p>Moreover, we can do arithmetic with variables right inside the
-<code>print</code> function:</p>
+<code>print()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -691,7 +702,7 @@ executing the lines.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -715,7 +726,7 @@ executing the lines.</p>
 <div class="callout-content">
 <p>Python allows you to assign multiple values to multiple variables in
 one line by separating the variables and values with commas. What does
-the following program print out?</p>
+the following program display to the console?</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -731,7 +742,7 @@ the following program print out?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -766,7 +777,7 @@ the following program print out?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -834,8 +845,7 @@ does not exist yet.</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="co"># Cell 2</span></span>
-<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">25</span></span>
-<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a><span class="bu">print</span>(y)</span></code></pre>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">25</span></span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -940,8 +950,8 @@ programs.</li>
   "url": "https://swcarpentry.github.io/python-novice-inflammation/02-variables_and_basic_data_types.html",
   "identifier": "https://swcarpentry.github.io/python-novice-inflammation/02-variables_and_basic_data_types.html",
   "dateCreated": "2014-11-25",
-  "dateModified": "2026-03-26",
-  "datePublished": "2026-03-26"
+  "dateModified": "2026-03-27",
+  "datePublished": "2026-03-27"
 }
 
   </script><script>
