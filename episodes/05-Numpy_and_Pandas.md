@@ -448,19 +448,6 @@ subset_df = iris_df[iris_df['petal.length'] > 5]
 # Select rows where species is 'setosa' and petal_length is less than 1.5
 subset_df = iris_df[(iris_df['variety'] == 'Setosa') & (iris_df['petal.length'] < 1.5)]
 ```
-### Getting help with libraries
-
-If you’re getting started with NumPy and pandas, there are plenty of accessible ways to find help and build confidence. Official documentation is often the best first stop—both libraries provide clear guides, tutorials, and examples that cover everything from basic usage to advanced features.
-
-For example NumPy can be found at: https://numpy.org/
-
-Or Pandas at https://pandas.pydata.org/
-
-Online communities are also incredibly useful. Platforms like Stack Overflow, Reddit, and specialized data science forums allow you to search for answers to common problems or ask your own questions. Chances are, someone else has already run into (and solved) the same issue.
-
-For more structured learning, consider free courses and video tutorials on sites like YouTube, Coursera, or Kaggle. These often walk through real-world examples and can make complex concepts easier to understand.
-
-Finally, don’t underestimate the value of experimentation. Try small projects, test out functions, and read error messages carefully—they often point you in the right direction. With consistent practice and the wealth of resources available, getting comfortable with NumPy and pandas becomes much more manageable.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
