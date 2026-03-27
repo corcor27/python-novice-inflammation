@@ -770,9 +770,10 @@ substitute the value we assigned to it. In simple terms, a variable is a
 <strong>name for a value</strong>.</p>
 <p>In Python, variable naming has rules:</p>
 <ul>
-<li><p>Variable names are case-sensitive (My_name is different from
-my_name).</p></li>
-<li><p>They can not contain spaces (e.g. my name = ‘bob’)</p></li>
+<li><p>Variable names are case-sensitive (<code>My_name</code> is
+different from <code>my_name</code>).</p></li>
+<li><p>They can not contain spaces (e.g. <code>my name</code>
+=)</p></li>
 <li><p>They must start with a letter or an underscore.</p></li>
 <li><p>They can consist of letters, numbers, and underscores.</p></li>
 <li><p>Some reserved words (e.g., ‘else’, ‘for’) cannot be used as
@@ -799,8 +800,8 @@ Python community that help provide structure and consistency.</p>
 <p>Although some may violently disagree with us, we believe for most
 coders it does not matter which convention you pick. In Python,
 snake_case is the most common naming convention for variables, so it is
-a good default choice for beginners but most importantly there are two
-key principles for variable naming that will make your life easier:</p>
+a good default choice for beginners. More importantly, there are two key
+principles for variable naming that will make your life easier:</p>
 <ol style="list-style-type: decimal">
 <li><p><strong><em>Consistency</em></strong> - pick a convention and
 stick with it.</p></li>
@@ -819,7 +820,7 @@ for a temperature reading taken in Aberystwyth:</p>
 </blockquote>
 <p>Or this:</p>
 <blockquote>
-<p>themininimumtemperaturerecordedfromaberystwythindegreescelsius</p>
+<p>theminimumtemperaturerecordedfromaberystwythindegreescelsius</p>
 </blockquote>
 <p>Being consistent, aware of context, and conscious of your variable
 naming will make reading your code easier and decrease the risk of
@@ -920,7 +921,7 @@ automatically determines its type:</p>
 directly, such as integers and floats, but others cannot. For example,
 strings cannot be added to numbers in a meaningful way without
 conversion.</p>
-<p>Another challenge with dynamic typing, are that sometimes values that
+<p>Another challenge with dynamic typing is that sometimes values that
 look like numbers are actually stored as strings. This can lead to
 unexpected behaviour, as shown below:</p>
 <div class="codewrapper sourceCode" id="cb6">
@@ -928,8 +929,8 @@ unexpected behaviour, as shown below:</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>x <span class="op">=</span> <span class="st">"10"</span>        </span></code></pre>
 </div>
-<p>To be able to use this value as a number (int/float), then we need to
-change its type (from string -&gt; int):</p>
+<p>To use this value as a number, we need to convert it from a string to
+an integer:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -992,9 +993,9 @@ episodes.</p>
 </h3>
 <pre class="output" tabindex="0"><code>inflam_001 weight in kilograms: 60.3</code></pre>
 </div>
-<p>We can also call a function inside of another <a href="reference.html#function-call">function call</a>. For example,
-Python has a built-in function called <code>type</code> that tells you a
-value’s data type:</p>
+<p>We can also call a function inside another <a href="reference.html#function-call">function call</a>. For example,
+Python has a built-in function called <code>type()</code> that tells you
+a value’s data type:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1186,7 +1187,6 @@ state where the code looks fine but behaves unpredictably.</p>
 <li>easier to debug</li>
 <li>easier for other people to reproduce</li>
 <li>less likely to break because of hidden state</li>
-<li>Simple explanation</li>
 </ul>
 <p>A notebook is not just a document. It is also a live session. If you
 run cell 8 before cell 3, cell 8 might still work only because something
@@ -1589,7 +1589,7 @@ your approach to make it more robust.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Use negative indices to count elements from the end of a container
 (such as list or string):</p>
@@ -1670,7 +1670,7 @@ through the end of the string)?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>To obtain every other character you need to provide a slice with the
 step size of 2:</p>
@@ -1764,7 +1764,7 @@ things depending on what it’s applied to.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The multiplication operator <code>*</code> used on a list replicates
 elements of the list and concatenates them together:</p>
