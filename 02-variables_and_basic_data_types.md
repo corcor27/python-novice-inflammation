@@ -31,8 +31,7 @@ assigning the value `60` to a variable `weight_kg`:
 
 :::::::::::::::::::::::::::::::::::::::::::: callout
 
-In Python, `=` means assignment. It tells Python to store a value in a variable, it does not ask whether two things are equal.
-Later we will encounter `==` this is a check for equivalence.
+In Python, `=` means assignment. It tells Python to store a value in a variable, it does not ask whether two things are equal. Later we will encounter `==` this is a check for equivalence.
 
 ::::::::::::::::::::::::::::::::::::::::::::
 
@@ -47,9 +46,9 @@ it. In simple terms, a variable is a **name for a value**.
 
 In Python, variable naming has rules:
 
-* Variable names are case-sensitive (My_name is different from my_name).
+* Variable names are case-sensitive (`My_name` is different from `my_name`).
 
-* They can not contain spaces (e.g. my name = 'bob')  
+* They can not contain spaces (e.g. `my name` =)  
 
 * They must start with a letter or an underscore. 
 
@@ -71,7 +70,7 @@ It may seem there are many restrictions but there are actually a huge number of 
 2. myVariable (camel case) 
 
 
-Although some may violently disagree with us, we believe for most coders it does not matter which convention you pick. In Python, snake_case is the most common naming convention for variables, so it is a good default choice for beginners but most importantly there are two key principles for variable naming that will make your life easier: 
+Although some may violently disagree with us, we believe for most coders it does not matter which convention you pick. In Python, snake_case is the most common naming convention for variables, so it is a good default choice for beginners. More importantly, there are two key principles for variable naming that will make your life easier: 
 
 
 1. ***Consistency*** - pick a convention and stick with it. 
@@ -94,7 +93,7 @@ Is better than this:
 
 Or this: 
 
->themininimumtemperaturerecordedfromaberystwythindegreescelsius 
+>theminimumtemperaturerecordedfromaberystwythindegreescelsius
 
  
 Being consistent, aware of context, and conscious of your variable naming will make reading your code easier and decrease the risk of errors.   
@@ -152,14 +151,14 @@ print(type(c))  # str
 
 Different data types behave differently. Some can be combined directly, such as integers and floats, but others cannot. For example, strings cannot be added to numbers in a meaningful way without conversion.
 
-Another challenge with dynamic typing, are that sometimes values that look like numbers are actually stored as strings. This can lead to unexpected behaviour, as shown below:
+Another challenge with dynamic typing is that sometimes values that look like numbers are actually stored as strings. This can lead to unexpected behaviour, as shown below:
 
 ```python
 x = "10"        
 
 ```
 
-To be able to use this value as a number (int/float), then we need to change its type (from string -> int):
+To use this value as a number, we need to convert it from a string to an integer:
 
 ```python
 x = "10"        
@@ -215,9 +214,9 @@ print(patient_id, 'weight in kilograms:', weight_kg)
 inflam_001 weight in kilograms: 60.3
 ```
 
-We can also call a function inside of another
+We can also call a function inside another
 [function call](../learners/reference.md#function-call).
-For example, Python has a built-in function called `type` that tells you a value's data type:
+For example, Python has a built-in function called `type()` that tells you a value's data type:
 
 ```python
 print(type(60.3))
@@ -361,7 +360,6 @@ Jupyter notebooks keep variables, imports, and results in memory as you run cell
 * easier to debug
 * easier for other people to reproduce
 * less likely to break because of hidden state
-* Simple explanation
 
 A notebook is not just a document. It is also a live session.
 If you run cell 8 before cell 3, cell 8 might still work only because something was defined earlier in a previous run. But another person opening the notebook fresh will get an error.
