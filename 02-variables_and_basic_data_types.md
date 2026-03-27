@@ -13,9 +13,9 @@ exercises: 5
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- What is a Variable?
-- What is a Type?
-- Why are Types important?
+- What is a variable?
+- What is a type?
+- Why are types important?
 - What happens when notebook cells are run out of order?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -28,22 +28,34 @@ In Python, we can [assign](../learners/reference.md#assign) a value to a
 For example, we can track the weight of a patient who weighs 60 kilograms by
 assigning the value `60` to a variable `weight_kg`:
 
+
+:::::::::::::::::::::::::::::::::::::::::::: callout
+
+In Python, `=` means assignment. It tells Python to store a value in a variable, it does not ask whether two things are equal.
+Later we will encounter `==` this is a check for equivalence.
+
+::::::::::::::::::::::::::::::::::::::::::::
+
+
+
 ```python
 weight_kg = 60
 ```
 
 From now on, whenever we use `weight_kg`, Python will substitute the value we assigned to
-it. In layperson's terms, **a variable is a name for a value**.
+it. In simple terms, a variable is a **name for a value**.
 
-In Python, variable names can be:
+In Python, variable naming has rules:
 
-* Variable names are cases sensitive (My_name is different to my_name).  
+* Variable names are case-sensitive (My_name is different from my_name).
 
-* They must start with a letter or a underscore. 
+* They can not contain spaces (e.g. my name = 'bob')  
 
-* They can consist of letters, numbers, periods, and underscores.  
+* They must start with a letter or an underscore. 
 
-* There are reserved words (e.g., ‘else’, ‘for’) that cannot be used for naming variables as they are already used by Python for specific purposes.  
+* They can consist of letters, numbers, and underscores.  
+
+* Some reserved words (e.g., 'else', 'for') cannot be used as variable names because they already have a specific meaning in Python.
 
 This means that, for example:
 
@@ -51,7 +63,7 @@ This means that, for example:
 - `weight` and `Weight` are different variables
 
  
-It may seem fussy but there are actually not that many enforced restrictions compared to the number of variable naming combinations. However, just because you can, doesn’t mean you should. There exist several naming conventions in the Python community to help provide structure and guidance to variable naming. 
+It may seem there are many restrictions but there are actually a huge number of variable naming combinations. However, just because you can, doesn’t mean you should. There are several naming conventions in the Python community that help provide structure and consistency. 
 
 
 1. my_variable (underscore or snake case) 
@@ -59,10 +71,10 @@ It may seem fussy but there are actually not that many enforced restrictions com
 2. myVariable (camel case) 
 
 
-Although some may disagree with us, we believe for most users it does not matter which convention you pick. There are two key principles for variable naming, that we recommend, that should make your life easier: 
+Although some may violently disagree with us, we believe for most coders it does not matter which convention you pick. In Python, snake_case is the most common naming convention for variables, so it is a good default choice for beginners but most importantly there are two key principles for variable naming that will make your life easier: 
 
 
-1. ***Consistency*** – pick a convention and stick with it. 
+1. ***Consistency*** - pick a convention and stick with it. 
 
 2. ***Succinctness*** - Keep variable names short, readable, and descriptive. 
 
@@ -82,7 +94,7 @@ Is better than this:
 
 Or this: 
 
->themininimumtemperaturerecordedfromaberystwythindegreescelcius 
+>themininimumtemperaturerecordedfromaberystwythindegreescelsius 
 
  
 Being consistent, aware of context, and conscious of your variable naming will make reading your code easier and decrease the risk of errors.   
@@ -90,8 +102,7 @@ Being consistent, aware of context, and conscious of your variable naming will m
 
 ## Types of data
 
-### Data types 
-Python utilises different data types to efficiently store and manipulate different kinds of data. Python is dynamical typed; this means that you do not need to specify a data type when you declare a variable. You can give the variable name and the data you want to store and let Python worry about how it deals with that. We will look at the most common data types in Python.
+Python utilises different data types to efficiently store and manipulate different kinds of data. A type tells Python what kind of value something is, such as a whole number, a decimal number, or text. Python is dynamically typed, this means that you do not need to specify a data type when you declare a variable. You provide the variable name and the value you want to store, and Python handles the data type automatically. We will look at the most common data types in Python.
   
 | Data Type       | Description                                     | Example                     |
 |-----------------|-------------------------------------------------|-----------------------------|
@@ -117,7 +128,7 @@ we can assign each person a unique identifier by storing it in a string:
 patient_id = '001'
 ```
 
-##How Python Assigns Data Types
+## How Python Assigns Data Types
 
 ### Dynamic Typing
 
@@ -127,7 +138,7 @@ In Python, you don’t declare a variable’s type explicitly. Instead, the type
 x = 10        # x is an int
 x = "hello"   # now x is a string
 ```
-As for example depending on how you have assign the value, python automatic assumes the type it is:
+For example, depending on how you assign a value, Python automatically determines its type:
 
 ```python
 a = 5
@@ -139,9 +150,9 @@ print(type(b))  # float
 print(type(c))  # str
 ```
 
-The issue with this is that some data types can be combined—for example, adding an integer to a float works as expected. However, this is not always the case. Strings cannot be combined with integers or floats, as this would be like trying to add a sentence to a number, which doesn’t make sense.
+Different data types behave differently. Some can be combined directly, such as integers and floats, but others cannot. For example, strings cannot be added to numbers in a meaningful way without conversion.
 
-Another problem is that with dynamic typing, there are situations where values that should be numbers (such as integers or floats) are instead stored as strings. This can lead to unexpected behaviour, as shown below:
+Another challenge with dynamic typing, are that sometimes values that look like numbers are actually stored as strings. This can lead to unexpected behaviour, as shown below:
 
 ```python
 x = "10"        
@@ -174,7 +185,7 @@ patient_id = 'inflam_' + patient_id
 
 To carry out common tasks with data and variables in Python,
 the language provides us with several built-in [functions](../learners/reference.md#function).
-To display information to the screen, we use the `print` function:
+To display information to the screen, we use the `print()` function:
 
 ```python
 print(weight_lb)
@@ -190,11 +201,11 @@ When we want to make use of a function, referred to as calling the function,
 we follow its name by parentheses. The parentheses are important:
 if you leave them off, the function doesn't actually run!
 Sometimes you will include values or variables inside the parentheses for the function to use.
-In the case of `print`,
+In the case of `print()`,
 we use the parentheses to tell the function what value we want to display.
 We will learn more about how functions work and how to create our own in later episodes.
 
-We can display multiple things at once using only one `print` call:
+We can display multiple things at once using only one `print()` call:
 
 ```python
 print(patient_id, 'weight in kilograms:', weight_kg)
@@ -218,7 +229,7 @@ print(type(patient_id))
 <class 'str'>
 ```
 
-Moreover, we can do arithmetic with variables right inside the `print` function:
+Moreover, we can do arithmetic with variables right inside the `print()` function:
 
 ```python
 print('weight in pounds:', 2.2 * weight_kg)
@@ -286,7 +297,7 @@ age = age - 20
 ## Sorting Out References
 
 Python allows you to assign multiple values to multiple variables in one line by separating
-the variables and values with commas. What does the following program print out?
+the variables and values with commas. What does the following program display to the console?
 
 ```python
 first, second = 'Grace', 'Hopper'
@@ -379,7 +390,6 @@ x = 10
 ```python
 # Cell 2
 x = 25
-print(y)
 ```
 
 ```python
