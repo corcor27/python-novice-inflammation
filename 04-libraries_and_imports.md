@@ -158,6 +158,17 @@ math is imported with its full name
 numpy is imported with the shorter name np
 Key idea
 
+
+## Packages, versions, and environments
+
+Packages are updated over time, so different versions of the same package can behave differently.
+
+In simple projects this may not matter much, but larger projects often depend on several packages at once. These dependencies can require specific versions to work correctly together.
+
+To manage this, programmers often use an **environment**. An environment is a separate space that stores the Python version and package versions needed for one project.
+
+This helps us make sure we have the right setup for our code and avoids conflicts between different projects.
+
 ### Getting help with libraries
 
 If you’re getting started with NumPy and pandas, there are plenty of accessible ways to find help and build confidence. Official documentation is often the best first stop—both libraries provide clear guides, tutorials, and examples that cover everything from basic usage to advanced features.
