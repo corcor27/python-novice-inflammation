@@ -382,7 +382,8 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul><li>Why do we need libraries?</li>
-<li>What is aliasing?</li>
+<li>What does … as …<code>do?</code>
+</li>
 </ul></div>
 </div>
 </div>
@@ -440,45 +441,62 @@ libraries and spend our time on the parts that are unique to our
 project.</p>
 <p>What does import mean?</p>
 <p>To use a library in Python, we usually import it.</p>
-<p>The word import tells Python to load the library so we can use its
-tools in our code.</p>
-<p>For example:</p>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>If you have never used Python before you may need to install packages
+first</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> math</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="op">%</span>pip install [PACKAGE NAME]</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<p>The word import tells Python to load the library so we can use its
+tools in our code.</p>
+<p>For example:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">import</span> math</span></code></pre>
 </div>
 <p>This imports the math library, which contains useful mathematical
 functions.</p>
 <p>After that, we can use parts of the library like this:</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="bu">print</span>(math.sqrt(<span class="dv">16</span>))</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="bu">print</span>(math.sqrt(<span class="dv">16</span>))</span></code></pre>
 </div>
 <p>This prints the square root of 16.</p>
 <p>What does import … as … mean?</p>
 <p>Sometimes library names are long, or programmers want a shorter name
 to type. Python lets us rename a library when we import it.</p>
 <p>For example:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre>
 </div>
 <p>This imports the library numpy but gives it the shorter name np
 inside our code.</p>
 <p>Now instead of writing:</p>
-<div class="codewrapper sourceCode" id="cb4">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>numpy.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre>
-</div>
-<p>we write:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>numpy.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre>
+</div>
+<p>we write:</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre>
 </div>
 <p>This is quicker and easier to read once you know the shortcut.</p>
 </div>
@@ -492,19 +510,19 @@ inside our code.</p>
 <ul><li>numpy as np</li>
 <li>pandas as pd</li>
 <li>matplotlib.pyplot as plt</li>
-</ul><p>These short versions are commonly used by programmers, so using them
-makes your code look familiar and professional.</p>
+</ul><p>These short versions are commonly used, so using them can make code
+easier for others to recognise.</p>
 <p>Example</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="bu">print</span>(math.pi)</span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>numbers <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="bu">print</span>(numbers)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="bu">print</span>(math.pi)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>numbers <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>])</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="bu">print</span>(numbers)</span></code></pre>
 </div>
 <p>In this example:</p>
 <p>math is imported with its full name numpy is imported with the
@@ -520,7 +538,7 @@ to advanced features.</p>
 <p>For example NumPy can be found at: <a href="https://numpy.org/" class="external-link uri">https://numpy.org/</a></p>
 <p>Or Pandas at <a href="https://pandas.pydata.org/" class="external-link uri">https://pandas.pydata.org/</a></p>
 <p>Online communities are also incredibly useful. Platforms like Stack
-Overflow, Reddit, and specialized data science forums allow you to
+Overflow, Reddit, and specialised data science forums allow you to
 search for answers to common problems or ask your own questions. Chances
 are, someone else has already run into (and solved) the same issue.</p>
 <p>For more structured learning, consider free courses and video
@@ -528,7 +546,7 @@ tutorials on sites like YouTube, Coursera, or Kaggle. These often walk
 through real-world examples and can make complex concepts easier to
 understand.</p>
 <p>Finally, don’t underestimate the value of experimentation. Try small
-projects, test out functions, and read error messages carefully—they
+projects, test out functions, and read error messages carefully, they
 often point you in the right direction. With consistent practice and the
 wealth of resources available, getting comfortable with NumPy and pandas
 becomes much more manageable.</p>
