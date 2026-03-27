@@ -1,7 +1,7 @@
 ---
 title: Errors and Exceptions
 teaching: 30
-exercises: 0
+exercises: 30
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives

@@ -1,7 +1,7 @@
 ---
 title: Pathing and work spaces
 teaching: 30
-exercises: 0
+exercises: 30
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives

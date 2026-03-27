@@ -1,7 +1,7 @@
 ---
 title: Variables and basic data types
-teaching: 5
-exercises: 5
+teaching: 35
+exercises: 10
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives

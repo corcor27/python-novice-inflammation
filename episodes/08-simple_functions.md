@@ -1,7 +1,7 @@
 ---
 title: Creating Functions
-teaching: 30
-exercises: 0
+teaching: 60
+exercises: 30
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives

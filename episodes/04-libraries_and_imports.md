@@ -1,7 +1,7 @@
 ---
 title: Libraries and imports
-teaching: 30
-exercises: 20
+teaching: 15
+exercises: 15
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
