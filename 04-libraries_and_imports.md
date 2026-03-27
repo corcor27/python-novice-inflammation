@@ -14,7 +14,7 @@ exercises: 15
 :::::::::::::::::::::::::::::::::::::::: questions
 
 - Why do we need libraries?
-- What is aliasing?
+- What does \import ... as ...` do?`
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -66,6 +66,18 @@ So rather than spending hours rebuilding common tools, we use libraries and spen
 What does import mean?
 
 To use a library in Python, we usually import it.
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::: callout
+
+If you have never used Python before you may need to install packages first
+
+```python
+%pip install [PACKAGE NAME]
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 The word import tells Python to load the library so we can use its tools in our code.
 
@@ -126,7 +138,7 @@ For example:
 * pandas as pd
 * matplotlib.pyplot as plt
 
-These short versions are commonly used by programmers, so using them makes your code look familiar and professional.
+These short versions are commonly used, so using them can make code easier for others to recognise.
 
 Example
 
@@ -154,11 +166,11 @@ For example NumPy can be found at: https://numpy.org/
 
 Or Pandas at https://pandas.pydata.org/
 
-Online communities are also incredibly useful. Platforms like Stack Overflow, Reddit, and specialized data science forums allow you to search for answers to common problems or ask your own questions. Chances are, someone else has already run into (and solved) the same issue.
+Online communities are also incredibly useful. Platforms like Stack Overflow, Reddit, and specialised data science forums allow you to search for answers to common problems or ask your own questions. Chances are, someone else has already run into (and solved) the same issue.
 
 For more structured learning, consider free courses and video tutorials on sites like YouTube, Coursera, or Kaggle. These often walk through real-world examples and can make complex concepts easier to understand.
 
-Finally, don’t underestimate the value of experimentation. Try small projects, test out functions, and read error messages carefully—they often point you in the right direction. With consistent practice and the wealth of resources available, getting comfortable with NumPy and pandas becomes much more manageable.
+Finally, don’t underestimate the value of experimentation. Try small projects, test out functions, and read error messages carefully, they often point you in the right direction. With consistent practice and the wealth of resources available, getting comfortable with NumPy and pandas becomes much more manageable.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
