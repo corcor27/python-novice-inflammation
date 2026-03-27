@@ -18,6 +18,92 @@ exercises: 20
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
+## Check Your Understanding
+
+What values do the variables `mass` and `age` have after each of the following statements?
+Test your answer by executing the lines.
+
+```python
+mass = 47.5
+age = 122
+mass = mass * 2.0
+age = age - 20
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+```output
+`mass` holds a value of 47.5, `age` does not exist
+`mass` still holds a value of 47.5, `age` holds a value of 122
+`mass` now has a value of 95.0, `age`'s value is still 122
+`mass` still has a value of 95.0, `age` now holds 102
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Sorting Out References
+
+Python allows you to assign multiple values to multiple variables in one line by separating
+the variables and values with commas. What does the following program display to the console?
+
+```python
+first, second = 'Grace', 'Hopper'
+third, fourth = second, first
+print(third, fourth)
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+```output
+Hopper Grace
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Seeing Data Types
+
+What are the data types of the following variables?
+
+```python
+planet = 'Earth'
+apples = 5
+distance = 10.5
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+print(type(planet))
+print(type(apples))
+print(type(distance))
+```
+
+```output
+<class 'str'>
+<class 'int'>
+<class 'float'>
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
 ## Slicing Strings
 
 A section of an array is called a [slice](../learners/reference.md#slice).
