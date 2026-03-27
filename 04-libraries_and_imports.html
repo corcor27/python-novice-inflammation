@@ -235,7 +235,12 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#what-is-a-library">What is a library?</a></li>
+<li><a href="#why-do-programmers-use-libraries">Why do programmers use libraries?</a></li>
+<li><a href="#why-do-we-not-write-everything-from-scratch">Why do we not write everything from scratch?</a></li>
+<li><a href="#what-does-import-mean">What does import mean?</a></li>
+<li><a href="#what-does-import-as-mean">What does import … as … mean?</a></li>
 <li><a href="#packages-versions-and-environments">Packages, versions, and environments</a></li>
+<li><a href="#getting-help-with-libraries">Getting help with libraries</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -383,8 +388,7 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul><li>Why do we need libraries?</li>
-<li>What does … as …<code>do?</code>
-</li>
+<li>What does <code>import ... as ...</code> do?</li>
 </ul></div>
 </div>
 </div>
@@ -410,11 +414,10 @@ already exist. A library might contain code for:</p>
 <li>making games</li>
 <li>handling dates and times</li>
 </ul><p>You can think of a library like a toolbox. If you need a hammer, you
-do not make one from metal and wood first — you take one from the
-toolbox and use it. In programming, a library is that toolbox.</p>
-<div class="section level3">
-<h3 id="why-do-programmers-use-libraries">Why do programmers use libraries?<a class="anchor" aria-label="anchor" href="#why-do-programmers-use-libraries"></a></h3>
-<p>Programmers use libraries because they save time and effort.</p>
+do not make one from metal and wood first, you take one from the toolbox
+and use it. In programming, a library is that toolbox.</p>
+</section><section><h2 class="section-heading" id="why-do-programmers-use-libraries">Why do programmers use libraries?<a class="anchor" aria-label="anchor" href="#why-do-programmers-use-libraries"></a></h2>
+<hr class="half-width"><p>Programmers use libraries because they save time and effort.</p>
 <p>If somebody has already written code that works well, it makes sense
 to use it rather than create the same thing again. Libraries help
 us:</p>
@@ -424,10 +427,8 @@ us:</p>
 <li>solve bigger problems more easily</li>
 </ul><p>This is one reason programming is powerful: we build on work that
 already exists.</p>
-</div>
-<div class="section level3">
-<h3 id="why-do-we-not-write-everything-from-scratch">Why do we not write everything from scratch?<a class="anchor" aria-label="anchor" href="#why-do-we-not-write-everything-from-scratch"></a></h3>
-<p>Writing everything from scratch would take far too long and would
+</section><section><h2 class="section-heading" id="why-do-we-not-write-everything-from-scratch">Why do we not write everything from scratch?<a class="anchor" aria-label="anchor" href="#why-do-we-not-write-everything-from-scratch"></a></h2>
+<hr class="half-width"><p>Writing everything from scratch would take far too long and would
 often lead to more mistakes.</p>
 <p>Imagine you wanted to create a graph, analyse a large dataset, or
 generate random numbers. You could try to write all that code yourself,
@@ -440,8 +441,8 @@ but it would be slow, difficult, and unnecessary.</p>
 </ul><p>So rather than spending hours rebuilding common tools, we use
 libraries and spend our time on the parts that are unique to our
 project.</p>
-<p>What does import mean?</p>
-<p>To use a library in Python, we usually import it.</p>
+</section><section><h2 class="section-heading" id="what-does-import-mean">What does import mean?<a class="anchor" aria-label="anchor" href="#what-does-import-mean"></a></h2>
+<hr class="half-width"><p>To use a library in Python, we usually import it.</p>
 <div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -476,8 +477,8 @@ functions.</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="bu">print</span>(math.sqrt(<span class="dv">16</span>))</span></code></pre>
 </div>
 <p>This prints the square root of 16.</p>
-<p>What does import … as … mean?</p>
-<p>Sometimes library names are long, or programmers want a shorter name
+</section><section><h2 class="section-heading" id="what-does-import-as-mean">What does import … as … mean?<a class="anchor" aria-label="anchor" href="#what-does-import-as-mean"></a></h2>
+<hr class="half-width"><p>Sometimes library names are long, or programmers want a shorter name
 to type. Python lets us rename a library when we import it.</p>
 <p>For example:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -500,7 +501,6 @@ inside our code.</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span></code></pre>
 </div>
 <p>This is quicker and easier to read once you know the shortcut.</p>
-</div>
 <div class="section level3">
 <h3 id="why-use-import-as">Why use import … as …?<a class="anchor" aria-label="anchor" href="#why-use-import-as"></a></h3>
 <p>We use import … as … because:</p>
@@ -541,9 +541,8 @@ stores the Python version and package versions needed for one
 project.</p>
 <p>This helps us make sure we have the right setup for our code and
 avoids conflicts between different projects.</p>
-<div class="section level3">
-<h3 id="getting-help-with-libraries">Getting help with libraries<a class="anchor" aria-label="anchor" href="#getting-help-with-libraries"></a></h3>
-<p>If you’re getting started with NumPy and pandas, there are plenty of
+</section><section><h2 class="section-heading" id="getting-help-with-libraries">Getting help with libraries<a class="anchor" aria-label="anchor" href="#getting-help-with-libraries"></a></h2>
+<hr class="half-width"><p>If you’re getting started with NumPy and pandas, there are plenty of
 accessible ways to find help and build confidence. Official
 documentation is often the best first stop—both libraries provide clear
 guides, tutorials, and examples that cover everything from basic usage
@@ -576,7 +575,6 @@ written.</li>
 <li>We sometimes rename them with as to make our code shorter and easier
 to work with.</li>
 </ul></div>
-</div>
 </div>
 </div>
 </section></div> <!-- / div.lesson-content -->
