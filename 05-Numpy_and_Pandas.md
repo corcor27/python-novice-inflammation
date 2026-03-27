@@ -1,7 +1,7 @@
 ---
 title: Analyzing Patient Data using numpy and pandas
-teaching: 40
-exercises: 20
+teaching: 60
+exercises: 30
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives

@@ -1,6 +1,6 @@
 ---
 title: Lists and dictionaries
-teaching: 30
+teaching: 45
 exercises: 15
 ---
 

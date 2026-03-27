@@ -1,7 +1,7 @@
 ---
 title: Visualizing Tabular Data
 teaching: 30
-exercises: 20
+exercises: 30
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
