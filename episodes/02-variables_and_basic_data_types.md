@@ -54,7 +54,7 @@ In Python, variable naming has rules:
 
 * They can consist of letters, numbers, and underscores.  
 
-* Some reserved words (e.g., 'else', 'for') cannot be used as variable names because they already have a specific meaning in Python.
+* Some reserved words (e.g., `'else'`, `'for'`) cannot be used as variable names because they already have a specific meaning in Python.
 
 This means that, for example:
 
@@ -62,7 +62,7 @@ This means that, for example:
 - `weight` and `Weight` are different variables
 
  
-It may seem there are many restrictions but there are actually a huge number of variable naming combinations. However, just because you can, doesn’t mean you should. There are several naming conventions in the Python community that help provide structure and consistency. 
+It may seem there are many restrictions but there are actually a huge number of variable naming combinations. However, just because you can use weird and wonderful combinations, doesn’t mean you should. There are several naming conventions in the Python community that help provide structure and consistency. 
 
 
 1. my_variable (underscore or snake case) 
@@ -96,7 +96,14 @@ Or this:
 >theminimumtemperaturerecordedfromaberystwythindegreescelsius
 
  
-Being consistent, aware of context, and conscious of your variable naming will make reading your code easier and decrease the risk of errors.   
+Being consistent, aware of context, and conscious of your variable naming will make reading your code easier and decrease the risk of errors.
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: callout
+WARNING: The first of many unfunny computer science jokes.
+
+"There are only two hard problems in Computer Science: cache invalidation and naming things." -- Phil Karlton
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 ## Types of data

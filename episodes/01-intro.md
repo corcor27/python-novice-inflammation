@@ -25,13 +25,6 @@ exercises: 10
 
 Any Python interpreter can be used as a calculator:
 
-```python
-3 + 5 * 4
-```
-
-```output
-23
-```
 
 ### Subtraction
  
