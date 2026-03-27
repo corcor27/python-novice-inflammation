@@ -113,7 +113,7 @@ must make a copy of the value when you assign it.
 
 ```python
 mild_salsa = ['peppers', 'onions', 'cilantro']
-hot_salsa = mild_salsa.copy()        # <-- mild_salsa and hot_salsa point to the *same* list data in memory
+hot_salsa = mild_salsa.copy()        # <-- hot_salsa is now a copy of the original
 hot_salsa[0] = 'hot peppers'
 print('Ingredients in mild salsa:', mild_salsa)
 print('Ingredients in hot salsa:', hot_salsa)
@@ -429,8 +429,8 @@ counts + counts
 
 ## Dictionaries
 
-* Dictionaries are unordered collections of key-value pairs.
-* They are mutable and can contain keys of any immutable data type.
+* Dictionaries store key-value pairs and are accessed using keys rather than numeric positions.
+* They are mutable, and keys are often strings or numbers.
 * Dictionaries are created using curly braces \{\}.
 
 Example of dictionary creation:
