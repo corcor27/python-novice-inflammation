@@ -137,6 +137,8 @@ If we do something wrong, Python will usually show us an error message. Sometime
 
 ## Getting Help
 We are now going to briefly explore how to find help in Python and introduce our first built-in function. The built-in function we will use is `help()`, which displays information about Python objects. We will use it to look up another built-in function, `print()`.
+
+
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 A function is a named piece of code that performs a task. We will look at functions in more detail later in the module. For now, we will use built-in functions (functions included in base Python) to understand how to use them.
