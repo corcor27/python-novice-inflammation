@@ -367,7 +367,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Creating Functions</h1>
-        <p>Last updated on 2026-03-27 |
+        <p>Last updated on 2026-03-30 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/08-simple_functions.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -447,18 +447,17 @@ temperatures from Fahrenheit to Celsius:</p>
 <span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>    <span class="cf">return</span> converted</span>
 <span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>    </span>
 <span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="kw">def</span> fahr_to_celsius(temp):</span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>    <span class="co"># Return converted value more efficiently using the return</span></span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>    <span class="co"># function without creating a new variable. This code does</span></span>
-<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>    <span class="co"># the same thing as the previous function but it is more explicit</span></span>
-<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>    <span class="co"># in explaining how the return command works.</span></span>
-<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>    <span class="cf">return</span> ((temp <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>))</span></code></pre>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>    <span class="co"># Return converted value more efficiently using return</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>    <span class="co"># without creating a new variable. This code does</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>    <span class="co"># the same thing as the previous function but in a shorter way.</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>    <span class="cf">return</span> ((temp <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>))</span></code></pre>
 </div>
 <figure><img src="fig/python-function.svg" alt="Labeled parts of a Python function definition" class="figure mx-auto d-block"></figure><p>The function definition opens with the keyword <code>def</code>
 followed by the name of the function (<code>fahr_to_celsius</code>) and
-a parenthesized list of parameter names (<code>temp</code>). The <a href="reference.html#body">body</a> of the function — the statements
-that are executed when it runs — is indented below the definition line.
-The body concludes with a <code>return</code> keyword followed by the
-return value.</p>
+a parenthesized list of parameter names (<code>temp</code>). The <a href="reference.html#body">body</a> of the function, the statements that
+are executed when it runs, is indented below the definition line. The
+body concludes with a <code>return</code> keyword followed by the return
+value.</p>
 <p>When we call the function, the values we pass to it are assigned to
 those variables so that we can use them inside the function. Inside the
 function, we use a <a href="reference.html#return-statement">return
@@ -523,10 +522,9 @@ already created:</p>
 </div>
 <p>This is our first taste of how larger programs are built: we define
 basic operations, then combine them in ever-larger chunks to get the
-effect we want. Real-life functions will usually be larger than the ones
-shown here — typically half a dozen to a few dozen lines — but they
-shouldn’t ever be much longer than that, or the next person who reads it
-won’t be able to understand what’s going on.</p>
+effect we want. In practice, many functions are longer than the ones
+shown here, but it is usually a good idea to keep functions focused on a
+single task and not make them unnecessarily long.</p>
 </section><section><h2 class="section-heading" id="variable-scope">Variable Scope<a class="anchor" aria-label="anchor" href="#variable-scope"></a></h2>
 <hr class="half-width"><p>In composing our temperature conversion functions, we created
 variables inside of those functions, <code>temp</code>,
@@ -585,6 +583,9 @@ variables:</p>
 <pre class="output" tabindex="0"><code>temperature in Fahrenheit was: 212.0
 temperature in Kelvin was: 373.15</code></pre>
 </div>
+<p>Although a function can read values from global variables, relying
+too much on globals can make code harder to understand and test,
+therefore best practice is to avoid this.</p>
 </section><section><h2 class="section-heading" id="tidying-up">Tidying up<a class="anchor" aria-label="anchor" href="#tidying-up"></a></h2>
 <hr class="half-width"><p>Now that we know how to wrap bits of code up in functions, we can
 make our inflammation analysis easier to read and easier to reuse.
@@ -616,7 +617,7 @@ plots:</p>
 <span id="cb17-21"><a href="#cb17-21" tabindex="-1"></a>    matplotlib.pyplot.show()</span></code></pre>
 </div>
 <p>and another function called <code>detect_problems</code> that checks
-for those systematics we noticed:</p>
+for those suspicious patterns we noticed:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -636,7 +637,9 @@ return? Well, we didn’t. In Python, functions are not required to
 include a <code>return</code> statement and can be used for the sole
 purpose of grouping together pieces of code that conceptually do one
 thing. In such cases, function names usually describe what they do,
-<em>e.g.</em> <code>visualize</code>, <code>detect_problems</code>.</p>
+<em>e.g.</em> <code>visualize</code>, <code>detect_problems</code>.
+Where no return is included, as a default, Python will return a
+<code>none</code>.</p>
 <p>Notice that rather than jumbling this code together in one giant
 <code>for</code> loop, we can now read and reuse both ideas separately.
 We can reproduce the previous analysis with a much simpler
@@ -659,7 +662,7 @@ code again, we can do so in a single line.</p>
 <hr class="half-width"><p>Once we start putting things in functions so that we can re-use them,
 we need to start testing that those functions are working correctly. To
 see how to do this, let’s write a function to offset a dataset so that
-it’s mean value shifts to a user-defined value:</p>
+its mean value shifts to a user-defined value:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -668,7 +671,7 @@ it’s mean value shifts to a user-defined value:</p>
 </div>
 <p>We could test this on our actual data, but since we don’t know what
 the values ought to be, it will be hard to tell if the result was
-correct. Instead, let’s use NumPy to create a matrix of 0’s and then
+correct. Instead, let’s use NumPy to create a matrix of zeros and then
 offset its values to have a mean value of 3:</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -720,9 +723,10 @@ correct, but there are a few tests that we can run to reassure us:</p>
 min, mean, and max of offset data are: -6.14875 2.842170943040401e-16 13.85125</code></pre>
 </div>
 <p>That seems almost right: the original mean was about 6.1, so the
-lower bound from zero is now about -6.1. The mean of the offset data
-isn’t quite zero, but it’s pretty close. We can even go further and
-check that the standard deviation hasn’t changed:</p>
+lower bound from zero is now about -6.1. The mean of the offset data is
+not exactly zero because of floating-point arithmetic, but it is
+extremely close. We can even go further and check that the standard
+deviation hasn’t changed:</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -784,9 +788,9 @@ to show us the documentation for the function:</p>
 offset_mean(data, target_mean_value)
     Return a new array containing the original data with its mean offset to match the desired value.</code></pre>
 </div>
-<p>A string like this is called a <a href="reference.html#docstring">docstring</a>. We don’t need to use
-triple quotes when we write one, but if we do, we can break the string
-across multiple lines:</p>
+<p>A string like this is called a <a href="reference.html#docstring">docstring</a>. Docstrings are usually
+written with triple quotes, which also lets us spread them across
+multiple lines if needed:</p>
 <div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1083,7 +1087,7 @@ A call to your function should look like this:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb57">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1105,9 +1109,10 @@ A call to your function should look like this:</p>
 <div class="callout-content">
 <p>Note that <code>return</code> and <code>print</code> are not
 interchangeable. <code>print</code> is a Python function that
-<em>prints</em> data to the screen. It enables us, <em>users</em>, see
-the data. <code>return</code> statement, on the other hand, makes data
-visible to the program. Let’s have a look at the following function:</p>
+<em>prints</em> data to the screen. It enables us, <em>as users</em>,
+see the data. <code>return</code> statement, on the other hand, makes
+data visible to the program. Let’s have a look at the following
+function:</p>
 <div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1130,16 +1135,17 @@ following commands?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Python will first execute the function <code>add</code> with
 <code>a = 7</code> and <code>b = 3</code>, and, therefore, print
 <code>10</code>. However, because function <code>add</code> does not
 have a line that starts with <code>return</code> (no <code>return</code>
 “statement”), it will, by default, return nothing which, in Python
-world, is called <code>None</code>. Therefore, <code>A</code> will be
-assigned to <code>None</code> and the last line (<code>print(A)</code>)
-will print <code>None</code>. As a result, we will see:</p>
+world, is represented as <code>None</code>. Therefore, <code>A</code>
+will be assigned to <code>None</code> and the last line
+(<code>print(A)</code>) will print <code>None</code>. As a result, we
+will see:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1181,7 +1187,7 @@ call to your function should look like this:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb63">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1214,7 +1220,7 @@ value <code>v</code> should be <code>(v-L) / (H-L)</code>.)</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1250,7 +1256,7 @@ function, add a docstring that explains what it does.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb65">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1291,7 +1297,7 @@ behave the same way?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1341,7 +1347,7 @@ behave the same way?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1355,11 +1361,11 @@ behave the same way?</p>
 <code>f2k</code> doesn’t know about the <code>k</code> defined outside
 the function. When the <code>f2k</code> function is called, it creates a
 <a href="reference.html#local-variable">local variable</a>
-<code>k</code>. The function does not return any values and does not
-alter <code>k</code> outside of its local copy. Therefore the original
-value of <code>k</code> remains unchanged. Beware that a local
-<code>k</code> is created because <code>f2k</code> internal statements
-<em>affect</em> a new value to it. If <code>k</code> was only
+<code>k</code>. The function returns a local <code>k</code> but that
+does not alter the <code>k</code> outside of its local copy. Therefore
+the original value of <code>k</code> remains unchanged. Beware that a
+local <code>k</code> is created because <code>f2k</code> internal
+statements <em>affect</em> a new value to it. If <code>k</code> was only
 <code>read</code>, it would simply retrieve the global <code>k</code>
 value.</p>
 </div>
@@ -1412,7 +1418,7 @@ run?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>Attempting to define the <code>numbers</code> function results in
 <code>4. SyntaxError</code>. The defined parameters <code>two</code> and
@@ -1455,7 +1461,7 @@ readable.</p>
 <div class="callout-content">
 <ul><li>The body of a function must be indented.</li>
 <li>Call a function using <code>function_name(value)</code>.</li>
-<li>The <code>Scope</code> of variables defined within a function can
+<li>The <code>scope</code> of variables defined within a function can
 only be seen and used within the body of the function.</li>
 <li>Variables created outside of any function are called global
 variables.</li>
@@ -1532,7 +1538,7 @@ it with different parameter values to customize its behavior.</li>
   "url": "https://swcarpentry.github.io/python-novice-inflammation/08-simple_functions.html",
   "identifier": "https://swcarpentry.github.io/python-novice-inflammation/08-simple_functions.html",
   "dateCreated": "2014-11-25",
-  "dateModified": "2026-03-27",
+  "dateModified": "2026-03-30",
   "datePublished": "2026-03-30"
 }
 
