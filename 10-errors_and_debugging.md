@@ -6,9 +6,9 @@ exercises: 30
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- To be able to read a traceback, and determine where the error took place and what type it is.
-- To be aware of the different types of errors (e.g., indentation errors, name errors, etc.)
-- Underwstand the process of debuging code containing an error systematically.
+- To be able to read a traceback, and determine where the error took place and what type of error we are dealing with.
+- Be aware of different types of errors (e.g. indentation errors and name errors).
+- Understand the process of debugging code containing an error systematically.
 - Identify ways of making code less error-prone and more easily tested.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -69,7 +69,7 @@ IndexError: list index out of range
 ```
 
 This particular traceback has two levels.
-You can determine the number of levels by looking for the number of arrows on the left hand side.
+You can determine the number of levels by looking for the number of arrows on the left-hand side.
 In this case:
 
 1. The first shows code from the cell above,
@@ -83,7 +83,7 @@ The other level(s) show what function the program executed to get to the next le
 So, in this case, the program first performed a
 [function call](../learners/reference.md#function-call) to the function `favorite_ice_cream`.
 Inside this function,
-the program encountered an error on Line 6, when it tried to run the code `print(ice_creams[3])`.
+the program encountered an error on Line 9, when it tried to run the code `print(ice_creams[3])`.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -191,7 +191,7 @@ IndexError: list index out of range
 2. `print_message`
 3. 13
 4. `IndexError`
-5. `list index out of range` You can then infer that
+5. `list index out of range`. You can then infer that
   `7` is not the right index to use with `messages`.
   
   
@@ -202,7 +202,7 @@ IndexError: list index out of range
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Better errors on newer Pythons
+## Better errors on newer versions of Python
 
 Newer versions of Python have improved error printouts.  If you are debugging errors, it is often
 helpful to use the latest Python version, even if you support older versions of Python.
@@ -219,7 +219,7 @@ you will encounter a [syntax error](../learners/reference.md#syntax-error).
 This means that Python couldn't figure out how to read your program.
 This is similar to forgetting punctuation in English:
 for example,
-this text is difficult to read there is no punctuation there is also no capitalization
+this text is difficult to read there is no punctuation there is also no capitalisation
 why is this hard because you have to figure out where each sentence ends
 you also have to figure out where each sentence begins
 to some extent it might be ambiguous if there should be a sentence break or not
@@ -679,14 +679,12 @@ scientists tend to do the following:
   If "new" patients start appearing out of nowhere as we move through our pipeline,
   it's probably a sign that something is wrong.
 
-5. *Visualize.*
-  Data analysts frequently use simple visualizations to check both
+5. *Visualise.*
+  Data analysts frequently use simple visualisations to check both
   the science they're doing
   and the correctness of their code
   (just as we did in the [opening lesson](02-numpy.html) of this tutorial).
-  This should only be used for debugging as a last resort,
-  though,
-  since it's very hard to compare two visualizations automatically.
+  This should not be the only debugging method you rely on, since visual comparisons are hard to automate.
 
 ## Make It Fail Every Time
 
@@ -792,7 +790,7 @@ and we're better able to give them the information they need to be useful.
 Version control is often used to reset software to a known state during debugging,
 and to explore recent changes to code that might be responsible for bugs.
 In particular,
-most version control systems (e.g. git, Mercurial) have:
+most version control systems (e.g. Git, Mercurial) have:
 
 1. a `blame` command that shows who last changed each line of a file;
 2. a `bisect` command that helps with finding the commit that introduced an
@@ -804,7 +802,7 @@ most version control systems (e.g. git, Mercurial) have:
 ## Be Humble
 
 And speaking of help:
-if we can't find a bug in 10 minutes,
+if we can't find a bug in a reasonable amount of time,
 we should *be humble* and [ask for help](./01-intro.md#getting-help).
 Explaining the problem to someone else is often useful,
 since hearing what we're thinking helps us spot inconsistencies and hidden assumptions.
