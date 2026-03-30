@@ -403,18 +403,27 @@ have two sensors. The first represents temperature, and the second
 represents whether there is rainfall. Our temperature value is numeric,
 and the rainfall variable is a boolean. To declare those variables, you
 can type:</p>
-<pre><code><span><span class="va">temp_reading</span> <span class="op">=</span> <span class="fl">16</span></span>
-<span></span>
-<span><span class="va">rainfall</span> <span class="op">=</span> <span class="va">True</span> </span></code></pre>
-<p>{: .language.python} Then place the following code into your
-script:</p>
-<pre><code>if rainfall == True:
-  print("Advise user to take an umbrella") </code></pre>
-<p>{: .language.python}</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>temp_reading <span class="op">=</span> <span class="dv">16</span> </span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>rainfall <span class="op">=</span> <span class="va">True</span> </span></code></pre>
+</div>
+<p>Then place the following code into your script:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="cf">if</span> rainfall <span class="op">==</span> <span class="va">True</span>: </span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Advise user to take an umbrella"</span>) </span></code></pre>
+</div>
 <p>Run the script using the run button (little green play button) above
 the script pane.</p>
-<pre><code><span><span class="st">"Advise user to take an umbrella"</span></span></code></pre>
-<p>{: .output}</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co">"Advise user to take an umbrella"</span></span></code></pre>
+</div>
 <p>From observing the output in the console and from a brief inspection
 of the code, it should be evident that we are evaluating the variable
 rainfall. Specifically, we are checking if it is True. If the outcome is
@@ -426,11 +435,14 @@ an <em>if</em> condition” %}</p>
 <div class="section level3">
 <h3 id="if-else">if, else<a class="anchor" aria-label="anchor" href="#if-else"></a></h3>
 <p>Now modify your code to look like this:</p>
-<pre><code>if rainfall:
-  print("Advise user to take an umbrella")
-else:
-  print("Leave your umbrella at home") </code></pre>
-<p>{: .language.python}</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="cf">if</span> rainfall: </span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Advise user to take an umbrella"</span>) </span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="cf">else</span>: </span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Leave your umbrella at home"</span>) </span></code></pre>
+</div>
 <p>Note: With boolean variables, we don’t actually have to write
 <code>== True</code>.</p>
 <p>{% include figure.html max-width=“100%” file=“/fig/ifflow2.png”
@@ -441,10 +453,16 @@ an if, else condition” %}</p>
 <h3 id="change-the-condition">Change the condition<a class="anchor" aria-label="anchor" href="#change-the-condition"></a></h3>
 <p>Now change the rainfall variable to False and run the script
 again.</p>
-<pre><code><span><span class="va">rainfall</span> <span class="op">=</span> <span class="va">False</span></span></code></pre>
-<p>{: .language.python}</p>
-<pre><code><span><span class="st">"Leave your umbrella at home"</span></span></code></pre>
-<p>{: .output}</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>rainfall <span class="op">=</span> <span class="va">False</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co">"Leave your umbrella at home"</span></span></code></pre>
+</div>
 <p>Our code now reacts differently to different input values. You can
 combine if, elif (else if), and else statements to control the flow of
 your code.</p>
@@ -477,11 +495,14 @@ the operands is True, otherwise it returns False.</li>
 is False, and False if the operand is True.</li>
 </ul><p>Replace the code in your script with this (keeping the
 variables):</p>
-<pre><code>if rainfall or temp_reading &lt; 10:
-    print("Stay at home")
-else:
-    print("Go outside")</code></pre>
-<p>{: .language.python}</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="cf">if</span> rainfall <span class="kw">or</span> temp_reading <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Stay at home"</span>) </span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Go outside"</span>)</span></code></pre>
+</div>
 <p>By combining these operators, you can create sophisticated flow
 control mechanisms.</p>
 </div>
@@ -514,28 +535,41 @@ for each iteration of the loop.</li>
 </ul></li>
 <li><p><strong>Examples:</strong> Here’s an examples of a for loop that
 iterates over a range of numbers and prints each number:</p></li>
-</ol><pre><code>   for i in range(5):
-       print(i)</code></pre>
+</ol><div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>   <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>       <span class="bu">print</span>(i)</span></code></pre>
+</div>
 <p>{: .language.python}</p>
-<pre><code><span><span class="fl">0</span></span>
-<span><span class="fl">1</span></span>
-<span><span class="fl">2</span></span>
-<span><span class="fl">3</span></span>
-<span><span class="fl">4</span></span></code></pre>
-<p>{: .output}</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="dv">0</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="dv">1</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="dv">2</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="dv">3</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="dv">4</span></span></code></pre>
+</div>
 <p>Here’s an examples of a for loop that iterates over a list of strings
 and prints each string:</p>
-<pre><code>days = ['monday','tuesday','wednesday','thursday','friday']
-
-for day in days:
-    print(day)</code></pre>
-<p>{: .language.python}</p>
-<pre><code><span><span class="va">monday</span></span>
-<span><span class="va">tuesday</span></span>
-<span><span class="va">wednesday</span></span>
-<span><span class="va">thursday</span></span>
-<span><span class="va">friday</span></span></code></pre>
-<p>{: .output}</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>days <span class="op">=</span> [<span class="st">'monday'</span>,<span class="st">'tuesday'</span>,<span class="st">'wednesday'</span>,<span class="st">'thursday'</span>,<span class="st">'friday'</span>]</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="cf">for</span> day <span class="kw">in</span> days:</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>    <span class="bu">print</span>(day)</span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>monday</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>tuesday</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>wednesday</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>thursday</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>friday</span></code></pre>
+</div>
 <p>For loops are commonly used in Python for iterating over sequences,
 performing repetitive tasks, and processing collections of data.</p>
 </div>
