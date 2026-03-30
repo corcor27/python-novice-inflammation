@@ -289,9 +289,7 @@ print(type(x))
 
 ## Running code in order
 
-Jupyter notebooks keep variables, imports, and results in memory as you run cells. That means each cell can depend on work done earlier. When cells are run out of order, the notebook can end up in a weird state where the code looks fine but behaves unpredictably.
-
-### Main reason
+Jupyter notebooks keep variables, imports, and results in memory as you run cells. That means each cell can depend on work done earlier. When cells are run out of order, the notebook can end up in a state where the code looks fine but behaves unpredictably.
 
 ### Running cells in order makes the notebook:
 
@@ -300,8 +298,9 @@ Jupyter notebooks keep variables, imports, and results in memory as you run cell
 * easier for other people to reproduce
 * less likely to break because of hidden state
 
-A notebook is not just a document. It is also a live session.
-If you run cell 8 before cell 3, cell 8 might still work only because something was defined earlier in a previous run. But another person opening the notebook fresh will get an error.
+A notebook is not just a document. It is also a live coding session.
+
+If, during your work, you add something in cell 8 that cell 3 depends on, your notebook may still appear to work because both cells have already been run in your current session. However, if someone opens the notebook from scratch and runs the cells in order, they may get an error.
 
 ### Examples
 
@@ -316,25 +315,6 @@ y = x + 5
 print(y)
 ```
 If Cell 2 is run before Cell 1, Python will raise an error because x does not exist yet.
-
-Now imagine this:
-
-```python
-# Cell 1
-x = 10
-```
-
-```python
-# Cell 2
-x = 25
-```
-
-```python
-# Cell 3
-print(x)
-```
-
-If you skip around and run cells randomly, you may not even know whether x is 10 or 25. That is where notebooks get chaotic fast.
 
 ### Problems caused by running out of order
 * Name errors: variables or functions are missing
