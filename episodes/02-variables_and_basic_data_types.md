@@ -134,73 +134,6 @@ we can assign each person a unique identifier by storing it in a string:
 patient_id = '001'
 ```
 
-## How Python Assigns Data Types
-
-### Dynamic Typing
-
-In Python, you don’t declare a variable’s type explicitly. Instead, the type is determined automatically when you assign a value.
-
-```python
-x = 10        # x is an int
-print(x)
-x = "hello"   # now x is a string
-print(x)
-```
-
-```python
-10
-hello
-```
-For example, depending on how you assign a value, Python automatically determines its type:
-
-```python
-a = 5
-b = 5.0
-c = "5"
-
-print(type(a))  # int
-print(type(b))  # float
-print(type(c))  # str
-```
-
-```python
-<class 'int'>
-<class 'float'>
-<class 'str'>
-```
-
-
-Different data types behave differently. Some can be combined directly, such as integers and floats, but others cannot. For example, strings cannot be added to numbers in a meaningful way without conversion.
-
-Another challenge with dynamic typing is that sometimes values that look like numbers are actually stored as strings. This can lead to unexpected behaviour, as shown below:
-
-```python
-x = "10"        
-
-```
-
-To use this value as a number, we need to convert it from a string to an integer:
-
-```python
-x = "10"        
-x = int(x)
-```
-
-## Using Variables in Python
-
-Once we have data stored with variable names, we can make use of it in calculations.
-We may want to store our patient's weight in pounds as well as kilograms:
-
-```python
-weight_lb = 2.2 * weight_kg
-```
-
-We might decide to add a prefix to our patient identifier:
-
-```python
-patient_id = 'inflam_' + patient_id
-```
-
 ## Built-in Python functions
 
 To carry out common tasks with data and variables in Python,
@@ -281,9 +214,78 @@ print('weight in kilograms is now:', weight_kg)
 weight in kilograms is now: 65.0
 ```
 
+## Using Variables in Python
+
+Once we have data stored with variable names, we can make use of it in calculations.
+We may want to store our patient's weight in pounds as well as kilograms:
+
+```python
+weight_lb = 2.2 * weight_kg
+```
+
+We might decide to add a prefix to our patient identifier:
+
+```python
+patient_id = 'inflam_' + patient_id
+```
+
+## How Python Assigns Data Types
+
+### Dynamic Typing
+
+In Python, you don’t declare a variable’s type explicitly. Instead, the type is determined automatically when you assign a value.
+
+```python
+x = 10        # x is an int
+print(x)
+x = "hello"   # now x is a string
+print(x)
+```
+
+```python
+10
+hello
+```
+For example, depending on how you assign a value, Python automatically determines its type:
+
+```python
+a = 5
+b = 5.0
+c = "5"
+
+print(type(a))  # int
+print(type(b))  # float
+print(type(c))  # str
+```
+
+```python
+<class 'int'>
+<class 'float'>
+<class 'str'>
+```
 
 
+Different data types behave differently. Some can be combined directly, such as integers and floats, but others cannot. For example, strings cannot be added to numbers in a meaningful way without conversion.
 
+Another challenge with dynamic typing is that sometimes values that look like numbers are actually stored as strings. This can lead to unexpected behaviour, as shown below:
+
+```python
+x = "10"        
+
+```
+
+To use this value as a number, we need to convert it from a string to an integer:
+
+```python
+print(type(x))       
+x = int(x)
+print(type(x))
+```
+
+```python
+<class 'str'>
+<class 'int'>
+```
 
 ## Running code in order
 
