@@ -22,26 +22,26 @@ exercises: 30
 
 Often, we want to perform different operations in our code based upon dynamic conditions. To explore this idea, we are going to pretend we have two sensors. The first represents temperature, and the second represents whether there is rainfall. Our temperature value is numeric, and the rainfall variable is a boolean. To declare those variables, you can type:
 
-```
+```python
 temp_reading = 16 
 
 rainfall = True 
 ```
-{: .language.python}
+
 Then place the following code into your script:
 
-```
+```python
 if rainfall == True: 
   print("Advise user to take an umbrella") 
 ```
-{: .language.python}
+
 
 Run the script using the run button (little green play button) above the script pane.
 
-```
+```python
 "Advise user to take an umbrella"
 ```
-{: .output}
+
 
 From observing the output in the console and from a brief inspection of the code, it should be evident that we are evaluating the variable rainfall. Specifically, we are checking if it is True. If the outcome is of the check is true, then we perform any code within the indented block.
 
@@ -53,13 +53,13 @@ alt="Flow diagram for if condition" caption="Figure 1: Flow diagram for an *if* 
 
 Now modify your code to look like this:
 
-```
+```python
 if rainfall: 
   print("Advise user to take an umbrella") 
 else: 
   print("Leave your umbrella at home") 
 ```
-{: .language.python}
+
 
 Note: With boolean variables, we don't actually have to write `== True`.
 
@@ -69,15 +69,15 @@ alt="Flow diagram for if condition" caption="Figure 2: Flow diagram for an if, e
 ### Change the condition
 Now change the rainfall variable to False and run the script again.
 
-```
+```python
 rainfall = False
 ```
-{: .language.python}
 
-```
+
+```python
 "Leave your umbrella at home"
 ```
-{: .output}
+
 
 Our code now reacts differently to different input values. You can combine if, elif (else if), and else statements to control the flow of your code.
 
@@ -103,13 +103,13 @@ We have encountered '==', which is used to check for equivalence. There are othe
 
 Replace the code in your script with this (keeping the variables):
 
-```
+```python
 if rainfall or temp_reading < 10:
     print("Stay at home") 
 else:
     print("Go outside")
 ```
-{: .language.python}
+
 
 By combining these operators, you can create sophisticated flow control mechanisms.
 
@@ -133,39 +133,39 @@ In Python, a for loop is used to iterate over a sequence and perform a set of st
 
 3. **Examples:** Here's an examples of a for loop that iterates over a range of numbers and prints each number:
    
-```
+```python
    for i in range(5):
        print(i)
 ```
 {: .language.python}
 
-```
+```python
 0
 1
 2
 3
 4
 ```
-{: .output}
+
 
  Here's an examples of a for loop that iterates over a list of strings and prints each string:
 
-```
+```python
 days = ['monday','tuesday','wednesday','thursday','friday']
 
 for day in days:
     print(day)
 ```
-{: .language.python}
+
   
-```
+```python
 monday
 tuesday
 wednesday
 thursday
 friday
 ```
-{: .output}
+
 
 For loops are commonly used in Python for iterating over sequences, performing repetitive tasks, and processing collections of data.
 
