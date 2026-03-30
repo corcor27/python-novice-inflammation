@@ -189,7 +189,7 @@ In Anaconda, the default environment is called “base.” It serves as the core
 ## Jupyter Notebook
 ### What is Jupyter Notebook?
 
-Jupyter Notebook is an interactive tool that lets you write and run code in small sections, while also adding notes, explanations, and visual outputs—all in one place.
+Jupyter Notebook is an interactive tool that lets you write and run code in small sections, while also adding notes, explanations, and visual outputs, all in one place.
 
 It’s widely used in:
 
@@ -197,7 +197,7 @@ It’s widely used in:
 * Machine learning
 * Research and education
 
-Think of it as a combination of a coding environment + a document.
+Think of it as a combination of a coding environment and a document.
 
 Understanding Cells
 
