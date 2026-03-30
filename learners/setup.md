@@ -137,6 +137,125 @@ winpty python
 [zipfile1]: data/python-novice-inflammation-data.zip
 [zipfile2]: ../episodes/files/code/python-novice-inflammation-code.zip
 [gitbash]: https://gitforwindows.org
+[iris]: data/python-novice-inflammation-data/iris.csv
 
+## Your anaconda environment
+
+### What is an python environment
+
+A Python environment (often called a virtual environment) is an isolated workspace where you can install and manage Python packages independently from other projects.
+
+Think of it like this:
+
+Imagine each project you work on has its own “bubble”:
+
+* It has its own Python version
+* Its own libraries (packages)
+* Its own dependencies
+
+This prevents conflicts between projects.
+
+### Why Python environments are important
+
+Without environments:
+
+* One project might need pandas version 1.5
+* Another might need pandas version 2.0
+* These would clash and break things
+
+With environments:
+
+* Each project gets exactly what it needs
+
+### Install Package via conda
+
+```source
+conda install numpy
+```
+Another option if conda is problematic is to use, then you can install packages via pip
+
+```source
+pip install numpy
+```
+
+make sure that when you run these commands that you are in the correct environment, indicated on the left in the terminal. 
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+## Safe guarding "base"
+
+In Anaconda, the default environment is called “base.” It serves as the core foundation for everything within Anaconda. If this environment becomes corrupted or broken, you may lose the ability to create or install new environments. For this reason, it’s recommended that you only use the base environment to create new environments or update Conda, and avoid making other changes to it.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+## Jupyter Notebook
+### What is Jupyter Notebook?
+
+Jupyter Notebook is an interactive tool that lets you write and run code in small sections, while also adding notes, explanations, and visual outputs—all in one place.
+
+It’s widely used in:
+
+* Data science
+* Machine learning
+* Research and education
+
+Think of it as a combination of a coding environment + a document.
+
+Understanding Cells
+
+A notebook is made up of cells, which are the building blocks of your work.
+
+Types of cells:
+* Code cells → where you write and run Python code
+* Markdown cells → where you write text, explanations, or instructions
+
+### Using Jupyter Notebook
+
+![](fig/creating_file.png){alt='Click the red box to create a new notebook and then select python 3 (ipykernal)'}
+
+![](fig/notebook.png){alt='Blue: the cells where you run code, Orange: is the output from a cell above, Pink: is the current cell selected, Red: remove selected cell, Green: Run select cell and Black: Name of worksheet, change by clicking it.'}
+
+![](fig/running_cells.png){alt='Red: run selected cell, Blue: run all if needing to check of errors and Green is to start and run cells with a blank canvas.'}
+
+### Why Use Notebooks Instead of Terminal or IDE?
+
+Jupyter Notebooks are used as a starting point because they are:
+
+Beginner-friendly
+* No need to manage multiple files
+* Immediate feedback when running code
+Interactive
+* Run small pieces of code step-by-step
+* Experiment without breaking everything
+Visual
+* Outputs, charts, and explanations appear together
+Great for learning
+* You can mix code + explanation + results in one place
+
+
+### A Quick Note on Terminal & IDEs
+
+More advanced workflows often use:
+
+* The command line (terminal)
+* Full development environments (IDEs)
+* High-performance computing (HPC) systems for large-scale workloads
+
+These are powerful, but:
+
+* Require more setup
+* Are less interactive for beginners
+
+### Why We Start with Notebooks
+
+Notebooks provide the most accessible entry point because they:
+
+* Reduce complexity
+* Encourage experimentation
+* Help you understand code step-by-step
+
+Once you’re comfortable, you can then move on to:
+
+* Scripts
+* Terminals
+* Larger systems like HPC
 
 
