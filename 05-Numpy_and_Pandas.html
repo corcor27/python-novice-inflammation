@@ -402,11 +402,9 @@
 </div>
 </div>
 </div>
-<p>Words are useful, but what’s more useful are the sentences and
-stories we build with them. Similarly, while a lot of powerful, general
-tools are built into Python, specialised tools for working with data are
-available in <a href="reference.html#library">libraries</a> that can be
-called upon when needed.</p>
+<p>While a lot of powerful, general tools are built into Python,
+specialised tools for working with data are available in <a href="reference.html#library">libraries</a> that can be called upon when
+needed.</p>
 <section><h2 class="section-heading" id="loading-data-into-python">Loading data into Python<a class="anchor" aria-label="anchor" href="#loading-data-into-python"></a></h2>
 <hr class="half-width"><p>To begin processing the clinical trial inflammation data, we need to
 load it into Python. We can do that using a library called <a href="https://numpy.org/doc/stable" title="NumPy Documentation" class="external-link">NumPy</a>, which stands for Numerical
@@ -431,7 +429,7 @@ data file for us:</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">import</span> numpy</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>numpy.loadtxt(fname<span class="op">=</span><span class="st">'inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span></code></pre>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>numpy.loadtxt(fname<span class="op">=</span><span class="st">'../data/inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -473,7 +471,7 @@ returned data:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>data <span class="op">=</span> numpy.loadtxt(fname<span class="op">=</span><span class="st">'inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>data <span class="op">=</span> numpy.loadtxt(fname<span class="op">=</span><span class="st">'../data/inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span></code></pre>
 </div>
 <p>This statement doesn’t produce any output because we’ve assigned the
 output to the variable <code>data</code>. If we want to check that the
@@ -788,7 +786,7 @@ To read in the dataset:</p>
 <div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>iris_df <span class="op">=</span> pd.read_csv(<span class="st">"data/iris.csv"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a>iris_df <span class="op">=</span> pd.read_csv(<span class="st">"../iris.csv"</span>)</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="inspecting-a-dataset">Inspecting a Dataset<a class="anchor" aria-label="anchor" href="#inspecting-a-dataset"></a></h3>
@@ -881,6 +879,8 @@ comments such as <code># explanation</code> to explain what you are
 doing.</li>
 <li>We have shown some simple examples but you could slice your data in
 much more complicated ways depending on your requirements.</li>
+<li>It is hard to get an understanding of the data by just reading the
+raw numbers.</li>
 </ul></div>
 </div>
 </div>

@@ -400,8 +400,8 @@
 <section><h2 class="section-heading" id="visualizing-data">Visualizing data<a class="anchor" aria-label="anchor" href="#visualizing-data"></a></h2>
 <hr class="half-width"><p>The mathematician Richard Hamming once said, “The purpose of
 computing is insight, not numbers,” and the best way to develop insight
-is often to visualise data. Visualisation deserves an entire lecture of
-its own, but we can explore a few features of Python’s
+is often to visualise data. Visualisation could take an entire course of
+its own, but for now we can explore a few features of Python’s
 <code>matplotlib</code> library here. While there is no official
 plotting library, <code>matplotlib</code> is the <em>de facto</em>
 standard. First, we will import the <code>pyplot</code> module from
@@ -424,7 +424,7 @@ you need the following two lines:</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> numpy</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>data <span class="op">=</span> numpy.loadtxt(fname<span class="op">=</span><span class="st">'inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span></code></pre>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>data <span class="op">=</span> numpy.loadtxt(fname<span class="op">=</span><span class="st">'../data/inflammation-01.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span></code></pre>
 </div>
 </div>
 </div>
@@ -477,10 +477,10 @@ dataset, so let’s have a look at two other statistics:</p>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>matplotlib.pyplot.show()</span></code></pre>
 </div>
 <figure><img src="fig/inflammation-01-minimum.svg" alt="A line graph showing the minimum inflammation across all patients over a 40-day period." class="figure mx-auto d-block"></figure><p>The maximum value rises and falls linearly, while the minimum seems
-to be a step function. Neither trend seems particularly likely, so
-either there’s a mistake in our calculations or something is wrong with
-our data. This insight would have been difficult to reach by examining
-the numbers themselves without visualisation tools.</p>
+to be a step function. Neither trend seems particularly likely, so it’s
+likely there is something wrong with Dr Maverick’s data. This insight
+would have been difficult to reach by examining the numbers themselves
+without visualisation tools.</p>
 <div class="section level3">
 <h3 id="grouping-plots">Grouping plots<a class="anchor" aria-label="anchor" href="#grouping-plots"></a></h3>
 <p>You can group similar plots in a single figure using subplots. The
@@ -579,7 +579,8 @@ imported.</p>
 <div class="callout-content">
 <ul><li>We can easily visualise data using matplotlib.</li>
 <li>There are other libraries that are popular (e.g., seaborn).</li>
-<li>Getting figures just right can take a bit of time and effort.</li>
+<li>Getting figures “paper ready” can take a bit of time and
+effort.</li>
 </ul></div>
 </div>
 </div>
