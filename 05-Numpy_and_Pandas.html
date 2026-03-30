@@ -245,7 +245,7 @@
       <div class="accordion-body">
         <ul><li><a href="#loading-data-into-python">Loading data into Python</a></li>
 <li><a href="#slicing-data">Slicing data</a></li>
-<li><a href="#analyzing-data">Analyzing data</a></li>
+<li><a href="#analysing-data">Analysing data</a></li>
 <li><a href="#pandas">Pandas</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -448,13 +448,12 @@ data file for us:</p>
 to run the <a href="reference.html#function">function</a>
 <code>loadtxt</code> which belongs to the <code>numpy</code> library.
 The dot is used to access something that belongs to an object, such as a
-value or a function. For example <code>object.property</code> will give
-you the object.property value, <code>object_name.method()</code> will
-invoke on object_name method.</p>
-<p>As an illustration, John Smith is the John that belongs to the Smith
-family. We could use the dot notation to write his name
-<code>smith.john</code>, just as <code>loadtxt</code> is a function that
-belongs to the <code>numpy</code> library.</p>
+value or a function. For example, <code>object.property</code> accesses
+a value, and <code>object_name.method()</code> calls a method.</p>
+<p>You can think of the dot like opening a toolbox and picking out a
+specific tool. The library is the toolbox, and the function is one of
+the tools inside it. So in numpy.loadtxt, numpy is the toolbox and
+loadtxt is the tool we want to use.</p>
 <p><code>numpy.loadtxt</code> has two <a href="reference.html#parameter">parameters</a>: the name of the file we
 want to read and the <a href="reference.html#delimiter">delimiter</a>
 that separates values on a line. These both need to be <a href="reference.html#string">strings</a>, so we put them in quotes.</p>
@@ -616,7 +615,7 @@ the end of the array.</p>
  [ 1.  1.  0.  1.]
  [ 2.  2.  1.  1.]]</code></pre>
 </div>
-</section><section><h2 class="section-heading" id="analyzing-data">Analyzing data<a class="anchor" aria-label="anchor" href="#analyzing-data"></a></h2>
+</section><section><h2 class="section-heading" id="analysing-data">Analysing data<a class="anchor" aria-label="anchor" href="#analysing-data"></a></h2>
 <hr class="half-width"><p>NumPy has several useful functions that take an array as input to
 perform operations on its values. If we want to find the average
 inflammation for all patients on all days, for example, we can ask NumPy
@@ -778,7 +777,7 @@ a wide range of functions for tasks such as data cleaning, preparation,
 and exploration. It is widely used in data science and machine learning
 workflows for its ease of use and flexibility.</p>
 <p>We will now use the Iris dataset as an example of a dataset that does
-not just consist of numbers. This allows us to demonstrate some of
+not just consist of numbers. This allows us to demonstrate some of the
 strengths of the Pandas library for inspecting structure and contents.
 To read in the dataset:</p>
 <div class="codewrapper sourceCode" id="cb37">
@@ -851,20 +850,20 @@ Here are some examples:</p>
 </div>
 </div>
 <div class="section level3">
-<h3 id="sub-setting-data">Sub-setting Data<a class="anchor" aria-label="anchor" href="#sub-setting-data"></a></h3>
-<p>Sub-setting allows us to select specific rows or columns based on
+<h3 id="subsetting-data">Subsetting Data<a class="anchor" aria-label="anchor" href="#subsetting-data"></a></h3>
+<p>Subsetting allows us to select specific rows or columns based on
 conditions:</p>
 <div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>iris_df <span class="op">=</span> pd.read_csv(<span class="st">"data/iris.csv"</span>) <span class="co">#reset the dataset</span></span>
-<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a><span class="co"># Select rows where petal.length is greater than 5</span></span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>iris_df <span class="op">=</span> pd.read_csv(<span class="st">"data/iris.csv"</span>) <span class="co"># reset the dataset</span></span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a><span class="co"># Select rows where 'petal.length' is greater than 5</span></span>
 <span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a>subset_df <span class="op">=</span> iris_df[iris_df[<span class="st">'petal.length'</span>] <span class="op">&gt;</span> <span class="dv">5</span>]</span></code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="co"># Select rows where species is 'Setosa' and petal.length is less than 1.5</span></span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="co"># Select rows where 'variety' is 'Setosa' and 'petal.length' is less than 1.5</span></span>
 <span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>subset_df <span class="op">=</span> iris_df[(iris_df[<span class="st">'variety'</span>] <span class="op">==</span> <span class="st">'Setosa'</span>) <span class="op">&amp;</span> (iris_df[<span class="st">'petal.length'</span>] <span class="op">&lt;</span> <span class="fl">1.5</span>)]</span></code></pre>
 </div>
 <div id="keypoints1" class="callout keypoints">
