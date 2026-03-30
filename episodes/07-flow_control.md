@@ -39,7 +39,7 @@ if rainfall == True:
 Run the script using the run button (little green play button) above the script pane.
 
 ```python
-"Advise user to take an umbrella"
+Advise user to take an umbrella
 ```
 
 
@@ -75,7 +75,7 @@ rainfall = False
 
 
 ```python
-"Leave your umbrella at home"
+Leave your umbrella at home
 ```
 
 

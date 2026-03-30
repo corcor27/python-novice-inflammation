@@ -56,10 +56,9 @@ def explicit_fahr_to_celsius(temp):
     return converted
     
 def fahr_to_celsius(temp):
-    # Return converted value more efficiently using the return
-    # function without creating a new variable. This code does
-    # the same thing as the previous function but it is more explicit
-    # in explaining how the return command works.
+    # Return converted value more efficiently using return
+    # without creating a new variable. This code does
+    # the same thing as the previous function but in a shorter way.
     return ((temp - 32) * (5/9))
 ```
 
@@ -67,8 +66,8 @@ def fahr_to_celsius(temp):
 
 The function definition opens with the keyword `def` followed by the
 name of the function (`fahr_to_celsius`) and a parenthesized list of parameter names (`temp`). The
-[body](../learners/reference.md#body) of the function --- the
-statements that are executed when it runs --- is indented below the
+[body](../learners/reference.md#body) of the function, the
+statements that are executed when it runs, is indented below the
 definition line.  The body concludes with a `return` keyword followed by the return value.
 
 When we call the function,
@@ -139,9 +138,7 @@ boiling point of water in Kelvin: 373.15
 This is our first taste of how larger programs are built:
 we define basic operations,
 then combine them in ever-larger chunks to get the effect we want.
-Real-life functions will usually be larger than the ones shown here --- typically half a dozen
-to a few dozen lines --- but they shouldn't ever be much longer than that,
-or the next person who reads it won't be able to understand what's going on.
+In practice, many functions are longer than the ones shown here, but it is usually a good idea to keep functions focused on a single task and not make them unnecessarily long.
 
 ## Variable Scope
 
@@ -197,6 +194,8 @@ temperature in Fahrenheit was: 212.0
 temperature in Kelvin was: 373.15
 ```
 
+Although a function can read values from global variables, relying too much on globals can make code harder to understand and test, therefore best practice is to avoid this.
+
 ## Tidying up
 
 Now that we know how to wrap bits of code up in functions,
@@ -227,8 +226,7 @@ def visualize(filename):
     matplotlib.pyplot.show()
 ```
 
-and another function called `detect_problems` that checks for those systematics
-we noticed:
+and another function called `detect_problems` that checks for those suspicious patterns we noticed:
 
 ```python
 def detect_problems(filename):
@@ -246,7 +244,7 @@ def detect_problems(filename):
 Wait! Didn't we forget to specify what both of these functions should return? Well, we didn't.
 In Python, functions are not required to include a `return` statement and can be used for
 the sole purpose of grouping together pieces of code that conceptually do one thing. In such cases,
-function names usually describe what they do, *e.g.* `visualize`, `detect_problems`.
+function names usually describe what they do, *e.g.* `visualize`, `detect_problems`. Where no return is included, as a default, Python will return a `none`.
 
 Notice that rather than jumbling this code together in one giant `for` loop,
 we can now read and reuse both ideas separately.
@@ -271,7 +269,7 @@ we can do so in a single line.
 Once we start putting things in functions so that we can re-use them,
 we need to start testing that those functions are working correctly.
 To see how to do this,
-let's write a function to offset a dataset so that it's mean value
+let's write a function to offset a dataset so that its mean value
 shifts to a user-defined value:
 
 ```python
@@ -283,7 +281,7 @@ We could test this on our actual data,
 but since we don't know what the values ought to be,
 it will be hard to tell if the result was correct.
 Instead,
-let's use NumPy to create a matrix of 0's
+let's use NumPy to create a matrix of zeros
 and then offset its values to have a mean value of 3:
 
 ```python
@@ -334,7 +332,7 @@ min, mean, and max of offset data are: -6.14875 2.842170943040401e-16 13.85125
 That seems almost right:
 the original mean was about 6.1,
 so the lower bound from zero is now about -6.1.
-The mean of the offset data isn't quite zero, but it's pretty close.
+The mean of the offset data is not exactly zero because of floating-point arithmetic, but it is extremely close.
 We can even go further and check that the standard deviation hasn't changed:
 
 ```python
@@ -400,9 +398,7 @@ offset_mean(data, target_mean_value)
 ```
 
 A string like this is called a [docstring](../learners/reference.md#docstring).
-We don't need to use triple quotes when we write one,
-but if we do,
-we can break the string across multiple lines:
+Docstrings are usually written with triple quotes, which also lets us spread them across multiple lines if needed:
 
 ```python
 def offset_mean(data, target_mean_value):
@@ -698,7 +694,7 @@ def fence(original, wrapper):
 
 Note that `return` and `print` are not interchangeable.
 `print` is a Python function that *prints* data to the screen.
-It enables us, *users*, see the data.
+It enables us, *as users*, see the data.
 `return` statement, on the other hand, makes data visible to the program.
 Let's have a look at the following function:
 
@@ -721,7 +717,7 @@ print(A)
 Python will first execute the function `add` with `a = 7` and `b = 3`,
 and, therefore, print `10`. However, because function `add` does not have a
 line that starts with `return` (no `return` "statement"), it will, by default, return
-nothing which, in Python world, is called `None`. Therefore, `A` will be assigned to `None`
+nothing which, in Python world, is represented as `None`. Therefore, `A` will be assigned to `None`
 and the last line (`print(A)`) will print `None`. As a result, we will see:
 
 ```output
@@ -883,8 +879,7 @@ print(k)
 `k` is 0 because the `k` inside the function `f2k` doesn't know
 about the `k` defined outside the function. When the `f2k` function is called,
 it creates a [local variable](../learners/reference.md#local-variable)
-`k`. The function does not return any values
-and does not alter `k` outside of its local copy.
+`k`. The function returns a local `k` but that does not alter the `k` outside of its local copy.
 Therefore the original value of `k` remains unchanged.
 Beware that a local `k` is created because `f2k` internal statements
 *affect* a new value to it. If `k` was only `read`, it would simply retrieve the
@@ -970,7 +965,7 @@ could be further improved to make them more readable.
 
 - The body of a function must be indented.
 - Call a function using `function_name(value)`.
-- The `Scope` of variables defined within a function can only be seen and used within the body of the function.
+- The `scope` of variables defined within a function can only be seen and used within the body of the function.
 - Variables created outside of any function are called global variables.
 - Within a function, we can access global variables.
 - Variables created within a function override global variables if their names match.
