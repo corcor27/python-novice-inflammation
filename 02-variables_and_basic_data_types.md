@@ -142,7 +142,14 @@ In Python, you don’t declare a variable’s type explicitly. Instead, the type
 
 ```python
 x = 10        # x is an int
+print(x)
 x = "hello"   # now x is a string
+print(x)
+```
+
+```python
+10
+hello
 ```
 For example, depending on how you assign a value, Python automatically determines its type:
 
@@ -155,6 +162,13 @@ print(type(a))  # int
 print(type(b))  # float
 print(type(c))  # str
 ```
+
+```python
+<class 'int'>
+<class 'float'>
+<class 'str'>
+```
+
 
 Different data types behave differently. Some can be combined directly, such as integers and floats, but others cannot. For example, strings cannot be added to numbers in a meaningful way without conversion.
 

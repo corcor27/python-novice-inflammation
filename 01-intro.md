@@ -96,7 +96,7 @@ Question: Before you enter the next calculation, take a second to consider what 
 ```
 
 ```output
-9
+9.0
 ```
 
 If the answer was **not** what you were expecting you will need to become clear on order of operations in Python. 
@@ -125,17 +125,18 @@ To make this concept clearer, try:
 
 
 ```output
-5
+5.0
 ```
 
 
 Using brackets we have manipulated the order of operations to perform the addition before the division. Be conscious of how you structure your mathematical operations to ensure the desired results but also readability of your code.
 
+### So what happens if we do something wrong? I am worried that I might break something!
 
+If we do something wrong, Python will usually show us an error message. Sometimes, more frustratingly, the code will still run but produce unexpected results. This is a normal part of programming and not usually a sign that you have broken anything. So, how do we get help when things don't work like they should?
 
 ## Getting Help
-Use the built-in function `help()` to get help for a function.
-
+We are now going to briefly explore how to find help in Python and introduce our first built-in function. The built-in function we will use is `help()`, which displays information about Python objects. We will use it to look up another built-in function, `print()`.
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 A function is a named piece of code that performs a task. We will look at functions in more detail later in the module. For now, we will use built-in functions (functions included in base Python) to understand how to use them.
