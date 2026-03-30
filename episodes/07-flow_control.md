@@ -43,10 +43,10 @@ Run the script using the run button (little green play button) above the script 
 ```
 {: .output}
 
-From observing the output in the console and from a brief inspection of the code, it should be evident that we are evaluating the variable rainfall. Specifically, we are checking if it is True. If the outcome is of the check is valid, then we perform any code within the indented block.
+From observing the output in the console and from a brief inspection of the code, it should be evident that we are evaluating the variable rainfall. Specifically, we are checking if it is True. If the outcome is of the check is true, then we perform any code within the indented block.
 
 {% include figure.html max-width="100%" file="/fig/ifflow1.png" 
-alt="Flow diagrame for if condition" caption="Figure 1: Flow diagram for an *if* condition" %}
+alt="Flow diagram for if condition" caption="Figure 1: Flow diagram for an *if* condition" %}
 
 
 ### if, else
@@ -61,10 +61,10 @@ else:
 ```
 {: .language.python}
 
-Note: With boolean variables, we don't actually have to check for equivalence.
+Note: With boolean variables, we don't actually have to write `== True`.
 
 {% include figure.html max-width="100%" file="/fig/ifflow2.png" 
-alt="Flow diagrame for if condition" caption="Figure 2: Flow diagram for an if, else condition" %}
+alt="Flow diagram for if condition" caption="Figure 2: Flow diagram for an if, else condition" %}
 
 ### Change the condition
 Now change the rainfall variable to False and run the script again.
@@ -82,9 +82,9 @@ rainfall = False
 Our code now reacts differently to different input values. You can combine if, elif (else if), and else statements to control the flow of your code.
 
 ### Conditional statements
-- 'if' – Used to execute a block of code if a condition is true.
-- 'elif' – Extends an 'if' statement to check a condition only if the previous 'if' or 'elif' condition was resolved as false.
-- 'else' – Extends an 'if' statement, will execute if none of the preceding 'if' conditions are true.
+- 'if' – Runs a block of code if a condition is true.
+- 'elif' – Checks another condition if the previous `if` or `elif` condition was false.
+- 'else' – Runs a block of code if none of the previous conditions were true.
 
 ### Comparison operators
 We have encountered '==', which is used to check for equivalence. There are other comparison operators available to us.
@@ -115,7 +115,7 @@ By combining these operators, you can create sophisticated flow control mechanis
 
 ### For loops
 
-In Python, a for loop is used to iterate over a sequence and perform a set of statements for each item in the sequence. Here's how a for loop works in Python:
+In Python, a for loop is used to iterate over a sequence and perform a set of statements for each item in the sequence. Here is an example of a for loop in Python:
 
 1. **Syntax:** The syntax of a for loop in Python is as follows:
    
@@ -183,13 +183,13 @@ We've covered a very basic introduction to flow control in Python, but there are
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Use `for variable in sequence` to process the elements of a sequence one at a time.
-- Don't forget to indent, IDE's are helpful for this reason.
+- Don't forget to indent.
 - You can use `len(thing)` to determine the length of something that contains other values.
 - Use `if condition` to start a conditional statement, `elif condition` to provide additional tests, and `else` to provide a default.
 - Use `==` to test for equality and `=` for assignment.
 - `X and Y` is only true if both `X` and `Y` are true.
 - `X or Y` is true if either `X` or `Y`, or both, are true.
-- Zero, the empty string, and the empty list are considered false; all other numbers, strings, and lists are considered true.
+- In Python, some values are treated as false in conditions, including `\0`, `''`, `[]`, and `None`.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
