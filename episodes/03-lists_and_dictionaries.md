@@ -24,18 +24,6 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-In the previous episode, we analysed a single file of clinical trial inflammation data. However,
-after finding some peculiar and potentially suspicious trends in the trial data we ask
-Dr. Maverick if they have performed any other clinical trials. Surprisingly, they say that they
-have and provide us with 11 more CSV files for a further 11 clinical trials they have undertaken
-since the initial trial.
-
-Our goal now is to process all the inflammation data we have, which means that we still have
-eleven more files to go!
-
-The natural first step is to collect the names of all the files that we have to process. In Python,
-a list is a way to store multiple values together. In this episode, we will learn how to store
-multiple values in a list as well as how to work with lists.
 
 ## Python lists
 
@@ -91,7 +79,7 @@ final value of names: ['Curie', 'Darwin', 'Turing']
 
 ## Ch-Ch-Ch-Ch-Changes
 
-Mutable data (like lists and arrays) can be changed after creation, while immutable data (like strings and numbers) cannot be modified—only replaced.
+Mutable data (like lists and arrays) can be changed after creation, while immutable data (like strings and numbers) cannot be modified, only replaced.
 Modifying mutable objects in place can lead to unexpected behaviour if multiple variables reference the same data.
 To avoid this, you can create a copy so changes do not affect the original.
 In-place changes are more efficient but can make code harder to understand, so there is a trade-off between clarity and performance.
@@ -225,7 +213,40 @@ print('removed_element:', removed_element)
 ```
 ### List slicing
 
+If you want to take a slice from the beginning of a sequence, you can omit the first index in the
+range:
 
+```python
+date = 'Monday 4 January 2016'
+day = date[0:6]
+print('Using 0 to begin range:', day)
+day = date[:6]
+print('Omitting beginning index:', day)
+```
+
+```output
+Using 0 to begin range: Monday
+Omitting beginning index: Monday
+```
+
+And similarly, you can omit the ending index in the range to take a slice to the very end of the
+sequence:
+
+```python
+months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+sond = months[8:12]
+print('With known last position:', sond)
+sond = months[8:len(months)]
+print('Using len() to get last entry:', sond)
+sond = months[8:]
+print('Omitting ending index:', sond)
+```
+
+```output
+With known last position: ['sep', 'oct', 'nov', 'dec']
+Using len() to get last entry: ['sep', 'oct', 'nov', 'dec']
+Omitting ending index: ['sep', 'oct', 'nov', 'dec']
+```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -348,40 +369,7 @@ beatles[::2]
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-If you want to take a slice from the beginning of a sequence, you can omit the first index in the
-range:
 
-```python
-date = 'Monday 4 January 2016'
-day = date[0:6]
-print('Using 0 to begin range:', day)
-day = date[:6]
-print('Omitting beginning index:', day)
-```
-
-```output
-Using 0 to begin range: Monday
-Omitting beginning index: Monday
-```
-
-And similarly, you can omit the ending index in the range to take a slice to the very end of the
-sequence:
-
-```python
-months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
-sond = months[8:12]
-print('With known last position:', sond)
-sond = months[8:len(months)]
-print('Using len() to get last entry:', sond)
-sond = months[8:]
-print('Omitting ending index:', sond)
-```
-
-```output
-With known last position: ['sep', 'oct', 'nov', 'dec']
-Using len() to get last entry: ['sep', 'oct', 'nov', 'dec']
-Omitting ending index: ['sep', 'oct', 'nov', 'dec']
-```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -458,7 +446,17 @@ del my_dict['age']             # Removes the key 'age' and its value
 my_dict['city'] = 'Los Angeles' # Updates the value of 'city' key to 'Los Angeles'
 ```
 
+## Why do we need different data structures?
 
+We need different data structures because data does not always come in the same form.
+
+Sometimes we want to store values in a simple ordered collection. A **list** is good for this. For example, a list works well for a sequence of numbers, names, or measurements where the position of each item matters.
+
+Sometimes we want to store values with labels. A **dictionary** is good for this. For example, if we want to store a person's name, age, and job, it is more useful to label each value than to rely on its position.
+
+So, lists and dictionaries are both ways of storing multiple values, but they are designed for different purposes. A list helps us work with **order**, while a dictionary helps us work with **meaningful labels**.
+
+We also need to consider how information is accessed when working with data at scale, particularly when thinking about how efficiently we can search for values within different data structures.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
@@ -468,6 +466,7 @@ my_dict['city'] = 'Los Angeles' # Updates the value of 'city' key to 'Los Angele
 - Dictionaries are indexed with the key (e.g., dictionary['first_entry'])
 - Some objects are mutable (e.g., lists).
 - Some objects are immutable (e.g., strings).
+- Different data structures exist because they support different ways of organising and accessing information.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
