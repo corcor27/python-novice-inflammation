@@ -23,8 +23,8 @@ Before starting you'll want to type `conda activate carpentries` in order to act
 3. Move downloaded files to `swc-python`.
 4. Unzip the files.
 
-You should see two folders called `data` and `code` in the `swc-python` directory on your
-Desktop.
+You should see three folders called `data`, `code`, and additional stuff in the `swc-python` directory on your
+Desktop. You should also see the iris dataset in that folder.
 
 ## Launch Python interface
 
@@ -167,7 +167,31 @@ With environments:
 
 * Each project gets exactly what it needs
 
-### Install Package via conda
+### Activate a Conda environment
+
+As part of the installation, you should already have installed Miniforge.
+On Windows, open the **Miniforge Prompt**. On macOS or Linux, open a terminal.
+
+You only need to create the environment once, but you need to activate it each time you start a new session.
+
+To activate the `carpentries` environment, type:
+
+```source
+conda activate carpentries
+```
+
+To check that the environment has activated correctly, you should either see that your prompt now displays the environment name or you can type:
+
+```source
+conda info --envs
+```
+
+The active environment will have a `*` next to it.
+
+### Install packages with Conda
+
+Most of the packages you need should already be installed in the `carpentries` environment.
+Here, we will see how to install packages using Conda in Miniforge or the terminal. Later, we will also see examples of how to install packages from within Jupyter Notebook.
 
 ```source
 conda install numpy
@@ -178,7 +202,7 @@ Another option if conda is problematic is to use, then you can install packages 
 pip install numpy
 ```
 
-make sure that when you run these commands that you are in the correct environment, indicated on the left in the terminal. 
+Make sure that, when you run these commands, you are in the correct environment (carpentries). 
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 ## Safe guarding "base"
@@ -211,7 +235,7 @@ Types of cells:
 
 ![](fig/creating_file.png){alt='Click the red box to create a new notebook and then select python 3 (ipykernal)'}
 
-Click the red box to create a new notebook and then select python 3 (ipykernal)
+Click the red box to create a new notebook and then select python 3 (ipykernel)
 
 ![](fig/notebook.png){alt='Blue: the cells where you run code, Orange: is the output from a cell above, Pink: is the current cell selected, Red: remove selected cell, Green: Run select cell and Black: Name of worksheet, change by clicking it.'}
 
