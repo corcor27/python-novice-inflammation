@@ -144,7 +144,7 @@ One common way to load an image is with PIL:
 from PIL import Image
 
 img = Image.open("data/cat.jpg")
-img
+img.show()
 ```
 
 This opens the image file from the data folder.

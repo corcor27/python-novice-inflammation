@@ -45,8 +45,9 @@ Advise user to take an umbrella
 
 From observing the output in the console and from a brief inspection of the code, it should be evident that we are evaluating the variable rainfall. Specifically, we are checking if it is True. If the outcome is of the check is true, then we perform any code within the indented block.
 
-{% include figure.html max-width="100%" file="/fig/ifflow1.png" 
-alt="Flow diagram for if condition" caption="Figure 1: Flow diagram for an *if* condition" %}
+![](/fig/ifflow1.png){alt='Flow diagram for if condition" caption="Figure 1: Flow diagram for an *if* condition'}
+
+
 
 
 ### if, else
@@ -63,8 +64,9 @@ else:
 
 Note: With boolean variables, we don't actually have to write `== True`.
 
-{% include figure.html max-width="100%" file="/fig/ifflow2.png" 
-alt="Flow diagram for if condition" caption="Figure 2: Flow diagram for an if, else condition" %}
+
+![](/fig/ifflow2.png){alt="Flow diagram for if condition" caption="Figure 2: Flow diagram for an if, else condition"}
+
 
 ### Change the condition
 Now change the rainfall variable to False and run the script again.
