@@ -332,7 +332,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="09-Pathing_and_workspace.html">9. Pathing and work spaces</a>
+        <a href="09-Pathing_and_workspace.html">9. Pathing and workspaces</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -1471,7 +1471,7 @@ your approach to make it more robust.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Use negative indices to count elements from the end of a container
 (such as list or string):</p>
@@ -1552,7 +1552,7 @@ through the end of the string)?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>To obtain every other character you need to provide a slice with the
 step size of 2:</p>
@@ -1646,7 +1646,7 @@ things depending on what it’s applied to.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The multiplication operator <code>*</code> used on a list replicates
 elements of the list and concatenates them together:</p>
@@ -3700,6 +3700,9 @@ not only for sharing code with others, but also for the original
 programmer. If you need to revisit code that you wrote months ago and
 haven’t thought about since then, you will appreciate the value of
 readable code!</p>
+</section><section><h2 class="section-heading" id="challenges">Challenges<a class="anchor" aria-label="anchor" href="#challenges"></a>
+</h2>
+<hr class="half-width">
 <div id="combining-strings" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -4129,9 +4132,9 @@ it with different parameter values to customize its behavior.</li>
 </div>
 </div>
 </div>
-</section></section><section id="aio-09-Pathing_and_workspace"><p>Content from <a href="09-Pathing_and_workspace.html">Pathing and work spaces</a></p>
+</section></section><section id="aio-09-Pathing_and_workspace"><p>Content from <a href="09-Pathing_and_workspace.html">Pathing and workspaces</a></p>
 <hr>
-<p>Last updated on 2026-03-27 |
+<p>Last updated on 2026-03-30 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/09-Pathing_and_workspace.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -4215,11 +4218,14 @@ hierarchical file system.</p>
 just like any other file. In Jupyter, the notebook runs relative to a
 current working directory, and relative paths depend on that
 location.</p>
-<p>Important idea</p>
+</div>
+<div class="section level3">
+<h3 id="important-idea">Important idea<a class="anchor" aria-label="anchor" href="#important-idea"></a>
+</h3>
 <p>When you write code to open a file, Python needs to know:</p>
 <p>“Starting from where?”</p>
-<p>Usually, that starting point is the folder the notebook is running
-from.</p>
+<p>Usually, that starting point is the current working directory, which
+is often the same as the notebook’s folder.</p>
 <p>So if your notebook is in:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4306,14 +4312,16 @@ computer</li>
 <span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>img</span></code></pre>
 </div>
 <p>This opens the image file from the data folder.</p>
-<p>Or you can even use a library called opencv</p>
+<p>You can also use a library called OpenCV.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="im">import</span> cv2</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>img <span class="op">=</span> cv2.imread(<span class="st">"imagepath.png"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>img</span></code></pre>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>img <span class="op">=</span> cv2.imread(<span class="st">"data/cat.jpg"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>cv2.imshow(<span class="st">"Image"</span>, img)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>cv2.waitKey(<span class="dv">0</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>cv2.destroyAllWindows()</span></code></pre>
 </div>
 <p>Another common option in notebooks is matplotlib:</p>
 <div class="codewrapper sourceCode" id="cb8">
@@ -4350,9 +4358,14 @@ computer</li>
 <h3 id="troubleshooting-debugging-path-problems">Troubleshooting / debugging path problems<a class="anchor" aria-label="anchor" href="#troubleshooting-debugging-path-problems"></a>
 </h3>
 <p>When a file will not load, students should ask:</p>
-<p>Where is my notebook? Where is my file? What path am I giving Python?
-Is the filename spelled correctly? Is the extension correct? Am I using
-the right folder names?</p>
+<ul>
+<li>Where is my notebook?</li>
+<li>Where is my file?</li>
+<li>What path am I giving Python?</li>
+<li>Is the filename spelled correctly?</li>
+<li>Is the extension correct?</li>
+<li>Am I using the right folder names?</li>
+</ul>
 <p>A helpful debugging command is:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4377,7 +4390,7 @@ the right folder names?</p>
 <ul>
 <li>Be aware of your current working directory</li>
 <li>One of the biggest struggle for importing your data into Python is
-getting paths correct.</li>
+getting the paths correct.</li>
 </ul>
 </div>
 </div>
@@ -4590,7 +4603,7 @@ IndexError: list index out of range</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>3 levels</li>
@@ -4948,7 +4961,7 @@ the errors are.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p><code>SyntaxError</code> for missing <code>():</code> at end of first
 line, <code>IndentationError</code> for mismatch between second and
@@ -5002,7 +5015,7 @@ have been defined but was not?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>3 <code>NameError</code>s for <code>number</code> being misspelled,
 for <code>message</code> not defined, and for <code>a</code> not being
@@ -5053,7 +5066,7 @@ it?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p><code>IndexError</code>; the last entry is <code>seasons[3]</code>,
 so <code>seasons[4]</code> doesn’t make sense. A fixed version is:</p>
@@ -5304,7 +5317,7 @@ Patient's BMI is: 0.000367</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="suggestions-for-debugging">Suggestions for debugging<a class="anchor" aria-label="anchor" href="#suggestions-for-debugging"></a>
