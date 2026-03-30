@@ -1,5 +1,5 @@
 ---
-title: Pathing and work spaces
+title: Pathing and workspaces
 teaching: 30
 exercises: 30
 ---
@@ -65,13 +65,13 @@ A Jupyter notebook is itself a file, usually ending in .ipynb.
 
 That means the notebook lives in a folder somewhere on your computer, just like any other file. In Jupyter, the notebook runs relative to a current working directory, and relative paths depend on that location.
 
-Important idea
+### Important idea 
 
 When you write code to open a file, Python needs to know:
 
 “Starting from where?”
 
-Usually, that starting point is the folder the notebook is running from.
+Usually, that starting point is the current working directory, which is often the same as the notebook's folder.
 
 So if your notebook is in:
 
@@ -149,13 +149,15 @@ img
 
 This opens the image file from the data folder.
 
-Or you can even use a library called opencv
+You can also use a library called OpenCV.
 
 ```python
 import cv2
 
-img = cv2.imread("imagepath.png")
-img
+img = cv2.imread("data/cat.jpg")
+cv2.imshow("Image", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
 ```
 
 Another common option in notebooks is matplotlib:
@@ -190,12 +192,12 @@ Audio("data/song.mp3")
 
 When a file will not load, students should ask:
 
-Where is my notebook?
-Where is my file?
-What path am I giving Python?
-Is the filename spelled correctly?
-Is the extension correct?
-Am I using the right folder names?
+* Where is my notebook?
+* Where is my file?
+* What path am I giving Python?
+* Is the filename spelled correctly?
+* Is the extension correct?
+* Am I using the right folder names?
 
 A helpful debugging command is:
 
@@ -215,7 +217,7 @@ That can quickly reveal what Python can actually see.
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Be aware of your current working directory
-- One of the biggest struggle for importing your data into Python is getting paths correct.
+- One of the biggest struggle for importing your data into Python is getting the paths correct.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
