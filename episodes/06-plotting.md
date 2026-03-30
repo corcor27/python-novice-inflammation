@@ -21,8 +21,8 @@ exercises: 30
 ## Visualizing data
 
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers,"
-and the best way to develop insight is often to visualise data.  Visualisation deserves an entire
-lecture of its own, but we can explore a few features of Python's `matplotlib` library here.  While
+and the best way to develop insight is often to visualise data.  Visualisation could take an entire
+course of its own, but for now we can explore a few features of Python's `matplotlib` library here.  While
 there is no official plotting library, `matplotlib` is the *de facto* standard.  First, we will
 import the `pyplot` module from `matplotlib` and use two of its functions to create and display a
 [heat map](../learners/reference.md#heat-map) of our data:
@@ -37,7 +37,7 @@ notebook at this point, you need the following two lines:
 
 ```python
 import numpy
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+data = numpy.loadtxt(fname='../data/inflammation-01.csv', delimiter=',')
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -93,8 +93,7 @@ matplotlib.pyplot.show()
 ![](fig/inflammation-01-minimum.svg){alt='A line graph showing the minimum inflammation across all patients over a 40-day period.'}
 
 The maximum value rises and falls linearly, while the minimum seems to be a step function.
-Neither trend seems particularly likely, so either there's a mistake in our calculations or
-something is wrong with our data. This insight would have been difficult to reach by examining
+Neither trend seems particularly likely, so it's likely there is something wrong with Dr Maverick's data. This insight would have been difficult to reach by examining
 the numbers themselves without visualisation tools.
 
 ### Grouping plots
@@ -190,7 +189,7 @@ is important you agree on how libraries are imported.
 
 - We can easily visualise data using matplotlib.
 - There are other libraries that are popular (e.g., seaborn).
-- Getting figures just right can take a bit of time and effort.
+- Getting figures "paper ready" can take a bit of time and effort.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

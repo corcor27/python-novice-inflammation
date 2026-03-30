@@ -70,7 +70,7 @@ To use a library in Python, we usually import it.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::: callout
 
-If you have never used Python before you may need to install packages first
+If you have never used Python before, or if you are not using the Carpentries environment, you may need to install some packages first.
 
 ```python
 %pip install [PACKAGE NAME]
