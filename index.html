@@ -205,6 +205,8 @@
 <li><a href="#option-a-jupyter-notebook">Option A: Jupyter Notebook</a></li>
 <li><a href="#option-b-ipython-interpreter">Option B: IPython interpreter</a></li>
 <li><a href="#option-c-plain-vanilla-python-interpreter">Option C: plain-vanilla Python interpreter</a></li>
+<li><a href="#your-anaconda-environment">Your anaconda environment</a></li>
+<li><a href="#jupyter-notebook">Jupyter Notebook</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -464,7 +466,7 @@ with Python. You can launch a notebook from the command line:</p>
   Command line (Terminal)
   </h3>
 </button>
-<div id="collapseSpoiler5" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler5" aria-labelledby="headingSpoiler5">
+<div id="collapseSpoiler5" class="accordion-collapse collapse" aria-labelledby="headingSpoiler5" data-bs-parent="#accordionSpoiler5">
 <div class="accordion-body">
 <p>1. Navigate to the <code>data</code> directory:</p>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
@@ -475,7 +477,7 @@ with Python. You can launch a notebook from the command line:</p>
   Unix shell
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>If you’re using a Unix shell application, such as Terminal app in
 macOS, Console or Terminal in Linux, or <a href="https://gitforwindows.org" class="external-link">Git Bash</a> on Windows, execute the
@@ -497,7 +499,7 @@ following command:</p>
   Command Prompt (Windows)
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>On Windows, you can use its native Command Prompt program. The
 easiest way to start it up is pressing <kbd>Windows Logo
@@ -518,7 +520,7 @@ navigate to the <code>data</code> folder:</p>
   Unix shell
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -537,7 +539,7 @@ navigate to the <code>data</code> folder:</p>
   Command Prompt (Windows)
   </h3>
 </button>
-<div id="collapseSpoiler4" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler4" aria-labelledby="headingSpoiler4">
+<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
 <div class="accordion-body">
 <pre class="source"><code>python -m notebook</code></pre>
 </div>
@@ -566,6 +568,106 @@ features and commands. You can install IPython on your system <a href="https://i
 Windows</a>, you have to call Python <em>via</em>
 <code>winpty</code>:</p>
 <pre class="source"><code>winpty python</code></pre>
+</section><section><h2 class="section-heading" id="your-anaconda-environment">Your anaconda environment<a class="anchor" aria-label="anchor" href="#your-anaconda-environment"></a></h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="what-is-an-python-environment">What is an python environment<a class="anchor" aria-label="anchor" href="#what-is-an-python-environment"></a></h3>
+<p>A Python environment (often called a virtual environment) is an
+isolated workspace where you can install and manage Python packages
+independently from other projects.</p>
+<p>Think of it like this:</p>
+<p>Imagine each project you work on has its own “bubble”:</p>
+<ul><li>It has its own Python version</li>
+<li>Its own libraries (packages)</li>
+<li>Its own dependencies</li>
+</ul><p>This prevents conflicts between projects.</p>
+</div>
+<div class="section level3">
+<h3 id="why-python-environments-are-important">Why Python environments are important<a class="anchor" aria-label="anchor" href="#why-python-environments-are-important"></a></h3>
+<p>Without environments:</p>
+<ul><li>One project might need pandas version 1.5</li>
+<li>Another might need pandas version 2.0</li>
+<li>These would clash and break things</li>
+</ul><p>With environments:</p>
+<ul><li>Each project gets exactly what it needs</li>
+</ul></div>
+<div class="section level3">
+<h3 id="install-package-via-conda">Install Package via conda<a class="anchor" aria-label="anchor" href="#install-package-via-conda"></a></h3>
+<pre class="source"><code>conda install numpy</code></pre>
+<p>Another option if conda is problematic is to use, then you can
+install packages via pip</p>
+<pre class="source"><code>pip install numpy</code></pre>
+<p>make sure that when you run these commands that you are in the
+correct environment, indicated on the left in the terminal.</p>
+<div id="safe-guarding-base" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="safe-guarding-base" class="callout-inner">
+<h3 class="callout-title">Safe guarding “base”</h3>
+<div class="callout-content">
+<p>In Anaconda, the default environment is called “base.” It serves as
+the core foundation for everything within Anaconda. If this environment
+becomes corrupted or broken, you may lose the ability to create or
+install new environments. For this reason, it’s recommended that you
+only use the base environment to create new environments or update
+Conda, and avoid making other changes to it.</p>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="jupyter-notebook">Jupyter Notebook<a class="anchor" aria-label="anchor" href="#jupyter-notebook"></a></h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="what-is-jupyter-notebook">What is Jupyter Notebook?<a class="anchor" aria-label="anchor" href="#what-is-jupyter-notebook"></a></h3>
+<p>Jupyter Notebook is an interactive tool that lets you write and run
+code in small sections, while also adding notes, explanations, and
+visual outputs—all in one place.</p>
+<p>It’s widely used in:</p>
+<ul><li>Data science</li>
+<li>Machine learning</li>
+<li>Research and education</li>
+</ul><p>Think of it as a combination of a coding environment + a
+document.</p>
+<p>Understanding Cells</p>
+<p>A notebook is made up of cells, which are the building blocks of your
+work.</p>
+<p>Types of cells: * Code cells → where you write and run Python code *
+Markdown cells → where you write text, explanations, or instructions</p>
+</div>
+<div class="section level3">
+<h3 id="using-jupyter-notebook">Using Jupyter Notebook<a class="anchor" aria-label="anchor" href="#using-jupyter-notebook"></a></h3>
+<figure><img src="fig/creating_file.png" alt="Click the red box to create a new notebook and then select python 3 (ipykernal)" class="figure mx-auto d-block"></figure><figure><img src="fig/notebook.png" alt="Blue: the cells where you run code, Orange: is the output from a cell above, Pink: is the current cell selected, Red: remove selected cell, Green: Run select cell and Black: Name of worksheet, change by clicking it." class="figure mx-auto d-block"></figure><figure><img src="fig/running_cells.png" alt="Red: run selected cell, Blue: run all if needing to check of errors and Green is to start and run cells with a blank canvas." class="figure mx-auto d-block"></figure></div>
+<div class="section level3">
+<h3 id="why-use-notebooks-instead-of-terminal-or-ide">Why Use Notebooks Instead of Terminal or IDE?<a class="anchor" aria-label="anchor" href="#why-use-notebooks-instead-of-terminal-or-ide"></a></h3>
+<p>Jupyter Notebooks are used as a starting point because they are:</p>
+<p>Beginner-friendly * No need to manage multiple files * Immediate
+feedback when running code Interactive * Run small pieces of code
+step-by-step * Experiment without breaking everything Visual * Outputs,
+charts, and explanations appear together Great for learning * You can
+mix code + explanation + results in one place</p>
+</div>
+<div class="section level3">
+<h3 id="a-quick-note-on-terminal-ides">A Quick Note on Terminal &amp; IDEs<a class="anchor" aria-label="anchor" href="#a-quick-note-on-terminal-ides"></a></h3>
+<p>More advanced workflows often use:</p>
+<ul><li>The command line (terminal)</li>
+<li>Full development environments (IDEs)</li>
+<li>High-performance computing (HPC) systems for large-scale
+workloads</li>
+</ul><p>These are powerful, but:</p>
+<ul><li>Require more setup</li>
+<li>Are less interactive for beginners</li>
+</ul></div>
+<div class="section level3">
+<h3 id="why-we-start-with-notebooks">Why We Start with Notebooks<a class="anchor" aria-label="anchor" href="#why-we-start-with-notebooks"></a></h3>
+<p>Notebooks provide the most accessible entry point because they:</p>
+<ul><li>Reduce complexity</li>
+<li>Encourage experimentation</li>
+<li>Help you understand code step-by-step</li>
+</ul><p>Once you’re comfortable, you can then move on to:</p>
+<ul><li>Scripts</li>
+<li>Terminals</li>
+<li>Larger systems like HPC</li>
+</ul></div>
 </section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="01-intro.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
