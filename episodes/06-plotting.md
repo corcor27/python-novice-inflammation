@@ -1,5 +1,5 @@
 ---
-title: Visualizing Tabular Data
+title: Visualising Tabular Data
 teaching: 30
 exercises: 30
 ---
@@ -13,7 +13,7 @@ exercises: 30
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How can I visualize tabular data in Python?
+- How can I visualise tabular data in Python?
 - How can I generate several plots together?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -21,7 +21,7 @@ exercises: 30
 ## Visualizing data
 
 The mathematician Richard Hamming once said, "The purpose of computing is insight, not numbers,"
-and the best way to develop insight is often to visualize data.  Visualization deserves an entire
+and the best way to develop insight is often to visualise data.  Visualisation deserves an entire
 lecture of its own, but we can explore a few features of Python's `matplotlib` library here.  While
 there is no official plotting library, `matplotlib` is the *de facto* standard.  First, we will
 import the `pyplot` module from `matplotlib` and use two of its functions to create and display a
@@ -95,16 +95,16 @@ matplotlib.pyplot.show()
 The maximum value rises and falls linearly, while the minimum seems to be a step function.
 Neither trend seems particularly likely, so either there's a mistake in our calculations or
 something is wrong with our data. This insight would have been difficult to reach by examining
-the numbers themselves without visualization tools.
+the numbers themselves without visualisation tools.
 
 ### Grouping plots
 
 You can group similar plots in a single figure using subplots.
-This script below uses a number of new commands. The function `matplotlib.pyplot.figure()`
-creates a space into which we will place all of our plots. The parameter `figsize`
+The script below uses a number of new commands. The function `matplotlib.pyplot.figure()`
+creates a figure into which we will place all of our plots. The parameter `figsize`
 tells Python how big to make this space. Each subplot is placed into the figure using
 its `add_subplot` [method](../learners/reference.md#method). The `add_subplot` method takes
-3 parameters. The first denotes how many total rows of subplots there are, the second parameter
+three parameters. The first denotes how many total rows of subplots there are, the second parameter
 refers to the total number of subplot columns, and the final parameter denotes which subplot
 your variable is referencing (left-to-right, top-to-bottom). Each subplot is stored in a
 different variable (`axes1`, `axes2`, `axes3`). Once a subplot is created, the axes can
@@ -149,7 +149,7 @@ and that we want a tight layout.
 (If we leave out that call to `fig.tight_layout()`,
 the graphs will actually be squeezed together more closely.)
 
-The call to `savefig` stores the plot as a graphics file. This can be
+The call to `savefig` stores the figure as a graphics file. This can be
 a convenient way to store your plots for use in other documents, web
 pages etc. The graphics format is automatically determined by
 Matplotlib from the file name ending we specify; here PNG from
