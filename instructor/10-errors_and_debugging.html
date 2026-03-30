@@ -371,7 +371,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Errors and Exceptions</h1>
-        <p>Last updated on 2026-03-27 |
+        <p>Last updated on 2026-03-30 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/10-errors_and_debugging.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -403,10 +403,10 @@
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul><li>To be able to read a traceback, and determine where the error took
-place and what type it is.</li>
-<li>To be aware of the different types of errors (e.g., indentation
-errors, name errors, etc.)</li>
-<li>Underwstand the process of debuging code containing an error
+place and what type of error we are dealing with.</li>
+<li>Be aware of different types of errors (e.g. indentation errors and
+name errors).</li>
+<li>Understand the process of debugging code containing an error
 systematically.</li>
 <li>Identify ways of making code less error-prone and more easily
 tested.</li>
@@ -458,7 +458,7 @@ IndexError                                Traceback (most recent call last)
 IndexError: list index out of range</code></pre>
 </div>
 <p>This particular traceback has two levels. You can determine the
-number of levels by looking for the number of arrows on the left hand
+number of levels by looking for the number of arrows on the left-hand
 side. In this case:</p>
 <ol style="list-style-type: decimal"><li><p>The first shows code from the cell above, with an arrow pointing
 to Line 11 (which is <code>favorite_ice_cream()</code>).</p></li>
@@ -469,7 +469,7 @@ is <code>print(ice_creams[3])</code>).</p></li>
 other level(s) show what function the program executed to get to the
 next level down. So, in this case, the program first performed a <a href="reference.html#function-call">function call</a> to the function
 <code>favorite_ice_cream</code>. Inside this function, the program
-encountered an error on Line 6, when it tried to run the code
+encountered an error on Line 9, when it tried to run the code
 <code>print(ice_creams[3])</code>.</p>
 <div id="long-tracebacks" class="callout">
 <div class="callout-square">
@@ -576,27 +576,27 @@ IndexError: list index out of range</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>3 levels</li>
 <li><code>print_message</code></li>
 <li>13</li>
 <li><code>IndexError</code></li>
 <li>
-<code>list index out of range</code> You can then infer that
+<code>list index out of range</code>. You can then infer that
 <code>7</code> is not the right index to use with
 <code>messages</code>.</li>
 </ol></div>
 </div>
 </div>
 </div>
-<div id="better-errors-on-newer-pythons" class="callout">
+<div id="better-errors-on-newer-versions-of-python" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <span class="callout-header">Callout</span>
-<div id="better-errors-on-newer-pythons" class="callout-inner">
-<h3 class="callout-title">Better errors on newer Pythons</h3>
+<div id="better-errors-on-newer-versions-of-python" class="callout-inner">
+<h3 class="callout-title">Better errors on newer versions of Python</h3>
 <div class="callout-content">
 <p>Newer versions of Python have improved error printouts. If you are
 debugging errors, it is often helpful to use the latest Python version,
@@ -610,7 +610,7 @@ space too many when indenting under an <code>if</code> statement, or
 forget a parenthesis, you will encounter a <a href="reference.html#syntax-error">syntax error</a>. This means that
 Python couldn’t figure out how to read your program. This is similar to
 forgetting punctuation in English: for example, this text is difficult
-to read there is no punctuation there is also no capitalization why is
+to read there is no punctuation there is also no capitalisation why is
 this hard because you have to figure out where each sentence ends you
 also have to figure out where each sentence begins to some extent it
 might be ambiguous if there should be a sentence break or not</p>
@@ -922,7 +922,7 @@ the errors are.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p><code>SyntaxError</code> for missing <code>():</code> at end of first
 line, <code>IndentationError</code> for mismatch between second and
@@ -974,7 +974,7 @@ have been defined but was not?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>3 <code>NameError</code>s for <code>number</code> being misspelled,
 for <code>message</code> not defined, and for <code>a</code> not being
@@ -1023,7 +1023,7 @@ it?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p><code>IndexError</code>; the last entry is <code>seasons[3]</code>,
 so <code>seasons[4]</code> doesn’t make sense. A fixed version is:</p>
@@ -1084,11 +1084,11 @@ from one analysis to the next (since we might throw away outliers or
 records with missing values). If “new” patients start appearing out of
 nowhere as we move through our pipeline, it’s probably a sign that
 something is wrong.</p></li>
-<li><p><em>Visualize.</em> Data analysts frequently use simple
-visualizations to check both the science they’re doing and the
+<li><p><em>Visualise.</em> Data analysts frequently use simple
+visualisations to check both the science they’re doing and the
 correctness of their code (just as we did in the <a href="02-numpy.html">opening lesson</a> of this tutorial). This should
-only be used for debugging as a last resort, though, since it’s very
-hard to compare two visualizations automatically.</p></li>
+not be the only debugging method you rely on, since visual comparisons
+are hard to automate.</p></li>
 </ol></section><section><h2 class="section-heading" id="make-it-fail-every-time">Make It Fail Every Time<a class="anchor" aria-label="anchor" href="#make-it-fail-every-time"></a></h2>
 <hr class="half-width"><p>We can only debug something when it fails, so the second step is
 always to find a test case that <em>makes it fail every time</em>. The
@@ -1162,7 +1162,7 @@ be useful.</p>
 <p>Version control is often used to reset software to a known state
 during debugging, and to explore recent changes to code that might be
 responsible for bugs. In particular, most version control systems
-(e.g. git, Mercurial) have:</p>
+(e.g. Git, Mercurial) have:</p>
 <ol style="list-style-type: decimal"><li>a <code>blame</code> command that shows who last changed each line
 of a file;</li>
 <li>a <code>bisect</code> command that helps with finding the commit
@@ -1171,12 +1171,12 @@ that introduced an issue.</li>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="be-humble">Be Humble<a class="anchor" aria-label="anchor" href="#be-humble"></a></h2>
-<hr class="half-width"><p>And speaking of help: if we can’t find a bug in 10 minutes, we should
-<em>be humble</em> and <a href="./01-intro.html#getting-help">ask for
-help</a>. Explaining the problem to someone else is often useful, since
-hearing what we’re thinking helps us spot inconsistencies and hidden
-assumptions. If you don’t have someone nearby to share your problem
-description with, get a <a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging" class="external-link">rubber
+<hr class="half-width"><p>And speaking of help: if we can’t find a bug in a reasonable amount
+of time, we should <em>be humble</em> and <a href="./01-intro.html#getting-help">ask for help</a>. Explaining the
+problem to someone else is often useful, since hearing what we’re
+thinking helps us spot inconsistencies and hidden assumptions. If you
+don’t have someone nearby to share your problem description with, get a
+<a href="https://en.wikipedia.org/wiki/Rubber_duck_debugging" class="external-link">rubber
 duck</a>!</p>
 <p>Asking for help also helps alleviate confirmation bias. If we have
 just spent an hour writing a complicated program, we want it to work, so
@@ -1258,7 +1258,7 @@ Patient's BMI is: 0.000367</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="suggestions-for-debugging">Suggestions for debugging<a class="anchor" aria-label="anchor" href="#suggestions-for-debugging"></a></h3>
@@ -1377,7 +1377,7 @@ it.</li>
   "url": "https://swcarpentry.github.io/python-novice-inflammation/instructor/10-errors_and_debugging.html",
   "identifier": "https://swcarpentry.github.io/python-novice-inflammation/instructor/10-errors_and_debugging.html",
   "dateCreated": "2014-11-25",
-  "dateModified": "2026-03-27",
+  "dateModified": "2026-03-30",
   "datePublished": "2026-03-30"
 }
 
