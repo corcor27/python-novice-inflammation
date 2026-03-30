@@ -323,11 +323,6 @@ If Cell 2 is run before Cell 1, Python will raise an error because x does not ex
 * Poor reproducibility: others cannot get the same output
 * Hidden dependencies: a cell works only because of some earlier unseen action
 
-### Best practice
-
-A good notebook should be able to run from top to bottom without errors.
-That is the gold standard.
-
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Basic data types in Python include integers, strings, and floating-point numbers.
