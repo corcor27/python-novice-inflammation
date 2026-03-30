@@ -657,6 +657,10 @@ programmer. If you need to revisit code that you wrote months ago and
 haven't thought about since then, you will appreciate the value of
 readable code!
 
+
+## Challenges
+
+
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Combining Strings
