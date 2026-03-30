@@ -717,21 +717,21 @@ an integer:</p>
 </section><section><h2 class="section-heading" id="running-code-in-order">Running code in order<a class="anchor" aria-label="anchor" href="#running-code-in-order"></a></h2>
 <hr class="half-width"><p>Jupyter notebooks keep variables, imports, and results in memory as
 you run cells. That means each cell can depend on work done earlier.
-When cells are run out of order, the notebook can end up in a weird
-state where the code looks fine but behaves unpredictably.</p>
-<div class="section level3">
-<h3 id="main-reason">Main reason<a class="anchor" aria-label="anchor" href="#main-reason"></a></h3>
-</div>
+When cells are run out of order, the notebook can end up in a state
+where the code looks fine but behaves unpredictably.</p>
 <div class="section level3">
 <h3 id="running-cells-in-order-makes-the-notebook">Running cells in order makes the notebook:<a class="anchor" aria-label="anchor" href="#running-cells-in-order-makes-the-notebook"></a></h3>
 <ul><li>easier to understand</li>
 <li>easier to debug</li>
 <li>easier for other people to reproduce</li>
 <li>less likely to break because of hidden state</li>
-</ul><p>A notebook is not just a document. It is also a live session. If you
-run cell 8 before cell 3, cell 8 might still work only because something
-was defined earlier in a previous run. But another person opening the
-notebook fresh will get an error.</p>
+</ul><p>A notebook is not just a document. It is also a live coding
+session.</p>
+<p>If, during your work, you add something in cell 8 that cell 3 depends
+on, your notebook may still appear to work because both cells have
+already been run in your current session. However, if someone opens the
+notebook from scratch and runs the cells in order, they may get an
+error.</p>
 </div>
 <div class="section level3">
 <h3 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h3>
@@ -750,27 +750,6 @@ notebook fresh will get an error.</p>
 </div>
 <p>If Cell 2 is run before Cell 1, Python will raise an error because x
 does not exist yet.</p>
-<p>Now imagine this:</p>
-<div class="codewrapper sourceCode" id="cb27">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># Cell 1</span></span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb28">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co"># Cell 2</span></span>
-<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">25</span></span></code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb29">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># Cell 3</span></span>
-<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre>
-</div>
-<p>If you skip around and run cells randomly, you may not even know
-whether x is 10 or 25. That is where notebooks get chaotic fast.</p>
 </div>
 <div class="section level3">
 <h3 id="problems-caused-by-running-out-of-order">Problems caused by running out of order<a class="anchor" aria-label="anchor" href="#problems-caused-by-running-out-of-order"></a></h3>
