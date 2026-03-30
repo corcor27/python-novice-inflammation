@@ -18,7 +18,7 @@ Before starting you'll want to type `conda activate carpentries` in order to act
 
 ## Obtain lesson materials
 
-1. Download [python-novice-inflammation-data.zip][zipfile1], [python-novice-inflammation-code.zip][zipfile2] and [iris.csv][iris].
+1. Download [python-novice-inflammation-data.zip][zipfile1], [python-novice-inflammation-code.zip][zipfile2], [iris.csv][iris] and [additional_stuff.zip][Additional].
 2. Create a folder called `swc-python` on your Desktop.
 3. Move downloaded files to `swc-python`.
 4. Unzip the files.
@@ -136,7 +136,8 @@ winpty python
 [zipfile1]: data/python-novice-inflammation-data.zip
 [zipfile2]: ../episodes/files/code/python-novice-inflammation-code.zip
 [gitbash]: https://gitforwindows.org
-[iris]: data/python-novice-inflammation-data/iris.csv
+[iris]: data/iris.csv
+[additional]: data/additional_stuff.zip
 
 ## Your anaconda environment
 
