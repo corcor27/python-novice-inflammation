@@ -447,9 +447,10 @@ environment.</p>
 <li>Create a folder called <code>swc-python</code> on your Desktop.</li>
 <li>Move downloaded files to <code>swc-python</code>.</li>
 <li>Unzip the files.</li>
-</ol><p>You should see two folders called <code>data</code> and
-<code>code</code> in the <code>swc-python</code> directory on your
-Desktop.</p>
+</ol><p>You should see three folders called <code>data</code>,
+<code>code</code>, and additional stuff in the <code>swc-python</code>
+directory on your Desktop. You should also see the iris dataset in that
+folder.</p>
 </section><section><h2 class="section-heading" id="launch-python-interface">Launch Python interface<a class="anchor" aria-label="anchor" href="#launch-python-interface"></a></h2>
 <hr class="half-width"><p>To start working with Python, we need to launch a program that will
 interpret and execute our Python commands. Below we list several
@@ -592,13 +593,33 @@ independently from other projects.</p>
 <ul><li>Each project gets exactly what it needs</li>
 </ul></div>
 <div class="section level3">
-<h3 id="install-package-via-conda">Install Package via conda<a class="anchor" aria-label="anchor" href="#install-package-via-conda"></a></h3>
+<h3 id="activate-a-conda-environment">Activate a Conda environment<a class="anchor" aria-label="anchor" href="#activate-a-conda-environment"></a></h3>
+<p>As part of the installation, you should already have installed
+Miniforge. On Windows, open the <strong>Miniforge Prompt</strong>. On
+macOS or Linux, open a terminal.</p>
+<p>You only need to create the environment once, but you need to
+activate it each time you start a new session.</p>
+<p>To activate the <code>carpentries</code> environment, type:</p>
+<pre class="source"><code>conda activate carpentries</code></pre>
+<p>To check that the environment has activated correctly, you should
+either see that your prompt now displays the environment name or you can
+type:</p>
+<pre class="source"><code>conda info --envs</code></pre>
+<p>The active environment will have a <code>*</code> next to it.</p>
+</div>
+<div class="section level3">
+<h3 id="install-packages-with-conda">Install packages with Conda<a class="anchor" aria-label="anchor" href="#install-packages-with-conda"></a></h3>
+<p>Most of the packages you need should already be installed in the
+<code>carpentries</code> environment. Here, we will see how to install
+packages using Conda in Miniforge or the terminal. Later, we will also
+see examples of how to install packages from within Jupyter
+Notebook.</p>
 <pre class="source"><code>conda install numpy</code></pre>
 <p>Another option if conda is problematic is to use, then you can
 install packages via pip</p>
 <pre class="source"><code>pip install numpy</code></pre>
-<p>make sure that when you run these commands that you are in the
-correct environment, indicated on the left in the terminal.</p>
+<p>Make sure that, when you run these commands, you are in the correct
+environment (carpentries).</p>
 <div id="safe-guarding-base" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -638,7 +659,7 @@ Markdown cells → where you write text, explanations, or instructions</p>
 <div class="section level3">
 <h3 id="using-jupyter-notebook">Using Jupyter Notebook<a class="anchor" aria-label="anchor" href="#using-jupyter-notebook"></a></h3>
 <figure><img src="fig/creating_file.png" alt="Click the red box to create a new notebook and then select python 3 (ipykernal)" class="figure mx-auto d-block"></figure><p>Click the red box to create a new notebook and then select python 3
-(ipykernal)</p>
+(ipykernel)</p>
 <figure><img src="fig/notebook.png" alt="Blue: the cells where you run code, Orange: is the output from a cell above, Pink: is the current cell selected, Red: remove selected cell, Green: Run select cell and Black: Name of worksheet, change by clicking it." class="figure mx-auto d-block"></figure><p>Blue: the cells where you run code, Orange: is the output from a cell
 above, Pink: is the current cell selected, Red: remove selected cell,
 Green: Run select cell and Black: Name of worksheet, change by clicking
