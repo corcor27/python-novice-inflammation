@@ -370,6 +370,101 @@ print(numpy.mean(data, axis=1))
  5.925 6.15  6.075 5.75  5.975 5.725 6.3   5.9   6.75  5.925 7.225 6.15
  5.95  6.275 5.7   6.1   6.825 5.975 6.725 5.7   6.25  6.4   7.05  5.9  ]
 ```
+
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Slicing Strings
+
+A section of an array is called a [slice](../learners/reference.md#slice).
+We can take slices of character strings as well:
+
+```python
+element = 'oxygen'
+print('first three characters:', element[0:3])
+print('last three characters:', element[3:6])
+```
+
+```output
+first three characters: oxy
+last three characters: gen
+```
+
+What is the value of `element[:4]`?
+What about `element[4:]`?
+Or `element[:]`?
+
+:::::::::::::::  solution
+
+## Solution
+
+```output
+oxyg
+en
+oxygen
+```
+
+:::::::::::::::::::::::::
+
+What is `element[-1]`?
+What is `element[-2]`?
+
+:::::::::::::::  solution
+
+## Solution
+
+```output
+n
+e
+```
+
+:::::::::::::::::::::::::
+
+Given those answers,
+explain what `element[1:-1]` does.
+
+:::::::::::::::  solution
+
+## Solution
+
+Creates a substring from index 1 up to (not including) the final index,
+effectively removing the first and last letters from 'oxygen'
+
+
+:::::::::::::::::::::::::
+
+How can we rewrite the slice for getting the last three characters of `element`,
+so that it works even if we assign a different string to `element`?
+Test your solution with the following strings: `carpentry`, `clone`, `hi`.
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+element = 'oxygen'
+print('last three characters:', element[-3:])
+element = 'carpentry'
+print('last three characters:', element[-3:])
+element = 'clone'
+print('last three characters:', element[-3:])
+element = 'hi'
+print('last three characters:', element[-3:])
+```
+
+```output
+last three characters: gen
+last three characters: try
+last three characters: one
+last three characters: hi
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
 ## Pandas
 
 Pandas is a Python library for data manipulation and analysis, providing powerful data structures like DataFrame and Series along with a wide range of functions for tasks such as data cleaning, preparation, and exploration. It is widely used in data science and machine learning workflows for its ease of use and flexibility.

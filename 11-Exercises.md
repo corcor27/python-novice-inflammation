@@ -16,34 +16,7 @@ exercises: 20
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
 
-## Check Your Understanding
-
-What values do the variables `mass` and `age` have after each of the following statements?
-Test your answer by executing the lines.
-
-```python
-mass = 47.5
-age = 122
-mass = mass * 2.0
-age = age - 20
-```
-
-:::::::::::::::  solution
-
-## Solution
-
-```output
-`mass` holds a value of 47.5, `age` does not exist
-`mass` still holds a value of 47.5, `age` holds a value of 122
-`mass` now has a value of 95.0, `age`'s value is still 122
-`mass` still has a value of 95.0, `age` now holds 102
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -192,6 +165,51 @@ last three characters: hi
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Overloading
+
+`+` usually means addition, but when used on strings or lists, it means "concatenate".
+Given that, what do you think the multiplication operator `*` does on lists?
+In particular, what will be the output of the following code?
+
+```python
+counts = [2, 4, 6, 8, 10]
+repeats = counts * 2
+print(repeats)
+```
+
+1. `[2, 4, 6, 8, 10, 2, 4, 6, 8, 10]`
+2. `[4, 8, 12, 16, 20]`
+3. `[[2, 4, 6, 8, 10], [2, 4, 6, 8, 10]]`
+4. `[2, 4, 6, 8, 10, 4, 8, 12, 16, 20]`
+
+The technical term for this is *operator overloading*:
+a single operator, like `+` or `*`,
+can do different things depending on what it's applied to.
+
+:::::::::::::::  solution
+
+## Solution
+
+The multiplication operator `*` used on a list replicates elements of the list and concatenates
+them together:
+
+```output
+[2, 4, 6, 8, 10, 2, 4, 6, 8, 10]
+```
+
+It's equivalent to:
+
+```python
+counts + counts
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
