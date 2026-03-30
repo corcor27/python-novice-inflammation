@@ -418,10 +418,10 @@ the script pane.</p>
 <p>From observing the output in the console and from a brief inspection
 of the code, it should be evident that we are evaluating the variable
 rainfall. Specifically, we are checking if it is True. If the outcome is
-of the check is valid, then we perform any code within the indented
+of the check is true, then we perform any code within the indented
 block.</p>
 <p>{% include figure.html max-width=“100%” file=“/fig/ifflow1.png”
-alt=“Flow diagrame for if condition” caption=“Figure 1: Flow diagram for
+alt=“Flow diagram for if condition” caption=“Figure 1: Flow diagram for
 an <em>if</em> condition” %}</p>
 <div class="section level3">
 <h3 id="if-else">if, else<a class="anchor" aria-label="anchor" href="#if-else"></a></h3>
@@ -431,10 +431,10 @@ an <em>if</em> condition” %}</p>
 else:
   print("Leave your umbrella at home") </code></pre>
 <p>{: .language.python}</p>
-<p>Note: With boolean variables, we don’t actually have to check for
-equivalence.</p>
+<p>Note: With boolean variables, we don’t actually have to write
+<code>== True</code>.</p>
 <p>{% include figure.html max-width=“100%” file=“/fig/ifflow2.png”
-alt=“Flow diagrame for if condition” caption=“Figure 2: Flow diagram for
+alt=“Flow diagram for if condition” caption=“Figure 2: Flow diagram for
 an if, else condition” %}</p>
 </div>
 <div class="section level3">
@@ -451,11 +451,11 @@ your code.</p>
 </div>
 <div class="section level3">
 <h3 id="conditional-statements">Conditional statements<a class="anchor" aria-label="anchor" href="#conditional-statements"></a></h3>
-<ul><li>‘if’ – Used to execute a block of code if a condition is true.</li>
-<li>‘elif’ – Extends an ‘if’ statement to check a condition only if the
-previous ‘if’ or ‘elif’ condition was resolved as false.</li>
-<li>‘else’ – Extends an ‘if’ statement, will execute if none of the
-preceding ‘if’ conditions are true.</li>
+<ul><li>‘if’ – Runs a block of code if a condition is true.</li>
+<li>‘elif’ – Checks another condition if the previous <code>if</code> or
+<code>elif</code> condition was false.</li>
+<li>‘else’ – Runs a block of code if none of the previous conditions
+were true.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="comparison-operators">Comparison operators<a class="anchor" aria-label="anchor" href="#comparison-operators"></a></h3>
@@ -488,8 +488,8 @@ control mechanisms.</p>
 <div class="section level3">
 <h3 id="for-loops">For loops<a class="anchor" aria-label="anchor" href="#for-loops"></a></h3>
 <p>In Python, a for loop is used to iterate over a sequence and perform
-a set of statements for each item in the sequence. Here’s how a for loop
-works in Python:</p>
+a set of statements for each item in the sequence. Here is an example of
+a for loop in Python:</p>
 <ol style="list-style-type: decimal"><li>
 <p><strong>Syntax:</strong> The syntax of a for loop in Python is as
 follows:</p>
@@ -553,6 +553,8 @@ maintainability, efficiency.</p>
 but there are many more facets to explore in order to fully understand
 all possibilities. Please feel free to check out the link below for more
 information on flow control.</p>
+<p><a href="https://docs.python.org/3/tutorial/controlflow.html" class="external-link">Python
+control flow tutorial</a></p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -562,7 +564,7 @@ information on flow control.</p>
 <div class="callout-content">
 <ul><li>Use <code>for variable in sequence</code> to process the elements of
 a sequence one at a time.</li>
-<li>Don’t forget to indent, IDE’s are helpful for this reason.</li>
+<li>Don’t forget to indent.</li>
 <li>You can use <code>len(thing)</code> to determine the length of
 something that contains other values.</li>
 <li>Use <code>if condition</code> to start a conditional statement,
@@ -576,8 +578,9 @@ assignment.</li>
 <li>
 <code>X or Y</code> is true if either <code>X</code> or
 <code>Y</code>, or both, are true.</li>
-<li>Zero, the empty string, and the empty list are considered false; all
-other numbers, strings, and lists are considered true.</li>
+<li>In Python, some values are treated as false in conditions, including
+<code>\0</code>, <code>''</code>, <code>[]</code>, and
+<code>None</code>.</li>
 </ul></div>
 </div>
 </div>

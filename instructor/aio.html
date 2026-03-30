@@ -2796,10 +2796,10 @@ the script pane.</p>
 <p>From observing the output in the console and from a brief inspection
 of the code, it should be evident that we are evaluating the variable
 rainfall. Specifically, we are checking if it is True. If the outcome is
-of the check is valid, then we perform any code within the indented
+of the check is true, then we perform any code within the indented
 block.</p>
 <p>{% include figure.html max-width=“100%” file=“/fig/ifflow1.png”
-alt=“Flow diagrame for if condition” caption=“Figure 1: Flow diagram for
+alt=“Flow diagram for if condition” caption=“Figure 1: Flow diagram for
 an <em>if</em> condition” %}</p>
 <div class="section level3">
 <h3 id="if-else">if, else<a class="anchor" aria-label="anchor" href="#if-else"></a>
@@ -2810,10 +2810,10 @@ an <em>if</em> condition” %}</p>
 else:
   print("Leave your umbrella at home") </code></pre>
 <p>{: .language.python}</p>
-<p>Note: With boolean variables, we don’t actually have to check for
-equivalence.</p>
+<p>Note: With boolean variables, we don’t actually have to write
+<code>== True</code>.</p>
 <p>{% include figure.html max-width=“100%” file=“/fig/ifflow2.png”
-alt=“Flow diagrame for if condition” caption=“Figure 2: Flow diagram for
+alt=“Flow diagram for if condition” caption=“Figure 2: Flow diagram for
 an if, else condition” %}</p>
 </div>
 <div class="section level3">
@@ -2833,11 +2833,11 @@ your code.</p>
 <h3 id="conditional-statements">Conditional statements<a class="anchor" aria-label="anchor" href="#conditional-statements"></a>
 </h3>
 <ul>
-<li>‘if’ – Used to execute a block of code if a condition is true.</li>
-<li>‘elif’ – Extends an ‘if’ statement to check a condition only if the
-previous ‘if’ or ‘elif’ condition was resolved as false.</li>
-<li>‘else’ – Extends an ‘if’ statement, will execute if none of the
-preceding ‘if’ conditions are true.</li>
+<li>‘if’ – Runs a block of code if a condition is true.</li>
+<li>‘elif’ – Checks another condition if the previous <code>if</code> or
+<code>elif</code> condition was false.</li>
+<li>‘else’ – Runs a block of code if none of the previous conditions
+were true.</li>
 </ul>
 </div>
 <div class="section level3">
@@ -2876,8 +2876,8 @@ control mechanisms.</p>
 <h3 id="for-loops">For loops<a class="anchor" aria-label="anchor" href="#for-loops"></a>
 </h3>
 <p>In Python, a for loop is used to iterate over a sequence and perform
-a set of statements for each item in the sequence. Here’s how a for loop
-works in Python:</p>
+a set of statements for each item in the sequence. Here is an example of
+a for loop in Python:</p>
 <ol style="list-style-type: decimal">
 <li>
 <p><strong>Syntax:</strong> The syntax of a for loop in Python is as
@@ -2946,6 +2946,8 @@ maintainability, efficiency.</p>
 but there are many more facets to explore in order to fully understand
 all possibilities. Please feel free to check out the link below for more
 information on flow control.</p>
+<p><a href="https://docs.python.org/3/tutorial/controlflow.html" class="external-link">Python
+control flow tutorial</a></p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -2956,7 +2958,7 @@ information on flow control.</p>
 <ul>
 <li>Use <code>for variable in sequence</code> to process the elements of
 a sequence one at a time.</li>
-<li>Don’t forget to indent, IDE’s are helpful for this reason.</li>
+<li>Don’t forget to indent.</li>
 <li>You can use <code>len(thing)</code> to determine the length of
 something that contains other values.</li>
 <li>Use <code>if condition</code> to start a conditional statement,
@@ -2970,8 +2972,9 @@ assignment.</li>
 <li>
 <code>X or Y</code> is true if either <code>X</code> or
 <code>Y</code>, or both, are true.</li>
-<li>Zero, the empty string, and the empty list are considered false; all
-other numbers, strings, and lists are considered true.</li>
+<li>In Python, some values are treated as false in conditions, including
+<code>\0</code>, <code>''</code>, <code>[]</code>, and
+<code>None</code>.</li>
 </ul>
 </div>
 </div>
@@ -3705,7 +3708,7 @@ A call to your function should look like this:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb57">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3752,7 +3755,7 @@ following commands?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Python will first execute the function <code>add</code> with
 <code>a = 7</code> and <code>b = 3</code>, and, therefore, print
@@ -3803,7 +3806,7 @@ call to your function should look like this:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb63">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3836,7 +3839,7 @@ value <code>v</code> should be <code>(v-L) / (H-L)</code>.)</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3872,7 +3875,7 @@ function, add a docstring that explains what it does.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb65">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3913,7 +3916,7 @@ behave the same way?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3963,7 +3966,7 @@ behave the same way?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4038,7 +4041,7 @@ run?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>Attempting to define the <code>numbers</code> function results in
 <code>4. SyntaxError</code>. The defined parameters <code>two</code> and
