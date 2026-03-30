@@ -20,21 +20,21 @@ exercises: 30
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Often, we want to perform different operations in our code based upon dynamic conditions. To explore this idea, we are going to pretend we have two sensors. The first representing a temperature, and the second representing if there is rainfall. Our temperature is a numeric value, and our rainfall is a boolean. To declare those variables, type into the script:
+Often, we want to perform different operations in our code based upon dynamic conditions. To explore this idea, we are going to pretend we have two sensors. The first represents temperature, and the second represents whether there is rainfall. Our temperature value is numeric, and the rainfall variable is a boolean. To declare those variables, you can type:
 
 ```
 temp_reading = 16 
 
 rainfall = True 
 ```
-{: .languge.python}
+{: .language.python}
 Then place the following code into your script:
 
 ```
 if rainfall == True: 
   print("Advise user to take an umbrella") 
 ```
-{: .languge.python}
+{: .language.python}
 
 Run the script using the run button (little green play button) above the script pane.
 
@@ -59,7 +59,7 @@ if rainfall:
 else: 
   print("Leave your umbrella at home") 
 ```
-{: .languge.python}
+{: .language.python}
 
 Note: With boolean variables, we don't actually have to check for equivalence.
 
@@ -72,7 +72,7 @@ Now change the rainfall variable to False and run the script again.
 ```
 rainfall = False
 ```
-{: .languge.python}
+{: .language.python}
 
 ```
 "Leave your umbrella at home"
@@ -109,7 +109,7 @@ if rainfall or temp_reading < 10:
 else:
     print("Go outside")
 ```
-{: .languge.python}
+{: .language.python}
 
 By combining these operators, you can create sophisticated flow control mechanisms.
 
@@ -137,7 +137,7 @@ In Python, a for loop is used to iterate over a sequence and perform a set of st
    for i in range(5):
        print(i)
 ```
-{: .languge.python}
+{: .language.python}
 
 ```
 0
@@ -156,7 +156,7 @@ days = ['monday','tuesday','wednesday','thursday','friday']
 for day in days:
     print(day)
 ```
-{: .languge.python}
+{: .language.python}
   
 ```
 monday
