@@ -1,5 +1,5 @@
 ---
-title: Analyzing Patient Data using numpy and pandas
+title: Analysing Patient Data using numpy and pandas
 teaching: 60
 exercises: 30
 ---
@@ -22,7 +22,7 @@ exercises: 30
 
 Words are useful, but what's more useful are the sentences and stories we build with them.
 Similarly, while a lot of powerful, general tools are built into Python,
-specialised tools built up from these basic units live in
+specialised tools for working with data are available in
 [libraries](../learners/reference.md#library)
 that can be called upon when needed.
 
@@ -31,7 +31,7 @@ that can be called upon when needed.
 To begin processing the clinical trial inflammation data, we need to load it into Python.
 We can do that using a library called
 [NumPy](https://numpy.org/doc/stable "NumPy Documentation"), which stands for Numerical Python.
-In general, you should use this library when you want to do fancy things with lots of numbers,
+In general, you should use this library when you want to work efficiently with large collections of numbers,
 especially if you have matrices or arrays. To tell Python that we'd like to start using NumPy,
 we need to [import](../learners/reference.md#import) it:
 
@@ -40,10 +40,9 @@ import numpy
 ```
 
 Importing a library is like getting a piece of lab equipment out of a storage locker and setting it
-up on the bench. Libraries provide additional functionality to the basic Python package, much like
-a new piece of equipment adds functionality to a lab space. Just like in the lab, importing too
-many libraries can sometimes complicate and slow down your programs - so we only import what we
-need for each program.
+up on the bench. Libraries provide additional functionality beyond basic Python, much like a new piece of equipment adds functionality to a lab space.
+Importing too many libraries can sometimes complicate and bloat your code, so we only import what we
+actually need for each program.
 
 Once we've imported the library, we can ask the library to read our data file for us:
 
@@ -66,17 +65,16 @@ The expression `numpy.loadtxt(...)` is a
 [function call](../learners/reference.md#function-call)
 that asks Python to run the [function](../learners/reference.md#function) `loadtxt` which
 belongs to the `numpy` library.
-The dot notation in Python is used most of all as an object attribute/property specifier or for invoking its method. `object.property` will give you the object.property value,
+The dot is used to access something that belongs to an object, such as a value or a function. For example `object.property` will give you the object.property value,
 `object_name.method()` will invoke on object\_name method.
 
-As an example, John Smith is the John that belongs to the Smith family.
+As an illustration, John Smith is the John that belongs to the Smith family.
 We could use the dot notation to write his name `smith.john`,
 just as `loadtxt` is a function that belongs to the `numpy` library.
 
 `numpy.loadtxt` has two [parameters](../learners/reference.md#parameter): the name of the file
 we want to read and the [delimiter](../learners/reference.md#delimiter) that separates values
-on a line. These both need to be character strings
-(or [strings](../learners/reference.md#string) for short), so we put them in quotes.
+on a line. These both need to be [strings](../learners/reference.md#string), so we put them in quotes.
 
 Since we haven't told it to do anything else with the function's output,
 the [notebook](../learners/reference.md#notebook) displays it.
@@ -129,16 +127,15 @@ print(data.shape)
 ```
 
 The output tells us that the `data` array variable contains 60 rows and 40 columns. When we
-created the variable `data` to store our arthritis data, we did not only create the array; we also
-created information about the array, called [members](../learners/reference.md#member) or
-attributes. This extra information describes `data` in the same way an adjective describes a noun.
+created the variable `data` to store our inflammation data, we did not only create the array; we also
+created information about the array, called attributes. This extra information describes `data` in the same way an adjective describes a noun.
 `data.shape` is an attribute of `data` which describes the dimensions of `data`. We use the same
 dotted notation for the attributes of variables that we use for the functions in libraries because
 they have the same part-and-whole relationship.
 
 If we want to get a single number from the array, we must provide an
 [index](../learners/reference.md#index) in square brackets after the variable name, just as we
-do in math when referring to an element of a matrix.  Our inflammation data has two dimensions, so
+would do in mathematics when referring to an element of a matrix.  Our inflammation data has two dimensions, so
 we will need to use two indices to refer to one specific value:
 
 ```python
@@ -176,7 +173,7 @@ It takes a bit of getting used to,
 but one way to remember the rule is that
 the index is how many steps we have to take from the start to get the item we want.
 
-![](fig/python-zero-index.svg){alt="'data' is a 3 by 3 numpy array containing row 0: \['A', 'B', 'C'\], row 1: \['D', 'E', 'F'\], androw 2: \['G', 'H', 'I'\]. Starting in the upper left hand corner, data\[0, 0\] = 'A', data\[0, 1\] = 'B',data\[0, 2\] = 'C', data\[1, 0\] = 'D', data\[1, 1\] = 'E', data\[1, 2\] = 'F', data\[2, 0\] = 'G',data\[2, 1\] = 'H', and data\[2, 2\] = 'I', in the bottom right hand corner."}
+![](fig/python-zero-index.svg){alt="'data' is a 3 by 3 numpy array containing row 0: \['A', 'B', 'C'\], row 1: \['D', 'E', 'F'\], and row 2: \['G', 'H', 'I'\]. Starting in the upper left hand corner, data\[0, 0\] = 'A', data\[0, 1\] = 'B',data\[0, 2\] = 'C', data\[1, 0\] = 'D', data\[1, 1\] = 'E', data\[1, 2\] = 'F', data\[2, 0\] = 'G',data\[2, 1\] = 'H', and data\[2, 2\] = 'I', in the bottom right hand corner."}
 
 
 
@@ -336,7 +333,7 @@ print(numpy.max(data, axis=1).shape)
 (60,)
 ```
 
-The expression `(60,)` tells us we have an N×1 vector, so this is the maximum inflammation per day for each patients. 
+The expression `(60,)` tells us we have a one-dimensional array of 60 values. This data holds the maximum inflammation recorded for each patient. 
 
 If we ask for the average across/down axis 0 (rows in our 2D example), we get:
 
@@ -363,7 +360,7 @@ print(numpy.mean(data, axis=0).shape)
 ```output
 (40,)
 ```
-Similarly, we can apply the `mean` function to axis 1 to get the patient's average inflammation over the duration of the study (60 values). 
+Similarly, we can apply the `mean` function to axis 1 to get the patients' average inflammation over the duration of the study (60 values). 
 
 ```python
 print(numpy.mean(data, axis=1))
@@ -377,10 +374,14 @@ print(numpy.mean(data, axis=1))
 ```
 ## Pandas
 
-## Inspecting Datasets
 Pandas is a Python library for data manipulation and analysis, providing powerful data structures like DataFrame and Series along with a wide range of functions for tasks such as data cleaning, preparation, and exploration. It is widely used in data science and machine learning workflows for its ease of use and flexibility.
 
-We can now explore the Iris dataset to gain insights into its structure and contents. To read in the dataset:
+We will now use the Iris dataset as an example of a dataset that does not just consist of numbers. This allows us to demonstrate some of strengths of the Pandas library for inspecting structure and contents. To read in the dataset:
+
+```python
+import pandas as pd
+```
+
 
 ```python
 iris_df = pd.read_csv("data/iris.csv")
@@ -403,7 +404,7 @@ print(iris_df.describe())
 ```
 
 
-Understanding the contents and data types of a data set is important for accurate analysis.
+Understanding the contents and data types of a dataset is important for accurate analysis.
 
 ### Manipulating DataFrames
 Pandas provides powerful functionalities to manipulate DataFrames. Here are some examples:
@@ -440,20 +441,20 @@ Sub-setting allows us to select specific rows or columns based on conditions:
 
 ```python
 iris_df = pd.read_csv("data/iris.csv") #reset the dataset
-# Select rows where petal_length is greater than 5
+# Select rows where petal.length is greater than 5
 subset_df = iris_df[iris_df['petal.length'] > 5]
 ```
 
 ```python
-# Select rows where species is 'setosa' and petal_length is less than 1.5
+# Select rows where species is 'Setosa' and petal.length is less than 1.5
 subset_df = iris_df[(iris_df['variety'] == 'Setosa') & (iris_df['petal.length'] < 1.5)]
 ```
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Remeber array indices start at 0, not 1.
-- Rembmer `low:high` to specify a `slice` that includes the indices from `low` to `high-1`.
-- Its good practice when you first start to use `# some kind of explanation` to explain what you are doing.
+- Remember array indices start at 0, not 1.
+- Remember `low:high` to specify a `slice` that includes the indices from `low` to `high-1`.
+- It's good practice, especially when you are starting out, to use comments such as `# explanation` to explain what you are doing.
 - We have shown some simple examples but you could slice your data in much more complicated ways depending on your requirements.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
