@@ -225,16 +225,14 @@ Red: run selected cell, Blue: run all if needing to check of errors and Green is
 
 Jupyter Notebooks are used as a starting point because they are:
 
-Beginner-friendly
+* Beginner-friendly
 * No need to manage multiple files
 * Immediate feedback when running code
-Interactive
-* Run small pieces of code step-by-step
-* Experiment without breaking everything
-Visual
-* Outputs, charts, and explanations appear together
-Great for learning
-* You can mix code + explanation + results in one place
+* Interactive, run small pieces of code step-by-step
+* Experiment or test small sections of code
+* Visual Outputs, charts, and explanations appear together
+* Great for learning
+* You can mix code + commenting + results in one place
 
 
 ### A Quick Note on Terminal & IDEs
