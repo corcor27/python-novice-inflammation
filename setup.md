@@ -18,8 +18,7 @@ Before starting you'll want to type `conda activate carpentries` in order to act
 
 ## Obtain lesson materials
 
-1. Download [python-novice-inflammation-data.zip][zipfile1]
-  and [python-novice-inflammation-code.zip][zipfile2].
+1. Download [python-novice-inflammation-data.zip][zipfile1], [python-novice-inflammation-code.zip][zipfile2] and [iris.csv][iris].
 2. Create a folder called `swc-python` on your Desktop.
 3. Move downloaded files to `swc-python`.
 4. Unzip the files.
