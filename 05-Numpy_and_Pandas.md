@@ -20,8 +20,7 @@ exercises: 30
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Words are useful, but what's more useful are the sentences and stories we build with them.
-Similarly, while a lot of powerful, general tools are built into Python,
+While a lot of powerful, general tools are built into Python,
 specialised tools for working with data are available in
 [libraries](../learners/reference.md#library)
 that can be called upon when needed.
@@ -48,7 +47,7 @@ Once we've imported the library, we can ask the library to read our data file fo
 
 ```python
 import numpy
-numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+numpy.loadtxt(fname='../data/inflammation-01.csv', delimiter=',')
 ```
 
 ```output
@@ -93,7 +92,7 @@ value to a variable, we can also assign an array of values to a variable using t
 Let's re-run `numpy.loadtxt` and save the returned data:
 
 ```python
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+data = numpy.loadtxt(fname='../data/inflammation-01.csv', delimiter=',')
 ```
 
 This statement doesn't produce any output because we've assigned the output to the variable `data`.
@@ -383,7 +382,7 @@ import pandas as pd
 
 
 ```python
-iris_df = pd.read_csv("data/iris.csv")
+iris_df = pd.read_csv("../iris.csv")
 ```
 
 
@@ -455,6 +454,7 @@ subset_df = iris_df[(iris_df['variety'] == 'Setosa') & (iris_df['petal.length'] 
 - Remember `low:high` to specify a `slice` that includes the indices from `low` to `high-1`.
 - It's good practice, especially when you are starting out, to use comments such as `# explanation` to explain what you are doing.
 - We have shown some simple examples but you could slice your data in much more complicated ways depending on your requirements.
+- It is hard to get an understanding of the data by just reading the raw numbers.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
