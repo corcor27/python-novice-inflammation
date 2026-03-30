@@ -323,6 +323,36 @@ If Cell 2 is run before Cell 1, Python will raise an error because x does not ex
 * Poor reproducibility: others cannot get the same output
 * Hidden dependencies: a cell works only because of some earlier unseen action
 
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Check Your Understanding
+
+What values do the variables `mass` and `age` have after each of the following statements?
+Test your answer by executing the lines.
+
+```python
+mass = 47.5 #1
+age = 122 #2
+mass = mass * 2.0 #3
+age = age - 20 #4
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+```output
+at 1 `mass` holds a value of 47.5, `age` does not exist
+at 2 `mass` still holds a value of 47.5, `age` holds a value of 122
+at 3 `mass` now has a value of 95.0, `age`'s value is still 122
+at 4 `mass` still has a value of 95.0, `age` now holds 102
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Basic data types in Python include integers, strings, and floating-point numbers.
