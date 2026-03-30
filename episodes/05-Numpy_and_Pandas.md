@@ -65,12 +65,11 @@ The expression `numpy.loadtxt(...)` is a
 [function call](../learners/reference.md#function-call)
 that asks Python to run the [function](../learners/reference.md#function) `loadtxt` which
 belongs to the `numpy` library.
-The dot is used to access something that belongs to an object, such as a value or a function. For example `object.property` will give you the object.property value,
-`object_name.method()` will invoke on object\_name method.
+The dot is used to access something that belongs to an object, such as a value or a function. For example, `object.property` accesses a value, and `object_name.method()` calls a method.
 
-As an illustration, John Smith is the John that belongs to the Smith family.
-We could use the dot notation to write his name `smith.john`,
-just as `loadtxt` is a function that belongs to the `numpy` library.
+You can think of the dot like opening a toolbox and picking out a specific tool.
+The library is the toolbox, and the function is one of the tools inside it.
+So in numpy.loadtxt, numpy is the toolbox and loadtxt is the tool we want to use.
 
 `numpy.loadtxt` has two [parameters](../learners/reference.md#parameter): the name of the file
 we want to read and the [delimiter](../learners/reference.md#delimiter) that separates values
@@ -235,7 +234,7 @@ small is:
  [ 2.  2.  1.  1.]]
 ```
 
-## Analyzing data
+## Analysing data
 
 NumPy has several useful functions that take an array as input to perform operations on its values.
 If we want to find the average inflammation for all patients on
@@ -376,7 +375,7 @@ print(numpy.mean(data, axis=1))
 
 Pandas is a Python library for data manipulation and analysis, providing powerful data structures like DataFrame and Series along with a wide range of functions for tasks such as data cleaning, preparation, and exploration. It is widely used in data science and machine learning workflows for its ease of use and flexibility.
 
-We will now use the Iris dataset as an example of a dataset that does not just consist of numbers. This allows us to demonstrate some of strengths of the Pandas library for inspecting structure and contents. To read in the dataset:
+We will now use the Iris dataset as an example of a dataset that does not just consist of numbers. This allows us to demonstrate some of the strengths of the Pandas library for inspecting structure and contents. To read in the dataset:
 
 ```python
 import pandas as pd
@@ -435,18 +434,18 @@ iris_df.drop(0, inplace=True)
 iris_df.reset_index(drop=True, inplace=True)
 ```
 
-### Sub-setting Data
+### Subsetting Data
 
-Sub-setting allows us to select specific rows or columns based on conditions:
+Subsetting allows us to select specific rows or columns based on conditions:
 
 ```python
-iris_df = pd.read_csv("data/iris.csv") #reset the dataset
-# Select rows where petal.length is greater than 5
+iris_df = pd.read_csv("data/iris.csv") # reset the dataset
+# Select rows where 'petal.length' is greater than 5
 subset_df = iris_df[iris_df['petal.length'] > 5]
 ```
 
 ```python
-# Select rows where species is 'Setosa' and petal.length is less than 1.5
+# Select rows where 'variety' is 'Setosa' and 'petal.length' is less than 1.5
 subset_df = iris_df[(iris_df['variety'] == 'Setosa') & (iris_df['petal.length'] < 1.5)]
 ```
 
