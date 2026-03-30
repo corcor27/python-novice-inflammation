@@ -211,9 +211,15 @@ Types of cells:
 
 ![](fig/creating_file.png){alt='Click the red box to create a new notebook and then select python 3 (ipykernal)'}
 
+Click the red box to create a new notebook and then select python 3 (ipykernal)
+
 ![](fig/notebook.png){alt='Blue: the cells where you run code, Orange: is the output from a cell above, Pink: is the current cell selected, Red: remove selected cell, Green: Run select cell and Black: Name of worksheet, change by clicking it.'}
 
+Blue: the cells where you run code, Orange: is the output from a cell above, Pink: is the current cell selected, Red: remove selected cell, Green: Run select cell and Black: Name of worksheet, change by clicking it.
+
 ![](fig/running_cells.png){alt='Red: run selected cell, Blue: run all if needing to check of errors and Green is to start and run cells with a blank canvas.'}
+
+Red: run selected cell, Blue: run all if needing to check of errors and Green is to start and run cells with a blank canvas.
 
 ### Why Use Notebooks Instead of Terminal or IDE?
 
