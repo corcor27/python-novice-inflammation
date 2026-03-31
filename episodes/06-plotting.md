@@ -112,9 +112,6 @@ be titled using the `set_xlabel()` command (or `set_ylabel()`).
 Here are our three plots side by side:
 
 ```python
-import numpy
-import matplotlib.pyplot
-
 data = numpy.loadtxt(fname='../data/inflammation-01.csv', delimiter=',')
 
 fig = plt.figure(figsize=(10.0, 3.0))
@@ -157,8 +154,8 @@ Matplotlib from the file name ending we specify; here PNG from
 formats, including SVG, PDF, and JPEG.
 
 
-[Matplotlib cheatsheets](https://matplotlib.org/cheatsheets/_images/cheatsheets-1.png)
-[Matplotlib cheatsheets](https://matplotlib.org/cheatsheets/_images/cheatsheets-2.png)
+[Matplotlib cheatsheet 1](https://matplotlib.org/cheatsheets/_images/cheatsheets-1.png)
+[Matplotlib cheatsheet 2](https://matplotlib.org/cheatsheets/_images/cheatsheets-2.png)
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

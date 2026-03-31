@@ -205,9 +205,9 @@ First, let's make a `visualize` function that generates our plots:
 ```python
 def visualize(filename):
 
-    data = numpy.loadtxt(fname=filename, delimiter=',')
+    data = np.loadtxt(fname=filename, delimiter=',')
 
-    fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+    fig = plt.figure(figsize=(10.0, 3.0))
 
     axes1 = fig.add_subplot(1, 3, 1)
     axes2 = fig.add_subplot(1, 3, 2)
@@ -267,134 +267,15 @@ we can do so in a single line.
 ## Testing and Documenting
 
 Once we start putting things in functions so that we can re-use them,
-we need to start testing that those functions are working correctly.
-To see how to do this,
-let's write a function to offset a dataset so that its mean value
-shifts to a user-defined value:
+it is good practice to write some [documentation](../learners/reference.md#documentation) to remind ourselves later what it's for and how to use it.
 
-```python
-def offset_mean(data, target_mean_value):
-    return (data - numpy.mean(data)) + target_mean_value
-```
-
-We could test this on our actual data,
-but since we don't know what the values ought to be,
-it will be hard to tell if the result was correct.
-Instead,
-let's use NumPy to create a matrix of zeros
-and then offset its values to have a mean value of 3:
-
-```python
-z = numpy.zeros((2, 2))
-print(offset_mean(z, 3))
-```
-
-```output
-[[ 3.  3.]
- [ 3.  3.]]
-```
-
-That looks right,
-so let's try `offset_mean` on our real data:
-
-```python
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
-print(offset_mean(data, 0))
-```
-
-```output
-[[-6.14875 -6.14875 -5.14875 ... -3.14875 -6.14875 -6.14875]
- [-6.14875 -5.14875 -4.14875 ... -5.14875 -6.14875 -5.14875]
- [-6.14875 -5.14875 -5.14875 ... -4.14875 -5.14875 -5.14875]
- ...
- [-6.14875 -5.14875 -5.14875 ... -5.14875 -5.14875 -5.14875]
- [-6.14875 -6.14875 -6.14875 ... -6.14875 -4.14875 -6.14875]
- [-6.14875 -6.14875 -5.14875 ... -5.14875 -5.14875 -6.14875]]
-```
-
-It's hard to tell from the default output whether the result is correct,
-but there are a few tests that we can run to reassure us:
-
-```python
-print('original min, mean, and max are:', numpy.amin(data), numpy.mean(data), numpy.amax(data))
-offset_data = offset_mean(data, 0)
-print('min, mean, and max of offset data are:',
-      numpy.amin(offset_data),
-      numpy.mean(offset_data),
-      numpy.amax(offset_data))
-```
-
-```output
-original min, mean, and max are: 0.0 6.14875 20.0
-min, mean, and max of offset data are: -6.14875 2.842170943040401e-16 13.85125
-```
-
-That seems almost right:
-the original mean was about 6.1,
-so the lower bound from zero is now about -6.1.
-The mean of the offset data is not exactly zero because of floating-point arithmetic, but it is extremely close.
-We can even go further and check that the standard deviation hasn't changed:
-
-```python
-print('std dev before and after:', numpy.std(data), numpy.std(offset_data))
-```
-
-```output
-std dev before and after: 4.613833197118566 4.613833197118566
-```
-
-Those values look the same,
-but we probably wouldn't notice if they were different in the sixth decimal place.
-Let's do this instead:
-
-```python
-print('difference in standard deviations before and after:',
-      numpy.std(data) - numpy.std(offset_data))
-```
-
-```output
-difference in standard deviations before and after: 0.0
-```
-
-Everything looks good,
-and we should probably get back to doing our analysis.
-We have one more task first, though:
-we should write some [documentation](../learners/reference.md#documentation) for our function
-to remind ourselves later what it's for and how to use it.
-
-The usual way to put documentation in software is
-to add [comments](../learners/reference.md#comment) like this:
-
-```python
-# offset_mean(data, target_mean_value):
-# return a new array containing the original data with its mean offset to match the desired value.
-def offset_mean(data, target_mean_value):
-    return (data - numpy.mean(data)) + target_mean_value
-```
-
-There's a better way, though.
 If the first thing in a function is a string that isn't assigned to a variable,
 that string is attached to the function as its documentation:
 
 ```python
-def offset_mean(data, target_mean_value):
-    """Return a new array containing the original data
-       with its mean offset to match the desired value."""
-    return (data - numpy.mean(data)) + target_mean_value
-```
-
-This is better because we can now ask Python's built-in help system to show us
-the documentation for the function:
-
-```python
-help(offset_mean)
-```
-
-```output
-Help on function offset_mean in module __main__:
-
-offset_mean(data, target_mean_value)
-    Return a new array containing the original data with its mean offset to match the desired value.
+def visualize(filename):
+    """Load a CSV file and plot the average, maximum, and minimum values for each day."""
+    
 ```
 
 A string like this is called a [docstring](../learners/reference.md#docstring).
@@ -402,31 +283,32 @@ Docstrings are usually written with triple quotes, which also lets us spread the
 
 ```python
 def offset_mean(data, target_mean_value):
-    """Return a new array containing the original data
-       with its mean offset to match the desired value.
+    """
+    Load inflammation data from a CSV file and display three summary plots.
 
-    Examples
-    --------
-    >>> offset_mean([1, 2, 3], 0)
-    array([-1.,  0.,  1.])
+    This function reads numerical data from the file given by `filename`,
+    where each row represents one patient and each column represents one day.
+    It then creates a figure with three side-by-side line plots showing:
+
+    1. The average value for each day across all patients.
+    2. The maximum value for each day across all patients.
+    3. The minimum value for each day across all patients.
+
+    Parameters
+    ----------
+    filename : str
+        The path to the CSV file containing the inflammation data.
+
+    Returns
+    -------
+    None
+
     """
     return (data - numpy.mean(data)) + target_mean_value
 
 help(offset_mean)
 ```
 
-```output
-Help on function offset_mean in module __main__:
-
-offset_mean(data, target_mean_value)
-    Return a new array containing the original data
-       with its mean offset to match the desired value.
-
-    Examples
-    --------
-    >>> offset_mean([1, 2, 3], 0)
-    array([-1.,  0.,  1.])
-```
 
 ## Defining Defaults
 
@@ -471,104 +353,7 @@ _commastring
 SyntaxError: unexpected EOF while parsing
 ```
 
-To understand what's going on,
-and make our own functions easier to use,
-let's re-define our `offset_mean` function like this:
-
-```python
-def offset_mean(data, target_mean_value=0.0):
-    """Return a new array containing the original data
-       with its mean offset to match the desired value, (0 by default).
-
-    Examples
-    --------
-    >>> offset_mean([1, 2, 3])
-    array([-1.,  0.,  1.])
-    """
-    return (data - numpy.mean(data)) + target_mean_value
-```
-
-The key change is that the second parameter is now written `target_mean_value=0.0`
-instead of just `target_mean_value`.
-If we call the function with two arguments,
-it works as it did before:
-
-```python
-test_data = numpy.zeros((2, 2))
-print(offset_mean(test_data, 3))
-```
-
-```output
-[[ 3.  3.]
- [ 3.  3.]]
-```
-
-But we can also now call it with just one parameter,
-in which case `target_mean_value` is automatically assigned
-the [default value](../learners/reference.md#default-value) of 0.0:
-
-```python
-more_data = 5 + numpy.zeros((2, 2))
-print('data before mean offset:')
-print(more_data)
-print('offset data:')
-print(offset_mean(more_data))
-```
-
-```output
-data before mean offset:
-[[ 5.  5.]
- [ 5.  5.]]
-offset data:
-[[ 0.  0.]
- [ 0.  0.]]
-```
-
-This is handy:
-if we usually want a function to work one way,
-but occasionally need it to do something else,
-we can allow people to pass a parameter when they need to
-but provide a default to make the normal case easier.
-The example below shows how Python matches values to parameters:
-
-```python
-def display(a=1, b=2, c=3):
-    print('a:', a, 'b:', b, 'c:', c)
-
-print('no parameters:')
-display()
-print('one parameter:')
-display(55)
-print('two parameters:')
-display(55, 66)
-```
-
-```output
-no parameters:
-a: 1 b: 2 c: 3
-one parameter:
-a: 55 b: 2 c: 3
-two parameters:
-a: 55 b: 66 c: 3
-```
-
-As this example shows,
-parameters are matched up from left to right,
-and any that haven't been given a value explicitly get their default value.
-We can override this behavior by naming the value as we pass it in:
-
-```python
-print('only setting the value of c')
-display(c=77)
-```
-
-```output
-only setting the value of c
-a: 1 b: 2 c: 77
-```
-
-With that in hand,
-let's look at the help for `numpy.loadtxt`:
+Let's look at the help for `numpy.loadtxt`:
 
 ```python
 help(numpy.loadtxt)
@@ -612,6 +397,50 @@ When we call `loadtxt` we don't have to provide `fname=` for the filename becaus
 first item in the list, but if we want the `','` to be assigned to the variable `delimiter`,
 we *do* have to provide `delimiter=` for the second parameter since `delimiter` is not
 the second parameter in the list.
+
+If we usually want a function to work one way,
+but occasionally need it to do something else,
+we can allow people to pass a parameter when they need to
+but provide a default to make the normal case easier.
+The example below shows how Python matches values to parameters:
+
+```python
+def display(a=1, b=2, c=3):
+    print('a:', a, 'b:', b, 'c:', c)
+
+print('no parameters:')
+display()
+print('one parameter:')
+display(55)
+print('two parameters:')
+display(55, 66)
+```
+
+```output
+no parameters:
+a: 1 b: 2 c: 3
+one parameter:
+a: 55 b: 2 c: 3
+two parameters:
+a: 55 b: 66 c: 3
+```
+
+As this example shows,
+parameters are matched up from left to right,
+and any that haven't been given a value explicitly get their default value.
+We can override this behavior by naming the value as we pass it in:
+
+```python
+print('only setting the value of c')
+display(c=77)
+```
+
+```output
+only setting the value of c
+a: 1 b: 2 c: 77
+```
+
+
 
 ## Readable functions
 
