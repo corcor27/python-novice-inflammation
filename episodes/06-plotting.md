@@ -36,16 +36,17 @@ have a `data` variable and have imported `numpy`.  If you are starting a new
 notebook at this point, you need the following two lines:
 
 ```python
-import numpy
-data = numpy.loadtxt(fname='../data/inflammation-01.csv', delimiter=',')
+import numpy as np
+data = np.loadtxt(fname='../data/inflammation-01.csv', delimiter=',')
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```python
-import matplotlib.pyplot
-image = matplotlib.pyplot.imshow(data)
-matplotlib.pyplot.show()
+# you may need to %pip install matplotlib
+import matplotlib.pyplot as plt
+image = plt.imshow(data)
+plt.show()
 ```
 
 ![](fig/inflammation-01-imshow.svg){alt='Heat map representing the data variable. Each cell is colored by value along a color gradient from blue to yellow.'}
@@ -66,8 +67,8 @@ Now let's take a look at the average inflammation over time:
 
 ```python
 ave_inflammation = numpy.mean(data, axis=0)
-ave_plot = matplotlib.pyplot.plot(ave_inflammation)
-matplotlib.pyplot.show()
+ave_plot = plt.plot(ave_inflammation)
+plt.show()
 ```
 
 ![](fig/inflammation-01-average.svg){alt='A line graph showing the average inflammation across all patients over a 40-day period.'}
@@ -79,15 +80,15 @@ the medication takes 3 weeks to take effect.  But a good data scientist doesn't 
 average of a dataset, so let's have a look at two other statistics:
 
 ```python
-max_plot = matplotlib.pyplot.plot(numpy.amax(data, axis=0))
-matplotlib.pyplot.show()
+max_plot = plt.plot(numpy.amax(data, axis=0))
+plt.show()
 ```
 
 ![](fig/inflammation-01-maximum.svg){alt='A line graph showing the maximum inflammation across all patients over a 40-day period.'}
 
 ```python
-min_plot = matplotlib.pyplot.plot(numpy.amin(data, axis=0))
-matplotlib.pyplot.show()
+min_plot = plt.plot(numpy.amin(data, axis=0))
+plt.show()
 ```
 
 ![](fig/inflammation-01-minimum.svg){alt='A line graph showing the minimum inflammation across all patients over a 40-day period.'}
@@ -116,7 +117,7 @@ import matplotlib.pyplot
 
 data = numpy.loadtxt(fname='../data/inflammation-01.csv', delimiter=',')
 
-fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
+fig = plt.figure(figsize=(10.0, 3.0))
 
 axes1 = fig.add_subplot(1, 3, 1)
 axes2 = fig.add_subplot(1, 3, 2)
@@ -133,8 +134,8 @@ axes3.plot(numpy.amin(data, axis=0))
 
 fig.tight_layout()
 
-matplotlib.pyplot.savefig('inflammation.png')
-matplotlib.pyplot.show()
+plt.savefig('inflammation.png')
+plt.show()
 ```
 
 ![](fig/inflammation-01-group-plot.svg){alt='Three line graphs showing the daily average, maximum and minimum inflammation over a 40-day period.'}
@@ -155,35 +156,9 @@ Matplotlib from the file name ending we specify; here PNG from
 'inflammation.png'. Matplotlib supports many different graphics
 formats, including SVG, PDF, and JPEG.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
 
-## Revisiting importing libraries with shortcuts
-
-In this lesson we use the `import matplotlib.pyplot`
-[syntax](../learners/reference.md#syntax)
-to import the `pyplot` module of `matplotlib`. However, shortcuts such as
-`import matplotlib.pyplot as plt` are frequently used.
-Importing `pyplot` this way means that after the initial import, rather than writing
-`matplotlib.pyplot.plot(...)`, you can now write `plt.plot(...)`.
-Another common convention is to use the shortcut `import numpy as np` when importing the
-NumPy library. We then can write `np.loadtxt(...)` instead of `numpy.loadtxt(...)`,
-for example.
-
-Some people prefer these shortcuts as it is quicker to type and results in shorter
-lines of code - especially for libraries with long names! You will frequently see
-Python code online using a `pyplot` function with `plt`, or a NumPy function with
-`np`, and it's because they've used this shortcut. It makes no difference which
-approach you choose to take, but you must be consistent as if you use
-`import matplotlib.pyplot as plt` then `matplotlib.pyplot.plot(...)` will not work, and
-you must use `plt.plot(...)` instead. Because of this, when working with other people it
-is important you agree on how libraries are imported.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-
+[Matplotlib cheatsheets](https://matplotlib.org/cheatsheets/_images/cheatsheets-1.png)
+[Matplotlib cheatsheets](https://matplotlib.org/cheatsheets/_images/cheatsheets-2.png)
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
