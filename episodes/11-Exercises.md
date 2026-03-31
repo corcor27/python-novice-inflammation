@@ -793,6 +793,344 @@ matplotlib.pyplot.show()
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Mixing Default and Non-Default Parameters
+
+Given the following code:
+
+```python
+def numbers(one, two=2, three, four=4):
+    n = str(one) + str(two) + str(three) + str(four)
+    return n
+
+print(numbers(1, three=3))
+```
+
+What do you expect will be printed?  What is actually printed?
+What rule do you think Python is following?
+
+1. `1234`
+2. `one2three4`
+3. `1239`
+4. `SyntaxError`
+
+Given that, what does the following piece of code display when run?
+
+```python
+def func(a, b=3, c=6):
+    print('a: ', a, 'b: ', b, 'c:', c)
+
+func(-1, 2)
+```
+
+1. `a: b: 3 c: 6`
+2. `a: -1 b: 3 c: 6`
+3. `a: -1 b: 2 c: 6`
+4. `a: b: -1 c: 2`
+
+:::::::::::::::  solution
+
+## Solution
+
+Attempting to define the `numbers` function results in `4. SyntaxError`.
+The defined parameters `two` and `four` are given default values. Because
+`one` and `three` are not given default values, they are required to be
+included as arguments when the function is called and must be placed
+before any parameters that have default values in the function definition.
+
+The given call to `func` displays `a: -1 b: 2 c: 6`. -1 is assigned to
+the first parameter `a`, 2 is assigned to the next parameter `b`, and `c` is
+not passed a value, so it uses its default value 6.
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Readable Code
+
+Revise a function you wrote for one of the previous exercises to try to make
+the code more readable. Then, collaborate with one of your neighbors
+to critique each other's functions and discuss how your function implementations
+could be further improved to make them more readable.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Return versus print
+
+Note that `return` and `print` are not interchangeable.
+`print` is a Python function that *prints* data to the screen.
+It enables us, *as users*, see the data.
+`return` statement, on the other hand, makes data visible to the program.
+Let's have a look at the following function:
+
+```python
+def add(a, b):
+    print(a + b)
+```
+
+**Question**: What will we see if we execute the following commands?
+
+```python
+A = add(7, 3)
+print(A)
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+Python will first execute the function `add` with `a = 7` and `b = 3`,
+and, therefore, print `10`. However, because function `add` does not have a
+line that starts with `return` (no `return` "statement"), it will, by default, return
+nothing which, in Python world, is represented as `None`. Therefore, `A` will be assigned to `None`
+and the last line (`print(A)`) will print `None`. As a result, we will see:
+
+```output
+10
+None
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Selecting Characters From Strings
+
+If the variable `s` refers to a string,
+then `s[0]` is the string's first character
+and `s[-1]` is its last.
+Write a function called `outer`
+that returns a string made up of just the first and last characters of its input.
+A call to your function should look like this:
+
+```python
+print(outer('helium'))
+```
+
+```output
+hm
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+def outer(input_string):
+    return input_string[0] + input_string[-1]
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Rescaling an Array
+
+Write a function `rescale` that takes an array as input
+and returns a corresponding array of values scaled to lie in the range 0.0 to 1.0.
+(Hint: If `L` and `H` are the lowest and highest values in the original array,
+then the replacement for a value `v` should be `(v-L) / (H-L)`.)
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+def rescale(input_array):
+    L = numpy.amin(input_array)
+    H = numpy.amax(input_array)
+    output_array = (input_array - L) / (H - L)
+    return output_array
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Testing and Documenting Your Function
+
+Run the commands `help(numpy.arange)` and `help(numpy.linspace)`
+to see how to use these functions to generate regularly-spaced values,
+then use those values to test your `rescale` function.
+Once you've successfully tested your function,
+add a docstring that explains what it does.
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+"""Takes an array as input, and returns a corresponding array scaled so
+that 0 corresponds to the minimum and 1 to the maximum value of the input array.
+
+Examples:
+>>> rescale(numpy.arange(10.0))
+array([ 0.        ,  0.11111111,  0.22222222,  0.33333333,  0.44444444,
+       0.55555556,  0.66666667,  0.77777778,  0.88888889,  1.        ])
+>>> rescale(numpy.linspace(0, 100, 5))
+array([ 0.  ,  0.25,  0.5 ,  0.75,  1.  ])
+"""
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Defining Defaults
+
+Rewrite the `rescale` function so that it scales data to lie between `0.0` and `1.0` by default,
+but will allow the caller to specify lower and upper bounds if they want.
+Compare your implementation to your neighbor's:
+do the two functions always behave the same way?
+
+:::::::::::::::  solution
+
+## Solution
+
+```python
+def rescale(input_array, low_val=0.0, high_val=1.0):
+    """rescales input array values to lie between low_val and high_val"""
+    L = numpy.amin(input_array)
+    H = numpy.amax(input_array)
+    intermed_array = (input_array - L) / (H - L)
+    output_array = intermed_array * (high_val - low_val) + low_val
+    return output_array
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Identifying Syntax Errors
+
+1. Read the code below, and (without running it) try to identify what the errors are.
+2. Run the code, and read the error message. Is it a `SyntaxError` or an `IndentationError`?
+3. Fix the error.
+4. Repeat steps 2 and 3, until you have fixed all the errors.
+
+```python
+def another_function
+  print('Syntax errors are annoying.')
+   print('But at least Python tells us about them!')
+  print('So they are usually not too hard to fix.')
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+`SyntaxError` for missing `():` at end of first line,
+`IndentationError` for mismatch between second and third lines.
+A fixed version is:
+
+```python
+def another_function():
+    print('Syntax errors are annoying.')
+    print('But at least Python tells us about them!')
+    print('So they are usually not too hard to fix.')
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Identifying Variable Name Errors
+
+1. Read the code below, and (without running it) try to identify what the errors are.
+2. Run the code, and read the error message.
+  What type of `NameError` do you think this is?
+  In other words, is it a string with no quotes,
+  a misspelled variable,
+  or a variable that should have been defined but was not?
+3. Fix the error.
+4. Repeat steps 2 and 3, until you have fixed all the errors.
+
+```python
+for number in range(10):
+    # use a if the number is a multiple of 3, otherwise use b
+    if (Number % 3) == 0:
+        message = message + a
+    else:
+        message = message + 'b'
+print(message)
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+3 `NameError`s for `number` being misspelled, for `message` not defined,
+and for `a` not being in quotes.
+
+Fixed version:
+
+```python
+message = ''
+for number in range(10):
+    # use a if the number is a multiple of 3, otherwise use b
+    if (number % 3) == 0:
+        message = message + 'a'
+    else:
+        message = message + 'b'
+print(message)
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Identifying Index Errors
+
+1. Read the code below, and (without running it) try to identify what the errors are.
+2. Run the code, and read the error message. What type of error is it?
+3. Fix the error.
+
+```python
+seasons = ['Spring', 'Summer', 'Fall', 'Winter']
+print('My favorite season is ', seasons[4])
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+`IndexError`; the last entry is `seasons[3]`, so `seasons[4]` doesn't make sense.
+A fixed version is:
+
+```python
+seasons = ['Spring', 'Summer', 'Fall', 'Winter']
+print('My favorite season is ', seasons[-1])
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Practice makes perfect.

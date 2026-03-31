@@ -124,81 +124,7 @@ as it is possible to create custom errors.
 In that case,
 hopefully the custom error message is informative enough to help you figure out what went wrong.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
 
-## Reading Error Messages
-
-Read the Python code and the resulting traceback below, and answer the following questions:
-
-1. How many levels does the traceback have?
-2. What is the function name where the error occurred?
-3. On which line number in this function did the error occur?
-4. What is the type of error?
-5. What is the error message?
-
-```python
-# This code has an intentional error. Do not type it directly;
-# use it for reference to understand the error message below.
-def print_message(day):
-    messages = [
-        'Hello, world!',
-        'Today is Tuesday!',
-        'It is the middle of the week.',
-        'Today is Donnerstag in German!',
-        'Last day of the week!',
-        'Hooray for the weekend!',
-        'Aw, the weekend is almost over.'
-    ]
-    print(messages[day])
-
-def print_sunday_message():
-    print_message(7)
-
-print_sunday_message()
-```
-
-```error
----------------------------------------------------------------------------
-IndexError                                Traceback (most recent call last)
-<ipython-input-7-3ad455d81842> in <module>
-     16     print_message(7)
-     17 
----> 18 print_sunday_message()
-     19 
-
-<ipython-input-7-3ad455d81842> in print_sunday_message()
-     14 
-     15 def print_sunday_message():
----> 16     print_message(7)
-     17 
-     18 print_sunday_message()
-
-<ipython-input-7-3ad455d81842> in print_message(day)
-     11         'Aw, the weekend is almost over.'
-     12     ]
----> 13     print(messages[day])
-     14 
-     15 def print_sunday_message():
-
-IndexError: list index out of range
-```
-
-:::::::::::::::  solution
-
-## Solution
-
-1. 3 levels
-2. `print_message`
-3. 13
-4. `IndexError`
-5. `list index out of range`. You can then infer that
-  `7` is not the right index to use with `messages`.
-  
-  
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -499,116 +425,7 @@ If you get an error that you've never seen before,
 searching the Internet for that error type
 often reveals common reasons why you might get that error.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
 
-## Identifying Syntax Errors
-
-1. Read the code below, and (without running it) try to identify what the errors are.
-2. Run the code, and read the error message. Is it a `SyntaxError` or an `IndentationError`?
-3. Fix the error.
-4. Repeat steps 2 and 3, until you have fixed all the errors.
-
-```python
-def another_function
-  print('Syntax errors are annoying.')
-   print('But at least Python tells us about them!')
-  print('So they are usually not too hard to fix.')
-```
-
-:::::::::::::::  solution
-
-## Solution
-
-`SyntaxError` for missing `():` at end of first line,
-`IndentationError` for mismatch between second and third lines.
-A fixed version is:
-
-```python
-def another_function():
-    print('Syntax errors are annoying.')
-    print('But at least Python tells us about them!')
-    print('So they are usually not too hard to fix.')
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Identifying Variable Name Errors
-
-1. Read the code below, and (without running it) try to identify what the errors are.
-2. Run the code, and read the error message.
-  What type of `NameError` do you think this is?
-  In other words, is it a string with no quotes,
-  a misspelled variable,
-  or a variable that should have been defined but was not?
-3. Fix the error.
-4. Repeat steps 2 and 3, until you have fixed all the errors.
-
-```python
-for number in range(10):
-    # use a if the number is a multiple of 3, otherwise use b
-    if (Number % 3) == 0:
-        message = message + a
-    else:
-        message = message + 'b'
-print(message)
-```
-
-:::::::::::::::  solution
-
-## Solution
-
-3 `NameError`s for `number` being misspelled, for `message` not defined,
-and for `a` not being in quotes.
-
-Fixed version:
-
-```python
-message = ''
-for number in range(10):
-    # use a if the number is a multiple of 3, otherwise use b
-    if (number % 3) == 0:
-        message = message + 'a'
-    else:
-        message = message + 'b'
-print(message)
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Identifying Index Errors
-
-1. Read the code below, and (without running it) try to identify what the errors are.
-2. Run the code, and read the error message. What type of error is it?
-3. Fix the error.
-
-```python
-seasons = ['Spring', 'Summer', 'Fall', 'Winter']
-print('My favorite season is ', seasons[4])
-```
-
-:::::::::::::::  solution
-
-## Solution
-
-`IndexError`; the last entry is `seasons[3]`, so `seasons[4]` doesn't make sense.
-A fixed version is:
-
-```python
-seasons = ['Spring', 'Summer', 'Fall', 'Winter']
-print('My favorite season is ', seasons[-1])
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Once testing has uncovered problems,
 the next step is to fix them.
@@ -834,6 +651,82 @@ to break our code into modular, testable chunks,
 and to turn every assumption (or mistake) into an assertion,
 it will actually take us *less* time to produce working programs,
 not more.
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Reading Error Messages
+
+Read the Python code and the resulting traceback below, and answer the following questions:
+
+1. How many levels does the traceback have?
+2. What is the function name where the error occurred?
+3. On which line number in this function did the error occur?
+4. What is the type of error?
+5. What is the error message?
+
+```python
+# This code has an intentional error. Do not type it directly;
+# use it for reference to understand the error message below.
+def print_message(day):
+    messages = [
+        'Hello, world!',
+        'Today is Tuesday!',
+        'It is the middle of the week.',
+        'Today is Donnerstag in German!',
+        'Last day of the week!',
+        'Hooray for the weekend!',
+        'Aw, the weekend is almost over.'
+    ]
+    print(messages[day])
+
+def print_sunday_message():
+    print_message(7)
+
+print_sunday_message()
+```
+
+```error
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+<ipython-input-7-3ad455d81842> in <module>
+     16     print_message(7)
+     17 
+---> 18 print_sunday_message()
+     19 
+
+<ipython-input-7-3ad455d81842> in print_sunday_message()
+     14 
+     15 def print_sunday_message():
+---> 16     print_message(7)
+     17 
+     18 print_sunday_message()
+
+<ipython-input-7-3ad455d81842> in print_message(day)
+     11         'Aw, the weekend is almost over.'
+     12     ]
+---> 13     print(messages[day])
+     14 
+     15 def print_sunday_message():
+
+IndexError: list index out of range
+```
+
+:::::::::::::::  solution
+
+## Solution
+
+1. 3 levels
+2. `print_message`
+3. 13
+4. `IndexError`
+5. `list index out of range`. You can then infer that
+  `7` is not the right index to use with `messages`.
+  
+  
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
