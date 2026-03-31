@@ -184,27 +184,17 @@ Audio(filename)
 ```
 This loads the audio file and gives you a player in the notebook.
 
-We can visualise the audio using tools we have already encountered and some new libraries.
+We can visualise the audio using tools we have already encountered and a new libraries (scipy).
 
 ```python
 from scipy.io import wavfile
-import matplotlib.pyplot as plt
 
 sample_rate, data = wavfile.read(filename)
 
-# If the audio has two channels, keep just one for a simple plot
-if data.ndim > 1:
-    data = data[:, 0]
-
 plt.figure(figsize=(10, 3))
 plt.plot(data)
-plt.xlabel("Sample number")
 plt.ylabel("Amplitude")
-plt.title("Audio waveform")
 plt.show()
-```
-
-
 ```
 
 ### Troubleshooting / debugging path problems
