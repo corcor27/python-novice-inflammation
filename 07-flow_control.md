@@ -20,7 +20,7 @@ exercises: 30
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Often, we want to perform different operations in our code based upon dynamic conditions. To explore this idea, we are going to pretend we have two sensors. The first represents temperature, and the second represents whether there is rainfall. Our temperature value is numeric, and the rainfall variable is a boolean. To declare those variables, you can type:
+Often, we want to perform different operations in our code based upon dynamic conditions. To explore this idea, we are going to pretend we have two sensors. The first represents temperature, and the second represents if there is rainfall or not. Our temperature value is numeric, and the rainfall variable is a boolean. To declare those variables, you can type:
 
 ```python
 temp_reading = 16 
@@ -83,26 +83,27 @@ Leave your umbrella at home
 Our code now reacts differently to different input values. You can combine if, elif (else if), and else statements to control the flow of your code.
 
 ### Conditional statements
-- 'if' – Runs a block of code if a condition is true.
-- 'elif' – Checks another condition if the previous `if` or `elif` condition was false.
-- 'else' – Runs a block of code if none of the previous conditions were true.
+* 'if' – Runs a block of code if a condition is true.
+* 'elif' – Checks another condition if the previous `if` or `elif` condition was false.
+* 'else' – Runs a block of code if none of the previous conditions were true.
 
 ### Comparison operators
 We have encountered '==', which is used to check for equivalence. There are other comparison operators available to us.
-- \> Greater than
-- \>= Greater than or equal to
-- < Less than
-- <= Less than or equal to
-- == Equal to
-- != Not equal to
+
+* \> Greater than
+* \>= Greater than or equal to
+* < Less than
+* <= Less than or equal to
+* == Equal to
+* != Not equal to
 
 ### Boolean operators
 
-* **and**: The and operator returns True if both operands are True, otherwise it returns False.
-* **or**: The or operator returns True if at least one of the operands is True, otherwise it returns False. 
-* **not**: The not operator returns True if the operand is False, and False if the operand is True. 
+* **and**: Returns `True` only if both conditions are `True`.
+* **or**: Returns `True` if at least one condition is `True`.
+* **not**: Reverses a Boolean value, turning `True` into `False` and `False` into `True`.
 
-Replace the code in your script with this (keeping the variables):
+Next:
 
 ```python
 if rainfall or temp_reading < 10:
@@ -188,8 +189,6 @@ We've covered a very basic introduction to flow control in Python, but there are
 - You can use `len(thing)` to determine the length of something that contains other values.
 - Use `if condition` to start a conditional statement, `elif condition` to provide additional tests, and `else` to provide a default.
 - Use `==` to test for equality and `=` for assignment.
-- `X and Y` is only true if both `X` and `Y` are true.
-- `X or Y` is true if either `X` or `Y`, or both, are true.
 - In Python, some values are treated as false in conditions, including `\0`, `''`, `[]`, and `None`.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
