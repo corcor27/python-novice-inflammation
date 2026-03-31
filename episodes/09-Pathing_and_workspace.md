@@ -143,7 +143,7 @@ One common way to load an image is with PIL:
 ```python
 from PIL import Image
 
-img = Image.open("data/cat.jpg")
+img = Image.open("../additional_stuff/cat.jpg")
 img.show()
 ```
 
@@ -154,7 +154,7 @@ You can also use a library called OpenCV.
 ```python
 import cv2
 
-img = cv2.imread("data/cat.jpg")
+img = cv2.imread("../additional_stuff/cat.jpg")
 cv2.imshow("Image", img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
@@ -166,7 +166,7 @@ Another common option in notebooks is matplotlib:
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
-img = mpimg.imread("data/cat.jpg")
+img = mpimg.imread("../additional_stuff/cat.jpg")
 plt.imshow(img)
 plt.axis("off")
 ```
@@ -178,14 +178,14 @@ A simple notebook-friendly way is to use IPython display tools:
 ```python
 from IPython.display import Audio
 
-Audio("data/song.wav")
+Audio("../additional_stuff/song.wav")
 ```
 This loads the audio file and gives you a player in the notebook.
 
 If the audio file is an .mp3, you can often load it the same way:
 
 ```python
-Audio("data/song.mp3")
+Audio("../additional_stuff/song.mp3")
 ```
 
 ### Troubleshooting / debugging path problems
