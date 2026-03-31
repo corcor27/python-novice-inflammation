@@ -363,7 +363,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Pathing and workspaces</h1>
-        <p>Last updated on 2026-03-30 |
+        <p>Last updated on 2026-03-31 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/09-Pathing_and_workspace.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -519,7 +519,7 @@ computer</li>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
 <span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>img <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"data/cat.jpg"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>img <span class="op">=</span> Image.<span class="bu">open</span>(<span class="st">"../additional_stuff/cat.jpg"</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>img.show()</span></code></pre>
 </div>
 <p>This opens the image file from the data folder.</p>
@@ -529,7 +529,7 @@ computer</li>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="im">import</span> cv2</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>img <span class="op">=</span> cv2.imread(<span class="st">"data/cat.jpg"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>img <span class="op">=</span> cv2.imread(<span class="st">"../additional_stuff/cat.jpg"</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>cv2.imshow(<span class="st">"Image"</span>, img)</span>
 <span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>cv2.waitKey(<span class="dv">0</span>)</span>
 <span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>cv2.destroyAllWindows()</span></code></pre>
@@ -541,7 +541,7 @@ computer</li>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="im">import</span> matplotlib.image <span class="im">as</span> mpimg</span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>img <span class="op">=</span> mpimg.imread(<span class="st">"data/cat.jpg"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>img <span class="op">=</span> mpimg.imread(<span class="st">"../additional_stuff/cat.jpg"</span>)</span>
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>plt.imshow(img)</span>
 <span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>plt.axis(<span class="st">"off"</span>)</span></code></pre>
 </div>
@@ -554,14 +554,14 @@ computer</li>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Audio</span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>Audio(<span class="st">"data/song.wav"</span>)</span></code></pre>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>Audio(<span class="st">"../additional_stuff/song.wav"</span>)</span></code></pre>
 </div>
 <p>This loads the audio file and gives you a player in the notebook.</p>
 <p>If the audio file is an .mp3, you can often load it the same way:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>Audio(<span class="st">"data/song.mp3"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>Audio(<span class="st">"../additional_stuff/song.mp3"</span>)</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -659,7 +659,7 @@ getting the paths correct.</li>
   "url": "https://swcarpentry.github.io/python-novice-inflammation/instructor/09-Pathing_and_workspace.html",
   "identifier": "https://swcarpentry.github.io/python-novice-inflammation/instructor/09-Pathing_and_workspace.html",
   "dateCreated": "2014-11-25",
-  "dateModified": "2026-03-30",
+  "dateModified": "2026-03-31",
   "datePublished": "2026-03-31"
 }
 
