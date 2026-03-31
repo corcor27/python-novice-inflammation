@@ -316,7 +316,7 @@ In fact,
 we can pass the filename to `loadtxt` without the `fname=`:
 
 ```python
-np.loadtxt('inflammation-01.csv', delimiter=',')
+np.loadtxt('../data/inflammation-01.csv', delimiter=',')
 ```
 
 ```output
@@ -332,7 +332,7 @@ array([[ 0.,  0.,  1., ...,  3.,  0.,  0.],
 but we still need to say `delimiter=`:
 
 ```python
-np.loadtxt('inflammation-01.csv', ',')
+np.loadtxt('../data/inflammation-01.csv', ',')
 ```
 
 ```error
@@ -383,7 +383,7 @@ and eight others that do.
 If we call the function like this:
 
 ```python
-np.loadtxt('inflammation-01.csv', ',')
+np.loadtxt('../data/inflammation-01.csv', ',')
 ```
 
 then the filename is assigned to `fname` (which is what we want),

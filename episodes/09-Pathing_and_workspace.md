@@ -178,14 +178,33 @@ A simple notebook-friendly way is to use IPython display tools:
 ```python
 from IPython.display import Audio
 
-Audio("../additional_stuff/song.wav")
+filename = "../additional_stuff/03-01-01-01-01-02-01.wav"
+Audio(filename)
+
 ```
 This loads the audio file and gives you a player in the notebook.
 
-If the audio file is an .mp3, you can often load it the same way:
+We can visualise the audio using tools we have already encountered and some new libraries.
 
 ```python
-Audio("../additional_stuff/song.mp3")
+from scipy.io import wavfile
+import matplotlib.pyplot as plt
+
+sample_rate, data = wavfile.read(filename)
+
+# If the audio has two channels, keep just one for a simple plot
+if data.ndim > 1:
+    data = data[:, 0]
+
+plt.figure(figsize=(10, 3))
+plt.plot(data)
+plt.xlabel("Sample number")
+plt.ylabel("Amplitude")
+plt.title("Audio waveform")
+plt.show()
+```
+
+
 ```
 
 ### Troubleshooting / debugging path problems
@@ -212,7 +231,6 @@ This shows:
 * the current folder
 * the files and folders inside it
 
-That can quickly reveal what Python can actually see.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
