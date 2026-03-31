@@ -355,7 +355,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Flow control</h1>
-        <p>Last updated on 2026-03-30 |
+        <p>Last updated on 2026-03-31 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/07-flow_control.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -398,9 +398,9 @@ calculations.</li>
 <p>Often, we want to perform different operations in our code based upon
 dynamic conditions. To explore this idea, we are going to pretend we
 have two sensors. The first represents temperature, and the second
-represents whether there is rainfall. Our temperature value is numeric,
-and the rainfall variable is a boolean. To declare those variables, you
-can type:</p>
+represents if there is rainfall or not. Our temperature value is
+numeric, and the rainfall variable is a boolean. To declare those
+variables, you can type:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -470,23 +470,27 @@ were true.</li>
 <div class="section level3">
 <h3 id="comparison-operators">Comparison operators<a class="anchor" aria-label="anchor" href="#comparison-operators"></a></h3>
 <p>We have encountered ‘==’, which is used to check for equivalence.
-There are other comparison operators available to us. - &gt; Greater
-than - &gt;= Greater than or equal to - &lt; Less than - &lt;= Less than
-or equal to - == Equal to - != Not equal to</p>
-</div>
+There are other comparison operators available to us.</p>
+<ul><li>&gt; Greater than</li>
+<li>&gt;= Greater than or equal to</li>
+<li>&lt; Less than</li>
+<li>&lt;= Less than or equal to</li>
+<li>== Equal to</li>
+<li>!= Not equal to</li>
+</ul></div>
 <div class="section level3">
 <h3 id="boolean-operators">Boolean operators<a class="anchor" aria-label="anchor" href="#boolean-operators"></a></h3>
 <ul><li>
-<strong>and</strong>: The and operator returns True if both operands
-are True, otherwise it returns False.</li>
+<strong>and</strong>: Returns <code>True</code> only if both
+conditions are <code>True</code>.</li>
 <li>
-<strong>or</strong>: The or operator returns True if at least one of
-the operands is True, otherwise it returns False.</li>
+<strong>or</strong>: Returns <code>True</code> if at least one
+condition is <code>True</code>.</li>
 <li>
-<strong>not</strong>: The not operator returns True if the operand
-is False, and False if the operand is True.</li>
-</ul><p>Replace the code in your script with this (keeping the
-variables):</p>
+<strong>not</strong>: Reverses a Boolean value, turning
+<code>True</code> into <code>False</code> and <code>False</code> into
+<code>True</code>.</li>
+</ul><p>Next:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -598,12 +602,6 @@ something that contains other values.</li>
 <code>else</code> to provide a default.</li>
 <li>Use <code>==</code> to test for equality and <code>=</code> for
 assignment.</li>
-<li>
-<code>X and Y</code> is only true if both <code>X</code> and
-<code>Y</code> are true.</li>
-<li>
-<code>X or Y</code> is true if either <code>X</code> or
-<code>Y</code>, or both, are true.</li>
 <li>In Python, some values are treated as false in conditions, including
 <code>\0</code>, <code>''</code>, <code>[]</code>, and
 <code>None</code>.</li>
@@ -674,7 +672,7 @@ assignment.</li>
   "url": "https://swcarpentry.github.io/python-novice-inflammation/07-flow_control.html",
   "identifier": "https://swcarpentry.github.io/python-novice-inflammation/07-flow_control.html",
   "dateCreated": "2014-11-25",
-  "dateModified": "2026-03-30",
+  "dateModified": "2026-03-31",
   "datePublished": "2026-03-31"
 }
 
