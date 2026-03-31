@@ -1166,7 +1166,7 @@ executing the lines.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1544,7 +1544,7 @@ your approach to make it more robust.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Use negative indices to count elements from the end of a container
 (such as list or string):</p>
@@ -1625,7 +1625,7 @@ through the end of the string)?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>To obtain every other character you need to provide a slice with the
 step size of 2:</p>
@@ -2404,7 +2404,7 @@ last three characters: gen</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2436,7 +2436,7 @@ last three characters: gen</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2467,7 +2467,7 @@ does.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Creates a substring from index 1 up to (not including) the final
 index, effectively removing the first and last letters from ‘oxygen’</p>
@@ -2497,7 +2497,7 @@ strings: <code>carpentry</code>, <code>clone</code>,
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3994,44 +3994,40 @@ computer</li>
 </div>
 <p>This loads the audio file and gives you a player in the notebook.</p>
 <p>We can visualise the audio using tools we have already encountered
-and some new libraries.</p>
+and a new libraries (scipy).</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">from</span> scipy.io <span class="im">import</span> wavfile</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>sample_rate, data <span class="op">=</span> wavfile.read(filename)</span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co"># If the audio has two channels, keep just one for a simple plot</span></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="cf">if</span> data.ndim <span class="op">&gt;</span> <span class="dv">1</span>:</span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>    data <span class="op">=</span> data[:, <span class="dv">0</span>]</span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>plt.plot(data)</span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>plt.xlabel(<span class="st">"Sample number"</span>)</span>
-<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
-<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>plt.title(<span class="st">"Audio waveform"</span>)</span>
-<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>plt.show()</span></code></pre>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>sample_rate, data <span class="op">=</span> wavfile.read(filename)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">3</span>))</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>plt.plot(data)</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>plt.ylabel(<span class="st">"Amplitude"</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
-<pre><code>
-### Troubleshooting / debugging path problems
-
-When a file will not load, students should ask:
-
-* Where is my notebook?
-* Where is my file?
-* What path am I giving Python?
-* Is the filename spelled correctly?
-* Is the extension correct?
-* Am I using the right folder names?
-
-A helpful debugging command is:
-
-```python
-import os
-print(os.getcwd())
-print(os.listdir())</code></pre>
+</div>
+<div class="section level3">
+<h3 id="troubleshooting-debugging-path-problems">Troubleshooting / debugging path problems<a class="anchor" aria-label="anchor" href="#troubleshooting-debugging-path-problems"></a>
+</h3>
+<p>When a file will not load, students should ask:</p>
+<ul>
+<li>Where is my notebook?</li>
+<li>Where is my file?</li>
+<li>What path am I giving Python?</li>
+<li>Is the filename spelled correctly?</li>
+<li>Is the extension correct?</li>
+<li>Am I using the right folder names?</li>
+</ul>
+<p>A helpful debugging command is:</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="bu">print</span>(os.getcwd())</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="bu">print</span>(os.listdir())</span></code></pre>
+</div>
 <p>This shows:</p>
 <ul>
 <li>the current folder</li>
@@ -4949,7 +4945,7 @@ the following program display to the console?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4984,7 +4980,7 @@ the following program display to the console?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5037,7 +5033,7 @@ last three characters: gen</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5069,7 +5065,7 @@ last three characters: gen</code></pre>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5100,7 +5096,7 @@ does.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Creates a substring from index 1 up to (not including) the final
 index, effectively removing the first and last letters from ‘oxygen’</p>
@@ -5130,7 +5126,7 @@ strings: <code>carpentry</code>, <code>clone</code>,
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5192,7 +5188,7 @@ things depending on what it’s applied to.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <p>The multiplication operator <code>*</code> used on a list replicates
 elements of the list and concatenates them together:</p>
@@ -5231,7 +5227,7 @@ data, what does <code>data[3:3, 4:4]</code> produce? What about
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5301,7 +5297,7 @@ C =
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution9" aria-expanded="false" aria-controls="collapseSolution9">
   <h4 class="accordion-header" id="headingSolution9"> Show me the solution </h4>
 </button>
-<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
+<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
 <div class="accordion-body">
 <p>A ‘gotcha’ with array indexing is that singleton dimensions are
 dropped by default. That means <code>A[:, 0]</code> is a one dimensional
@@ -5333,7 +5329,7 @@ dimension (i.e. a column vector).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution10" aria-expanded="false" aria-controls="collapseSolution10">
   <h4 class="accordion-header" id="headingSolution10"> Show me the solution </h4>
 </button>
-<div id="collapseSolution10" class="accordion-collapse collapse" aria-labelledby="headingSolution10" data-bs-parent="#accordionSolution10">
+<div id="collapseSolution10" class="accordion-collapse collapse" data-bs-parent="#accordionSolution10" aria-labelledby="headingSolution10">
 <div class="accordion-body">
 <p>An alternative way to achieve the same result is to use Numpy’s
 delete function to remove the second column of A. If you’re not sure
@@ -5417,7 +5413,7 @@ inflammation array <code>data</code>, which axis would we specify?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution11" aria-expanded="false" aria-controls="collapseSolution11">
   <h4 class="accordion-header" id="headingSolution11"> Show me the solution </h4>
 </button>
-<div id="collapseSolution11" class="accordion-collapse collapse" aria-labelledby="headingSolution11" data-bs-parent="#accordionSolution11">
+<div id="collapseSolution11" class="accordion-collapse collapse" data-bs-parent="#accordionSolution11" aria-labelledby="headingSolution11">
 <div class="accordion-body">
 <p>Since the row axis (0) is patients, it does not make sense to get the
 difference between two arbitrary patients. The column axis (1) is in
@@ -5453,7 +5449,7 @@ the <code>diff()</code> function and why?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution12" aria-expanded="false" aria-controls="collapseSolution12">
   <h4 class="accordion-header" id="headingSolution12"> Show me the solution </h4>
 </button>
-<div id="collapseSolution12" class="accordion-collapse collapse" aria-labelledby="headingSolution12" data-bs-parent="#accordionSolution12">
+<div id="collapseSolution12" class="accordion-collapse collapse" data-bs-parent="#accordionSolution12" aria-labelledby="headingSolution12">
 <div class="accordion-body">
 <p>The shape will be <code>(60, 39)</code> because there is one fewer
 difference between columns than there are columns in the data.</p>
@@ -5482,7 +5478,7 @@ a decrease?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution13" aria-expanded="false" aria-controls="collapseSolution13">
   <h4 class="accordion-header" id="headingSolution13"> Show me the solution </h4>
 </button>
-<div id="collapseSolution13" class="accordion-collapse collapse" aria-labelledby="headingSolution13" data-bs-parent="#accordionSolution13">
+<div id="collapseSolution13" class="accordion-collapse collapse" data-bs-parent="#accordionSolution13" aria-labelledby="headingSolution13">
 <div class="accordion-body">
 <p>By using the <code>numpy.amax()</code> function after you apply the
 <code>numpy.diff()</code> function, you will get the largest difference
@@ -5568,7 +5564,7 @@ natural numbers:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution14" aria-expanded="false" aria-controls="collapseSolution14">
   <h4 class="accordion-header" id="headingSolution14"> Show me the solution </h4>
 </button>
-<div id="collapseSolution14" class="accordion-collapse collapse" aria-labelledby="headingSolution14" data-bs-parent="#accordionSolution14">
+<div id="collapseSolution14" class="accordion-collapse collapse" data-bs-parent="#accordionSolution14" aria-labelledby="headingSolution14">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5611,7 +5607,7 @@ natural numbers:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution15" aria-expanded="false" aria-controls="collapseSolution15">
   <h4 class="accordion-header" id="headingSolution15"> Show me the solution </h4>
 </button>
-<div id="collapseSolution15" class="accordion-collapse collapse" aria-labelledby="headingSolution15" data-bs-parent="#accordionSolution15">
+<div id="collapseSolution15" class="accordion-collapse collapse" data-bs-parent="#accordionSolution15" aria-labelledby="headingSolution15">
 <div class="accordion-body">
 <p>The body of the loop is executed 6 times.</p>
 </div>
@@ -5647,7 +5643,7 @@ using multiplication (and without exponentiation).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution16" aria-expanded="false" aria-controls="collapseSolution16">
   <h4 class="accordion-header" id="headingSolution16"> Show me the solution </h4>
 </button>
-<div id="collapseSolution16" class="accordion-collapse collapse" aria-labelledby="headingSolution16" data-bs-parent="#accordionSolution16">
+<div id="collapseSolution16" class="accordion-collapse collapse" data-bs-parent="#accordionSolution16" aria-labelledby="headingSolution16">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5680,7 +5676,7 @@ each element and printing the final value, so
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution17" aria-expanded="false" aria-controls="collapseSolution17">
   <h4 class="accordion-header" id="headingSolution17"> Show me the solution </h4>
 </button>
-<div id="collapseSolution17" class="accordion-collapse collapse" aria-labelledby="headingSolution17" data-bs-parent="#accordionSolution17">
+<div id="collapseSolution17" class="accordion-collapse collapse" data-bs-parent="#accordionSolution17" aria-labelledby="headingSolution17">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5744,7 +5740,7 @@ value <code>y</code> of any polynomial, given <code>x</code> and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution18" aria-expanded="false" aria-controls="collapseSolution18">
   <h4 class="accordion-header" id="headingSolution18"> Show me the solution </h4>
 </button>
-<div id="collapseSolution18" class="accordion-collapse collapse" aria-labelledby="headingSolution18" data-bs-parent="#accordionSolution18">
+<div id="collapseSolution18" class="accordion-collapse collapse" data-bs-parent="#accordionSolution18" aria-labelledby="headingSolution18">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5775,7 +5771,7 @@ graph?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution19" aria-expanded="false" aria-controls="collapseSolution19">
   <h4 class="accordion-header" id="headingSolution19"> Show me the solution </h4>
 </button>
-<div id="collapseSolution19" class="accordion-collapse collapse" aria-labelledby="headingSolution19" data-bs-parent="#accordionSolution19">
+<div id="collapseSolution19" class="accordion-collapse collapse" data-bs-parent="#accordionSolution19" aria-labelledby="headingSolution19">
 <div class="accordion-body">
 <p>Because matplotlib normally sets x and y axes limits to the min and
 max of our data (depending on data range)</p>
@@ -5810,7 +5806,7 @@ scale. (Hint: you can make use of the <code>max</code> and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution20" aria-expanded="false" aria-controls="collapseSolution20">
   <h4 class="accordion-header" id="headingSolution20"> Show me the solution </h4>
 </button>
-<div id="collapseSolution20" class="accordion-collapse collapse" aria-labelledby="headingSolution20" data-bs-parent="#accordionSolution20">
+<div id="collapseSolution20" class="accordion-collapse collapse" data-bs-parent="#accordionSolution20" aria-labelledby="headingSolution20">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5829,7 +5825,7 @@ scale. (Hint: you can make use of the <code>max</code> and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution21" aria-expanded="false" aria-controls="collapseSolution21">
   <h4 class="accordion-header" id="headingSolution21"> Show me the solution </h4>
 </button>
-<div id="collapseSolution21" class="accordion-collapse collapse" aria-labelledby="headingSolution21" data-bs-parent="#accordionSolution21">
+<div id="collapseSolution21" class="accordion-collapse collapse" data-bs-parent="#accordionSolution21" aria-labelledby="headingSolution21">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5865,7 +5861,7 @@ the subplot on the right looks slanted. Why is this?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution22" aria-expanded="false" aria-controls="collapseSolution22">
   <h4 class="accordion-header" id="headingSolution22"> Show me the solution </h4>
 </button>
-<div id="collapseSolution22" class="accordion-collapse collapse" aria-labelledby="headingSolution22" data-bs-parent="#accordionSolution22">
+<div id="collapseSolution22" class="accordion-collapse collapse" data-bs-parent="#accordionSolution22" aria-labelledby="headingSolution22">
 <div class="accordion-body">
 <p>Because matplotlib interpolates (draws a straight line) between the
 points. One way to do avoid this is to use the Matplotlib
@@ -5920,7 +5916,7 @@ of the inflammation data for each day across all patients.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution23" aria-expanded="false" aria-controls="collapseSolution23">
   <h4 class="accordion-header" id="headingSolution23"> Show me the solution </h4>
 </button>
-<div id="collapseSolution23" class="accordion-collapse collapse" aria-labelledby="headingSolution23" data-bs-parent="#accordionSolution23">
+<div id="collapseSolution23" class="accordion-collapse collapse" data-bs-parent="#accordionSolution23" aria-labelledby="headingSolution23">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5950,7 +5946,7 @@ instead of side by side.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution24" aria-expanded="false" aria-controls="collapseSolution24">
   <h4 class="accordion-header" id="headingSolution24"> Show me the solution </h4>
 </button>
-<div id="collapseSolution24" class="accordion-collapse collapse" aria-labelledby="headingSolution24" data-bs-parent="#accordionSolution24">
+<div id="collapseSolution24" class="accordion-collapse collapse" data-bs-parent="#accordionSolution24" aria-labelledby="headingSolution24">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6035,7 +6031,7 @@ run?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution25" aria-expanded="false" aria-controls="collapseSolution25">
   <h4 class="accordion-header" id="headingSolution25"> Show me the solution </h4>
 </button>
-<div id="collapseSolution25" class="accordion-collapse collapse" aria-labelledby="headingSolution25" data-bs-parent="#accordionSolution25">
+<div id="collapseSolution25" class="accordion-collapse collapse" data-bs-parent="#accordionSolution25" aria-labelledby="headingSolution25">
 <div class="accordion-body">
 <p>Attempting to define the <code>numbers</code> function results in
 <code>4. SyntaxError</code>. The defined parameters <code>two</code> and
@@ -6105,7 +6101,7 @@ following commands?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution26" aria-expanded="false" aria-controls="collapseSolution26">
   <h4 class="accordion-header" id="headingSolution26"> Show me the solution </h4>
 </button>
-<div id="collapseSolution26" class="accordion-collapse collapse" aria-labelledby="headingSolution26" data-bs-parent="#accordionSolution26">
+<div id="collapseSolution26" class="accordion-collapse collapse" data-bs-parent="#accordionSolution26" aria-labelledby="headingSolution26">
 <div class="accordion-body">
 <p>Python will first execute the function <code>add</code> with
 <code>a = 7</code> and <code>b = 3</code>, and, therefore, print
@@ -6157,7 +6153,7 @@ call to your function should look like this:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution27" aria-expanded="false" aria-controls="collapseSolution27">
   <h4 class="accordion-header" id="headingSolution27"> Show me the solution </h4>
 </button>
-<div id="collapseSolution27" class="accordion-collapse collapse" aria-labelledby="headingSolution27" data-bs-parent="#accordionSolution27">
+<div id="collapseSolution27" class="accordion-collapse collapse" data-bs-parent="#accordionSolution27" aria-labelledby="headingSolution27">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6190,7 +6186,7 @@ value <code>v</code> should be <code>(v-L) / (H-L)</code>.)</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution28" aria-expanded="false" aria-controls="collapseSolution28">
   <h4 class="accordion-header" id="headingSolution28"> Show me the solution </h4>
 </button>
-<div id="collapseSolution28" class="accordion-collapse collapse" aria-labelledby="headingSolution28" data-bs-parent="#accordionSolution28">
+<div id="collapseSolution28" class="accordion-collapse collapse" data-bs-parent="#accordionSolution28" aria-labelledby="headingSolution28">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb57">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6226,7 +6222,7 @@ function, add a docstring that explains what it does.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution29" aria-expanded="false" aria-controls="collapseSolution29">
   <h4 class="accordion-header" id="headingSolution29"> Show me the solution </h4>
 </button>
-<div id="collapseSolution29" class="accordion-collapse collapse" aria-labelledby="headingSolution29" data-bs-parent="#accordionSolution29">
+<div id="collapseSolution29" class="accordion-collapse collapse" data-bs-parent="#accordionSolution29" aria-labelledby="headingSolution29">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6267,7 +6263,7 @@ behave the same way?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution30" aria-expanded="false" aria-controls="collapseSolution30">
   <h4 class="accordion-header" id="headingSolution30"> Show me the solution </h4>
 </button>
-<div id="collapseSolution30" class="accordion-collapse collapse" aria-labelledby="headingSolution30" data-bs-parent="#accordionSolution30">
+<div id="collapseSolution30" class="accordion-collapse collapse" data-bs-parent="#accordionSolution30" aria-labelledby="headingSolution30">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb59">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6316,7 +6312,7 @@ the errors are.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution31" aria-expanded="false" aria-controls="collapseSolution31">
   <h4 class="accordion-header" id="headingSolution31"> Show me the solution </h4>
 </button>
-<div id="collapseSolution31" class="accordion-collapse collapse" aria-labelledby="headingSolution31" data-bs-parent="#accordionSolution31">
+<div id="collapseSolution31" class="accordion-collapse collapse" data-bs-parent="#accordionSolution31" aria-labelledby="headingSolution31">
 <div class="accordion-body">
 <p><code>SyntaxError</code> for missing <code>():</code> at end of first
 line, <code>IndentationError</code> for mismatch between second and
@@ -6370,7 +6366,7 @@ have been defined but was not?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution32" aria-expanded="false" aria-controls="collapseSolution32">
   <h4 class="accordion-header" id="headingSolution32"> Show me the solution </h4>
 </button>
-<div id="collapseSolution32" class="accordion-collapse collapse" aria-labelledby="headingSolution32" data-bs-parent="#accordionSolution32">
+<div id="collapseSolution32" class="accordion-collapse collapse" data-bs-parent="#accordionSolution32" aria-labelledby="headingSolution32">
 <div class="accordion-body">
 <p>3 <code>NameError</code>s for <code>number</code> being misspelled,
 for <code>message</code> not defined, and for <code>a</code> not being
@@ -6421,7 +6417,7 @@ it?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution33" aria-expanded="false" aria-controls="collapseSolution33">
   <h4 class="accordion-header" id="headingSolution33"> Show me the solution </h4>
 </button>
-<div id="collapseSolution33" class="accordion-collapse collapse" aria-labelledby="headingSolution33" data-bs-parent="#accordionSolution33">
+<div id="collapseSolution33" class="accordion-collapse collapse" data-bs-parent="#accordionSolution33" aria-labelledby="headingSolution33">
 <div class="accordion-body">
 <p><code>IndexError</code>; the last entry is <code>seasons[3]</code>,
 so <code>seasons[4]</code> doesn’t make sense. A fixed version is:</p>
