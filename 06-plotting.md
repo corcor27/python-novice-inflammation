@@ -114,7 +114,7 @@ Here are our three plots side by side:
 import numpy
 import matplotlib.pyplot
 
-data = numpy.loadtxt(fname='inflammation-01.csv', delimiter=',')
+data = numpy.loadtxt(fname='../data/inflammation-01.csv', delimiter=',')
 
 fig = matplotlib.pyplot.figure(figsize=(10.0, 3.0))
 
@@ -157,7 +157,7 @@ formats, including SVG, PDF, and JPEG.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Importing libraries with shortcuts
+## Revisiting importing libraries with shortcuts
 
 In this lesson we use the `import matplotlib.pyplot`
 [syntax](../learners/reference.md#syntax)
