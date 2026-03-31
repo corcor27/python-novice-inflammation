@@ -214,16 +214,16 @@ def visualize(filename):
     axes3 = fig.add_subplot(1, 3, 3)
 
     axes1.set_ylabel('average')
-    axes1.plot(numpy.mean(data, axis=0))
+    axes1.plot(np.mean(data, axis=0))
 
     axes2.set_ylabel('max')
-    axes2.plot(numpy.amax(data, axis=0))
+    axes2.plot(np.amax(data, axis=0))
 
     axes3.set_ylabel('min')
-    axes3.plot(numpy.amin(data, axis=0))
+    axes3.plot(np.amin(data, axis=0))
 
     fig.tight_layout()
-    matplotlib.pyplot.show()
+    plt.show()
 ```
 
 and another function called `detect_problems` that checks for those suspicious patterns we noticed:
@@ -231,11 +231,11 @@ and another function called `detect_problems` that checks for those suspicious p
 ```python
 def detect_problems(filename):
 
-    data = numpy.loadtxt(fname=filename, delimiter=',')
+    data = np.loadtxt(fname=filename, delimiter=',')
 
-    if numpy.amax(data, axis=0)[0] == 0 and numpy.amax(data, axis=0)[20] == 20:
+    if np.amax(data, axis=0)[0] == 0 and np.amax(data, axis=0)[20] == 20:
         print('Suspicious looking maxima!')
-    elif numpy.sum(numpy.amin(data, axis=0)) == 0:
+    elif np.sum(np.amin(data, axis=0)) == 0:
         print('Minima add up to zero!')
     else:
         print('Seems OK!')
@@ -251,7 +251,7 @@ we can now read and reuse both ideas separately.
 We can reproduce the previous analysis with a much simpler `for` loop:
 
 ```python
-filenames = sorted(glob.glob('inflammation*.csv'))
+filenames = sorted(glob.glob('../data/inflammation*.csv'))
 
 for filename in filenames[:3]:
     print(filename)
@@ -282,7 +282,7 @@ A string like this is called a [docstring](../learners/reference.md#docstring).
 Docstrings are usually written with triple quotes, which also lets us spread them across multiple lines if needed:
 
 ```python
-def offset_mean(data, target_mean_value):
+def visualize(filename):
     """
     Load inflammation data from a CSV file and display three summary plots.
 
@@ -304,9 +304,6 @@ def offset_mean(data, target_mean_value):
     None
 
     """
-    return (data - numpy.mean(data)) + target_mean_value
-
-help(offset_mean)
 ```
 
 
@@ -314,12 +311,12 @@ help(offset_mean)
 
 We have passed parameters to functions in two ways:
 directly, as in `type(data)`,
-and by name, as in `numpy.loadtxt(fname='something.csv', delimiter=',')`.
+and by name, as in `np.loadtxt(fname='something.csv', delimiter=',')`.
 In fact,
 we can pass the filename to `loadtxt` without the `fname=`:
 
 ```python
-numpy.loadtxt('inflammation-01.csv', delimiter=',')
+np.loadtxt('inflammation-01.csv', delimiter=',')
 ```
 
 ```output
@@ -335,7 +332,7 @@ array([[ 0.,  0.,  1., ...,  3.,  0.,  0.],
 but we still need to say `delimiter=`:
 
 ```python
-numpy.loadtxt('inflammation-01.csv', ',')
+np.loadtxt('inflammation-01.csv', ',')
 ```
 
 ```error
@@ -353,14 +350,14 @@ _commastring
 SyntaxError: unexpected EOF while parsing
 ```
 
-Let's look at the help for `numpy.loadtxt`:
+Let's look at the help for `np.loadtxt`:
 
 ```python
-help(numpy.loadtxt)
+help(np.loadtxt)
 ```
 
 ```output
-Help on function loadtxt in module numpy.lib.npyio:
+Help on function loadtxt in module np.lib.npyio:
 
 loadtxt(fname, dtype=<class 'float'>, comments='#', delimiter=None, converters=None, skiprows=0, use
 cols=None, unpack=False, ndmin=0, encoding='bytes')
@@ -386,7 +383,7 @@ and eight others that do.
 If we call the function like this:
 
 ```python
-numpy.loadtxt('inflammation-01.csv', ',')
+np.loadtxt('inflammation-01.csv', ',')
 ```
 
 then the filename is assigned to `fname` (which is what we want),
@@ -455,7 +452,7 @@ def s(p):
     d = 0
     for v in p:
         d += (v - m) * (v - m)
-    return numpy.sqrt(d / (len(p) - 1))
+    return np.sqrt(d / (len(p) - 1))
 
 def std_dev(sample):
     sample_sum = 0
@@ -468,7 +465,7 @@ def std_dev(sample):
     for value in sample:
         sum_squared_devs += (value - sample_mean) * (value - sample_mean)
 
-    return numpy.sqrt(sum_squared_devs / (len(sample) - 1))
+    return np.sqrt(sum_squared_devs / (len(sample) - 1))
 ```
 
 The functions `s` and `std_dev` are computationally equivalent (they
@@ -577,7 +574,6 @@ global `k` value.
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - The body of a function must be indented.
-- Call a function using `function_name(value)`.
 - The `scope` of variables defined within a function can only be seen and used within the body of the function.
 - Variables created outside of any function are called global variables.
 - Within a function, we can access global variables.
