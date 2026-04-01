@@ -46,6 +46,7 @@ data = np.loadtxt(fname='../data/inflammation-01.csv', delimiter=',')
 # you may need to %pip install matplotlib
 import matplotlib.pyplot as plt
 image = plt.imshow(data)
+cbar = plt.colorbar()
 plt.show()
 ```
 
