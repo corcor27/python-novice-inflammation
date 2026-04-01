@@ -362,7 +362,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Visualising Tabular Data</h1>
-        <p>Last updated on 2026-03-31 |
+        <p>Last updated on 2026-04-01 |
 
         <a href="https://github.com/swcarpentry/python-novice-inflammation/edit/main/episodes/06-plotting.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -435,7 +435,8 @@ you need the following two lines:</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="co"># you may need to %pip install matplotlib</span></span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>image <span class="op">=</span> plt.imshow(data)</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>plt.show()</span></code></pre>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>cbar <span class="op">=</span> plt.colorbar()</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
 <figure><img src="fig/inflammation-01-imshow.svg" alt="Heat map representing the data variable. Each cell is colored by value along a color gradient from blue to yellow." class="figure mx-auto d-block"></figure><p>Each row in the heat map corresponds to a patient in the clinical
 trial dataset, and each column corresponds to a day in the dataset. Blue
@@ -614,8 +615,8 @@ effort.</li>
   "url": "https://swcarpentry.github.io/python-novice-inflammation/06-plotting.html",
   "identifier": "https://swcarpentry.github.io/python-novice-inflammation/06-plotting.html",
   "dateCreated": "2014-11-25",
-  "dateModified": "2026-03-31",
-  "datePublished": "2026-03-31"
+  "dateModified": "2026-04-01",
+  "datePublished": "2026-04-01"
 }
 
   </script><script>
